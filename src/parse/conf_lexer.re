@@ -280,6 +280,7 @@ Ret Input::lex_conf(Opt& opts) {
     "flags:"? "case-ranges"                   { RET_CONF_FEAT(case_ranges, "case-ranges"); }
     "flags:"? "unsafe"                        { RET_CONF_BOOL(unsafe); }
     "flags:"? "monadic"                       { RET_CONF_BOOL(monadic); }
+    "flags:"? "simd"                          { RET_CONF_FEAT(simd, "simd"); }
 
     "encoding:ebcdic" | "flags:ecb"        | "flags:e" { RET_CONF_ENC(Enc::Type::EBCDIC); }
     "encoding:utf32"  | "flags:unicode"    | "flags:u" { RET_CONF_ENC(Enc::Type::UTF32); }

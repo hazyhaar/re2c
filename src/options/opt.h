@@ -66,7 +66,7 @@ using StxCodes = list_t<StxCode>;
             ({"code", "dot", "skeleton"})) \
     CHECKED_LIST(supported_features, \
             ({"nested-ifs", "bitmaps", "computed-gotos", "case-ranges", "unsafe", "monadic", \
-                "tags", "captures", "captvars", "computed-continue"}))
+                "tags", "captures", "captvars", "computed-continue", "simd"}))
 
 #define RE2C_STX_OPTS \
     STX_OPT(bool, semicolons, false) \
@@ -496,6 +496,7 @@ enum class StxVarId : uint32_t {
     MUTOPT(bool, nested_ifs, false) \
     MUTOPT(bool, unsafe, true) \
     MUTOPT(bool, monadic, false) \
+    MUTOPT(bool, simd, false) \
     /* YYFILL */ \
     MUTOPT(uint32_t, fill_eof, NOEOF) \
     MUTOPT(uint32_t, fill_sentinel, NOEOF) \

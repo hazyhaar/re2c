@@ -4,7 +4,7 @@ supported_apis = ["simple", "generic", "record"];
 supported_api_styles = ["free-form", "functions"];
 supported_code_models = ["goto-label", "loop-switch", "recursive-functions"];
 supported_targets = ["code", "dot"];
-supported_features = ["nested-ifs", "bitmaps", "tags", "captures", "captvars"];
+supported_features = ["nested-ifs", "bitmaps", "tags", "captures", "captvars", "simd"];
 
 
 // language-specific options ---------------------------------------------------
@@ -94,6 +94,7 @@ re2c:case-inverted = 0;
 re2c:case-ranges = 0;
 re2c:unsafe = 0;
 re2c:monadic = 0;
+re2c:simd = 0;
 re2c:encoding:ebcdic = 0;
 re2c:encoding:utf32 = 0;
 re2c:encoding:ucs2 = 0;
