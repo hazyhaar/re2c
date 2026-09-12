@@ -87,7 +87,7 @@ yy7:
 	yych = str[cursor]
 	switch (YYPEEKN(cursor, 4)) {
 	case 0x4554454c:
-		YYSKIPN(cursor, 3);
+		YYSKIPN(cursor, 3)
 		goto yy24
 	default:
 		if (yych == 'L') {
@@ -102,7 +102,7 @@ yy9:
 	yych = str[cursor]
 	switch (YYPEEKN(cursor, 4)) {
 	case 0x54524553:
-		YYSKIPN(cursor, 3);
+		YYSKIPN(cursor, 3)
 		goto yy25
 	default:
 		if (yych == 'S') {
@@ -115,7 +115,7 @@ yy10:
 	yych = str[cursor]
 	switch (YYPEEKN(cursor, 4)) {
 	case 0x5443454c:
-		YYSKIPN(cursor, 3);
+		YYSKIPN(cursor, 3)
 		goto yy26
 	default:
 		if (yych == 'L') {
@@ -128,7 +128,7 @@ yy11:
 	yych = str[cursor]
 	switch (YYPEEKN(cursor, 4)) {
 	case 0x45544144:
-		YYSKIPN(cursor, 3);
+		YYSKIPN(cursor, 3)
 		goto yy27
 	default:
 		if (yych == 'D') {
@@ -141,7 +141,7 @@ yy12:
 	yych = str[cursor]
 	switch (YYPEEKN(cursor, 2)) {
 	case 0x5445:
-		YYSKIPN(cursor, 1);
+		YYSKIPN(cursor, 1)
 		goto yy20
 	default:
 		if (yych == 'E') {
@@ -154,7 +154,7 @@ yy13:
 	yych = str[cursor]
 	switch (YYPEEKN(cursor, 2)) {
 	case 0x5245:
-		YYSKIPN(cursor, 1);
+		YYSKIPN(cursor, 1)
 		goto yy21
 	default:
 		if (yych == 'E') {
@@ -167,7 +167,7 @@ yy14:
 	yych = str[cursor]
 	switch (YYPEEKN(cursor, 2)) {
 	case 0x4345:
-		YYSKIPN(cursor, 1);
+		YYSKIPN(cursor, 1)
 		goto yy22
 	default:
 		if (yych == 'E') {
@@ -180,7 +180,7 @@ yy15:
 	yych = str[cursor]
 	switch (YYPEEKN(cursor, 2)) {
 	case 0x5441:
-		YYSKIPN(cursor, 1);
+		YYSKIPN(cursor, 1)
 		goto yy23
 	default:
 		if (yych == 'A') {
@@ -193,7 +193,7 @@ yy16:
 	yych = str[cursor]
 	switch (YYPEEKN(cursor, 2)) {
 	case 0x4554:
-		YYSKIPN(cursor, 1);
+		YYSKIPN(cursor, 1)
 		goto yy24
 	default:
 		if (yych == 'T') {
@@ -206,7 +206,7 @@ yy17:
 	yych = str[cursor]
 	switch (YYPEEKN(cursor, 2)) {
 	case 0x5452:
-		YYSKIPN(cursor, 1);
+		YYSKIPN(cursor, 1)
 		goto yy25
 	default:
 		if (yych == 'R') {
@@ -219,7 +219,7 @@ yy18:
 	yych = str[cursor]
 	switch (YYPEEKN(cursor, 2)) {
 	case 0x5443:
-		YYSKIPN(cursor, 1);
+		YYSKIPN(cursor, 1)
 		goto yy26
 	default:
 		if (yych == 'C') {
@@ -232,7 +232,7 @@ yy19:
 	yych = str[cursor]
 	switch (YYPEEKN(cursor, 2)) {
 	case 0x4554:
-		YYSKIPN(cursor, 1);
+		YYSKIPN(cursor, 1)
 		goto yy27
 	default:
 		if (yych == 'T') {
