@@ -1,0 +1,21 @@
+|re2c| can accelerate hot greedy loops in regular expressions using SIMD
+hardware vectorization (AVX2 on x86-64 and Go 1.27 ``simd/archsimd``).
+
+In lexical analysis, a significant percentage of CPU cycles is spent
+consuming long homogeneous byte sequences (such as string literals,
+identifiers, or whitespace).
+
+Instead of processing these loops byte-by-byte with conditional branches, the SIMD
+backend emits a fast-forward preamble that evaluates multiple bytes simultaneously
+using vector comparisons and mask extraction.
+
+When enabled with ``--simd`` or ``re2c:simd = 1;``:
+
+- The compiler verifies that the state is an absorbing reflexive loop with no
+  conflicting tag actions and no backtrack recording.
+- Safety is guaranteed by length checks, ensuring no read extends beyond buffer limits.
+- Once a delimiter byte is detected, the cursor advances by the trailing zeros count
+  and resumes normal scalar DFA execution.
+
+In Go mode (``re2go``), the generated code targets Go 1.27's standard ``simd/archsimd``
+package under the ``//go:build goexperiment.simd && amd64`` build tag.
