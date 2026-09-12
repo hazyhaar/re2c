@@ -420,4 +420,10 @@ static constexpr const char* DEFAULT_SYNTAX_SWIFT =
     "code:yybm_match = \"(\" yybm \"[\" offset \" + Int(\" yych \")] & \" mask \") != 0\";\n"
     "\n"
     "code:yytarget_filter = <undefined>;\n"
+    "\n"
+    "// multi-character (broadword) primitives --------------------------------------\n"
+    "\n"
+    "code:yypeekn = \"YYPEEKN(\" YYCURSOR \", \" n \")\";\n"
+    "\n"
+    "code:yyskipn = topindent \"YYSKIPN(\" YYCURSOR \", \" n \");\" nl;\n"
     ;
