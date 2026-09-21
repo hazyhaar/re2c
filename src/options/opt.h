@@ -501,7 +501,7 @@ enum class StxVarId : uint32_t {
     MUTOPT(bool, computed_gotos_relative, false) \
     MUTOPT(uint32_t, computed_gotos_threshold, 9) \
     MUTOPT(bool, nested_ifs, false) \
-    MUTOPT(bool, multi_char, false) \
+    MUTOPT(bool, vectorize_linear, false) \
     MUTOPT(bool, unsafe, true) \
     MUTOPT(bool, monadic, false) \
     /* YYFILL */ \

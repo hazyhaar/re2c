@@ -430,4 +430,9 @@ code:yytarget_filter = <undefined>;
 
 code:yypeekn = "YYPEEKN(" YYCURSOR ", " n ")";
 
-code:yyskipn = topindent "YYSKIPN(" YYCURSOR ", " n ");" nl;
+code:yyskipn = topindent (.api.record
+    ? (.monadic
+        ? YYCURSOR " <- return $ " YYCURSOR " + " n
+        : "let __ = " YYCURSOR " + " n " in let " YYCURSOR " = __ in")
+    : "YYSKIPN(" YYCURSOR ", " n ")"
+) nl;

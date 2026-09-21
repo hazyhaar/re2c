@@ -425,5 +425,8 @@ static constexpr const char* DEFAULT_SYNTAX_SWIFT =
     "\n"
     "code:yypeekn = \"YYPEEKN(\" YYCURSOR \", \" n \")\";\n"
     "\n"
-    "code:yyskipn = topindent \"YYSKIPN(\" YYCURSOR \", \" n \");\" nl;\n"
+    "code:yyskipn = topindent (.api.generic\n"
+    "    ? \"YYSKIPN(\" YYCURSOR \", \" n \")\"\n"
+    "    : YYCURSOR \" += \" n\n"
+    ") nl;\n"
     ;

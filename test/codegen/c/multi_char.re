@@ -1,4 +1,4 @@
-// re2c $INPUT -o $OUTPUT -i --multi-char
+// re2c $INPUT -o $OUTPUT -i --vectorize-linear
 #include <assert.h>
 #include <stdint.h>
 #include <string.h>
@@ -6,7 +6,10 @@
 #define YYCTYPE char
 #define YYPEEKN(s, n) ({ \
     uint64_t v = 0; \
-    memcpy(&v, s, (n)); \
+    for (size_t _i = 0; _i < (size_t)(n); ++_i) { \
+        v |= (uint64_t)(unsigned char)(s)[_i] << (8 * _i); \
+        if ((s)[_i] == '\0') break; \
+    } \
     v; \
 })
 #define YYSKIPN(s, n) (s += (n))
@@ -32,5 +35,9 @@ int main()
     assert(lex("UPDATE") == 3);
     assert(lex("DELETE") == 4);
     assert(lex("UNKNOWN") == -1);
+    assert(lex("DE") == -1);
+    assert(lex("SE") == -1);
+    assert(lex("D") == -1);
+    assert(lex("") == -1);
     return 0;
 }

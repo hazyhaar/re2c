@@ -152,7 +152,7 @@
     jumps. This usually results in more efficient code with non-optimizing
     compilers.
 
-``--multi-char``
+``--vectorize-linear``
     Coalesce sequential single-character transitions in linear acyclic DFA
     paths into multi-byte word comparisons (broadword parsing). Multi-byte words
     are loaded via the ``code:yypeekn`` configuration or ``YYPEEKN`` macro and

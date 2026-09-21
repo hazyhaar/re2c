@@ -1268,16 +1268,15 @@ opt_long:
 		case 'h': goto yy254;
 		case 'i': goto yy255;
 		case 'l': goto yy256;
-		case 'm': goto yy257;
-		case 'n': goto yy258;
-		case 'o': goto yy259;
-		case 'p': goto yy260;
-		case 'r': goto yy261;
-		case 's': goto yy262;
-		case 't': goto yy263;
-		case 'u': goto yy264;
-		case 'v': goto yy265;
-		case 'w': goto yy266;
+		case 'n': goto yy257;
+		case 'o': goto yy258;
+		case 'p': goto yy259;
+		case 'r': goto yy260;
+		case 's': goto yy261;
+		case 't': goto yy262;
+		case 'u': goto yy263;
+		case 'v': goto yy264;
+		case 'w': goto yy265;
 		default: goto yy245;
 	}
 yy245:
@@ -1285,1591 +1284,1584 @@ yy245:
 yy246:
 #line 139 "src/options/parse_opts.re"
 	{ RET_FAIL(error("bad long option: %s", *argv)); }
-#line 1289 "bootstrap/src/options/parse_opts.cc"
+#line 1288 "bootstrap/src/options/parse_opts.cc"
 yy247:
 	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'p') goto yy267;
+	if (yych == 'p') goto yy266;
 	goto yy246;
 yy248:
 	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'i') goto yy269;
+	if (yych == 'i') goto yy268;
 	goto yy246;
 yy249:
 	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'a') goto yy270;
-	if (yych == 'o') goto yy271;
+	if (yych == 'a') goto yy269;
+	if (yych == 'o') goto yy270;
 	goto yy246;
 yy250:
 	yych = *(YYMARKER = ++YYCURSOR);
 	if (yych <= 'f') {
 		if (yych <= 'd') goto yy246;
-		if (yych <= 'e') goto yy272;
-		goto yy273;
+		if (yych <= 'e') goto yy271;
+		goto yy272;
 	} else {
-		if (yych == 'u') goto yy274;
+		if (yych == 'u') goto yy273;
 		goto yy246;
 	}
 yy251:
 	yych = *(YYMARKER = ++YYCURSOR);
 	if (yych <= 'c') {
 		if (yych <= '`') goto yy246;
-		if (yych <= 'a') goto yy275;
-		if (yych <= 'b') goto yy276;
-		goto yy277;
+		if (yych <= 'a') goto yy274;
+		if (yych <= 'b') goto yy275;
+		goto yy276;
 	} else {
 		if (yych <= 'l') goto yy246;
-		if (yych <= 'm') goto yy278;
-		if (yych <= 'n') goto yy279;
+		if (yych <= 'm') goto yy277;
+		if (yych <= 'n') goto yy278;
 		goto yy246;
 	}
 yy252:
 	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'i') goto yy280;
-	if (yych == 'l') goto yy281;
+	if (yych == 'i') goto yy279;
+	if (yych == 'l') goto yy280;
 	goto yy246;
 yy253:
 	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'o') goto yy282;
+	if (yych == 'o') goto yy281;
 	goto yy246;
 yy254:
 	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'e') goto yy283;
+	if (yych == 'e') goto yy282;
 	goto yy246;
 yy255:
 	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'n') goto yy284;
+	if (yych == 'n') goto yy283;
 	goto yy246;
 yy256:
 	yych = *(YYMARKER = ++YYCURSOR);
 	if (yych <= 'd') {
-		if (yych == 'a') goto yy285;
+		if (yych == 'a') goto yy284;
 		goto yy246;
 	} else {
-		if (yych <= 'e') goto yy286;
-		if (yych == 'o') goto yy287;
+		if (yych <= 'e') goto yy285;
+		if (yych == 'o') goto yy286;
 		goto yy246;
 	}
 yy257:
 	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'u') goto yy288;
+	if (yych == 'e') goto yy287;
+	if (yych == 'o') goto yy288;
 	goto yy246;
 yy258:
 	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'e') goto yy289;
-	if (yych == 'o') goto yy290;
+	if (yych == 'u') goto yy289;
 	goto yy246;
 yy259:
 	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'u') goto yy291;
+	if (yych == 'o') goto yy290;
 	goto yy246;
 yy260:
 	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'o') goto yy292;
+	if (yych == 'e') goto yy291;
 	goto yy246;
 yy261:
 	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'e') goto yy293;
-	goto yy246;
-yy262:
-	yych = *(YYMARKER = ++YYCURSOR);
 	switch (yych) {
-		case 'i': goto yy294;
-		case 'k': goto yy295;
-		case 't': goto yy296;
-		case 'y': goto yy297;
+		case 'i': goto yy292;
+		case 'k': goto yy293;
+		case 't': goto yy294;
+		case 'y': goto yy295;
 		default: goto yy246;
 	}
+yy262:
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 'a') goto yy296;
+	if (yych == 'y') goto yy297;
+	goto yy246;
 yy263:
 	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'a') goto yy298;
-	if (yych == 'y') goto yy299;
-	goto yy246;
-yy264:
-	yych = *(YYMARKER = ++YYCURSOR);
 	if (yych <= 'm') {
-		if (yych == 'c') goto yy300;
+		if (yych == 'c') goto yy298;
 		goto yy246;
 	} else {
-		if (yych <= 'n') goto yy301;
-		if (yych == 't') goto yy302;
+		if (yych <= 'n') goto yy299;
+		if (yych == 't') goto yy300;
 		goto yy246;
 	}
+yy264:
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 'e') goto yy301;
+	goto yy246;
 yy265:
 	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'e') goto yy303;
+	if (yych == 'i') goto yy302;
 	goto yy246;
 yy266:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'i') goto yy304;
-	goto yy246;
-yy267:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy305;
-yy268:
+	if (yych == 'i') goto yy303;
+yy267:
 	YYCURSOR = YYMARKER;
 	goto yy246;
+yy268:
+	yych = *++YYCURSOR;
+	if (yych == 't') goto yy304;
+	goto yy267;
 yy269:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy306;
-	goto yy268;
+	if (yych == 'p') goto yy305;
+	if (yych == 's') goto yy306;
+	goto yy267;
 yy270:
 	yych = *++YYCURSOR;
-	if (yych == 'p') goto yy307;
-	if (yych == 's') goto yy308;
-	goto yy268;
+	if (yych <= 'l') goto yy267;
+	if (yych <= 'm') goto yy307;
+	if (yych <= 'n') goto yy308;
+	goto yy267;
 yy271:
 	yych = *++YYCURSOR;
-	if (yych <= 'l') goto yy268;
-	if (yych <= 'm') goto yy309;
-	if (yych <= 'n') goto yy310;
-	goto yy268;
+	if (yych == 'b') goto yy309;
+	if (yych == 'p') goto yy310;
+	goto yy267;
 yy272:
 	yych = *++YYCURSOR;
-	if (yych == 'b') goto yy311;
-	if (yych == 'p') goto yy312;
-	goto yy268;
+	if (yych == 'a') goto yy311;
+	goto yy267;
 yy273:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy313;
-	goto yy268;
+	if (yych == 'm') goto yy312;
+	goto yy267;
 yy274:
 	yych = *++YYCURSOR;
-	if (yych == 'm') goto yy314;
-	goto yy268;
+	if (yych == 'g') goto yy313;
+	goto yy267;
 yy275:
 	yych = *++YYCURSOR;
-	if (yych == 'g') goto yy315;
-	goto yy268;
+	if (yych == 'c') goto yy314;
+	goto yy267;
 yy276:
 	yych = *++YYCURSOR;
-	if (yych == 'c') goto yy316;
-	goto yy268;
+	if (yych == 'b') goto yy315;
+	goto yy267;
 yy277:
 	yych = *++YYCURSOR;
-	if (yych == 'b') goto yy317;
-	goto yy268;
+	if (yych == 'i') goto yy316;
+	if (yych == 'p') goto yy317;
+	goto yy267;
 yy278:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy318;
-	if (yych == 'p') goto yy319;
-	goto yy268;
+	if (yych == 'c') goto yy318;
+	goto yy267;
 yy279:
 	yych = *++YYCURSOR;
-	if (yych == 'c') goto yy320;
-	goto yy268;
+	if (yych == 'x') goto yy319;
+	goto yy267;
 yy280:
 	yych = *++YYCURSOR;
-	if (yych == 'x') goto yy321;
-	goto yy268;
+	if (yych == 'e') goto yy320;
+	goto yy267;
 yy281:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy322;
-	goto yy268;
+	if (yych == 't') goto yy321;
+	goto yy267;
 yy282:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy323;
-	goto yy268;
+	if (yych == 'a') goto yy322;
+	if (yych == 'l') goto yy323;
+	goto yy267;
 yy283:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy324;
-	if (yych == 'l') goto yy325;
-	goto yy268;
+	if (yych == 'p') goto yy324;
+	if (yych == 'v') goto yy325;
+	goto yy267;
 yy284:
 	yych = *++YYCURSOR;
-	if (yych == 'p') goto yy326;
-	if (yych == 'v') goto yy327;
-	goto yy268;
+	if (yych == 'n') goto yy326;
+	goto yy267;
 yy285:
 	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy328;
-	goto yy268;
+	if (yych == 'f') goto yy327;
+	goto yy267;
 yy286:
 	yych = *++YYCURSOR;
-	if (yych == 'f') goto yy329;
-	goto yy268;
+	if (yych == 'c') goto yy328;
+	if (yych == 'o') goto yy329;
+	goto yy267;
 yy287:
 	yych = *++YYCURSOR;
-	if (yych == 'c') goto yy330;
-	if (yych == 'o') goto yy331;
-	goto yy268;
+	if (yych == 's') goto yy330;
+	goto yy267;
 yy288:
 	yych = *++YYCURSOR;
-	if (yych == 'l') goto yy332;
-	goto yy268;
+	if (yych == '-') goto yy331;
+	goto yy267;
 yy289:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy333;
-	goto yy268;
+	if (yych == 't') goto yy332;
+	goto yy267;
 yy290:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy334;
-	goto yy268;
+	if (yych == 's') goto yy333;
+	goto yy267;
 yy291:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy335;
-	goto yy268;
+	if (yych == 'c') goto yy334;
+	if (yych == 'u') goto yy335;
+	goto yy267;
 yy292:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy336;
-	goto yy268;
+	if (yych == 'n') goto yy336;
+	goto yy267;
 yy293:
 	yych = *++YYCURSOR;
-	if (yych == 'c') goto yy337;
-	if (yych == 'u') goto yy338;
-	goto yy268;
+	if (yych == 'e') goto yy337;
+	goto yy267;
 yy294:
 	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy339;
-	goto yy268;
+	if (yych == 'a') goto yy338;
+	if (yych == 'o') goto yy339;
+	goto yy267;
 yy295:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy340;
-	goto yy268;
+	if (yych == 'n') goto yy340;
+	goto yy267;
 yy296:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy341;
-	if (yych == 'o') goto yy342;
-	goto yy268;
+	if (yych == 'g') goto yy341;
+	goto yy267;
 yy297:
 	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy343;
-	goto yy268;
+	if (yych == 'p') goto yy342;
+	goto yy267;
 yy298:
 	yych = *++YYCURSOR;
-	if (yych == 'g') goto yy344;
-	goto yy268;
+	if (yych == 's') goto yy343;
+	goto yy267;
 yy299:
 	yych = *++YYCURSOR;
-	if (yych == 'p') goto yy345;
-	goto yy268;
+	if (yych == 'i') goto yy344;
+	goto yy267;
 yy300:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy346;
-	goto yy268;
+	if (yych == 'f') goto yy345;
+	goto yy267;
 yy301:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy347;
-	goto yy268;
+	if (yych == 'c') goto yy346;
+	if (yych == 'r') goto yy347;
+	goto yy267;
 yy302:
 	yych = *++YYCURSOR;
-	if (yych == 'f') goto yy348;
-	goto yy268;
+	if (yych == 'd') goto yy348;
+	goto yy267;
 yy303:
-	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy349;
-	goto yy268;
-yy304:
-	yych = *++YYCURSOR;
-	if (yych == 'd') goto yy350;
-	goto yy268;
-yy305:
 	++YYCURSOR;
 #line 208 "src/options/parse_opts.re"
 	{ NEXT_ARG("--api, --input",     opt_input); }
-#line 1570 "bootstrap/src/options/parse_opts.cc"
+#line 1562 "bootstrap/src/options/parse_opts.cc"
+yy304:
+	yych = *++YYCURSOR;
+	if (yych == '-') goto yy349;
+	goto yy267;
+yy305:
+	yych = *++YYCURSOR;
+	if (yych == 't') goto yy350;
+	goto yy267;
 yy306:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy351;
-	goto yy268;
+	if (yych == 'e') goto yy351;
+	goto yy267;
 yy307:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy352;
-	goto yy268;
+	if (yych == 'p') goto yy352;
+	goto yy267;
 yy308:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy353;
-	goto yy268;
+	if (yych == 'd') goto yy353;
+	goto yy267;
 yy309:
 	yych = *++YYCURSOR;
-	if (yych == 'p') goto yy354;
-	goto yy268;
+	if (yych == 'u') goto yy354;
+	goto yy267;
 yy310:
 	yych = *++YYCURSOR;
-	if (yych == 'd') goto yy355;
-	goto yy268;
+	if (yych == 'f') goto yy355;
+	goto yy267;
 yy311:
 	yych = *++YYCURSOR;
-	if (yych == 'u') goto yy356;
-	goto yy268;
+	if (yych == '-') goto yy356;
+	goto yy267;
 yy312:
 	yych = *++YYCURSOR;
-	if (yych == 'f') goto yy357;
-	goto yy268;
+	if (yych == 'p') goto yy357;
+	goto yy267;
 yy313:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy358;
-	goto yy268;
+	if (yych == 'e') goto yy358;
+	goto yy267;
 yy314:
 	yych = *++YYCURSOR;
-	if (yych == 'p') goto yy359;
-	goto yy268;
+	if (yych == 'd') goto yy359;
+	goto yy267;
 yy315:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy360;
-	goto yy268;
+	if (yych <= 0x00) goto yy360;
+	goto yy267;
 yy316:
 	yych = *++YYCURSOR;
-	if (yych == 'd') goto yy361;
-	goto yy268;
+	if (yych == 't') goto yy361;
+	goto yy267;
 yy317:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy362;
-	goto yy268;
+	if (yych == 't') goto yy362;
+	goto yy267;
 yy318:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy363;
-	goto yy268;
+	if (yych == 'o') goto yy363;
+	goto yy267;
 yy319:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy364;
-	goto yy268;
+	if (yych == 'e') goto yy364;
+	goto yy267;
 yy320:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy365;
-	goto yy268;
+	if (yych == 'x') goto yy365;
+	goto yy267;
 yy321:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy366;
-	goto yy268;
+	if (yych == 'o') goto yy366;
+	goto yy267;
 yy322:
 	yych = *++YYCURSOR;
-	if (yych == 'x') goto yy367;
-	goto yy268;
+	if (yych == 'd') goto yy367;
+	goto yy267;
 yy323:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy368;
-	goto yy268;
+	if (yych == 'p') goto yy368;
+	goto yy267;
 yy324:
 	yych = *++YYCURSOR;
-	if (yych == 'd') goto yy369;
-	goto yy268;
+	if (yych == 'u') goto yy369;
+	goto yy267;
 yy325:
 	yych = *++YYCURSOR;
-	if (yych == 'p') goto yy370;
-	goto yy268;
+	if (yych == 'e') goto yy370;
+	goto yy267;
 yy326:
 	yych = *++YYCURSOR;
-	if (yych == 'u') goto yy371;
-	goto yy268;
+	if (yych == 'g') goto yy371;
+	goto yy267;
 yy327:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy372;
-	goto yy268;
+	if (yych == 't') goto yy372;
+	goto yy267;
 yy328:
 	yych = *++YYCURSOR;
-	if (yych == 'g') goto yy373;
-	goto yy268;
+	if (yych == 'a') goto yy373;
+	goto yy267;
 yy329:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy374;
-	goto yy268;
+	if (yych == 'p') goto yy374;
+	goto yy267;
 yy330:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy375;
-	goto yy268;
+	if (yych == 't') goto yy375;
+	goto yy267;
 yy331:
 	yych = *++YYCURSOR;
-	if (yych == 'p') goto yy376;
-	goto yy268;
+	switch (yych) {
+		case 'd': goto yy376;
+		case 'g': goto yy377;
+		case 'l': goto yy378;
+		case 'o': goto yy379;
+		case 'u': goto yy380;
+		case 'v': goto yy381;
+		default: goto yy267;
+	}
 yy332:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy377;
-	goto yy268;
+	if (yych == 'p') goto yy382;
+	goto yy267;
 yy333:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy378;
-	goto yy268;
+	if (yych == 'i') goto yy383;
+	goto yy267;
 yy334:
 	yych = *++YYCURSOR;
-	switch (yych) {
-		case 'd': goto yy379;
-		case 'g': goto yy380;
-		case 'l': goto yy381;
-		case 'o': goto yy382;
-		case 'u': goto yy383;
-		case 'v': goto yy384;
-		default: goto yy268;
-	}
+	if (yych == 'u') goto yy384;
+	goto yy267;
 yy335:
 	yych = *++YYCURSOR;
-	if (yych == 'p') goto yy385;
-	goto yy268;
+	if (yych == 's') goto yy385;
+	goto yy267;
 yy336:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy386;
-	goto yy268;
+	if (yych == 'g') goto yy386;
+	goto yy267;
 yy337:
 	yych = *++YYCURSOR;
-	if (yych == 'u') goto yy387;
-	goto yy268;
+	if (yych == 'l') goto yy387;
+	goto yy267;
 yy338:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy388;
-	goto yy268;
+	if (yych == 'd') goto yy388;
+	if (yych == 'r') goto yy389;
+	goto yy267;
 yy339:
 	yych = *++YYCURSOR;
-	if (yych == 'g') goto yy389;
-	goto yy268;
+	if (yych == 'r') goto yy390;
+	goto yy267;
 yy340:
 	yych = *++YYCURSOR;
-	if (yych == 'l') goto yy390;
-	goto yy268;
+	if (yych == 't') goto yy391;
+	goto yy267;
 yy341:
 	yych = *++YYCURSOR;
-	if (yych == 'd') goto yy391;
-	if (yych == 'r') goto yy392;
-	goto yy268;
+	if (yych == 's') goto yy392;
+	goto yy267;
 yy342:
 	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy393;
-	goto yy268;
+	if (yych == 'e') goto yy393;
+	goto yy267;
 yy343:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy394;
-	goto yy268;
+	if (yych == '2') goto yy394;
+	goto yy267;
 yy344:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy395;
-	goto yy268;
+	if (yych == 'c') goto yy395;
+	goto yy267;
 yy345:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy396;
-	goto yy268;
+	switch (yych) {
+		case '-': goto yy396;
+		case '1': goto yy397;
+		case '3': goto yy398;
+		case '8': goto yy399;
+		default: goto yy267;
+	}
 yy346:
 	yych = *++YYCURSOR;
-	if (yych == '2') goto yy397;
-	goto yy268;
+	if (yych == 't') goto yy400;
+	goto yy267;
 yy347:
 	yych = *++YYCURSOR;
-	if (yych == 'c') goto yy398;
-	goto yy268;
+	if (yych <= 'm') {
+		if (yych == 'b') goto yy401;
+		goto yy267;
+	} else {
+		if (yych <= 'n') goto yy402;
+		if (yych == 's') goto yy403;
+		goto yy267;
+	}
 yy348:
 	yych = *++YYCURSOR;
-	switch (yych) {
-		case '-': goto yy399;
-		case '1': goto yy400;
-		case '3': goto yy401;
-		case '8': goto yy402;
-		default: goto yy268;
-	}
+	if (yych == 'e') goto yy404;
+	goto yy267;
 yy349:
 	yych = *++YYCURSOR;
-	if (yych <= 'm') {
-		if (yych == 'b') goto yy403;
-		goto yy268;
-	} else {
-		if (yych <= 'n') goto yy404;
-		if (yych == 's') goto yy405;
-		goto yy268;
-	}
+	if (yych == 'v') goto yy405;
+	goto yy267;
 yy350:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy406;
-	goto yy268;
+	if (yych <= 't') goto yy267;
+	if (yych <= 'u') goto yy406;
+	if (yych <= 'v') goto yy407;
+	goto yy267;
 yy351:
 	yych = *++YYCURSOR;
-	if (yych == 'v') goto yy407;
-	goto yy268;
+	if (yych == '-') goto yy408;
+	goto yy267;
 yy352:
 	yych = *++YYCURSOR;
-	if (yych <= 't') goto yy268;
-	if (yych <= 'u') goto yy408;
-	if (yych <= 'v') goto yy409;
-	goto yy268;
+	if (yych == 'u') goto yy409;
+	goto yy267;
 yy353:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy410;
-	goto yy268;
+	if (yych == 'i') goto yy410;
+	goto yy267;
 yy354:
 	yych = *++YYCURSOR;
-	if (yych == 'u') goto yy411;
-	goto yy268;
+	if (yych == 'g') goto yy411;
+	goto yy267;
 yy355:
 	yych = *++YYCURSOR;
 	if (yych == 'i') goto yy412;
-	goto yy268;
+	goto yy267;
 yy356:
 	yych = *++YYCURSOR;
-	if (yych == 'g') goto yy413;
-	goto yy268;
+	if (yych == 'm') goto yy413;
+	goto yy267;
 yy357:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy414;
-	goto yy268;
+	if (yych == '-') goto yy414;
+	goto yy267;
 yy358:
 	yych = *++YYCURSOR;
-	if (yych == 'm') goto yy415;
-	goto yy268;
+	if (yych == 'r') goto yy415;
+	goto yy267;
 yy359:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy416;
-	goto yy268;
+	if (yych == 'i') goto yy416;
+	goto yy267;
 yy360:
-	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy417;
-	goto yy268;
-yy361:
-	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy418;
-	goto yy268;
-yy362:
 	++YYCURSOR;
 #line 173 "src/options/parse_opts.re"
 	{ opts.set_encoding(Enc::Type::EBCDIC, true); goto opt; }
-#line 1820 "bootstrap/src/options/parse_opts.cc"
+#line 1812 "bootstrap/src/options/parse_opts.cc"
+yy361:
+	yych = *++YYCURSOR;
+	if (yych == '-') goto yy417;
+	goto yy267;
+yy362:
+	yych = *++YYCURSOR;
+	if (yych == 'y') goto yy418;
+	goto yy267;
 yy363:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy419;
-	goto yy268;
+	if (yych == 'd') goto yy419;
+	goto yy267;
 yy364:
 	yych = *++YYCURSOR;
-	if (yych == 'y') goto yy420;
-	goto yy268;
+	if (yych == 'd') goto yy420;
+	goto yy267;
 yy365:
 	yych = *++YYCURSOR;
-	if (yych == 'd') goto yy421;
-	goto yy268;
+	if (yych == '-') goto yy421;
+	goto yy267;
 yy366:
 	yych = *++YYCURSOR;
-	if (yych == 'd') goto yy422;
-	goto yy268;
+	if (yych == '-') goto yy422;
+	goto yy267;
 yy367:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy423;
-	goto yy268;
+	if (yych == 'e') goto yy423;
+	goto yy267;
 yy368:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy424;
-	goto yy268;
+	if (yych <= 0x00) goto yy424;
+	goto yy267;
 yy369:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy425;
-	goto yy268;
+	if (yych == 't') goto yy425;
+	goto yy267;
 yy370:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy426;
-	goto yy268;
+	if (yych == 'r') goto yy426;
+	goto yy267;
 yy371:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy427;
-	goto yy268;
+	if (yych <= 0x00) goto yy427;
+	goto yy267;
 yy372:
 	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy428;
-	goto yy268;
+	if (yych == 'm') goto yy428;
+	goto yy267;
 yy373:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy429;
-	goto yy268;
+	if (yych == 't') goto yy429;
+	goto yy267;
 yy374:
 	yych = *++YYCURSOR;
-	if (yych == 'm') goto yy430;
-	goto yy268;
+	if (yych == '-') goto yy430;
+	goto yy267;
 yy375:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy431;
-	goto yy268;
+	if (yych == 'e') goto yy431;
+	goto yy267;
 yy376:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy432;
-	goto yy268;
+	if (yych == 'e') goto yy432;
+	goto yy267;
 yy377:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy433;
-	goto yy268;
+	if (yych == 'e') goto yy433;
+	goto yy267;
 yy378:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy434;
-	goto yy268;
+	if (yych == 'o') goto yy434;
+	goto yy267;
 yy379:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy435;
-	goto yy268;
+	if (yych == 'p') goto yy435;
+	goto yy267;
 yy380:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy436;
-	goto yy268;
+	if (yych == 'n') goto yy436;
+	goto yy267;
 yy381:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy437;
-	goto yy268;
+	if (yych == 'e') goto yy437;
+	goto yy267;
 yy382:
 	yych = *++YYCURSOR;
-	if (yych == 'p') goto yy438;
-	goto yy268;
+	if (yych == 'u') goto yy438;
+	goto yy267;
 yy383:
 	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy439;
-	goto yy268;
+	if (yych == 'x') goto yy439;
+	goto yy267;
 yy384:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy440;
-	goto yy268;
+	if (yych == 'r') goto yy440;
+	goto yy267;
 yy385:
 	yych = *++YYCURSOR;
-	if (yych == 'u') goto yy441;
-	goto yy268;
+	if (yych == 'a') goto yy441;
+	goto yy267;
 yy386:
 	yych = *++YYCURSOR;
-	if (yych == 'x') goto yy442;
-	goto yy268;
+	if (yych == 'l') goto yy442;
+	goto yy267;
 yy387:
 	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy443;
-	goto yy268;
+	if (yych == 'e') goto yy443;
+	goto yy267;
 yy388:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy444;
-	goto yy268;
+	if (yych == 'f') goto yy444;
+	goto yy267;
 yy389:
 	yych = *++YYCURSOR;
-	if (yych == 'l') goto yy445;
-	goto yy268;
+	if (yych == 't') goto yy445;
+	goto yy267;
 yy390:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy446;
-	goto yy268;
+	if (yych == 'a') goto yy446;
+	goto yy267;
 yy391:
 	yych = *++YYCURSOR;
-	if (yych == 'f') goto yy447;
-	goto yy268;
+	if (yych == 'a') goto yy447;
+	goto yy267;
 yy392:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy448;
-	goto yy268;
+	if (yych <= 0x00) goto yy448;
+	goto yy267;
 yy393:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy449;
-	goto yy268;
+	if (yych == '-') goto yy449;
+	goto yy267;
 yy394:
-	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy450;
-	goto yy268;
-yy395:
-	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy451;
-	goto yy268;
-yy396:
-	yych = *++YYCURSOR;
-	if (yych == '-') goto yy452;
-	goto yy268;
-yy397:
 	++YYCURSOR;
 #line 175 "src/options/parse_opts.re"
 	{ opts.set_encoding(Enc::Type::UCS2, true);   goto opt; }
-#line 1961 "bootstrap/src/options/parse_opts.cc"
+#line 1949 "bootstrap/src/options/parse_opts.cc"
+yy395:
+	yych = *++YYCURSOR;
+	if (yych == 'o') goto yy450;
+	goto yy267;
+yy396:
+	yych = *++YYCURSOR;
+	if (yych == '1') goto yy451;
+	if (yych == '8') goto yy452;
+	goto yy267;
+yy397:
+	yych = *++YYCURSOR;
+	if (yych == '6') goto yy453;
+	goto yy267;
 yy398:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy453;
-	goto yy268;
+	if (yych == '2') goto yy454;
+	goto yy267;
 yy399:
-	yych = *++YYCURSOR;
-	if (yych == '1') goto yy454;
-	if (yych == '8') goto yy455;
-	goto yy268;
-yy400:
-	yych = *++YYCURSOR;
-	if (yych == '6') goto yy456;
-	goto yy268;
-yy401:
-	yych = *++YYCURSOR;
-	if (yych == '2') goto yy457;
-	goto yy268;
-yy402:
 	++YYCURSOR;
 #line 177 "src/options/parse_opts.re"
 	{ opts.set_encoding(Enc::Type::UTF8, true);   goto opt; }
-#line 1983 "bootstrap/src/options/parse_opts.cc"
+#line 1971 "bootstrap/src/options/parse_opts.cc"
+yy400:
+	yych = *++YYCURSOR;
+	if (yych == 'o') goto yy455;
+	goto yy267;
+yy401:
+	yych = *++YYCURSOR;
+	if (yych == 'o') goto yy456;
+	goto yy267;
+yy402:
+	yych = *++YYCURSOR;
+	if (yych == 'u') goto yy457;
+	goto yy267;
 yy403:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy458;
-	goto yy268;
+	if (yych == 'i') goto yy458;
+	goto yy267;
 yy404:
 	yych = *++YYCURSOR;
-	if (yych == 'u') goto yy459;
-	goto yy268;
+	if (yych == '-') goto yy459;
+	goto yy267;
 yy405:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy460;
-	goto yy268;
+	if (yych == 'e') goto yy460;
+	goto yy267;
 yy406:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy461;
-	goto yy268;
+	if (yych == 'r') goto yy461;
+	goto yy267;
 yy407:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy462;
-	goto yy268;
+	if (yych == 'a') goto yy462;
+	goto yy267;
 yy408:
 	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy463;
-	goto yy268;
+	if (yych == 'i') goto yy463;
+	if (yych == 'r') goto yy464;
+	goto yy267;
 yy409:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy464;
-	goto yy268;
+	if (yych == 't') goto yy465;
+	goto yy267;
 yy410:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy465;
-	if (yych == 'r') goto yy466;
-	goto yy268;
+	if (yych == 't') goto yy466;
+	goto yy267;
 yy411:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy467;
-	goto yy268;
+	if (yych == '-') goto yy467;
+	goto yy267;
 yy412:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy468;
-	goto yy268;
+	if (yych == 'l') goto yy468;
+	goto yy267;
 yy413:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy469;
-	goto yy268;
+	if (yych == 'i') goto yy469;
+	goto yy267;
 yy414:
 	yych = *++YYCURSOR;
-	if (yych == 'l') goto yy470;
-	goto yy268;
+	switch (yych) {
+		case 'a': goto yy470;
+		case 'c': goto yy471;
+		case 'd': goto yy472;
+		case 'i': goto yy473;
+		case 'n': goto yy474;
+		default: goto yy267;
+	}
 yy415:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy471;
-	goto yy268;
+	if (yych == '-') goto yy475;
+	goto yy267;
 yy416:
 	yych = *++YYCURSOR;
-	switch (yych) {
-		case 'a': goto yy472;
-		case 'c': goto yy473;
-		case 'd': goto yy474;
-		case 'i': goto yy475;
-		case 'n': goto yy476;
-		default: goto yy268;
-	}
+	if (yych == 'c') goto yy360;
+	goto yy267;
 yy417:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy477;
-	goto yy268;
+	if (yych == 'd') goto yy476;
+	goto yy267;
 yy418:
 	yych = *++YYCURSOR;
-	if (yych == 'c') goto yy362;
-	goto yy268;
+	if (yych == '-') goto yy477;
+	goto yy267;
 yy419:
 	yych = *++YYCURSOR;
-	if (yych == 'd') goto yy478;
-	goto yy268;
+	if (yych == 'i') goto yy478;
+	goto yy267;
 yy420:
 	yych = *++YYCURSOR;
 	if (yych == '-') goto yy479;
-	goto yy268;
+	goto yy267;
 yy421:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy480;
-	goto yy268;
+	if (yych == 's') goto yy480;
+	goto yy267;
 yy422:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy481;
-	goto yy268;
+	if (yych == 'l') goto yy481;
+	goto yy267;
 yy423:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy482;
-	goto yy268;
+	if (yych == 'r') goto yy482;
+	goto yy267;
 yy424:
-	yych = *++YYCURSOR;
-	if (yych == 'l') goto yy483;
-	goto yy268;
-yy425:
-	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy484;
-	goto yy268;
-yy426:
 	++YYCURSOR;
 #line 141 "src/options/parse_opts.re"
 	{ return usage(); }
-#line 2087 "bootstrap/src/options/parse_opts.cc"
+#line 2079 "bootstrap/src/options/parse_opts.cc"
+yy425:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy303;
+	if (yych == '-') goto yy483;
+	goto yy267;
+yy426:
+	yych = *++YYCURSOR;
+	if (yych == 't') goto yy484;
+	goto yy267;
 yy427:
-	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy305;
-	if (yych == '-') goto yy485;
-	goto yy268;
-yy428:
-	yych = *++YYCURSOR;
-	if (yych == 't') goto yy486;
-	goto yy268;
-yy429:
 	++YYCURSOR;
 #line 202 "src/options/parse_opts.re"
 	{ NEXT_ARG("--lang",             opt_lang); }
-#line 2101 "bootstrap/src/options/parse_opts.cc"
+#line 2093 "bootstrap/src/options/parse_opts.cc"
+yy428:
+	yych = *++YYCURSOR;
+	if (yych == 'o') goto yy485;
+	goto yy267;
+yy429:
+	yych = *++YYCURSOR;
+	if (yych == 'i') goto yy486;
+	goto yy267;
 yy430:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy487;
-	goto yy268;
+	if (yych == 's') goto yy487;
+	goto yy267;
 yy431:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy488;
-	goto yy268;
+	if (yych == 'd') goto yy488;
+	goto yy267;
 yy432:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy489;
-	goto yy268;
+	if (yych == 'b') goto yy489;
+	goto yy267;
 yy433:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy490;
-	goto yy268;
+	if (yych == 'n') goto yy490;
+	goto yy267;
 yy434:
 	yych = *++YYCURSOR;
-	if (yych == 'd') goto yy491;
-	goto yy268;
+	if (yych == 'o') goto yy491;
+	goto yy267;
 yy435:
 	yych = *++YYCURSOR;
-	if (yych == 'b') goto yy492;
-	goto yy268;
+	if (yych == 't') goto yy492;
+	goto yy267;
 yy436:
 	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy493;
-	goto yy268;
+	if (yych == 's') goto yy493;
+	goto yy267;
 yy437:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy494;
-	goto yy268;
+	if (yych == 'r') goto yy494;
+	goto yy267;
 yy438:
 	yych = *++YYCURSOR;
 	if (yych == 't') goto yy495;
-	goto yy268;
+	goto yy267;
 yy439:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy496;
-	goto yy268;
+	if (yych == '-') goto yy496;
+	goto yy267;
 yy440:
 	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy497;
-	goto yy268;
+	if (yych == 's') goto yy497;
+	goto yy267;
 yy441:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy498;
-	goto yy268;
+	if (yych == 'b') goto yy498;
+	goto yy267;
 yy442:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy499;
-	goto yy268;
+	if (yych == 'e') goto yy499;
+	goto yy267;
 yy443:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy500;
-	goto yy268;
+	if (yych == 't') goto yy500;
+	goto yy267;
 yy444:
 	yych = *++YYCURSOR;
-	if (yych == 'b') goto yy501;
-	goto yy268;
+	if (yych == 'a') goto yy501;
+	goto yy267;
 yy445:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy502;
-	goto yy268;
+	if (yych == '-') goto yy502;
+	goto yy267;
 yy446:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy503;
-	goto yy268;
+	if (yych == 'b') goto yy503;
+	goto yy267;
 yy447:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy504;
-	goto yy268;
+	if (yych == 'x') goto yy504;
+	goto yy267;
 yy448:
-	yych = *++YYCURSOR;
-	if (yych == '-') goto yy505;
-	goto yy268;
-yy449:
-	yych = *++YYCURSOR;
-	if (yych == 'b') goto yy506;
-	goto yy268;
-yy450:
-	yych = *++YYCURSOR;
-	if (yych == 'x') goto yy507;
-	goto yy268;
-yy451:
 	++YYCURSOR;
 #line 169 "src/options/parse_opts.re"
 	{ opts.set_tags(true);                    goto opt; }
-#line 2190 "bootstrap/src/options/parse_opts.cc"
+#line 2178 "bootstrap/src/options/parse_opts.cc"
+yy449:
+	yych = *++YYCURSOR;
+	if (yych == 'h') goto yy505;
+	goto yy267;
+yy450:
+	yych = *++YYCURSOR;
+	if (yych == 'd') goto yy506;
+	goto yy267;
+yy451:
+	yych = *++YYCURSOR;
+	if (yych == '6') goto yy507;
+	goto yy267;
 yy452:
 	yych = *++YYCURSOR;
-	if (yych == 'h') goto yy508;
-	goto yy268;
+	if (yych <= 0x00) goto yy399;
+	goto yy267;
 yy453:
-	yych = *++YYCURSOR;
-	if (yych == 'd') goto yy509;
-	goto yy268;
-yy454:
-	yych = *++YYCURSOR;
-	if (yych == '6') goto yy510;
-	goto yy268;
-yy455:
-	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy402;
-	goto yy268;
-yy456:
 	++YYCURSOR;
 #line 176 "src/options/parse_opts.re"
 	{ opts.set_encoding(Enc::Type::UTF16, true);  goto opt; }
-#line 2211 "bootstrap/src/options/parse_opts.cc"
-yy457:
+#line 2199 "bootstrap/src/options/parse_opts.cc"
+yy454:
 	++YYCURSOR;
 #line 174 "src/options/parse_opts.re"
 	{ opts.set_encoding(Enc::Type::UTF32, true);  goto opt; }
-#line 2216 "bootstrap/src/options/parse_opts.cc"
+#line 2204 "bootstrap/src/options/parse_opts.cc"
+yy455:
+	yych = *++YYCURSOR;
+	if (yych == 'r') goto yy508;
+	goto yy267;
+yy456:
+	yych = *++YYCURSOR;
+	if (yych == 's') goto yy509;
+	goto yy267;
+yy457:
+	yych = *++YYCURSOR;
+	if (yych == 'm') goto yy510;
+	goto yy267;
 yy458:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy511;
-	goto yy268;
+	if (yych == 'o') goto yy511;
+	goto yy267;
 yy459:
 	yych = *++YYCURSOR;
-	if (yych == 'm') goto yy512;
-	goto yy268;
+	if (yych == 'c') goto yy512;
+	goto yy267;
 yy460:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy513;
-	goto yy268;
+	if (yych == 'c') goto yy513;
+	goto yy267;
 yy461:
 	yych = *++YYCURSOR;
-	if (yych == 'c') goto yy514;
-	goto yy268;
+	if (yych == 'e') goto yy514;
+	goto yy267;
 yy462:
 	yych = *++YYCURSOR;
-	if (yych == 'c') goto yy515;
-	goto yy268;
+	if (yych == 'r') goto yy515;
+	goto yy267;
 yy463:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy516;
-	goto yy268;
+	if (yych == 'n') goto yy516;
+	goto yy267;
 yy464:
 	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy517;
-	goto yy268;
+	if (yych == 'a') goto yy517;
+	goto yy267;
 yy465:
 	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy518;
-	goto yy268;
+	if (yych == 'e') goto yy518;
+	goto yy267;
 yy466:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy519;
-	goto yy268;
+	if (yych == 'i') goto yy519;
+	goto yy267;
 yy467:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy520;
-	goto yy268;
+	if (yych == 'o') goto yy520;
+	goto yy267;
 yy468:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy521;
-	goto yy268;
+	if (yych == 'e') goto yy521;
+	goto yy267;
 yy469:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy522;
-	goto yy268;
+	if (yych == 'n') goto yy522;
+	goto yy267;
 yy470:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy523;
-	goto yy268;
+	if (yych == 'd') goto yy523;
+	goto yy267;
 yy471:
 	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy524;
-	goto yy268;
+	if (yych == 'f') goto yy524;
+	if (yych == 'l') goto yy525;
+	goto yy267;
 yy472:
 	yych = *++YYCURSOR;
-	if (yych == 'd') goto yy525;
-	goto yy268;
+	if (yych == 'f') goto yy526;
+	goto yy267;
 yy473:
 	yych = *++YYCURSOR;
-	if (yych == 'f') goto yy526;
-	if (yych == 'l') goto yy527;
-	goto yy268;
+	if (yych == 'n') goto yy527;
+	goto yy267;
 yy474:
 	yych = *++YYCURSOR;
 	if (yych == 'f') goto yy528;
-	goto yy268;
+	goto yy267;
 yy475:
 	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy529;
-	goto yy268;
+	if (yych == 's') goto yy529;
+	goto yy267;
 yy476:
 	yych = *++YYCURSOR;
-	if (yych == 'f') goto yy530;
-	goto yy268;
+	if (yych == 'o') goto yy530;
+	goto yy267;
 yy477:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy531;
-	goto yy268;
+	if (yych == 'c') goto yy531;
+	goto yy267;
 yy478:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy532;
-	goto yy268;
+	if (yych == 'n') goto yy532;
+	goto yy267;
 yy479:
 	yych = *++YYCURSOR;
-	if (yych == 'c') goto yy533;
-	goto yy268;
+	if (yych == 't') goto yy533;
+	goto yy267;
 yy480:
 	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy534;
-	goto yy268;
+	if (yych == 'y') goto yy534;
+	goto yy267;
 yy481:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy535;
-	goto yy268;
+	if (yych == 'a') goto yy535;
+	goto yy267;
 yy482:
 	yych = *++YYCURSOR;
-	if (yych == 'y') goto yy536;
-	goto yy268;
+	if (yych <= 0x00) goto yy536;
+	goto yy267;
 yy483:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy537;
-	goto yy268;
+	if (yych == 'e') goto yy537;
+	goto yy267;
 yy484:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy538;
-	goto yy268;
+	if (yych == '-') goto yy538;
+	goto yy267;
 yy485:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy539;
-	goto yy268;
+	if (yych == 's') goto yy539;
+	goto yy267;
 yy486:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy540;
-	goto yy268;
+	if (yych == 'o') goto yy540;
+	goto yy267;
 yy487:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy541;
-	goto yy268;
+	if (yych == 'w') goto yy541;
+	goto yy267;
 yy488:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy542;
-	goto yy268;
+	if (yych == '-') goto yy542;
+	goto yy267;
 yy489:
 	yych = *++YYCURSOR;
-	if (yych == 'w') goto yy543;
-	goto yy268;
+	if (yych == 'u') goto yy543;
+	goto yy267;
 yy490:
 	yych = *++YYCURSOR;
-	if (yych == 'c') goto yy544;
-	goto yy268;
+	if (yych == 'e') goto yy544;
+	goto yy267;
 yy491:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy545;
-	goto yy268;
+	if (yych == 'k') goto yy545;
+	goto yy267;
 yy492:
 	yych = *++YYCURSOR;
-	if (yych == 'u') goto yy546;
-	goto yy268;
+	if (yych == 'i') goto yy546;
+	goto yy267;
 yy493:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy547;
-	goto yy268;
+	if (yych == 'a') goto yy547;
+	goto yy267;
 yy494:
 	yych = *++YYCURSOR;
-	if (yych == 'k') goto yy548;
-	goto yy268;
+	if (yych == 's') goto yy548;
+	goto yy267;
 yy495:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy549;
-	goto yy268;
+	if (yych <= 0x00) goto yy549;
+	goto yy267;
 yy496:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy550;
-	goto yy268;
+	if (yych == 'c') goto yy550;
+	if (yych == 'p') goto yy551;
+	goto yy267;
 yy497:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy551;
-	goto yy268;
+	if (yych == 'i') goto yy552;
+	goto yy267;
 yy498:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy552;
-	goto yy268;
+	if (yych == 'l') goto yy553;
+	goto yy267;
 yy499:
 	yych = *++YYCURSOR;
-	if (yych == 'c') goto yy553;
-	if (yych == 'p') goto yy554;
-	goto yy268;
+	if (yych == '-') goto yy554;
+	goto yy267;
 yy500:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy555;
-	goto yy268;
+	if (yych == 'o') goto yy555;
+	goto yy267;
 yy501:
 	yych = *++YYCURSOR;
-	if (yych == 'l') goto yy556;
-	goto yy268;
+	if (yych <= 0x00) goto yy556;
+	goto yy267;
 yy502:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy557;
-	goto yy268;
+	if (yych == 'c') goto yy557;
+	goto yy267;
 yy503:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy558;
-	goto yy268;
+	if (yych == 'l') goto yy558;
+	goto yy267;
 yy504:
 	yych = *++YYCURSOR;
 	if (yych <= 0x00) goto yy559;
-	goto yy268;
+	goto yy267;
 yy505:
 	yych = *++YYCURSOR;
-	if (yych == 'c') goto yy560;
-	goto yy268;
+	if (yych == 'e') goto yy560;
+	goto yy267;
 yy506:
 	yych = *++YYCURSOR;
-	if (yych == 'l') goto yy561;
-	goto yy268;
+	if (yych == 'e') goto yy561;
+	goto yy267;
 yy507:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy562;
-	goto yy268;
+	if (yych <= 0x00) goto yy453;
+	goto yy267;
 yy508:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy563;
-	goto yy268;
+	if (yych == 'i') goto yy562;
+	goto yy267;
 yy509:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy564;
-	goto yy268;
+	if (yych == 'e') goto yy563;
+	goto yy267;
 yy510:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy456;
-	goto yy268;
+	if (yych <= 0x00) goto yy564;
+	goto yy267;
 yy511:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy565;
-	goto yy268;
+	if (yych == 'n') goto yy565;
+	goto yy267;
 yy512:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy566;
-	goto yy268;
+	if (yych == 'h') goto yy566;
+	goto yy267;
 yy513:
 	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy567;
-	goto yy268;
+	if (yych == 't') goto yy567;
+	goto yy267;
 yy514:
 	yych = *++YYCURSOR;
-	if (yych == 'h') goto yy568;
-	goto yy268;
+	if (yych == 's') goto yy568;
+	goto yy267;
 yy515:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy569;
-	goto yy268;
+	if (yych == 's') goto yy569;
+	goto yy267;
 yy516:
 	yych = *++YYCURSOR;
 	if (yych == 's') goto yy570;
-	goto yy268;
+	if (yych == 'v') goto yy571;
+	goto yy267;
 yy517:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy571;
-	goto yy268;
+	if (yych == 'n') goto yy572;
+	goto yy267;
 yy518:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy572;
-	if (yych == 'v') goto yy573;
-	goto yy268;
+	if (yych == 'd') goto yy573;
+	goto yy267;
 yy519:
 	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy574;
-	goto yy268;
+	if (yych == 'o') goto yy574;
+	goto yy267;
 yy520:
 	yych = *++YYCURSOR;
-	if (yych == 'd') goto yy575;
-	goto yy268;
+	if (yych == 'u') goto yy575;
+	goto yy267;
 yy521:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy576;
-	goto yy268;
+	if (yych <= 0x00) goto yy576;
+	goto yy267;
 yy522:
 	yych = *++YYCURSOR;
-	if (yych == 'u') goto yy577;
-	goto yy268;
+	if (yych == 'i') goto yy577;
+	goto yy267;
 yy523:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy578;
-	goto yy268;
+	if (yych == 'f') goto yy578;
+	goto yy267;
 yy524:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy579;
-	goto yy268;
+	if (yych == 'g') goto yy579;
+	goto yy267;
 yy525:
 	yych = *++YYCURSOR;
-	if (yych == 'f') goto yy580;
-	goto yy268;
+	if (yych == 'o') goto yy580;
+	goto yy267;
 yy526:
 	yych = *++YYCURSOR;
-	if (yych == 'g') goto yy581;
-	goto yy268;
+	if (yych == 'a') goto yy581;
+	goto yy267;
 yy527:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy582;
-	goto yy268;
+	if (yych == 't') goto yy582;
+	goto yy267;
 yy528:
 	yych = *++YYCURSOR;
 	if (yych == 'a') goto yy583;
-	goto yy268;
+	goto yy267;
 yy529:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy584;
-	goto yy268;
+	if (yych == 'k') goto yy584;
+	goto yy267;
 yy530:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy585;
-	goto yy268;
+	if (yych == 't') goto yy585;
+	goto yy267;
 yy531:
 	yych = *++YYCURSOR;
-	if (yych == 'k') goto yy586;
-	goto yy268;
+	if (yych == 'l') goto yy586;
+	goto yy267;
 yy532:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy587;
-	goto yy268;
+	if (yych == 'g') goto yy587;
+	goto yy267;
 yy533:
 	yych = *++YYCURSOR;
-	if (yych == 'l') goto yy588;
-	goto yy268;
+	if (yych == 'a') goto yy588;
+	goto yy267;
 yy534:
 	yych = *++YYCURSOR;
-	if (yych == 'g') goto yy589;
-	goto yy268;
+	if (yych == 'n') goto yy589;
+	goto yy267;
 yy535:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy590;
-	goto yy268;
+	if (yych == 'b') goto yy590;
+	goto yy267;
 yy536:
-	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy591;
-	goto yy268;
-yy537:
-	yych = *++YYCURSOR;
-	if (yych == 'b') goto yy592;
-	goto yy268;
-yy538:
 	++YYCURSOR;
 #line 204 "src/options/parse_opts.re"
 	{ NEXT_ARG("-t, --header, --type-header", opt_header); }
-#line 2544 "bootstrap/src/options/parse_opts.cc"
+#line 2536 "bootstrap/src/options/parse_opts.cc"
+yy537:
+	yych = *++YYCURSOR;
+	if (yych == 'n') goto yy591;
+	goto yy267;
+yy538:
+	yych = *++YYCURSOR;
+	if (yych == 'c') goto yy592;
+	goto yy267;
 yy539:
 	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy593;
-	goto yy268;
+	if (yych == 't') goto yy593;
+	goto yy267;
 yy540:
 	yych = *++YYCURSOR;
-	if (yych == 'c') goto yy594;
-	goto yy268;
+	if (yych == 'n') goto yy594;
+	goto yy267;
 yy541:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy595;
-	goto yy268;
+	if (yych == 'i') goto yy595;
+	goto yy267;
 yy542:
 	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy596;
-	goto yy268;
+	if (yych == 'i') goto yy596;
+	goto yy267;
 yy543:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy597;
-	goto yy268;
+	if (yych == 'g') goto yy597;
+	goto yy267;
 yy544:
 	yych = *++YYCURSOR;
-	if (yych == 'h') goto yy598;
-	goto yy268;
+	if (yych == 'r') goto yy598;
+	goto yy267;
 yy545:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy599;
-	goto yy268;
+	if (yych == 'a') goto yy599;
+	goto yy267;
 yy546:
 	yych = *++YYCURSOR;
-	if (yych == 'g') goto yy600;
-	goto yy268;
+	if (yych == 'm') goto yy600;
+	goto yy267;
 yy547:
 	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy601;
-	goto yy268;
+	if (yych == 'f') goto yy601;
+	goto yy267;
 yy548:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy602;
-	goto yy268;
+	if (yych == 'i') goto yy602;
+	goto yy267;
 yy549:
-	yych = *++YYCURSOR;
-	if (yych == 'm') goto yy603;
-	goto yy268;
-yy550:
-	yych = *++YYCURSOR;
-	if (yych == 'f') goto yy604;
-	goto yy268;
-yy551:
-	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy605;
-	goto yy268;
-yy552:
 	++YYCURSOR;
 #line 203 "src/options/parse_opts.re"
 	{ NEXT_ARG("-o, --output",       opt_output); }
-#line 2601 "bootstrap/src/options/parse_opts.cc"
+#line 2589 "bootstrap/src/options/parse_opts.cc"
+yy550:
+	yych = *++YYCURSOR;
+	if (yych == 'a') goto yy603;
+	if (yych == 'l') goto yy604;
+	goto yy267;
+yy551:
+	yych = *++YYCURSOR;
+	if (yych == 'r') goto yy605;
+	goto yy267;
+yy552:
+	yych = *++YYCURSOR;
+	if (yych == 'v') goto yy606;
+	goto yy267;
 yy553:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy606;
-	if (yych == 'l') goto yy607;
-	goto yy268;
+	if (yych == 'e') goto yy607;
+	goto yy267;
 yy554:
 	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy608;
-	goto yy268;
+	if (yych == 'p') goto yy608;
+	goto yy267;
 yy555:
 	yych = *++YYCURSOR;
-	if (yych == 'v') goto yy609;
-	goto yy268;
+	if (yych == 'n') goto yy609;
+	goto yy267;
 yy556:
-	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy610;
-	goto yy268;
-yy557:
-	yych = *++YYCURSOR;
-	if (yych == 'p') goto yy611;
-	goto yy268;
-yy558:
-	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy612;
-	goto yy268;
-yy559:
 	++YYCURSOR;
 #line 226 "src/options/parse_opts.re"
 	{ RET_FAIL(error("staDFA algorithm was deprecated and removed")); }
-#line 2631 "bootstrap/src/options/parse_opts.cc"
-yy560:
+#line 2619 "bootstrap/src/options/parse_opts.cc"
+yy557:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy613;
-	goto yy268;
-yy561:
+	if (yych == 'o') goto yy610;
+	goto yy267;
+yy558:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy614;
-	goto yy268;
-yy562:
+	if (yych == 'e') goto yy611;
+	goto yy267;
+yy559:
 	++YYCURSOR;
 #line 206 "src/options/parse_opts.re"
 	{ NEXT_ARG("--syntax",           opt_syntax); }
-#line 2644 "bootstrap/src/options/parse_opts.cc"
+#line 2632 "bootstrap/src/options/parse_opts.cc"
+yy560:
+	yych = *++YYCURSOR;
+	if (yych == 'a') goto yy322;
+	goto yy267;
+yy561:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy454;
+	goto yy267;
+yy562:
+	yych = *++YYCURSOR;
+	if (yych == 'z') goto yy612;
+	goto yy267;
 yy563:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy324;
-	goto yy268;
+	if (yych <= 0x00) goto yy613;
+	goto yy267;
 yy564:
-	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy457;
-	goto yy268;
-yy565:
-	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy615;
-	goto yy268;
-yy566:
 	++YYCURSOR;
 #line 143 "src/options/parse_opts.re"
 	{ return vernum(); }
-#line 2661 "bootstrap/src/options/parse_opts.cc"
+#line 2653 "bootstrap/src/options/parse_opts.cc"
+yy565:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy614;
+	goto yy267;
+yy566:
+	yych = *++YYCURSOR;
+	if (yych == 'a') goto yy615;
+	goto yy267;
 yy567:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy616;
-	goto yy268;
+	if (yych == 'o') goto yy616;
+	goto yy267;
 yy568:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy617;
-	goto yy268;
+	if (yych <= 0x00) goto yy617;
+	goto yy267;
 yy569:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy618;
-	goto yy268;
+	if (yych <= 0x00) goto yy618;
+	goto yy267;
 yy570:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy619;
-	goto yy268;
+	if (yych == 'e') goto yy619;
+	goto yy267;
 yy571:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy620;
-	goto yy268;
+	if (yych == 'e') goto yy620;
+	goto yy267;
 yy572:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy621;
-	goto yy268;
+	if (yych == 'g') goto yy621;
+	goto yy267;
 yy573:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy622;
-	goto yy268;
+	if (yych == '-') goto yy622;
+	goto yy267;
 yy574:
 	yych = *++YYCURSOR;
-	if (yych == 'g') goto yy623;
-	goto yy268;
+	if (yych == 'n') goto yy623;
+	goto yy267;
 yy575:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy624;
-	goto yy268;
+	if (yych == 't') goto yy624;
+	goto yy267;
 yy576:
-	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy625;
-	goto yy268;
-yy577:
-	yych = *++YYCURSOR;
-	if (yych == 't') goto yy626;
-	goto yy268;
-yy578:
 	++YYCURSOR;
 #line 205 "src/options/parse_opts.re"
 	{ NEXT_ARG("--depfile",          opt_depfile); }
-#line 2710 "bootstrap/src/options/parse_opts.cc"
+#line 2702 "bootstrap/src/options/parse_opts.cc"
+yy577:
+	yych = *++YYCURSOR;
+	if (yych == 'm') goto yy625;
+	goto yy267;
+yy578:
+	yych = *++YYCURSOR;
+	if (yych == 'a') goto yy626;
+	goto yy267;
 yy579:
 	yych = *++YYCURSOR;
-	if (yych == 'm') goto yy627;
-	goto yy268;
+	if (yych <= 0x00) goto yy627;
+	goto yy267;
 yy580:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy628;
-	goto yy268;
+	if (yych == 's') goto yy628;
+	goto yy267;
 yy581:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy629;
-	goto yy268;
+	if (yych == '-') goto yy629;
+	goto yy267;
 yy582:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy630;
-	goto yy268;
+	if (yych == 'e') goto yy630;
+	goto yy267;
 yy583:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy631;
-	goto yy268;
+	if (yych <= 0x00) goto yy631;
+	goto yy267;
 yy584:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy632;
-	goto yy268;
+	if (yych == 'i') goto yy632;
+	goto yy267;
 yy585:
 	yych = *++YYCURSOR;
 	if (yych <= 0x00) goto yy633;
-	goto yy268;
+	goto yy267;
 yy586:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy634;
-	goto yy268;
+	if (yych == 'a') goto yy634;
+	goto yy267;
 yy587:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy635;
-	goto yy268;
+	if (yych == '-') goto yy635;
+	goto yy267;
 yy588:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy636;
-	goto yy268;
+	if (yych == 'g') goto yy636;
+	goto yy267;
 yy589:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy637;
-	goto yy268;
+	if (yych == 't') goto yy637;
+	goto yy267;
 yy590:
 	yych = *++YYCURSOR;
-	if (yych == 'g') goto yy638;
-	goto yy268;
+	if (yych == 'e') goto yy638;
+	goto yy267;
 yy591:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy639;
-	goto yy268;
+	if (yych == 'c') goto yy639;
+	goto yy267;
 yy592:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy640;
-	goto yy268;
+	if (yych == 'a') goto yy640;
+	goto yy267;
 yy593:
 	yych = *++YYCURSOR;
-	if (yych == 'c') goto yy641;
-	goto yy268;
+	if (yych == '-') goto yy641;
+	goto yy267;
 yy594:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy642;
-	goto yy268;
+	if (yych == '-') goto yy642;
+	goto yy267;
 yy595:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy643;
-	goto yy268;
+	if (yych == 't') goto yy643;
+	goto yy267;
 yy596:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy644;
-	goto yy268;
+	if (yych == 'f') goto yy644;
+	goto yy267;
 yy597:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy645;
-	goto yy268;
+	if (yych == '-') goto yy645;
+	goto yy267;
 yy598:
 	yych = *++YYCURSOR;
 	if (yych == 'a') goto yy646;
-	goto yy268;
+	goto yy267;
 yy599:
 	yych = *++YYCURSOR;
-	if (yych == 'f') goto yy647;
-	goto yy268;
+	if (yych == 'h') goto yy647;
+	goto yy267;
 yy600:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy648;
-	goto yy268;
+	if (yych == 'i') goto yy648;
+	goto yy267;
 yy601:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy649;
-	goto yy268;
+	if (yych == 'e') goto yy649;
+	goto yy267;
 yy602:
 	yych = *++YYCURSOR;
-	if (yych == 'h') goto yy650;
-	goto yy268;
+	if (yych == 'o') goto yy650;
+	goto yy267;
 yy603:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy651;
-	goto yy268;
+	if (yych == 'p') goto yy651;
+	goto yy267;
 yy604:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy652;
-	goto yy268;
+	if (yych == 'o') goto yy652;
+	goto yy267;
 yy605:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy653;
-	goto yy268;
+	if (yych == 'e') goto yy653;
+	goto yy267;
 yy606:
 	yych = *++YYCURSOR;
-	if (yych == 'p') goto yy654;
-	goto yy268;
+	if (yych == 'e') goto yy654;
+	goto yy267;
 yy607:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy655;
-	goto yy268;
+	if (yych <= 0x00) goto yy655;
+	goto yy267;
 yy608:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy656;
-	goto yy268;
+	if (yych == 'a') goto yy656;
+	goto yy267;
 yy609:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy657;
-	goto yy268;
+	if (yych <= 0x00) goto yy657;
+	goto yy267;
 yy610:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy658;
-	goto yy268;
+	if (yych == 'n') goto yy308;
+	goto yy267;
 yy611:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy659;
-	goto yy268;
+	if (yych == '-') goto yy658;
+	goto yy267;
 yy612:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy660;
-	goto yy268;
+	if (yych == 'e') goto yy659;
+	goto yy267;
 yy613:
-	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy310;
-	goto yy268;
-yy614:
-	yych = *++YYCURSOR;
-	if (yych == '-') goto yy661;
-	goto yy268;
-yy615:
 	++YYCURSOR;
 #line 149 "src/options/parse_opts.re"
 	{ global.set_verbose(true);            goto opt; }
-#line 2859 "bootstrap/src/options/parse_opts.cc"
-yy616:
+#line 2851 "bootstrap/src/options/parse_opts.cc"
+yy614:
 	++YYCURSOR;
 #line 142 "src/options/parse_opts.re"
 	{ return version(); }
-#line 2864 "bootstrap/src/options/parse_opts.cc"
+#line 2856 "bootstrap/src/options/parse_opts.cc"
+yy615:
+	yych = *++YYCURSOR;
+	if (yych == 'r') goto yy660;
+	goto yy267;
+yy616:
+	yych = *++YYCURSOR;
+	if (yych == 'r') goto yy661;
+	goto yy267;
 yy617:
-	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy662;
-	goto yy268;
-yy618:
-	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy663;
-	goto yy268;
-yy619:
 	++YYCURSOR;
 #line 179 "src/options/parse_opts.re"
 	{
@@ -2877,8 +2869,8 @@ yy619:
         opts.set_captures_array(true);
         goto opt;
     }
-#line 2881 "bootstrap/src/options/parse_opts.cc"
-yy620:
+#line 2873 "bootstrap/src/options/parse_opts.cc"
+yy618:
 	++YYCURSOR;
 #line 190 "src/options/parse_opts.re"
 	{
@@ -2886,922 +2878,933 @@ yy620:
         opts.set_captures_array(false);
         goto opt;
     }
-#line 2890 "bootstrap/src/options/parse_opts.cc"
+#line 2882 "bootstrap/src/options/parse_opts.cc"
+yy619:
+	yych = *++YYCURSOR;
+	if (yych == 'n') goto yy662;
+	goto yy267;
+yy620:
+	yych = *++YYCURSOR;
+	if (yych == 'r') goto yy663;
+	goto yy267;
 yy621:
 	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy664;
-	goto yy268;
+	if (yych == 'e') goto yy664;
+	goto yy267;
 yy622:
 	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy665;
-	goto yy268;
+	if (yych == 'c') goto yy665;
+	if (yych == 'g') goto yy666;
+	goto yy267;
 yy623:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy666;
-	goto yy268;
+	if (yych == 's') goto yy667;
+	goto yy267;
 yy624:
 	yych = *++YYCURSOR;
-	if (yych == 'c') goto yy667;
-	if (yych == 'g') goto yy668;
-	goto yy268;
+	if (yych == 'p') goto yy668;
+	goto yy267;
 yy625:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy669;
-	goto yy268;
+	if (yych == 'i') goto yy669;
+	goto yy267;
 yy626:
 	yych = *++YYCURSOR;
-	if (yych == 'p') goto yy670;
-	goto yy268;
+	if (yych <= 0x00) goto yy670;
+	goto yy267;
 yy627:
-	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy671;
-	goto yy268;
-yy628:
-	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy672;
-	goto yy268;
-yy629:
 	++YYCURSOR;
 #line 236 "src/options/parse_opts.re"
 	{ global.set_dump_cfg(true);           goto opt; }
-#line 2928 "bootstrap/src/options/parse_opts.cc"
-yy630:
+#line 2920 "bootstrap/src/options/parse_opts.cc"
+yy628:
 	yych = *++YYCURSOR;
-	if (yych == 'u') goto yy673;
-	goto yy268;
-yy631:
+	if (yych == 'u') goto yy671;
+	goto yy267;
+yy629:
 	yych = *++YYCURSOR;
 	switch (yych) {
-		case 'd': goto yy674;
-		case 'm': goto yy675;
-		case 'r': goto yy676;
-		case 't': goto yy677;
-		default: goto yy268;
+		case 'd': goto yy672;
+		case 'm': goto yy673;
+		case 'r': goto yy674;
+		case 't': goto yy675;
+		default: goto yy267;
 	}
-yy632:
+yy630:
 	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy678;
-	goto yy268;
-yy633:
+	if (yych == 'r') goto yy676;
+	goto yy267;
+yy631:
 	++YYCURSOR;
 #line 229 "src/options/parse_opts.re"
 	{ global.set_dump_nfa(true);           goto opt; }
-#line 2950 "bootstrap/src/options/parse_opts.cc"
-yy634:
+#line 2942 "bootstrap/src/options/parse_opts.cc"
+yy632:
 	yych = *++YYCURSOR;
-	if (yych == 'p') goto yy679;
-	goto yy268;
-yy635:
+	if (yych == 'p') goto yy677;
+	goto yy267;
+yy633:
 	++YYCURSOR;
 #line 146 "src/options/parse_opts.re"
 	{ global.set_target(Target::DOT);      goto opt; }
-#line 2959 "bootstrap/src/options/parse_opts.cc"
+#line 2951 "bootstrap/src/options/parse_opts.cc"
+yy634:
+	yych = *++YYCURSOR;
+	if (yych == 's') goto yy678;
+	goto yy267;
+yy635:
+	yych = *++YYCURSOR;
+	if (yych == 'p') goto yy679;
+	goto yy267;
 yy636:
 	yych = *++YYCURSOR;
 	if (yych == 's') goto yy680;
-	goto yy268;
+	goto yy267;
 yy637:
 	yych = *++YYCURSOR;
-	if (yych == 'p') goto yy681;
-	goto yy268;
+	if (yych == 'a') goto yy681;
+	goto yy267;
 yy638:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy682;
-	goto yy268;
+	if (yych == 'l') goto yy682;
+	goto yy267;
 yy639:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy683;
-	goto yy268;
+	if (yych == 'o') goto yy683;
+	goto yy267;
 yy640:
 	yych = *++YYCURSOR;
-	if (yych == 'l') goto yy684;
-	goto yy268;
+	if (yych == 'p') goto yy684;
+	goto yy267;
 yy641:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy685;
-	goto yy268;
+	if (yych == 'c') goto yy685;
+	goto yy267;
 yy642:
 	yych = *++YYCURSOR;
-	if (yych == 'p') goto yy686;
-	goto yy268;
+	if (yych == 'f') goto yy686;
+	goto yy267;
 yy643:
 	yych = *++YYCURSOR;
 	if (yych == 'c') goto yy687;
-	goto yy268;
+	goto yy267;
 yy644:
 	yych = *++YYCURSOR;
-	if (yych == 'f') goto yy688;
-	goto yy268;
+	if (yych == 's') goto yy688;
+	goto yy267;
 yy645:
 	yych = *++YYCURSOR;
-	if (yych == 'c') goto yy689;
-	goto yy268;
+	if (yych == 'i') goto yy689;
+	goto yy267;
 yy646:
 	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy690;
-	goto yy268;
+	if (yych == 't') goto yy690;
+	goto yy267;
 yy647:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy691;
-	goto yy268;
+	if (yych == 'e') goto yy691;
+	goto yy267;
 yy648:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy692;
-	goto yy268;
+	if (yych == 'z') goto yy692;
+	goto yy267;
 yy649:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy693;
-	goto yy268;
+	if (yych <= 0x00) goto yy693;
+	goto yy267;
 yy650:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy694;
-	goto yy268;
+	if (yych == 'n') goto yy694;
+	goto yy267;
 yy651:
 	yych = *++YYCURSOR;
-	if (yych == 'z') goto yy695;
-	goto yy268;
+	if (yych == 't') goto yy695;
+	goto yy267;
 yy652:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy696;
-	goto yy268;
+	if (yych == 's') goto yy696;
+	goto yy267;
 yy653:
 	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy697;
-	goto yy268;
+	if (yych == 'c') goto yy697;
+	goto yy267;
 yy654:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy698;
-	goto yy268;
+	if (yych == '-') goto yy698;
+	goto yy267;
 yy655:
-	yych = *++YYCURSOR;
-	if (yych == 's') goto yy699;
-	goto yy268;
-yy656:
-	yych = *++YYCURSOR;
-	if (yych == 'c') goto yy700;
-	goto yy268;
-yy657:
-	yych = *++YYCURSOR;
-	if (yych == '-') goto yy701;
-	goto yy268;
-yy658:
 	++YYCURSOR;
 #line 215 "src/options/parse_opts.re"
 	{ goto opt; }
-#line 3052 "bootstrap/src/options/parse_opts.cc"
-yy659:
+#line 3040 "bootstrap/src/options/parse_opts.cc"
+yy656:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy702;
-	goto yy268;
-yy660:
+	if (yych == 's') goto yy699;
+	goto yy267;
+yy657:
 	++YYCURSOR;
 #line 153 "src/options/parse_opts.re"
 	{ global.set_target(Target::SKELETON); goto opt; }
-#line 3061 "bootstrap/src/options/parse_opts.cc"
+#line 3049 "bootstrap/src/options/parse_opts.cc"
+yy658:
+	yych = *++YYCURSOR;
+	if (yych == 's') goto yy700;
+	goto yy267;
+yy659:
+	yych = *++YYCURSOR;
+	if (yych == '-') goto yy701;
+	goto yy267;
+yy660:
+	yych = *++YYCURSOR;
+	if (yych == 's') goto yy702;
+	goto yy267;
 yy661:
 	yych = *++YYCURSOR;
 	if (yych == 's') goto yy703;
-	goto yy268;
+	goto yy267;
 yy662:
 	yych = *++YYCURSOR;
 	if (yych == 's') goto yy704;
-	goto yy268;
+	goto yy267;
 yy663:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy705;
-	goto yy268;
+	if (yych == 't') goto yy705;
+	goto yy267;
 yy664:
 	yych = *++YYCURSOR;
 	if (yych == 's') goto yy706;
-	goto yy268;
+	goto yy267;
 yy665:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy707;
-	goto yy268;
+	if (yych == 'o') goto yy707;
+	goto yy267;
 yy666:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy708;
-	goto yy268;
+	if (yych == 'o') goto yy708;
+	goto yy267;
 yy667:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy709;
-	goto yy268;
+	if (yych <= 0x00) goto yy709;
+	goto yy267;
 yy668:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy710;
-	goto yy268;
+	if (yych == 'u') goto yy710;
+	goto yy267;
 yy669:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy711;
-	goto yy268;
+	if (yych == 'z') goto yy711;
+	goto yy267;
 yy670:
-	yych = *++YYCURSOR;
-	if (yych == 'u') goto yy712;
-	goto yy268;
-yy671:
-	yych = *++YYCURSOR;
-	if (yych == 'z') goto yy713;
-	goto yy268;
-yy672:
 	++YYCURSOR;
 #line 235 "src/options/parse_opts.re"
 	{ global.set_dump_adfa(true);          goto opt; }
-#line 3110 "bootstrap/src/options/parse_opts.cc"
+#line 3102 "bootstrap/src/options/parse_opts.cc"
+yy671:
+	yych = *++YYCURSOR;
+	if (yych == 'r') goto yy712;
+	goto yy267;
+yy672:
+	yych = *++YYCURSOR;
+	if (yych == 'e') goto yy713;
+	goto yy267;
 yy673:
 	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy714;
-	goto yy268;
+	if (yych == 'i') goto yy714;
+	goto yy267;
 yy674:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy715;
-	goto yy268;
+	if (yych == 'a') goto yy715;
+	goto yy267;
 yy675:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy716;
-	goto yy268;
+	if (yych == 'a') goto yy716;
+	if (yych == 'r') goto yy717;
+	goto yy267;
 yy676:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy717;
-	goto yy268;
+	if (yych == 'f') goto yy718;
+	goto yy267;
 yy677:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy718;
-	if (yych == 'r') goto yy719;
-	goto yy268;
+	if (yych <= 0x00) goto yy719;
+	goto yy267;
 yy678:
 	yych = *++YYCURSOR;
-	if (yych == 'f') goto yy720;
-	goto yy268;
+	if (yych == 's') goto yy720;
+	goto yy267;
 yy679:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy721;
-	goto yy268;
+	if (yych == 'o') goto yy721;
+	goto yy267;
 yy680:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy722;
-	goto yy268;
+	if (yych <= 0x00) goto yy722;
+	goto yy267;
 yy681:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy723;
-	goto yy268;
+	if (yych == 'x') goto yy723;
+	goto yy267;
 yy682:
 	yych = *++YYCURSOR;
 	if (yych <= 0x00) goto yy724;
-	goto yy268;
+	goto yy267;
 yy683:
 	yych = *++YYCURSOR;
-	if (yych == 'x') goto yy725;
-	goto yy268;
+	if (yych == 'd') goto yy725;
+	goto yy267;
 yy684:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy726;
-	goto yy268;
+	if (yych == 't') goto yy726;
+	goto yy267;
 yy685:
 	yych = *++YYCURSOR;
-	if (yych == 'd') goto yy727;
-	goto yy268;
+	if (yych == 'a') goto yy727;
+	goto yy267;
 yy686:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy728;
-	goto yy268;
+	if (yych == 'o') goto yy728;
+	goto yy267;
 yy687:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy729;
-	goto yy268;
+	if (yych == 'h') goto yy729;
+	goto yy267;
 yy688:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy730;
-	goto yy268;
+	if (yych <= 0x00) goto yy730;
+	goto yy267;
 yy689:
 	yych = *++YYCURSOR;
-	if (yych == 'h') goto yy731;
-	goto yy268;
+	if (yych == 'n') goto yy731;
+	goto yy267;
 yy690:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy732;
-	goto yy268;
+	if (yych == 'i') goto yy732;
+	goto yy267;
 yy691:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy733;
-	goto yy268;
+	if (yych == 'a') goto yy733;
+	goto yy267;
 yy692:
 	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy734;
-	goto yy268;
+	if (yych == 'e') goto yy734;
+	goto yy267;
 yy693:
-	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy735;
-	goto yy268;
-yy694:
-	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy736;
-	goto yy268;
-yy695:
-	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy737;
-	goto yy268;
-yy696:
 	++YYCURSOR;
 #line 170 "src/options/parse_opts.re"
 	{ opts.set_unsafe(false);                 goto opt; }
-#line 3208 "bootstrap/src/options/parse_opts.cc"
+#line 3196 "bootstrap/src/options/parse_opts.cc"
+yy694:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy735;
+	goto yy267;
+yy695:
+	yych = *++YYCURSOR;
+	if (yych <= 't') goto yy267;
+	if (yych <= 'u') goto yy736;
+	if (yych <= 'v') goto yy737;
+	goto yy267;
+yy696:
+	yych = *++YYCURSOR;
+	if (yych == 'u') goto yy738;
+	goto yy267;
 yy697:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy738;
-	goto yy268;
+	if (yych == 't') goto yy739;
+	goto yy267;
 yy698:
 	yych = *++YYCURSOR;
-	if (yych <= 't') goto yy268;
-	if (yych <= 'u') goto yy739;
-	if (yych <= 'v') goto yy740;
-	goto yy268;
+	if (yych == 'f') goto yy740;
+	goto yy267;
 yy699:
 	yych = *++YYCURSOR;
-	if (yych == 'u') goto yy741;
-	goto yy268;
+	if (yych == 's') goto yy741;
+	goto yy267;
 yy700:
 	yych = *++YYCURSOR;
 	if (yych == 't') goto yy742;
-	goto yy268;
+	goto yy267;
 yy701:
 	yych = *++YYCURSOR;
-	if (yych == 'f') goto yy743;
-	goto yy268;
+	if (yych == 'l') goto yy743;
+	goto yy267;
 yy702:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy744;
-	goto yy268;
+	if (yych <= 0x00) goto yy394;
+	goto yy267;
 yy703:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy745;
-	goto yy268;
+	if (yych <= 0x00) goto yy744;
+	goto yy267;
 yy704:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy397;
-	goto yy268;
+	if (yych == 'i') goto yy745;
+	goto yy267;
 yy705:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy746;
-	goto yy268;
+	if (yych == 'e') goto yy746;
+	goto yy267;
 yy706:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy747;
-	goto yy268;
+	if (yych <= 0x00) goto yy747;
+	goto yy267;
 yy707:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy748;
-	goto yy268;
+	if (yych == 'n') goto yy748;
+	goto yy267;
 yy708:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy749;
-	goto yy268;
+	if (yych == 't') goto yy749;
+	goto yy267;
 yy709:
-	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy750;
-	goto yy268;
-yy710:
-	yych = *++YYCURSOR;
-	if (yych == 't') goto yy751;
-	goto yy268;
-yy711:
 	++YYCURSOR;
 #line 145 "src/options/parse_opts.re"
 	{ global.set_start_conditions(true);   goto opt; }
-#line 3271 "bootstrap/src/options/parse_opts.cc"
+#line 3263 "bootstrap/src/options/parse_opts.cc"
+yy710:
+	yych = *++YYCURSOR;
+	if (yych == 't') goto yy750;
+	goto yy267;
+yy711:
+	yych = *++YYCURSOR;
+	if (yych == 'a') goto yy751;
+	goto yy267;
 yy712:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy752;
-	goto yy268;
+	if (yych == 'e') goto yy752;
+	goto yy267;
 yy713:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy753;
-	goto yy268;
+	if (yych == 't') goto yy753;
+	goto yy267;
 yy714:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy754;
-	goto yy268;
+	if (yych == 'n') goto yy754;
+	goto yy267;
 yy715:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy755;
-	goto yy268;
+	if (yych == 'w') goto yy755;
+	goto yy267;
 yy716:
 	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy756;
-	goto yy268;
+	if (yych == 'g') goto yy756;
+	goto yy267;
 yy717:
 	yych = *++YYCURSOR;
-	if (yych == 'w') goto yy757;
-	goto yy268;
+	if (yych == 'e') goto yy757;
+	goto yy267;
 yy718:
 	yych = *++YYCURSOR;
-	if (yych == 'g') goto yy758;
-	goto yy268;
+	if (yych <= 0x00) goto yy758;
+	goto yy267;
 yy719:
-	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy759;
-	goto yy268;
-yy720:
-	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy760;
-	goto yy268;
-yy721:
 	++YYCURSOR;
 #line 154 "src/options/parse_opts.re"
 	{ global.set_eager_skip(true);         goto opt; }
-#line 3312 "bootstrap/src/options/parse_opts.cc"
+#line 3304 "bootstrap/src/options/parse_opts.cc"
+yy720:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy759;
+	goto yy267;
+yy721:
+	yych = *++YYCURSOR;
+	if (yych == 'l') goto yy760;
+	goto yy267;
 yy722:
-	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy761;
-	goto yy268;
-yy723:
-	yych = *++YYCURSOR;
-	if (yych == 'l') goto yy762;
-	goto yy268;
-yy724:
 	++YYCURSOR;
 #line 220 "src/options/parse_opts.re"
 	{ NEXT_ARG("--fixed-tags",       opt_fixed_tags); }
-#line 3325 "bootstrap/src/options/parse_opts.cc"
-yy725:
+#line 3317 "bootstrap/src/options/parse_opts.cc"
+yy723:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy763;
-	goto yy268;
-yy726:
+	if (yych <= 0x00) goto yy761;
+	goto yy267;
+yy724:
 	++YYCURSOR;
 #line 155 "src/options/parse_opts.re"
 	{ global.set_code_model(CodeModel::GOTO_LABEL);  goto opt; }
-#line 3334 "bootstrap/src/options/parse_opts.cc"
+#line 3326 "bootstrap/src/options/parse_opts.cc"
+yy725:
+	yych = *++YYCURSOR;
+	if (yych == 'i') goto yy762;
+	goto yy267;
+yy726:
+	yych = *++YYCURSOR;
+	if (yych == 'u') goto yy763;
+	goto yy267;
 yy727:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy764;
-	goto yy268;
+	if (yych == 'p') goto yy305;
+	goto yy267;
 yy728:
 	yych = *++YYCURSOR;
-	if (yych == 'u') goto yy765;
-	goto yy268;
+	if (yych == 'r') goto yy764;
+	goto yy267;
 yy729:
 	yych = *++YYCURSOR;
-	if (yych == 'p') goto yy307;
-	goto yy268;
+	if (yych <= 0x00) goto yy765;
+	goto yy267;
 yy730:
-	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy766;
-	goto yy268;
-yy731:
-	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy767;
-	goto yy268;
-yy732:
-	++YYCURSOR;
-#line 166 "src/options/parse_opts.re"
-	{ opts.set_multi_char(true);              goto opt; }
-#line 3359 "bootstrap/src/options/parse_opts.cc"
-yy733:
 	++YYCURSOR;
 #line 165 "src/options/parse_opts.re"
 	{ opts.set_nested_ifs(true);              goto opt; }
-#line 3364 "bootstrap/src/options/parse_opts.cc"
+#line 3351 "bootstrap/src/options/parse_opts.cc"
+yy731:
+	yych = *++YYCURSOR;
+	if (yych == 'f') goto yy766;
+	goto yy267;
+yy732:
+	yych = *++YYCURSOR;
+	if (yych == 'o') goto yy767;
+	goto yy267;
+yy733:
+	yych = *++YYCURSOR;
+	if (yych == 'd') goto yy768;
+	goto yy267;
 yy734:
 	yych = *++YYCURSOR;
-	if (yych == 'f') goto yy768;
-	goto yy268;
+	if (yych == '-') goto yy769;
+	goto yy267;
 yy735:
-	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy769;
-	goto yy268;
-yy736:
-	yych = *++YYCURSOR;
-	if (yych == 'd') goto yy770;
-	goto yy268;
-yy737:
-	yych = *++YYCURSOR;
-	if (yych == '-') goto yy771;
-	goto yy268;
-yy738:
 	++YYCURSOR;
 #line 152 "src/options/parse_opts.re"
 	{ global.set_version(false);           goto opt; }
-#line 3385 "bootstrap/src/options/parse_opts.cc"
-yy739:
+#line 3372 "bootstrap/src/options/parse_opts.cc"
+yy736:
+	yych = *++YYCURSOR;
+	if (yych == 'r') goto yy770;
+	goto yy267;
+yy737:
+	yych = *++YYCURSOR;
+	if (yych == 'a') goto yy771;
+	goto yy267;
+yy738:
 	yych = *++YYCURSOR;
 	if (yych == 'r') goto yy772;
-	goto yy268;
-yy740:
+	goto yy267;
+yy739:
 	yych = *++YYCURSOR;
 	if (yych == 'a') goto yy773;
-	goto yy268;
+	goto yy267;
+yy740:
+	yych = *++YYCURSOR;
+	if (yych == 'u') goto yy774;
+	goto yy267;
 yy741:
 	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy774;
-	goto yy268;
+	if (yych <= 0x00) goto yy775;
+	goto yy267;
 yy742:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy775;
-	goto yy268;
+	if (yych == 'a') goto yy776;
+	goto yy267;
 yy743:
 	yych = *++YYCURSOR;
-	if (yych == 'u') goto yy776;
-	goto yy268;
+	if (yych == 'i') goto yy777;
+	goto yy267;
 yy744:
-	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy777;
-	goto yy268;
-yy745:
-	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy778;
-	goto yy268;
-yy746:
 	++YYCURSOR;
 #line 160 "src/options/parse_opts.re"
 	{ opts.set_bitmaps(true);                 goto opt; }
-#line 3418 "bootstrap/src/options/parse_opts.cc"
+#line 3409 "bootstrap/src/options/parse_opts.cc"
+yy745:
+	yych = *++YYCURSOR;
+	if (yych == 't') goto yy778;
+	goto yy267;
+yy746:
+	yych = *++YYCURSOR;
+	if (yych == 'd') goto yy779;
+	goto yy267;
 yy747:
-	yych = *++YYCURSOR;
-	if (yych == 't') goto yy779;
-	goto yy268;
-yy748:
-	yych = *++YYCURSOR;
-	if (yych == 'd') goto yy780;
-	goto yy268;
-yy749:
 	++YYCURSOR;
 #line 162 "src/options/parse_opts.re"
 	{ opts.set_case_ranges(true);             goto opt; }
-#line 3431 "bootstrap/src/options/parse_opts.cc"
+#line 3422 "bootstrap/src/options/parse_opts.cc"
+yy748:
+	yych = *++YYCURSOR;
+	if (yych == 't') goto yy780;
+	goto yy267;
+yy749:
+	yych = *++YYCURSOR;
+	if (yych == 'o') goto yy781;
+	goto yy267;
 yy750:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy781;
-	goto yy268;
+	if (yych <= 0x00) goto yy782;
+	goto yy267;
 yy751:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy782;
-	goto yy268;
+	if (yych == 't') goto yy783;
+	goto yy267;
 yy752:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy783;
-	goto yy268;
+	if (yych == '-') goto yy784;
+	goto yy267;
 yy753:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy784;
-	goto yy268;
+	if (yych <= 0x00) goto yy785;
+	goto yy267;
 yy754:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy785;
-	goto yy268;
+	if (yych <= 0x00) goto yy786;
+	goto yy267;
 yy755:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy786;
-	goto yy268;
+	if (yych <= 0x00) goto yy787;
+	goto yy267;
 yy756:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy787;
-	goto yy268;
+	if (yych == 'o') goto yy788;
+	goto yy267;
 yy757:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy788;
-	goto yy268;
+	if (yych == 'e') goto yy789;
+	goto yy267;
 yy758:
-	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy789;
-	goto yy268;
-yy759:
-	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy790;
-	goto yy268;
-yy760:
 	++YYCURSOR;
 #line 237 "src/options/parse_opts.re"
 	{ global.set_dump_interf(true);        goto opt; }
-#line 3476 "bootstrap/src/options/parse_opts.cc"
-yy761:
+#line 3467 "bootstrap/src/options/parse_opts.cc"
+yy759:
 	++YYCURSOR;
 #line 209 "src/options/parse_opts.re"
 	{ NEXT_ARG("--empty-class",      opt_empty_class); }
-#line 3481 "bootstrap/src/options/parse_opts.cc"
-yy762:
+#line 3472 "bootstrap/src/options/parse_opts.cc"
+yy760:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy791;
-	goto yy268;
-yy763:
+	if (yych == 'i') goto yy790;
+	goto yy267;
+yy761:
 	++YYCURSOR;
 #line 148 "src/options/parse_opts.re"
 	{ global.set_flex_syntax(true);        goto opt; }
-#line 3490 "bootstrap/src/options/parse_opts.cc"
+#line 3481 "bootstrap/src/options/parse_opts.cc"
+yy762:
+	yych = *++YYCURSOR;
+	if (yych == 'n') goto yy791;
+	goto yy267;
+yy763:
+	yych = *++YYCURSOR;
+	if (yych == 'r') goto yy792;
+	goto yy267;
 yy764:
 	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy792;
-	goto yy268;
+	if (yych == 'm') goto yy793;
+	goto yy267;
 yy765:
-	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy793;
-	goto yy268;
-yy766:
-	yych = *++YYCURSOR;
-	if (yych == 'm') goto yy794;
-	goto yy268;
-yy767:
 	++YYCURSOR;
 #line 156 "src/options/parse_opts.re"
 	{ global.set_code_model(CodeModel::LOOP_SWITCH); goto opt; }
-#line 3507 "bootstrap/src/options/parse_opts.cc"
+#line 3498 "bootstrap/src/options/parse_opts.cc"
+yy766:
+	yych = *++YYCURSOR;
+	if (yych == 'o') goto yy794;
+	goto yy267;
+yy767:
+	yych = *++YYCURSOR;
+	if (yych == 'n') goto yy795;
+	goto yy267;
 yy768:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy795;
-	goto yy268;
+	if (yych <= 0x00) goto yy796;
+	goto yy267;
 yy769:
 	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy796;
-	goto yy268;
+	if (yych == 't') goto yy797;
+	goto yy267;
 yy770:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy797;
-	goto yy268;
+	if (yych == 'e') goto yy798;
+	goto yy267;
 yy771:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy798;
-	goto yy268;
+	if (yych == 'r') goto yy799;
+	goto yy267;
 yy772:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy799;
-	goto yy268;
+	if (yych == 'e') goto yy800;
+	goto yy267;
 yy773:
 	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy800;
-	goto yy268;
+	if (yych == 'b') goto yy801;
+	goto yy267;
 yy774:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy801;
-	goto yy268;
+	if (yych == 'n') goto yy802;
+	goto yy267;
 yy775:
-	yych = *++YYCURSOR;
-	if (yych == 'b') goto yy802;
-	goto yy268;
-yy776:
-	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy803;
-	goto yy268;
-yy777:
 	++YYCURSOR;
 #line 214 "src/options/parse_opts.re"
 	{ goto opt; }
-#line 3548 "bootstrap/src/options/parse_opts.cc"
+#line 3539 "bootstrap/src/options/parse_opts.cc"
+yy776:
+	yych = *++YYCURSOR;
+	if (yych == 't') goto yy803;
+	goto yy267;
+yy777:
+	yych = *++YYCURSOR;
+	if (yych == 'n') goto yy804;
+	goto yy267;
 yy778:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy804;
-	goto yy268;
+	if (yych == 'i') goto yy805;
+	goto yy267;
 yy779:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy805;
-	goto yy268;
+	if (yych <= 0x00) goto yy806;
+	goto yy267;
 yy780:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy806;
-	goto yy268;
+	if (yych == 'i') goto yy807;
+	goto yy267;
 yy781:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy807;
-	goto yy268;
-yy782:
-	yych = *++YYCURSOR;
 	if (yych == 's') goto yy808;
-	goto yy268;
-yy783:
+	goto yy267;
+yy782:
 	++YYCURSOR;
 #line 161 "src/options/parse_opts.re"
 	{ opts.set_debug(true);                   goto opt; }
-#line 3573 "bootstrap/src/options/parse_opts.cc"
-yy784:
+#line 3568 "bootstrap/src/options/parse_opts.cc"
+yy783:
 	yych = *++YYCURSOR;
 	if (yych == 'i') goto yy809;
-	goto yy268;
-yy785:
+	goto yy267;
+yy784:
 	yych = *++YYCURSOR;
 	if (yych == 's') goto yy810;
-	goto yy268;
-yy786:
+	goto yy267;
+yy785:
 	++YYCURSOR;
 #line 232 "src/options/parse_opts.re"
 	{ global.set_dump_dfa_det(true);       goto opt; }
-#line 3586 "bootstrap/src/options/parse_opts.cc"
-yy787:
+#line 3581 "bootstrap/src/options/parse_opts.cc"
+yy786:
 	++YYCURSOR;
 #line 234 "src/options/parse_opts.re"
 	{ global.set_dump_dfa_min(true);       goto opt; }
-#line 3591 "bootstrap/src/options/parse_opts.cc"
-yy788:
+#line 3586 "bootstrap/src/options/parse_opts.cc"
+yy787:
 	++YYCURSOR;
 #line 231 "src/options/parse_opts.re"
 	{ global.set_dump_dfa_raw(true);       goto opt; }
-#line 3596 "bootstrap/src/options/parse_opts.cc"
-yy789:
+#line 3591 "bootstrap/src/options/parse_opts.cc"
+yy788:
 	yych = *++YYCURSOR;
 	if (yych == 'p') goto yy811;
-	goto yy268;
-yy790:
+	goto yy267;
+yy789:
 	yych = *++YYCURSOR;
 	if (yych <= 0x00) goto yy812;
-	goto yy268;
-yy791:
+	goto yy267;
+yy790:
 	yych = *++YYCURSOR;
 	if (yych == 'c') goto yy813;
-	goto yy268;
-yy792:
+	goto yy267;
+yy791:
 	yych = *++YYCURSOR;
 	if (yych == 'g') goto yy814;
-	goto yy268;
-yy793:
+	goto yy267;
+yy792:
 	yych = *++YYCURSOR;
 	if (yych == 'e') goto yy815;
-	goto yy268;
-yy794:
+	goto yy267;
+yy793:
 	yych = *++YYCURSOR;
 	if (yych == 'a') goto yy816;
-	goto yy268;
-yy795:
+	goto yy267;
+yy794:
 	yych = *++YYCURSOR;
 	if (yych <= 0x00) goto yy817;
-	goto yy268;
-yy796:
+	goto yy267;
+yy795:
 	yych = *++YYCURSOR;
 	if (yych == '-') goto yy818;
-	goto yy268;
-yy797:
+	goto yy267;
+yy796:
 	++YYCURSOR;
 #line 224 "src/options/parse_opts.re"
 	{ RET_FAIL(error("TDFA(0) algorithm was deprecated and removed")); }
-#line 3633 "bootstrap/src/options/parse_opts.cc"
-yy798:
+#line 3628 "bootstrap/src/options/parse_opts.cc"
+yy797:
 	yych = *++YYCURSOR;
 	if (yych == 'a') goto yy819;
-	goto yy268;
-yy799:
+	goto yy267;
+yy798:
 	yych = *++YYCURSOR;
 	if (yych == 's') goto yy820;
-	goto yy268;
-yy800:
+	goto yy267;
+yy799:
 	yych = *++YYCURSOR;
 	if (yych == 's') goto yy821;
-	goto yy268;
-yy801:
+	goto yy267;
+yy800:
 	yych = *++YYCURSOR;
 	if (yych <= 0x00) goto yy822;
-	goto yy268;
-yy802:
+	goto yy267;
+yy801:
 	yych = *++YYCURSOR;
 	if (yych == 'l') goto yy823;
-	goto yy268;
-yy803:
+	goto yy267;
+yy802:
 	yych = *++YYCURSOR;
 	if (yych == 'c') goto yy824;
-	goto yy268;
-yy804:
+	goto yy267;
+yy803:
 	yych = *++YYCURSOR;
 	if (yych == 'e') goto yy825;
-	goto yy268;
+	goto yy267;
+yy804:
+	yych = *++YYCURSOR;
+	if (yych == 'e') goto yy826;
+	goto yy267;
 yy805:
 	yych = *++YYCURSOR;
-	if (yych == 'v') goto yy826;
-	goto yy268;
+	if (yych == 'v') goto yy827;
+	goto yy267;
 yy806:
 	++YYCURSOR;
 #line 168 "src/options/parse_opts.re"
 	{ opts.set_case_inverted(true);           goto opt; }
-#line 3670 "bootstrap/src/options/parse_opts.cc"
+#line 3669 "bootstrap/src/options/parse_opts.cc"
 yy807:
 	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy827;
-	goto yy268;
+	if (yych == 'n') goto yy828;
+	goto yy267;
 yy808:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy828;
-	if (yych == '-') goto yy829;
-	goto yy268;
+	if (yych <= 0x00) goto yy829;
+	if (yych == '-') goto yy830;
+	goto yy267;
 yy809:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy830;
-	goto yy268;
+	if (yych == 'o') goto yy831;
+	goto yy267;
 yy810:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy831;
-	goto yy268;
+	if (yych == 't') goto yy832;
+	goto yy267;
 yy811:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy832;
-	goto yy268;
+	if (yych == 't') goto yy833;
+	goto yy267;
 yy812:
 	++YYCURSOR;
 #line 230 "src/options/parse_opts.re"
 	{ global.set_dump_dfa_tree(true);      goto opt; }
-#line 3696 "bootstrap/src/options/parse_opts.cc"
+#line 3695 "bootstrap/src/options/parse_opts.cc"
 yy813:
 	yych = *++YYCURSOR;
-	if (yych == 'y') goto yy833;
-	goto yy268;
+	if (yych == 'y') goto yy834;
+	goto yy267;
 yy814:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy834;
-	goto yy268;
+	if (yych <= 0x00) goto yy835;
+	goto yy267;
 yy815:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy835;
-	goto yy268;
+	if (yych == 's') goto yy836;
+	goto yy267;
 yy816:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy836;
-	goto yy268;
+	if (yych == 't') goto yy837;
+	goto yy267;
 yy817:
 	++YYCURSOR;
 #line 150 "src/options/parse_opts.re"
 	{ global.set_line_dirs(false);         goto opt; }
-#line 3717 "bootstrap/src/options/parse_opts.cc"
+#line 3716 "bootstrap/src/options/parse_opts.cc"
 yy818:
 	yych = *++YYCURSOR;
-	if (yych == 'd') goto yy837;
-	goto yy268;
+	if (yych == 'd') goto yy838;
+	goto yy267;
 yy819:
 	yych = *++YYCURSOR;
-	if (yych == 'g') goto yy838;
-	goto yy268;
+	if (yych == 'g') goto yy839;
+	goto yy267;
 yy820:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy839;
-	goto yy268;
+	if (yych <= 0x00) goto yy840;
+	goto yy267;
 yy821:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy840;
-	goto yy268;
+	if (yych <= 0x00) goto yy841;
+	goto yy267;
 yy822:
 	++YYCURSOR;
 #line 225 "src/options/parse_opts.re"
 	{ RET_FAIL(error("option --posix-closure was removed")); }
-#line 3738 "bootstrap/src/options/parse_opts.cc"
+#line 3737 "bootstrap/src/options/parse_opts.cc"
 yy823:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy841;
-	goto yy268;
+	if (yych == 'e') goto yy842;
+	goto yy267;
 yy824:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy842;
-	goto yy268;
+	if (yych == 't') goto yy843;
+	goto yy267;
 yy825:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy843;
-	goto yy268;
+	if (yych <= 0x00) goto yy844;
+	goto yy267;
 yy826:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy844;
-	goto yy268;
+	if (yych == 'a') goto yy845;
+	goto yy267;
 yy827:
 	yych = *++YYCURSOR;
-	if (yych == 'u') goto yy845;
-	goto yy268;
+	if (yych == 'e') goto yy846;
+	goto yy267;
 yy828:
+	yych = *++YYCURSOR;
+	if (yych == 'u') goto yy847;
+	goto yy267;
+yy829:
 	++YYCURSOR;
 #line 163 "src/options/parse_opts.re"
 	{ opts.set_computed_gotos(true);          goto opt; }
-#line 3763 "bootstrap/src/options/parse_opts.cc"
-yy829:
-	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy846;
-	goto yy268;
+#line 3766 "bootstrap/src/options/parse_opts.cc"
 yy830:
 	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy847;
-	goto yy268;
+	if (yych == 'r') goto yy848;
+	goto yy267;
 yy831:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy848;
-	goto yy268;
+	if (yych == 'n') goto yy849;
+	goto yy267;
 yy832:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy849;
-	goto yy268;
+	if (yych == 'a') goto yy850;
+	goto yy267;
 yy833:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy850;
-	goto yy268;
+	if (yych <= 0x00) goto yy851;
+	goto yy267;
 yy834:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy852;
+	goto yy267;
+yy835:
 	++YYCURSOR;
 #line 211 "src/options/parse_opts.re"
 	{ NEXT_ARG("--input-encoding",   opt_input_encoding); }
-#line 3788 "bootstrap/src/options/parse_opts.cc"
-yy835:
-	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy851;
-	goto yy268;
+#line 3791 "bootstrap/src/options/parse_opts.cc"
 yy836:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy852;
-	goto yy268;
+	if (yych <= 0x00) goto yy853;
+	goto yy267;
 yy837:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy853;
-	goto yy268;
+	if (yych <= 0x00) goto yy854;
+	goto yy267;
 yy838:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy854;
-	goto yy268;
+	if (yych == 'a') goto yy855;
+	goto yy267;
 yy839:
+	yych = *++YYCURSOR;
+	if (yych == 's') goto yy856;
+	goto yy267;
+yy840:
 	++YYCURSOR;
 #line 184 "src/options/parse_opts.re"
 	{
@@ -3810,8 +3813,8 @@ yy839:
         opts.set_captures_array(true);
         goto opt;
     }
-#line 3814 "bootstrap/src/options/parse_opts.cc"
-yy840:
+#line 3817 "bootstrap/src/options/parse_opts.cc"
+yy841:
 	++YYCURSOR;
 #line 195 "src/options/parse_opts.re"
 	{
@@ -3820,455 +3823,468 @@ yy840:
         opts.set_captures_array(false);
         goto opt;
     }
-#line 3824 "bootstrap/src/options/parse_opts.cc"
-yy841:
-	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy855;
-	goto yy268;
+#line 3827 "bootstrap/src/options/parse_opts.cc"
 yy842:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy856;
-	goto yy268;
+	if (yych <= 0x00) goto yy857;
+	goto yy267;
 yy843:
+	yych = *++YYCURSOR;
+	if (yych == 'i') goto yy858;
+	goto yy267;
+yy844:
 	++YYCURSOR;
 #line 147 "src/options/parse_opts.re"
 	{ global.set_storable_state(true);     goto opt; }
-#line 3837 "bootstrap/src/options/parse_opts.cc"
-yy844:
-	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy857;
-	goto yy268;
+#line 3840 "bootstrap/src/options/parse_opts.cc"
 yy845:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy858;
-	goto yy268;
+	if (yych == 'r') goto yy859;
+	goto yy267;
 yy846:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy859;
-	goto yy268;
+	if (yych <= 0x00) goto yy860;
+	goto yy267;
 yy847:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy860;
-	goto yy268;
+	if (yych == 'e') goto yy861;
+	goto yy267;
 yy848:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy861;
-	goto yy268;
+	if (yych == 'e') goto yy862;
+	goto yy267;
 yy849:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy863;
+	goto yy267;
+yy850:
+	yych = *++YYCURSOR;
+	if (yych == 't') goto yy864;
+	goto yy267;
+yy851:
 	++YYCURSOR;
 #line 233 "src/options/parse_opts.re"
 	{ global.set_dump_dfa_tagopt(true);    goto opt; }
-#line 3862 "bootstrap/src/options/parse_opts.cc"
-yy850:
+#line 3869 "bootstrap/src/options/parse_opts.cc"
+yy852:
 	++YYCURSOR;
 #line 207 "src/options/parse_opts.re"
 	{ NEXT_ARG("--encoding-policy",  opt_encoding_policy); }
-#line 3867 "bootstrap/src/options/parse_opts.cc"
-yy851:
+#line 3874 "bootstrap/src/options/parse_opts.cc"
+yy853:
 	++YYCURSOR;
 #line 171 "src/options/parse_opts.re"
 	{ opts.set_captures_invert(true);         goto opt; }
-#line 3872 "bootstrap/src/options/parse_opts.cc"
-yy852:
+#line 3879 "bootstrap/src/options/parse_opts.cc"
+yy854:
 	++YYCURSOR;
 #line 210 "src/options/parse_opts.re"
 	{ NEXT_ARG("--location-format",  opt_location_format); }
-#line 3877 "bootstrap/src/options/parse_opts.cc"
-yy853:
-	yych = *++YYCURSOR;
-	if (yych == 't') goto yy862;
-	goto yy268;
-yy854:
-	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy863;
-	goto yy268;
+#line 3884 "bootstrap/src/options/parse_opts.cc"
 yy855:
+	yych = *++YYCURSOR;
+	if (yych == 't') goto yy865;
+	goto yy267;
+yy856:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy866;
+	goto yy267;
+yy857:
 	++YYCURSOR;
 #line 219 "src/options/parse_opts.re"
 	{ NEXT_ARG("--posix-prectable",  opt_posix_prectable); }
-#line 3890 "bootstrap/src/options/parse_opts.cc"
-yy856:
+#line 3897 "bootstrap/src/options/parse_opts.cc"
+yy858:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy864;
-	goto yy268;
-yy857:
+	if (yych == 'o') goto yy867;
+	goto yy267;
+yy859:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy868;
+	goto yy267;
+yy860:
 	++YYCURSOR;
 #line 167 "src/options/parse_opts.re"
 	{ opts.set_case_insensitive(true);        goto opt; }
-#line 3899 "bootstrap/src/options/parse_opts.cc"
-yy858:
+#line 3910 "bootstrap/src/options/parse_opts.cc"
+yy861:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy865;
-	goto yy268;
-yy859:
+	if (yych <= 0x00) goto yy869;
+	goto yy267;
+yy862:
 	yych = *++YYCURSOR;
-	if (yych == 'l') goto yy866;
-	goto yy268;
-yy860:
+	if (yych == 'l') goto yy870;
+	goto yy267;
+yy863:
 	++YYCURSOR;
 #line 218 "src/options/parse_opts.re"
 	{ NEXT_ARG("--dfa-minimization", opt_minimization); }
-#line 3912 "bootstrap/src/options/parse_opts.cc"
-yy861:
+#line 3923 "bootstrap/src/options/parse_opts.cc"
+yy864:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy867;
-	goto yy268;
-yy862:
+	if (yych == 's') goto yy871;
+	goto yy267;
+yy865:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy868;
-	goto yy268;
-yy863:
+	if (yych == 'e') goto yy872;
+	goto yy267;
+yy866:
 	++YYCURSOR;
 #line 221 "src/options/parse_opts.re"
 	{ global.set_optimize_tags(false); goto opt; }
-#line 3925 "bootstrap/src/options/parse_opts.cc"
-yy864:
+#line 3936 "bootstrap/src/options/parse_opts.cc"
+yy867:
 	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy869;
-	goto yy268;
-yy865:
+	if (yych == 'n') goto yy873;
+	goto yy267;
+yy868:
+	++YYCURSOR;
+#line 166 "src/options/parse_opts.re"
+	{ opts.set_vectorize_linear(true);        goto opt; }
+#line 3945 "bootstrap/src/options/parse_opts.cc"
+yy869:
 	++YYCURSOR;
 #line 157 "src/options/parse_opts.re"
 	{ global.set_computed_continue(true); goto opt; }
-#line 3934 "bootstrap/src/options/parse_opts.cc"
-yy866:
-	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy870;
-	goto yy268;
-yy867:
-	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy871;
-	goto yy268;
-yy868:
-	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy872;
-	goto yy268;
-yy869:
-	yych = *++YYCURSOR;
-	if (yych == 's') goto yy873;
-	goto yy268;
+#line 3950 "bootstrap/src/options/parse_opts.cc"
 yy870:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy874;
-	goto yy268;
+	if (yych == 'a') goto yy874;
+	goto yy267;
 yy871:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy875;
+	goto yy267;
+yy872:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy876;
+	goto yy267;
+yy873:
+	yych = *++YYCURSOR;
+	if (yych == 's') goto yy877;
+	goto yy267;
+yy874:
+	yych = *++YYCURSOR;
+	if (yych == 't') goto yy878;
+	goto yy267;
+yy875:
 	++YYCURSOR;
 #line 238 "src/options/parse_opts.re"
 	{ global.set_dump_closure_stats(true); goto opt; }
-#line 3959 "bootstrap/src/options/parse_opts.cc"
-yy872:
+#line 3975 "bootstrap/src/options/parse_opts.cc"
+yy876:
 	++YYCURSOR;
 #line 151 "src/options/parse_opts.re"
 	{ global.set_date(false);              goto opt; }
-#line 3964 "bootstrap/src/options/parse_opts.cc"
-yy873:
+#line 3980 "bootstrap/src/options/parse_opts.cc"
+yy877:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy875;
-	goto yy268;
-yy874:
+	if (yych <= 0x00) goto yy879;
+	goto yy267;
+yy878:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy876;
-	goto yy268;
-yy875:
+	if (yych == 'i') goto yy880;
+	goto yy267;
+yy879:
 	++YYCURSOR;
 #line 158 "src/options/parse_opts.re"
 	{ global.set_code_model(CodeModel::REC_FUNC);    goto opt; }
-#line 3977 "bootstrap/src/options/parse_opts.cc"
-yy876:
+#line 3993 "bootstrap/src/options/parse_opts.cc"
+yy880:
 	yych = *++YYCURSOR;
-	if (yych != 'v') goto yy268;
+	if (yych != 'v') goto yy267;
 	yych = *++YYCURSOR;
-	if (yych != 'e') goto yy268;
+	if (yych != 'e') goto yy267;
 	yych = *++YYCURSOR;
-	if (yych >= 0x01) goto yy268;
+	if (yych >= 0x01) goto yy267;
 	++YYCURSOR;
 #line 164 "src/options/parse_opts.re"
 	{ opts.set_computed_gotos_relative(true); goto opt; }
-#line 3988 "bootstrap/src/options/parse_opts.cc"
+#line 4004 "bootstrap/src/options/parse_opts.cc"
 }
 #line 239 "src/options/parse_opts.re"
 
 
 opt_lang: 
-#line 3994 "bootstrap/src/options/parse_opts.cc"
+#line 4010 "bootstrap/src/options/parse_opts.cc"
 {
 	char yych;
 	yych = *YYCURSOR;
 	switch (yych) {
-		case 'c': goto yy880;
-		case 'd': goto yy881;
-		case 'g': goto yy882;
-		case 'h': goto yy883;
-		case 'j': goto yy884;
-		case 'n': goto yy885;
-		case 'o': goto yy886;
-		case 'p': goto yy887;
-		case 'r': goto yy888;
-		case 's': goto yy889;
-		case 'v': goto yy890;
-		case 'z': goto yy891;
-		default: goto yy878;
+		case 'c': goto yy884;
+		case 'd': goto yy885;
+		case 'g': goto yy886;
+		case 'h': goto yy887;
+		case 'j': goto yy888;
+		case 'n': goto yy889;
+		case 'o': goto yy890;
+		case 'p': goto yy891;
+		case 'r': goto yy892;
+		case 's': goto yy893;
+		case 'v': goto yy894;
+		case 'z': goto yy895;
+		default: goto yy882;
 	}
-yy878:
+yy882:
 	++YYCURSOR;
-yy879:
+yy883:
 #line 242 "src/options/parse_opts.re"
 	{
         ERRARG("--lang",
             "c | d | go | haskell | java | js | ocaml | python | rust | swift | v | zig | none",
             *argv);
     }
-#line 4022 "bootstrap/src/options/parse_opts.cc"
-yy880:
-	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy892;
-	goto yy879;
-yy881:
-	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy893;
-	goto yy879;
-yy882:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'o') goto yy894;
-	goto yy879;
-yy883:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'a') goto yy896;
-	goto yy879;
+#line 4038 "bootstrap/src/options/parse_opts.cc"
 yy884:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'a') goto yy897;
-	if (yych == 's') goto yy898;
-	goto yy879;
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy896;
+	goto yy883;
 yy885:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'o') goto yy899;
-	goto yy879;
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy897;
+	goto yy883;
 yy886:
 	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'c') goto yy900;
-	goto yy879;
+	if (yych == 'o') goto yy898;
+	goto yy883;
 yy887:
 	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'y') goto yy901;
-	goto yy879;
+	if (yych == 'a') goto yy900;
+	goto yy883;
 yy888:
 	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'u') goto yy902;
-	goto yy879;
+	if (yych == 'a') goto yy901;
+	if (yych == 's') goto yy902;
+	goto yy883;
 yy889:
 	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'w') goto yy903;
-	goto yy879;
+	if (yych == 'o') goto yy903;
+	goto yy883;
 yy890:
-	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy904;
-	goto yy879;
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 'c') goto yy904;
+	goto yy883;
 yy891:
 	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'i') goto yy905;
-	goto yy879;
+	if (yych == 'y') goto yy905;
+	goto yy883;
 yy892:
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 'u') goto yy906;
+	goto yy883;
+yy893:
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 'w') goto yy907;
+	goto yy883;
+yy894:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy908;
+	goto yy883;
+yy895:
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 'i') goto yy909;
+	goto yy883;
+yy896:
 	++YYCURSOR;
 #line 247 "src/options/parse_opts.re"
 	{ *lang = Lang::C;       goto opt; }
-#line 4076 "bootstrap/src/options/parse_opts.cc"
-yy893:
+#line 4092 "bootstrap/src/options/parse_opts.cc"
+yy897:
 	++YYCURSOR;
 #line 248 "src/options/parse_opts.re"
 	{ *lang = Lang::D;       goto opt; }
-#line 4081 "bootstrap/src/options/parse_opts.cc"
-yy894:
-	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy906;
-yy895:
-	YYCURSOR = YYMARKER;
-	goto yy879;
-yy896:
-	yych = *++YYCURSOR;
-	if (yych == 's') goto yy907;
-	goto yy895;
-yy897:
-	yych = *++YYCURSOR;
-	if (yych == 'v') goto yy908;
-	goto yy895;
+#line 4097 "bootstrap/src/options/parse_opts.cc"
 yy898:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy909;
-	goto yy895;
+	if (yych <= 0x00) goto yy910;
 yy899:
-	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy910;
-	goto yy895;
+	YYCURSOR = YYMARKER;
+	goto yy883;
 yy900:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy911;
-	goto yy895;
+	if (yych == 's') goto yy911;
+	goto yy899;
 yy901:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy912;
-	goto yy895;
+	if (yych == 'v') goto yy912;
+	goto yy899;
 yy902:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy913;
-	goto yy895;
+	if (yych <= 0x00) goto yy913;
+	goto yy899;
 yy903:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy914;
-	goto yy895;
+	if (yych == 'n') goto yy914;
+	goto yy899;
 yy904:
+	yych = *++YYCURSOR;
+	if (yych == 'a') goto yy915;
+	goto yy899;
+yy905:
+	yych = *++YYCURSOR;
+	if (yych == 't') goto yy916;
+	goto yy899;
+yy906:
+	yych = *++YYCURSOR;
+	if (yych == 's') goto yy917;
+	goto yy899;
+yy907:
+	yych = *++YYCURSOR;
+	if (yych == 'i') goto yy918;
+	goto yy899;
+yy908:
 	++YYCURSOR;
 #line 257 "src/options/parse_opts.re"
 	{ *lang = Lang::V;       goto opt; }
-#line 4124 "bootstrap/src/options/parse_opts.cc"
-yy905:
+#line 4140 "bootstrap/src/options/parse_opts.cc"
+yy909:
 	yych = *++YYCURSOR;
-	if (yych == 'g') goto yy915;
-	goto yy895;
-yy906:
+	if (yych == 'g') goto yy919;
+	goto yy899;
+yy910:
 	++YYCURSOR;
 #line 249 "src/options/parse_opts.re"
 	{ *lang = Lang::GO;      goto opt; }
-#line 4133 "bootstrap/src/options/parse_opts.cc"
-yy907:
+#line 4149 "bootstrap/src/options/parse_opts.cc"
+yy911:
 	yych = *++YYCURSOR;
-	if (yych == 'k') goto yy916;
-	goto yy895;
-yy908:
+	if (yych == 'k') goto yy920;
+	goto yy899;
+yy912:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy917;
-	goto yy895;
-yy909:
+	if (yych == 'a') goto yy921;
+	goto yy899;
+yy913:
 	++YYCURSOR;
 #line 252 "src/options/parse_opts.re"
 	{ *lang = Lang::JS;      goto opt; }
-#line 4146 "bootstrap/src/options/parse_opts.cc"
-yy910:
-	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy918;
-	goto yy895;
-yy911:
-	yych = *++YYCURSOR;
-	if (yych == 'm') goto yy919;
-	goto yy895;
-yy912:
-	yych = *++YYCURSOR;
-	if (yych == 'h') goto yy920;
-	goto yy895;
-yy913:
-	yych = *++YYCURSOR;
-	if (yych == 't') goto yy921;
-	goto yy895;
+#line 4162 "bootstrap/src/options/parse_opts.cc"
 yy914:
 	yych = *++YYCURSOR;
-	if (yych == 'f') goto yy922;
-	goto yy895;
+	if (yych == 'e') goto yy922;
+	goto yy899;
 yy915:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy923;
-	goto yy895;
+	if (yych == 'm') goto yy923;
+	goto yy899;
 yy916:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy924;
-	goto yy895;
+	if (yych == 'h') goto yy924;
+	goto yy899;
 yy917:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy925;
-	goto yy895;
+	if (yych == 't') goto yy925;
+	goto yy899;
 yy918:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy926;
-	goto yy895;
+	if (yych == 'f') goto yy926;
+	goto yy899;
 yy919:
 	yych = *++YYCURSOR;
-	if (yych == 'l') goto yy927;
-	goto yy895;
+	if (yych <= 0x00) goto yy927;
+	goto yy899;
 yy920:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy928;
-	goto yy895;
+	if (yych == 'e') goto yy928;
+	goto yy899;
 yy921:
 	yych = *++YYCURSOR;
 	if (yych <= 0x00) goto yy929;
-	goto yy895;
+	goto yy899;
 yy922:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy930;
-	goto yy895;
+	if (yych <= 0x00) goto yy930;
+	goto yy899;
 yy923:
+	yych = *++YYCURSOR;
+	if (yych == 'l') goto yy931;
+	goto yy899;
+yy924:
+	yych = *++YYCURSOR;
+	if (yych == 'o') goto yy932;
+	goto yy899;
+yy925:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy933;
+	goto yy899;
+yy926:
+	yych = *++YYCURSOR;
+	if (yych == 't') goto yy934;
+	goto yy899;
+yy927:
 	++YYCURSOR;
 #line 258 "src/options/parse_opts.re"
 	{ *lang = Lang::ZIG;     goto opt; }
-#line 4203 "bootstrap/src/options/parse_opts.cc"
-yy924:
+#line 4219 "bootstrap/src/options/parse_opts.cc"
+yy928:
 	yych = *++YYCURSOR;
-	if (yych == 'l') goto yy931;
-	goto yy895;
-yy925:
+	if (yych == 'l') goto yy935;
+	goto yy899;
+yy929:
 	++YYCURSOR;
 #line 251 "src/options/parse_opts.re"
 	{ *lang = Lang::JAVA;    goto opt; }
-#line 4212 "bootstrap/src/options/parse_opts.cc"
-yy926:
+#line 4228 "bootstrap/src/options/parse_opts.cc"
+yy930:
 	++YYCURSOR;
 #line 259 "src/options/parse_opts.re"
 	{ *lang = Lang::NONE;    goto opt; }
-#line 4217 "bootstrap/src/options/parse_opts.cc"
-yy927:
+#line 4233 "bootstrap/src/options/parse_opts.cc"
+yy931:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy932;
-	goto yy895;
-yy928:
+	if (yych <= 0x00) goto yy936;
+	goto yy899;
+yy932:
 	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy933;
-	goto yy895;
-yy929:
+	if (yych == 'n') goto yy937;
+	goto yy899;
+yy933:
 	++YYCURSOR;
 #line 255 "src/options/parse_opts.re"
 	{ *lang = Lang::RUST;    goto opt; }
-#line 4230 "bootstrap/src/options/parse_opts.cc"
-yy930:
+#line 4246 "bootstrap/src/options/parse_opts.cc"
+yy934:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy934;
-	goto yy895;
-yy931:
+	if (yych <= 0x00) goto yy938;
+	goto yy899;
+yy935:
 	yych = *++YYCURSOR;
-	if (yych == 'l') goto yy935;
-	goto yy895;
-yy932:
+	if (yych == 'l') goto yy939;
+	goto yy899;
+yy936:
 	++YYCURSOR;
 #line 253 "src/options/parse_opts.re"
 	{ *lang = Lang::OCAML;   goto opt; }
-#line 4243 "bootstrap/src/options/parse_opts.cc"
-yy933:
+#line 4259 "bootstrap/src/options/parse_opts.cc"
+yy937:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy936;
-	goto yy895;
-yy934:
+	if (yych <= 0x00) goto yy940;
+	goto yy899;
+yy938:
 	++YYCURSOR;
 #line 256 "src/options/parse_opts.re"
 	{ *lang = Lang::SWIFT;   goto opt; }
-#line 4252 "bootstrap/src/options/parse_opts.cc"
-yy935:
+#line 4268 "bootstrap/src/options/parse_opts.cc"
+yy939:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy937;
-	goto yy895;
-yy936:
+	if (yych <= 0x00) goto yy941;
+	goto yy899;
+yy940:
 	++YYCURSOR;
 #line 254 "src/options/parse_opts.re"
 	{ *lang = Lang::PYTHON;  goto opt; }
-#line 4261 "bootstrap/src/options/parse_opts.cc"
-yy937:
+#line 4277 "bootstrap/src/options/parse_opts.cc"
+yy941:
 	++YYCURSOR;
 #line 250 "src/options/parse_opts.re"
 	{ *lang = Lang::HASKELL; goto opt; }
-#line 4266 "bootstrap/src/options/parse_opts.cc"
+#line 4282 "bootstrap/src/options/parse_opts.cc"
 }
 #line 260 "src/options/parse_opts.re"
 
 
 opt_output: 
-#line 4272 "bootstrap/src/options/parse_opts.cc"
+#line 4288 "bootstrap/src/options/parse_opts.cc"
 {
 	char yych;
 	static const unsigned char yybm[256] = {
@@ -4306,26 +4322,26 @@ opt_output:
 		128, 128, 128, 128, 128, 128, 128, 128
 	};
 	yych = *YYCURSOR;
-	if (yych <= 0x00) goto yy939;
-	if (yych != '-') goto yy940;
-yy939:
+	if (yych <= 0x00) goto yy943;
+	if (yych != '-') goto yy944;
+yy943:
 	++YYCURSOR;
 #line 263 "src/options/parse_opts.re"
 	{ ERRARG("-o, --output", "filename", *argv); }
-#line 4316 "bootstrap/src/options/parse_opts.cc"
-yy940:
+#line 4332 "bootstrap/src/options/parse_opts.cc"
+yy944:
 	yych = *++YYCURSOR;
-	if (yybm[0+yych] & 128) goto yy940;
+	if (yybm[0+yych] & 128) goto yy944;
 	++YYCURSOR;
 #line 264 "src/options/parse_opts.re"
 	{ global.set_output_file(*argv); goto opt; }
-#line 4323 "bootstrap/src/options/parse_opts.cc"
+#line 4339 "bootstrap/src/options/parse_opts.cc"
 }
 #line 265 "src/options/parse_opts.re"
 
 
 opt_header: 
-#line 4329 "bootstrap/src/options/parse_opts.cc"
+#line 4345 "bootstrap/src/options/parse_opts.cc"
 {
 	char yych;
 	static const unsigned char yybm[256] = {
@@ -4363,26 +4379,26 @@ opt_header:
 		128, 128, 128, 128, 128, 128, 128, 128
 	};
 	yych = *YYCURSOR;
-	if (yych <= 0x00) goto yy942;
-	if (yych != '-') goto yy943;
-yy942:
+	if (yych <= 0x00) goto yy946;
+	if (yych != '-') goto yy947;
+yy946:
 	++YYCURSOR;
 #line 268 "src/options/parse_opts.re"
 	{ ERRARG("-t, --header, --type-header", "filename", *argv); }
-#line 4373 "bootstrap/src/options/parse_opts.cc"
-yy943:
+#line 4389 "bootstrap/src/options/parse_opts.cc"
+yy947:
 	yych = *++YYCURSOR;
-	if (yybm[0+yych] & 128) goto yy943;
+	if (yybm[0+yych] & 128) goto yy947;
 	++YYCURSOR;
 #line 269 "src/options/parse_opts.re"
 	{ opts.set_header_file(*argv); goto opt; }
-#line 4380 "bootstrap/src/options/parse_opts.cc"
+#line 4396 "bootstrap/src/options/parse_opts.cc"
 }
 #line 270 "src/options/parse_opts.re"
 
 
 opt_depfile: 
-#line 4386 "bootstrap/src/options/parse_opts.cc"
+#line 4402 "bootstrap/src/options/parse_opts.cc"
 {
 	char yych;
 	static const unsigned char yybm[256] = {
@@ -4420,26 +4436,26 @@ opt_depfile:
 		128, 128, 128, 128, 128, 128, 128, 128
 	};
 	yych = *YYCURSOR;
-	if (yych <= 0x00) goto yy945;
-	if (yych != '-') goto yy946;
-yy945:
+	if (yych <= 0x00) goto yy949;
+	if (yych != '-') goto yy950;
+yy949:
 	++YYCURSOR;
 #line 273 "src/options/parse_opts.re"
 	{ ERRARG("--depfile", "filename", *argv); }
-#line 4430 "bootstrap/src/options/parse_opts.cc"
-yy946:
+#line 4446 "bootstrap/src/options/parse_opts.cc"
+yy950:
 	yych = *++YYCURSOR;
-	if (yybm[0+yych] & 128) goto yy946;
+	if (yybm[0+yych] & 128) goto yy950;
 	++YYCURSOR;
 #line 274 "src/options/parse_opts.re"
 	{ global.set_dep_file(*argv); goto opt; }
-#line 4437 "bootstrap/src/options/parse_opts.cc"
+#line 4453 "bootstrap/src/options/parse_opts.cc"
 }
 #line 275 "src/options/parse_opts.re"
 
 
 opt_syntax: 
-#line 4443 "bootstrap/src/options/parse_opts.cc"
+#line 4459 "bootstrap/src/options/parse_opts.cc"
 {
 	char yych;
 	static const unsigned char yybm[256] = {
@@ -4477,26 +4493,26 @@ opt_syntax:
 		128, 128, 128, 128, 128, 128, 128, 128
 	};
 	yych = *YYCURSOR;
-	if (yych <= 0x00) goto yy948;
-	if (yych != '-') goto yy949;
-yy948:
+	if (yych <= 0x00) goto yy952;
+	if (yych != '-') goto yy953;
+yy952:
 	++YYCURSOR;
 #line 278 "src/options/parse_opts.re"
 	{ ERRARG("--syntax", "filename", *argv); }
-#line 4487 "bootstrap/src/options/parse_opts.cc"
-yy949:
+#line 4503 "bootstrap/src/options/parse_opts.cc"
+yy953:
 	yych = *++YYCURSOR;
-	if (yybm[0+yych] & 128) goto yy949;
+	if (yybm[0+yych] & 128) goto yy953;
 	++YYCURSOR;
 #line 279 "src/options/parse_opts.re"
 	{ global.set_syntax_file(*argv); goto opt; }
-#line 4494 "bootstrap/src/options/parse_opts.cc"
+#line 4510 "bootstrap/src/options/parse_opts.cc"
 }
 #line 280 "src/options/parse_opts.re"
 
 
 opt_incpath: 
-#line 4500 "bootstrap/src/options/parse_opts.cc"
+#line 4516 "bootstrap/src/options/parse_opts.cc"
 {
 	char yych;
 	static const unsigned char yybm[256] = {
@@ -4534,752 +4550,752 @@ opt_incpath:
 		128, 128, 128, 128, 128, 128, 128, 128
 	};
 	yych = *YYCURSOR;
-	if (yych <= 0x00) goto yy951;
-	if (yych != '-') goto yy952;
-yy951:
+	if (yych <= 0x00) goto yy955;
+	if (yych != '-') goto yy956;
+yy955:
 	++YYCURSOR;
 #line 283 "src/options/parse_opts.re"
 	{ ERRARG("-I", "filename", *argv); }
-#line 4544 "bootstrap/src/options/parse_opts.cc"
-yy952:
+#line 4560 "bootstrap/src/options/parse_opts.cc"
+yy956:
 	yych = *++YYCURSOR;
-	if (yybm[0+yych] & 128) goto yy952;
+	if (yybm[0+yych] & 128) goto yy956;
 	++YYCURSOR;
 #line 285 "src/options/parse_opts.re"
 	{ const_cast<std::vector<std::string>&>(global.include_paths).push_back(*argv); goto opt; }
-#line 4551 "bootstrap/src/options/parse_opts.cc"
+#line 4567 "bootstrap/src/options/parse_opts.cc"
 }
 #line 286 "src/options/parse_opts.re"
 
 
 opt_encoding_policy: 
-#line 4557 "bootstrap/src/options/parse_opts.cc"
+#line 4573 "bootstrap/src/options/parse_opts.cc"
 {
 	char yych;
 	yych = *YYCURSOR;
 	if (yych <= 'h') {
-		if (yych == 'f') goto yy955;
+		if (yych == 'f') goto yy959;
 	} else {
-		if (yych <= 'i') goto yy956;
-		if (yych == 's') goto yy957;
+		if (yych <= 'i') goto yy960;
+		if (yych == 's') goto yy961;
 	}
 	++YYCURSOR;
-yy954:
+yy958:
 #line 289 "src/options/parse_opts.re"
 	{ ERRARG("--encoding-policy", "ignore | substitute | fail", *argv); }
-#line 4571 "bootstrap/src/options/parse_opts.cc"
-yy955:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'a') goto yy958;
-	goto yy954;
-yy956:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'g') goto yy960;
-	goto yy954;
-yy957:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'u') goto yy961;
-	goto yy954;
-yy958:
-	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy962;
+#line 4587 "bootstrap/src/options/parse_opts.cc"
 yy959:
-	YYCURSOR = YYMARKER;
-	goto yy954;
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 'a') goto yy962;
+	goto yy958;
 yy960:
-	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy963;
-	goto yy959;
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 'g') goto yy964;
+	goto yy958;
 yy961:
-	yych = *++YYCURSOR;
-	if (yych == 'b') goto yy964;
-	goto yy959;
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 'u') goto yy965;
+	goto yy958;
 yy962:
 	yych = *++YYCURSOR;
-	if (yych == 'l') goto yy965;
-	goto yy959;
+	if (yych == 'i') goto yy966;
 yy963:
-	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy966;
-	goto yy959;
+	YYCURSOR = YYMARKER;
+	goto yy958;
 yy964:
 	yych = *++YYCURSOR;
-	if (yych == 's') goto yy967;
-	goto yy959;
+	if (yych == 'n') goto yy967;
+	goto yy963;
 yy965:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy968;
-	goto yy959;
+	if (yych == 'b') goto yy968;
+	goto yy963;
 yy966:
 	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy969;
-	goto yy959;
+	if (yych == 'l') goto yy969;
+	goto yy963;
 yy967:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy970;
-	goto yy959;
+	if (yych == 'o') goto yy970;
+	goto yy963;
 yy968:
+	yych = *++YYCURSOR;
+	if (yych == 's') goto yy971;
+	goto yy963;
+yy969:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy972;
+	goto yy963;
+yy970:
+	yych = *++YYCURSOR;
+	if (yych == 'r') goto yy973;
+	goto yy963;
+yy971:
+	yych = *++YYCURSOR;
+	if (yych == 't') goto yy974;
+	goto yy963;
+yy972:
 	++YYCURSOR;
 #line 292 "src/options/parse_opts.re"
 	{ opts.set_encoding_policy(Enc::Policy::FAIL);       goto opt; }
-#line 4626 "bootstrap/src/options/parse_opts.cc"
-yy969:
-	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy971;
-	goto yy959;
-yy970:
-	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy972;
-	goto yy959;
-yy971:
-	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy973;
-	goto yy959;
-yy972:
-	yych = *++YYCURSOR;
-	if (yych == 't') goto yy974;
-	goto yy959;
+#line 4642 "bootstrap/src/options/parse_opts.cc"
 yy973:
+	yych = *++YYCURSOR;
+	if (yych == 'e') goto yy975;
+	goto yy963;
+yy974:
+	yych = *++YYCURSOR;
+	if (yych == 'i') goto yy976;
+	goto yy963;
+yy975:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy977;
+	goto yy963;
+yy976:
+	yych = *++YYCURSOR;
+	if (yych == 't') goto yy978;
+	goto yy963;
+yy977:
 	++YYCURSOR;
 #line 290 "src/options/parse_opts.re"
 	{ opts.set_encoding_policy(Enc::Policy::IGNORE);     goto opt; }
-#line 4647 "bootstrap/src/options/parse_opts.cc"
-yy974:
+#line 4663 "bootstrap/src/options/parse_opts.cc"
+yy978:
 	yych = *++YYCURSOR;
-	if (yych != 'u') goto yy959;
+	if (yych != 'u') goto yy963;
 	yych = *++YYCURSOR;
-	if (yych != 't') goto yy959;
+	if (yych != 't') goto yy963;
 	yych = *++YYCURSOR;
-	if (yych != 'e') goto yy959;
+	if (yych != 'e') goto yy963;
 	yych = *++YYCURSOR;
-	if (yych >= 0x01) goto yy959;
+	if (yych >= 0x01) goto yy963;
 	++YYCURSOR;
 #line 291 "src/options/parse_opts.re"
 	{ opts.set_encoding_policy(Enc::Policy::SUBSTITUTE); goto opt; }
-#line 4660 "bootstrap/src/options/parse_opts.cc"
+#line 4676 "bootstrap/src/options/parse_opts.cc"
 }
 #line 293 "src/options/parse_opts.re"
 
 
 opt_input: 
-#line 4666 "bootstrap/src/options/parse_opts.cc"
+#line 4682 "bootstrap/src/options/parse_opts.cc"
 {
 	char yych;
 	yych = *YYCURSOR;
 	switch (yych) {
-		case 'c': goto yy978;
-		case 'd': goto yy979;
-		case 'g': goto yy980;
-		case 'r': goto yy981;
-		case 's': goto yy982;
-		default: goto yy976;
+		case 'c': goto yy982;
+		case 'd': goto yy983;
+		case 'g': goto yy984;
+		case 'r': goto yy985;
+		case 's': goto yy986;
+		default: goto yy980;
 	}
-yy976:
+yy980:
 	++YYCURSOR;
-yy977:
+yy981:
 #line 296 "src/options/parse_opts.re"
 	{ ERRARG("--api, --input", "simple | generic | record", *argv); }
-#line 4683 "bootstrap/src/options/parse_opts.cc"
-yy978:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'u') goto yy983;
-	goto yy977;
-yy979:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'e') goto yy985;
-	goto yy977;
-yy980:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'e') goto yy986;
-	goto yy977;
-yy981:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'e') goto yy987;
-	goto yy977;
+#line 4699 "bootstrap/src/options/parse_opts.cc"
 yy982:
 	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'i') goto yy988;
-	goto yy977;
+	if (yych == 'u') goto yy987;
+	goto yy981;
 yy983:
-	yych = *++YYCURSOR;
-	if (yych == 's') goto yy989;
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 'e') goto yy989;
+	goto yy981;
 yy984:
-	YYCURSOR = YYMARKER;
-	goto yy977;
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 'e') goto yy990;
+	goto yy981;
 yy985:
-	yych = *++YYCURSOR;
-	if (yych == 'f') goto yy990;
-	goto yy984;
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 'e') goto yy991;
+	goto yy981;
 yy986:
-	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy991;
-	goto yy984;
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 'i') goto yy992;
+	goto yy981;
 yy987:
 	yych = *++YYCURSOR;
-	if (yych == 'c') goto yy992;
-	goto yy984;
+	if (yych == 's') goto yy993;
 yy988:
-	yych = *++YYCURSOR;
-	if (yych == 'm') goto yy993;
-	goto yy984;
+	YYCURSOR = YYMARKER;
+	goto yy981;
 yy989:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy994;
-	goto yy984;
+	if (yych == 'f') goto yy994;
+	goto yy988;
 yy990:
 	yych = *++YYCURSOR;
-	if (yych == 'a') goto yy995;
-	goto yy984;
+	if (yych == 'n') goto yy995;
+	goto yy988;
 yy991:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy996;
-	goto yy984;
+	if (yych == 'c') goto yy996;
+	goto yy988;
 yy992:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy997;
-	goto yy984;
+	if (yych == 'm') goto yy997;
+	goto yy988;
 yy993:
 	yych = *++YYCURSOR;
-	if (yych == 'p') goto yy998;
-	goto yy984;
+	if (yych == 't') goto yy998;
+	goto yy988;
 yy994:
 	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy999;
-	goto yy984;
+	if (yych == 'a') goto yy999;
+	goto yy988;
 yy995:
 	yych = *++YYCURSOR;
-	if (yych == 'u') goto yy1000;
-	goto yy984;
+	if (yych == 'e') goto yy1000;
+	goto yy988;
 yy996:
 	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy1001;
-	goto yy984;
+	if (yych == 'o') goto yy1001;
+	goto yy988;
 yy997:
 	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy1002;
-	goto yy984;
+	if (yych == 'p') goto yy1002;
+	goto yy988;
 yy998:
 	yych = *++YYCURSOR;
-	if (yych == 'l') goto yy1003;
-	goto yy984;
+	if (yych == 'o') goto yy1003;
+	goto yy988;
 yy999:
 	yych = *++YYCURSOR;
-	if (yych == 'm') goto yy1004;
-	goto yy984;
+	if (yych == 'u') goto yy1004;
+	goto yy988;
 yy1000:
 	yych = *++YYCURSOR;
-	if (yych == 'l') goto yy1005;
-	goto yy984;
+	if (yych == 'r') goto yy1005;
+	goto yy988;
 yy1001:
 	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy1006;
-	goto yy984;
+	if (yych == 'r') goto yy1006;
+	goto yy988;
 yy1002:
 	yych = *++YYCURSOR;
-	if (yych == 'd') goto yy1007;
-	goto yy984;
+	if (yych == 'l') goto yy1007;
+	goto yy988;
 yy1003:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy1008;
-	goto yy984;
+	if (yych == 'm') goto yy1008;
+	goto yy988;
 yy1004:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy1009;
-	goto yy984;
+	if (yych == 'l') goto yy1009;
+	goto yy988;
 yy1005:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy1008;
-	goto yy984;
+	if (yych == 'i') goto yy1010;
+	goto yy988;
 yy1006:
 	yych = *++YYCURSOR;
-	if (yych == 'c') goto yy1004;
-	goto yy984;
+	if (yych == 'd') goto yy1011;
+	goto yy988;
 yy1007:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy1010;
-	goto yy984;
+	if (yych == 'e') goto yy1012;
+	goto yy988;
 yy1008:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy1011;
-	goto yy984;
+	if (yych <= 0x00) goto yy1013;
+	goto yy988;
 yy1009:
+	yych = *++YYCURSOR;
+	if (yych == 't') goto yy1012;
+	goto yy988;
+yy1010:
+	yych = *++YYCURSOR;
+	if (yych == 'c') goto yy1008;
+	goto yy988;
+yy1011:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy1014;
+	goto yy988;
+yy1012:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy1015;
+	goto yy988;
+yy1013:
 	++YYCURSOR;
 #line 298 "src/options/parse_opts.re"
 	{ opts.set_api(Api::GENERIC); goto opt; }
-#line 4810 "bootstrap/src/options/parse_opts.cc"
-yy1010:
+#line 4826 "bootstrap/src/options/parse_opts.cc"
+yy1014:
 	++YYCURSOR;
 #line 299 "src/options/parse_opts.re"
 	{ opts.set_api(Api::RECORD);  goto opt; }
-#line 4815 "bootstrap/src/options/parse_opts.cc"
-yy1011:
+#line 4831 "bootstrap/src/options/parse_opts.cc"
+yy1015:
 	++YYCURSOR;
 #line 297 "src/options/parse_opts.re"
 	{ opts.set_api(Api::SIMPLE);  goto opt; }
-#line 4820 "bootstrap/src/options/parse_opts.cc"
+#line 4836 "bootstrap/src/options/parse_opts.cc"
 }
 #line 300 "src/options/parse_opts.re"
 
 
 opt_empty_class: 
-#line 4826 "bootstrap/src/options/parse_opts.cc"
+#line 4842 "bootstrap/src/options/parse_opts.cc"
 {
 	char yych;
 	yych = *YYCURSOR;
-	if (yych == 'e') goto yy1014;
-	if (yych == 'm') goto yy1015;
+	if (yych == 'e') goto yy1018;
+	if (yych == 'm') goto yy1019;
 	++YYCURSOR;
-yy1013:
+yy1017:
 #line 303 "src/options/parse_opts.re"
 	{ ERRARG("--empty-class", "match-empty | match-none | error", *argv); }
-#line 4836 "bootstrap/src/options/parse_opts.cc"
-yy1014:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'r') goto yy1016;
-	goto yy1013;
-yy1015:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'a') goto yy1018;
-	goto yy1013;
-yy1016:
-	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy1019;
-yy1017:
-	YYCURSOR = YYMARKER;
-	goto yy1013;
+#line 4852 "bootstrap/src/options/parse_opts.cc"
 yy1018:
-	yych = *++YYCURSOR;
-	if (yych == 't') goto yy1020;
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 'r') goto yy1020;
 	goto yy1017;
 yy1019:
-	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy1021;
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 'a') goto yy1022;
 	goto yy1017;
 yy1020:
 	yych = *++YYCURSOR;
-	if (yych == 'c') goto yy1022;
-	goto yy1017;
-yy1021:
-	yych = *++YYCURSOR;
 	if (yych == 'r') goto yy1023;
+yy1021:
+	YYCURSOR = YYMARKER;
 	goto yy1017;
 yy1022:
 	yych = *++YYCURSOR;
-	if (yych == 'h') goto yy1024;
-	goto yy1017;
+	if (yych == 't') goto yy1024;
+	goto yy1021;
 yy1023:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy1025;
-	goto yy1017;
+	if (yych == 'o') goto yy1025;
+	goto yy1021;
 yy1024:
 	yych = *++YYCURSOR;
-	if (yych == '-') goto yy1026;
-	goto yy1017;
+	if (yych == 'c') goto yy1026;
+	goto yy1021;
 yy1025:
+	yych = *++YYCURSOR;
+	if (yych == 'r') goto yy1027;
+	goto yy1021;
+yy1026:
+	yych = *++YYCURSOR;
+	if (yych == 'h') goto yy1028;
+	goto yy1021;
+yy1027:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy1029;
+	goto yy1021;
+yy1028:
+	yych = *++YYCURSOR;
+	if (yych == '-') goto yy1030;
+	goto yy1021;
+yy1029:
 	++YYCURSOR;
 #line 306 "src/options/parse_opts.re"
 	{ opts.set_empty_class(EmptyClass::ERROR);       goto opt; }
-#line 4883 "bootstrap/src/options/parse_opts.cc"
-yy1026:
-	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy1027;
-	if (yych == 'n') goto yy1028;
-	goto yy1017;
-yy1027:
-	yych = *++YYCURSOR;
-	if (yych == 'm') goto yy1029;
-	goto yy1017;
-yy1028:
-	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy1030;
-	goto yy1017;
-yy1029:
-	yych = *++YYCURSOR;
-	if (yych == 'p') goto yy1031;
-	goto yy1017;
+#line 4899 "bootstrap/src/options/parse_opts.cc"
 yy1030:
 	yych = *++YYCURSOR;
+	if (yych == 'e') goto yy1031;
 	if (yych == 'n') goto yy1032;
-	goto yy1017;
+	goto yy1021;
 yy1031:
 	yych = *++YYCURSOR;
-	if (yych == 't') goto yy1033;
-	goto yy1017;
+	if (yych == 'm') goto yy1033;
+	goto yy1021;
 yy1032:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy1034;
-	goto yy1017;
+	if (yych == 'o') goto yy1034;
+	goto yy1021;
 yy1033:
 	yych = *++YYCURSOR;
-	if (yych == 'y') goto yy1035;
-	goto yy1017;
+	if (yych == 'p') goto yy1035;
+	goto yy1021;
 yy1034:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy1036;
-	goto yy1017;
+	if (yych == 'n') goto yy1036;
+	goto yy1021;
 yy1035:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy1037;
-	goto yy1017;
+	if (yych == 't') goto yy1037;
+	goto yy1021;
 yy1036:
+	yych = *++YYCURSOR;
+	if (yych == 'e') goto yy1038;
+	goto yy1021;
+yy1037:
+	yych = *++YYCURSOR;
+	if (yych == 'y') goto yy1039;
+	goto yy1021;
+yy1038:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy1040;
+	goto yy1021;
+yy1039:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy1041;
+	goto yy1021;
+yy1040:
 	++YYCURSOR;
 #line 305 "src/options/parse_opts.re"
 	{ opts.set_empty_class(EmptyClass::MATCH_NONE);  goto opt; }
-#line 4929 "bootstrap/src/options/parse_opts.cc"
-yy1037:
+#line 4945 "bootstrap/src/options/parse_opts.cc"
+yy1041:
 	++YYCURSOR;
 #line 304 "src/options/parse_opts.re"
 	{ opts.set_empty_class(EmptyClass::MATCH_EMPTY); goto opt; }
-#line 4934 "bootstrap/src/options/parse_opts.cc"
+#line 4950 "bootstrap/src/options/parse_opts.cc"
 }
 #line 307 "src/options/parse_opts.re"
 
 
 opt_location_format: 
-#line 4940 "bootstrap/src/options/parse_opts.cc"
+#line 4956 "bootstrap/src/options/parse_opts.cc"
 {
 	char yych;
 	yych = *YYCURSOR;
-	if (yych == 'g') goto yy1040;
-	if (yych == 'm') goto yy1041;
+	if (yych == 'g') goto yy1044;
+	if (yych == 'm') goto yy1045;
 	++YYCURSOR;
-yy1039:
+yy1043:
 #line 310 "src/options/parse_opts.re"
 	{ ERRARG("--location-format", "gnu | msvc", *argv); }
-#line 4950 "bootstrap/src/options/parse_opts.cc"
-yy1040:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'n') goto yy1042;
-	goto yy1039;
-yy1041:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 's') goto yy1044;
-	goto yy1039;
-yy1042:
-	yych = *++YYCURSOR;
-	if (yych == 'u') goto yy1045;
-yy1043:
-	YYCURSOR = YYMARKER;
-	goto yy1039;
+#line 4966 "bootstrap/src/options/parse_opts.cc"
 yy1044:
-	yych = *++YYCURSOR;
-	if (yych == 'v') goto yy1046;
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 'n') goto yy1046;
 	goto yy1043;
 yy1045:
-	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy1047;
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 's') goto yy1048;
 	goto yy1043;
 yy1046:
 	yych = *++YYCURSOR;
-	if (yych == 'c') goto yy1048;
-	goto yy1043;
+	if (yych == 'u') goto yy1049;
 yy1047:
+	YYCURSOR = YYMARKER;
+	goto yy1043;
+yy1048:
+	yych = *++YYCURSOR;
+	if (yych == 'v') goto yy1050;
+	goto yy1047;
+yy1049:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy1051;
+	goto yy1047;
+yy1050:
+	yych = *++YYCURSOR;
+	if (yych == 'c') goto yy1052;
+	goto yy1047;
+yy1051:
 	++YYCURSOR;
 #line 311 "src/options/parse_opts.re"
 	{ msg.locfmt = LOCFMT_GNU;  goto opt; }
-#line 4981 "bootstrap/src/options/parse_opts.cc"
-yy1048:
+#line 4997 "bootstrap/src/options/parse_opts.cc"
+yy1052:
 	yych = *++YYCURSOR;
-	if (yych >= 0x01) goto yy1043;
+	if (yych >= 0x01) goto yy1047;
 	++YYCURSOR;
 #line 312 "src/options/parse_opts.re"
 	{ msg.locfmt = LOCFMT_MSVC; goto opt; }
-#line 4988 "bootstrap/src/options/parse_opts.cc"
+#line 5004 "bootstrap/src/options/parse_opts.cc"
 }
 #line 313 "src/options/parse_opts.re"
 
 
 opt_input_encoding: 
-#line 4994 "bootstrap/src/options/parse_opts.cc"
+#line 5010 "bootstrap/src/options/parse_opts.cc"
 {
 	char yych;
 	yych = *YYCURSOR;
-	if (yych == 'a') goto yy1051;
-	if (yych == 'u') goto yy1052;
+	if (yych == 'a') goto yy1055;
+	if (yych == 'u') goto yy1056;
 	++YYCURSOR;
-yy1050:
+yy1054:
 #line 316 "src/options/parse_opts.re"
 	{ ERRARG("--input-encoding", "ascii | utf8 ", *argv); }
-#line 5004 "bootstrap/src/options/parse_opts.cc"
-yy1051:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 's') goto yy1053;
-	goto yy1050;
-yy1052:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 't') goto yy1055;
-	goto yy1050;
-yy1053:
-	yych = *++YYCURSOR;
-	if (yych == 'c') goto yy1056;
-yy1054:
-	YYCURSOR = YYMARKER;
-	goto yy1050;
+#line 5020 "bootstrap/src/options/parse_opts.cc"
 yy1055:
-	yych = *++YYCURSOR;
-	if (yych == 'f') goto yy1057;
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 's') goto yy1057;
 	goto yy1054;
 yy1056:
-	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy1058;
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 't') goto yy1059;
 	goto yy1054;
 yy1057:
 	yych = *++YYCURSOR;
-	if (yych == '8') goto yy1059;
-	goto yy1054;
+	if (yych == 'c') goto yy1060;
 yy1058:
-	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy1060;
+	YYCURSOR = YYMARKER;
 	goto yy1054;
 yy1059:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy1061;
-	goto yy1054;
+	if (yych == 'f') goto yy1061;
+	goto yy1058;
 yy1060:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy1062;
-	goto yy1054;
+	if (yych == 'i') goto yy1062;
+	goto yy1058;
 yy1061:
+	yych = *++YYCURSOR;
+	if (yych == '8') goto yy1063;
+	goto yy1058;
+yy1062:
+	yych = *++YYCURSOR;
+	if (yych == 'i') goto yy1064;
+	goto yy1058;
+yy1063:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy1065;
+	goto yy1058;
+yy1064:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy1066;
+	goto yy1058;
+yy1065:
 	++YYCURSOR;
 #line 318 "src/options/parse_opts.re"
 	{ global.set_input_encoding(Enc::Type::UTF8);  goto opt; }
-#line 5047 "bootstrap/src/options/parse_opts.cc"
-yy1062:
+#line 5063 "bootstrap/src/options/parse_opts.cc"
+yy1066:
 	++YYCURSOR;
 #line 317 "src/options/parse_opts.re"
 	{ global.set_input_encoding(Enc::Type::ASCII); goto opt; }
-#line 5052 "bootstrap/src/options/parse_opts.cc"
+#line 5068 "bootstrap/src/options/parse_opts.cc"
 }
 #line 319 "src/options/parse_opts.re"
 
 
 opt_minimization: 
-#line 5058 "bootstrap/src/options/parse_opts.cc"
+#line 5074 "bootstrap/src/options/parse_opts.cc"
 {
 	char yych;
 	yych = *YYCURSOR;
-	if (yych == 'm') goto yy1065;
-	if (yych == 't') goto yy1066;
+	if (yych == 'm') goto yy1069;
+	if (yych == 't') goto yy1070;
 	++YYCURSOR;
-yy1064:
+yy1068:
 #line 322 "src/options/parse_opts.re"
 	{ ERRARG("--dfa-minimization", "table | moore", *argv); }
-#line 5068 "bootstrap/src/options/parse_opts.cc"
-yy1065:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'o') goto yy1067;
-	goto yy1064;
-yy1066:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'a') goto yy1069;
-	goto yy1064;
-yy1067:
-	yych = *++YYCURSOR;
-	if (yych == 'o') goto yy1070;
-yy1068:
-	YYCURSOR = YYMARKER;
-	goto yy1064;
+#line 5084 "bootstrap/src/options/parse_opts.cc"
 yy1069:
-	yych = *++YYCURSOR;
-	if (yych == 'b') goto yy1071;
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 'o') goto yy1071;
 	goto yy1068;
 yy1070:
-	yych = *++YYCURSOR;
-	if (yych == 'r') goto yy1072;
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 'a') goto yy1073;
 	goto yy1068;
 yy1071:
 	yych = *++YYCURSOR;
-	if (yych == 'l') goto yy1073;
-	goto yy1068;
+	if (yych == 'o') goto yy1074;
 yy1072:
-	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy1074;
+	YYCURSOR = YYMARKER;
 	goto yy1068;
 yy1073:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy1075;
-	goto yy1068;
+	if (yych == 'b') goto yy1075;
+	goto yy1072;
 yy1074:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy1076;
-	goto yy1068;
+	if (yych == 'r') goto yy1076;
+	goto yy1072;
 yy1075:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy1077;
-	goto yy1068;
+	if (yych == 'l') goto yy1077;
+	goto yy1072;
 yy1076:
+	yych = *++YYCURSOR;
+	if (yych == 'e') goto yy1078;
+	goto yy1072;
+yy1077:
+	yych = *++YYCURSOR;
+	if (yych == 'e') goto yy1079;
+	goto yy1072;
+yy1078:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy1080;
+	goto yy1072;
+yy1079:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy1081;
+	goto yy1072;
+yy1080:
 	++YYCURSOR;
 #line 324 "src/options/parse_opts.re"
 	{ global.set_minimization(Minimization::MOORE); goto opt; }
-#line 5115 "bootstrap/src/options/parse_opts.cc"
-yy1077:
+#line 5131 "bootstrap/src/options/parse_opts.cc"
+yy1081:
 	++YYCURSOR;
 #line 323 "src/options/parse_opts.re"
 	{ global.set_minimization(Minimization::TABLE); goto opt; }
-#line 5120 "bootstrap/src/options/parse_opts.cc"
+#line 5136 "bootstrap/src/options/parse_opts.cc"
 }
 #line 325 "src/options/parse_opts.re"
 
 
 opt_posix_prectable: 
-#line 5126 "bootstrap/src/options/parse_opts.cc"
+#line 5142 "bootstrap/src/options/parse_opts.cc"
 {
 	char yych;
 	yych = *YYCURSOR;
-	if (yych == 'c') goto yy1080;
-	if (yych == 'n') goto yy1081;
+	if (yych == 'c') goto yy1084;
+	if (yych == 'n') goto yy1085;
 	++YYCURSOR;
-yy1079:
+yy1083:
 #line 328 "src/options/parse_opts.re"
 	{ ERRARG("--posix-prectable", "naive | complex", *argv); }
-#line 5136 "bootstrap/src/options/parse_opts.cc"
-yy1080:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'o') goto yy1082;
-	goto yy1079;
-yy1081:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'a') goto yy1084;
-	goto yy1079;
-yy1082:
-	yych = *++YYCURSOR;
-	if (yych == 'm') goto yy1085;
-yy1083:
-	YYCURSOR = YYMARKER;
-	goto yy1079;
+#line 5152 "bootstrap/src/options/parse_opts.cc"
 yy1084:
-	yych = *++YYCURSOR;
-	if (yych == 'i') goto yy1086;
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 'o') goto yy1086;
 	goto yy1083;
 yy1085:
-	yych = *++YYCURSOR;
-	if (yych == 'p') goto yy1087;
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 'a') goto yy1088;
 	goto yy1083;
 yy1086:
 	yych = *++YYCURSOR;
-	if (yych == 'v') goto yy1088;
-	goto yy1083;
+	if (yych == 'm') goto yy1089;
 yy1087:
-	yych = *++YYCURSOR;
-	if (yych == 'l') goto yy1089;
+	YYCURSOR = YYMARKER;
 	goto yy1083;
 yy1088:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy1090;
-	goto yy1083;
+	if (yych == 'i') goto yy1090;
+	goto yy1087;
 yy1089:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy1091;
-	goto yy1083;
+	if (yych == 'p') goto yy1091;
+	goto yy1087;
 yy1090:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy1092;
-	goto yy1083;
+	if (yych == 'v') goto yy1092;
+	goto yy1087;
 yy1091:
 	yych = *++YYCURSOR;
-	if (yych == 'x') goto yy1093;
-	goto yy1083;
+	if (yych == 'l') goto yy1093;
+	goto yy1087;
 yy1092:
+	yych = *++YYCURSOR;
+	if (yych == 'e') goto yy1094;
+	goto yy1087;
+yy1093:
+	yych = *++YYCURSOR;
+	if (yych == 'e') goto yy1095;
+	goto yy1087;
+yy1094:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy1096;
+	goto yy1087;
+yy1095:
+	yych = *++YYCURSOR;
+	if (yych == 'x') goto yy1097;
+	goto yy1087;
+yy1096:
 	++YYCURSOR;
 #line 329 "src/options/parse_opts.re"
 	{ global.set_posix_prectable(PosixPrectable::NAIVE);   goto opt; }
-#line 5187 "bootstrap/src/options/parse_opts.cc"
-yy1093:
+#line 5203 "bootstrap/src/options/parse_opts.cc"
+yy1097:
 	yych = *++YYCURSOR;
-	if (yych >= 0x01) goto yy1083;
+	if (yych >= 0x01) goto yy1087;
 	++YYCURSOR;
 #line 330 "src/options/parse_opts.re"
 	{ global.set_posix_prectable(PosixPrectable::COMPLEX); goto opt; }
-#line 5194 "bootstrap/src/options/parse_opts.cc"
+#line 5210 "bootstrap/src/options/parse_opts.cc"
 }
 #line 331 "src/options/parse_opts.re"
 
 
 opt_fixed_tags: 
-#line 5200 "bootstrap/src/options/parse_opts.cc"
+#line 5216 "bootstrap/src/options/parse_opts.cc"
 {
 	char yych;
 	yych = *YYCURSOR;
 	if (yych <= 'm') {
-		if (yych == 'a') goto yy1096;
+		if (yych == 'a') goto yy1100;
 	} else {
-		if (yych <= 'n') goto yy1097;
-		if (yych == 't') goto yy1098;
+		if (yych <= 'n') goto yy1101;
+		if (yych == 't') goto yy1102;
 	}
 	++YYCURSOR;
-yy1095:
+yy1099:
 #line 334 "src/options/parse_opts.re"
 	{ ERRARG("--fixed-tags", "none | toplevel | all", *argv); }
-#line 5214 "bootstrap/src/options/parse_opts.cc"
-yy1096:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'l') goto yy1099;
-	goto yy1095;
-yy1097:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'o') goto yy1101;
-	goto yy1095;
-yy1098:
-	yych = *(YYMARKER = ++YYCURSOR);
-	if (yych == 'o') goto yy1102;
-	goto yy1095;
-yy1099:
-	yych = *++YYCURSOR;
-	if (yych == 'l') goto yy1103;
+#line 5230 "bootstrap/src/options/parse_opts.cc"
 yy1100:
-	YYCURSOR = YYMARKER;
-	goto yy1095;
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 'l') goto yy1103;
+	goto yy1099;
 yy1101:
-	yych = *++YYCURSOR;
-	if (yych == 'n') goto yy1104;
-	goto yy1100;
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 'o') goto yy1105;
+	goto yy1099;
 yy1102:
-	yych = *++YYCURSOR;
-	if (yych == 'p') goto yy1105;
-	goto yy1100;
+	yych = *(YYMARKER = ++YYCURSOR);
+	if (yych == 'o') goto yy1106;
+	goto yy1099;
 yy1103:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy1106;
-	goto yy1100;
+	if (yych == 'l') goto yy1107;
 yy1104:
-	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy1107;
-	goto yy1100;
+	YYCURSOR = YYMARKER;
+	goto yy1099;
 yy1105:
 	yych = *++YYCURSOR;
-	if (yych == 'l') goto yy1108;
-	goto yy1100;
+	if (yych == 'n') goto yy1108;
+	goto yy1104;
 yy1106:
+	yych = *++YYCURSOR;
+	if (yych == 'p') goto yy1109;
+	goto yy1104;
+yy1107:
+	yych = *++YYCURSOR;
+	if (yych <= 0x00) goto yy1110;
+	goto yy1104;
+yy1108:
+	yych = *++YYCURSOR;
+	if (yych == 'e') goto yy1111;
+	goto yy1104;
+yy1109:
+	yych = *++YYCURSOR;
+	if (yych == 'l') goto yy1112;
+	goto yy1104;
+yy1110:
 	++YYCURSOR;
 #line 337 "src/options/parse_opts.re"
 	{ global.set_fixed_tags(FixedTags::ALL);      goto opt; }
-#line 5257 "bootstrap/src/options/parse_opts.cc"
-yy1107:
+#line 5273 "bootstrap/src/options/parse_opts.cc"
+yy1111:
 	yych = *++YYCURSOR;
-	if (yych <= 0x00) goto yy1109;
-	goto yy1100;
-yy1108:
+	if (yych <= 0x00) goto yy1113;
+	goto yy1104;
+yy1112:
 	yych = *++YYCURSOR;
-	if (yych == 'e') goto yy1110;
-	goto yy1100;
-yy1109:
+	if (yych == 'e') goto yy1114;
+	goto yy1104;
+yy1113:
 	++YYCURSOR;
 #line 335 "src/options/parse_opts.re"
 	{ global.set_fixed_tags(FixedTags::NONE);     goto opt; }
-#line 5270 "bootstrap/src/options/parse_opts.cc"
-yy1110:
+#line 5286 "bootstrap/src/options/parse_opts.cc"
+yy1114:
 	yych = *++YYCURSOR;
-	if (yych != 'v') goto yy1100;
+	if (yych != 'v') goto yy1104;
 	yych = *++YYCURSOR;
-	if (yych != 'e') goto yy1100;
+	if (yych != 'e') goto yy1104;
 	yych = *++YYCURSOR;
-	if (yych != 'l') goto yy1100;
+	if (yych != 'l') goto yy1104;
 	yych = *++YYCURSOR;
-	if (yych >= 0x01) goto yy1100;
+	if (yych >= 0x01) goto yy1104;
 	++YYCURSOR;
 #line 336 "src/options/parse_opts.re"
 	{ global.set_fixed_tags(FixedTags::TOPLEVEL); goto opt; }
-#line 5283 "bootstrap/src/options/parse_opts.cc"
+#line 5299 "bootstrap/src/options/parse_opts.cc"
 }
 #line 338 "src/options/parse_opts.re"
 

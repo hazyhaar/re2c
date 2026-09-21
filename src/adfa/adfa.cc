@@ -519,7 +519,7 @@ const Span* mchar_progress(const State* s, uint32_t* ch) {
 } // anonymous namespace
 
 void Adfa::coalesce_multichar(const opt_t* opts) {
-    if (!opts->multi_char) return;
+    if (!opts->vectorize_linear) return;
     // Only one-byte code unit encodings can be read as raw bytes.
     if (opts->target != Target::CODE) return;
     if (opts->input_encoding != Enc::Type::ASCII) return;
@@ -530,7 +530,7 @@ void Adfa::coalesce_multichar(const opt_t* opts) {
         if (s->mchar_n != 0 || !mchar_chainable(s, /*head*/ true)) continue;
 
         // Extend the chain up to 8 characters, rejecting cycles.
-        State* path[8];
+        State* path[9];
         uint32_t path_len = 0;
         path[path_len++] = s;
 

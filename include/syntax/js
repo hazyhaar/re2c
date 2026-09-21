@@ -399,4 +399,7 @@ code:yytarget_filter = <undefined>;
 
 code:yypeekn = "YYPEEKN(" YYCURSOR ", " n ")";
 
-code:yyskipn = topindent "YYSKIPN(" YYCURSOR ", " n ");" nl;
+code:yyskipn = topindent (.api.generic
+    ? "YYSKIPN(" YYCURSOR ", " n ");"
+    : YYCURSOR " += " n ";"
+) nl;

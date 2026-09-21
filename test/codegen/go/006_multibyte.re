@@ -1,4 +1,4 @@
-//go:generate re2go $INPUT -o $OUTPUT -s --multi-char
+//go:generate re2go $INPUT -o $OUTPUT -s -i --vectorize-linear
 package main
 
 import "encoding/binary"
