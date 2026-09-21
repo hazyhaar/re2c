@@ -95,3 +95,18 @@ func BenchmarkSIMDLexer_Throughput(b *testing.B) {
 		}
 	}
 }
+
+func BenchmarkScalarLexer_Throughput(b *testing.B) {
+	rawChunk := strings.Repeat("Champ_Donnees_Pour_Benchmark_SIMD_1234567890_", 20)
+	payload := []byte("\"" + strings.Repeat(rawChunk, 1000) + "\"")
+	b.SetBytes(int64(len(payload)))
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		res := LexStringScalar(payload)
+		if res <= 0 {
+			b.Fatalf("Erreur de tokenisation")
+		}
+	}
+}
+

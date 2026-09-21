@@ -338,7 +338,7 @@ static bool simd_is_eligible(State* s, const opt_t* opts, bool tag_free, State**
     // Tags (positional or history) must be completely absent from the DFA: the vector loop
     // cannot observe or update them at intermediate positions.
     if (!tag_free) return false;
-    if (!opts->simd
+    if (!opts->vectorize_loops
             || opts->target != Target::CODE
             || opts->code_model != CodeModel::GOTO_LABEL
             || opts->eager_skip
@@ -366,7 +366,7 @@ static bool simd_is_eligible(State* s, const opt_t* opts, bool tag_free, State**
             ++nclass;
         }
     }
-    if (nclass == 0 || nclass > 4) return false;
+    if (nclass == 0 || nclass > 8) return false;
 
     *pbody = body;
     return true;

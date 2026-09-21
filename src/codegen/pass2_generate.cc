@@ -1130,17 +1130,17 @@ static void emit_rule(Output& output, CodeList* stmts, const Adfa& dfa, size_t r
     }
 }
 
-// Width (in bytes) of the vectorized fast-forward step used by the SIMD prelude.
-static constexpr uint32_t SIMD_VECTOR_SIZE = 32;
+// Width (in bytes) of the vectorized fast-forward step.
+static constexpr uint32_t VECTOR_SIZE = 32;
 
-// Generate a Go vector fast-forward loop for a base state with a reflexive character class.
+// Generate a vector fast-forward loop for a base state with a reflexive character class.
 // The loop skips whole blocks of input that stay within the class, then falls through to the
 // scalar dispatcher which handles the first byte outside of the class (or the tail shorter than
-// a full vector). Control transfer targets are ordinary Go fallthrough, so no extra labels are
+// a full vector). Control transfer targets are ordinary fallthrough, so no extra labels are
 // needed; labels of states reachable from the kernel are nonetheless marked used in the analyze
 // pass. The length guard is emitted through the generic `YYLESSTHAN` abstraction and does not
 // change `YYMAXFILL`.
-static void gen_simd(Output& output, const State* s, CodeList* stmts) {
+static void gen_vector_loop(Output& output, const State* s, CodeList* stmts) {
     if (!s->simd || s->simd_body == nullptr) return;
 
     const opt_t* opts = output.block().opts;
@@ -1148,43 +1148,33 @@ static void gen_simd(Output& output, const State* s, CodeList* stmts) {
     Scratchbuf& o = output.scratchbuf;
 
     // Collect the reflexive class as a list of inclusive ranges [lo, hi].
-    std::vector<std::pair<uint32_t, uint32_t>> ranges;
+    CodeVectorRanges* ranges = alc.alloct<CodeVectorRanges>(1);
+    ranges->head = nullptr;
+    CodeVectorRange** pnext = &ranges->head;
+
     const Span* span = s->simd_body->go.span;
     uint32_t ub = 0;
     for (uint32_t i = 0; i < s->simd_body->go.span_count; ++i) {
         if (span[i].to == s) {
-            ranges.emplace_back(ub, span[i].ub - 1);
+            CodeVectorRange* r = alc.alloct<CodeVectorRange>(1);
+            r->lo = ub;
+            r->hi = span[i].ub - 1;
+            r->next = nullptr;
+            *pnext = r;
+            pnext = &r->next;
         }
         ub = span[i].ub;
     }
-    DCHECK(!ranges.empty());
+    DCHECK(ranges->head != nullptr);
 
-    // Build the length guard via the generic abstraction (`YYLESSTHAN(32)`), not a hardcoded
-    // comparison against YYLIMIT.
-    GenLessThan callback(o.stream(), opts, SIMD_VECTOR_SIZE);
+    // Build the length guard via the generic abstraction (`YYLESSTHAN(VECTOR_SIZE + reserve)`),
+    // ensuring that after skipping VECTOR_SIZE bytes, at least `reserve` bytes remain in the
+    // buffer for the subsequent scalar peek without exceeding the buffer boundary.
+    const uint32_t reserve = static_cast<uint32_t>(std::max<size_t>(1, s->fill));
+    GenLessThan callback(o.stream(), opts, VECTOR_SIZE + reserve);
     const char* less_than = opts->gen_code_yylessthan(o, callback);
 
-    std::ostringstream code;
-    code << "\tfor !(" << less_than << ") {\n";
-    code << "\t\tyysimd0 := archsimd.LoadUint8x32("
-         << opts->api_input << "[" << opts->api_cursor << ":])\n";
-    code << "\t\tyysimd1 := yysimd0.GreaterEqual(archsimd.BroadcastUint8x32("
-         << ranges[0].first << "))\n";
-    code << "\t\tyysimd1 = yysimd1.And(yysimd0.LessEqual(archsimd.BroadcastUint8x32("
-         << ranges[0].second << ")))\n";
-    for (size_t i = 1; i < ranges.size(); ++i) {
-        code << "\t\tyysimd1 = yysimd1.Or(yysimd0.GreaterEqual(archsimd.BroadcastUint8x32("
-             << ranges[i].first << ")).And(yysimd0.LessEqual(archsimd.BroadcastUint8x32("
-             << ranges[i].second << "))))\n";
-    }
-    code << "\t\tif yysimd1.ToBits() != 0xFFFFFFFF {\n";
-    code << "\t\t\tbreak\n";
-    code << "\t\t}\n";
-    code << "\t\t" << opts->api_cursor << " += " << SIMD_VECTOR_SIZE << "\n";
-    code << "\t}\n";
-
-    const std::string text = code.str();
-    append(stmts, code_textraw(alc, copystr(text, alc)));
+    append(stmts, code_vector_loop(alc, VECTOR_SIZE, copystr(less_than, alc), "0xFFFFFFFF", ranges));
 }
 
 static void emit_state(
@@ -1252,7 +1242,7 @@ static void emit_state(
         gen_fill_and_label(output, tail, dfa, s);
         // Vectorized fast-forward runs after YYFILL (so that the input window is refilled) and
         // before the scalar peek.
-        gen_simd(output, s, tail);
+        gen_vector_loop(output, s, tail);
         gen_peek(alc, s, tail);
         if (is_start && dfa.custom_start_label && opts->debug) {
             append(tail, code_debug(alc, dfa.custom_start_label->index));

@@ -1,4 +1,4 @@
-//go:generate re2go --simd -i $INPUT -o $OUTPUT
+//go:generate re2go --vectorize-loops -i $INPUT -o $OUTPUT
 package main
 
 import (
@@ -18,7 +18,7 @@ func fill(need int) int { return 0 }
 
 func lexSimd() int {
 	/*!re2c
-	re2c:simd = 1;
+	re2c:vectorize:loops = 1;
 	re2c:api = simple;
 	re2c:YYCTYPE = byte;
 	re2c:YYCURSOR = cursor;
@@ -38,7 +38,7 @@ func lexSimd() int {
 
 func lexScalar() int {
 	/*!re2c
-	re2c:simd = 0;
+	re2c:vectorize:loops = 0;
 	re2c:api = simple;
 	re2c:YYCTYPE = byte;
 	re2c:YYCURSOR = cursor;

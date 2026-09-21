@@ -167,7 +167,7 @@ opt_long: /*!local:re2c
     "case-inverted"           end { opts.set_case_inverted(true);           goto opt; }
     "tags"                    end { opts.set_tags(true);                    goto opt; }
     "no-unsafe"               end { opts.set_unsafe(false);                 goto opt; }
-    "simd"                    end { opts.set_simd(true);                   goto opt; }
+    "vectorize-loops"         end { opts.set_vectorize_loops(true);         goto opt; }
     "invert-captures"         end { opts.set_captures_invert(true);         goto opt; }
 
     "ebcdic" | "ecb"        end { opts.set_encoding(Enc::Type::EBCDIC, true); goto opt; }
