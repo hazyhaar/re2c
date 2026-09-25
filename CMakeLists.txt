@@ -238,6 +238,7 @@ set(re2c_sources
     src/regexp/ast_to_re.cc
     src/regexp/default_tags.cc
     src/regexp/fixed_tags.cc
+    src/regexp/keywords.cc
     src/regexp/nullable.cc
     src/regexp/regexp.cc
     src/regexp/split_charset.cc

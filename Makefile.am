@@ -44,6 +44,7 @@ re2c_HDR = \
 	src/msg/msg.h \
 	src/msg/ver_to_vernum.h \
 	src/msg/warn.h \
+	src/regexp/keywords.h \
 	src/regexp/regexp.h \
 	src/regexp/rule.h \
 	src/regexp/tag.h \
@@ -112,6 +113,7 @@ re2c_SRC = \
 	src/regexp/ast_to_re.cc \
 	src/regexp/default_tags.cc \
 	src/regexp/fixed_tags.cc \
+	src/regexp/keywords.cc \
 	src/regexp/nullable.cc \
 	src/regexp/regexp.cc \
 	src/regexp/split_charset.cc \

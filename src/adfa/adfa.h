@@ -22,6 +22,7 @@
 namespace re2c {
 
 class Msg;
+struct KeywordTable;
 struct Tdfa;
 struct opt_t;
 struct State;
@@ -119,6 +120,9 @@ struct Adfa {
     bool oldstyle_ctxmarker;
 
     CodeBitmap* bitmap;
+
+    // Keyword table used in the semantic action of its host rule, see note [keyword tables].
+    const KeywordTable* kwtable;
 
     const SemAct* entry_action;
     const SemAct* pre_rule_action;

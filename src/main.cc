@@ -19,6 +19,7 @@
 #include "src/options/opt.h"
 #include "src/parse/ast.h"
 #include "src/parse/input.h"
+#include "src/regexp/keywords.h"
 #include "src/regexp/regexp.h"
 #include "src/regexp/rule.h"
 #include "src/skeleton/skeleton.h"
@@ -54,12 +55,20 @@ LOCAL_NODISCARD(Ret ast_to_dfa(
     const opt_t* opts = block.opts;
     const loc_t& loc = block.loc;
     Msg& msg = output.msg;
-    const std::vector<AstRule>& ast = gram.rules;
     const std::string& cond = gram.name;
     const std::string name = make_name(output, cond, loc);
     const SemAct* entry_action = gram.entry.empty() ? nullptr : gram.entry[0];
     const SemAct* pre_rule_action = gram.pre_rule.empty() ? nullptr : gram.pre_rule[0];
     const SemAct* post_rule_action = gram.post_rule.empty() ? nullptr : gram.post_rule[0];
+
+    // Move keyword rules subsumed by a later rule into a keyword table, see note [keyword tables].
+    std::vector<AstRule> reduced_rules;
+    size_t def_rule = gram.def_rule;
+    std::unique_ptr<KeywordTable> kwtable;
+    if (opts->keywords && opts->target == Target::CODE) {
+        find_keywords(opts, msg, gram, loc, reduced_rules, def_rule, kwtable);
+    }
+    const std::vector<AstRule>& ast = kwtable ? reduced_rules : gram.rules;
 
     // Build a mutable tree representation of a regexp from an immutable AST.
     RESpec re(opts, msg);
@@ -75,7 +84,7 @@ LOCAL_NODISCARD(Ret ast_to_dfa(
     DDUMP_NFA(opts, nfa);
 
     // Transmorm TNFA to TDFA.
-    Tdfa dfa(dfa_alc, nfa.charset.size(), gram.def_rule);
+    Tdfa dfa(dfa_alc, nfa.charset.size(), def_rule);
     CHECK_RET(determinization(std::move(nfa), dfa, opts, msg, cond));
     DDUMP_DFA_DET(opts, dfa);
 
@@ -110,6 +119,12 @@ LOCAL_NODISCARD(Ret ast_to_dfa(
     Adfa* adfa = new Adfa(std::move(dfa), fill, skeleton.sizeof_key, loc, name, cond, opts, msg,
             entry_action, pre_rule_action, post_rule_action);
     dfas.push_back(std::unique_ptr<Adfa>(adfa));
+
+    if (kwtable) {
+        kwtable->name = "yykw" + std::to_string(output.kwtable_counter++);
+        adfa->kwtable = kwtable.get();
+        block.kwtables.push_back(std::move(kwtable));
+    }
 
     // see note [reordering DFA states]
     adfa->reorder();

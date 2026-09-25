@@ -95,6 +95,8 @@ re2c:case-inverted = 0;
 re2c:case-ranges = 1;
 re2c:unsafe = 0;
 re2c:monadic = 0;
+re2c:keywords = 0;
+re2c:keywords:token = "";
 re2c:encoding:ebcdic = 0;
 re2c:encoding:utf32 = 0;
 re2c:encoding:ucs2 = 0;
@@ -418,3 +420,9 @@ code:yybm_filter = yych " & ~0xFF";
 code:yybm_match = "(" yybm "[" offset "+" yych "] & " mask ") != 0";
 
 code:yytarget_filter = <undefined>;
+
+// keyword tables (see `re2c:keywords`) ----------------------------------------
+
+code:keyword_table = <undefined>;
+
+code:keyword_lookup = <undefined>;

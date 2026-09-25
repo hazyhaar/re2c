@@ -66,7 +66,7 @@ using StxCodes = list_t<StxCode>;
             ({"code", "dot", "skeleton"})) \
     CHECKED_LIST(supported_features, \
             ({"nested-ifs", "bitmaps", "computed-gotos", "case-ranges", "unsafe", "monadic", \
-                "tags", "captures", "captvars", "computed-continue"}))
+                "tags", "captures", "captvars", "computed-continue", "keywords"}))
 
 #define RE2C_STX_OPTS \
     STX_OPT(bool, semicolons, false) \
@@ -321,6 +321,15 @@ using StxCodes = list_t<StxCode>;
     ) \
     CODE_TEMPLATE(yytarget_filter, \
         ({StxVarId::CHAR}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(keyword_table, \
+        ({StxVarId::NAME, StxVarId::SIZE, StxVarId::SHIFTBITS, StxVarId::MUL0, StxVarId::MUL1, \
+            StxVarId::WORD0, StxVarId::WORD1, StxVarId::LENGTH, StxVarId::VAL}), \
+        ({StxVarId::ROW, StxVarId::ELEM, StxVarId::ENTRY}), ({StxLOpt::WIDE}) \
+    ) \
+    CODE_TEMPLATE(keyword_lookup, \
+        ({StxVarId::NAME, StxVarId::TOKEN, StxVarId::INPUT, StxVarId::CURSOR, \
+            StxVarId::RECORD}), ({}), ({}) \
     )
 
 #define RE2C_ONELINE_CODES \
@@ -341,6 +350,7 @@ using StxCodes = list_t<StxCode>;
     STX_LOCAL_VAR(COND, "cond") \
     STX_LOCAL_VAR(DATE, "date") \
     STX_LOCAL_VAR(ELEM, "elem") \
+    STX_LOCAL_VAR(ENTRY, "entry") \
     STX_LOCAL_VAR(EXPR, "expr") \
     STX_LOCAL_VAR(FN, "fn") \
     STX_LOCAL_VAR(FILE, "file") \
@@ -350,8 +360,11 @@ using StxCodes = list_t<StxCode>;
     STX_LOCAL_VAR(INIT, "init") \
     STX_LOCAL_VAR(LABEL, "label") \
     STX_LOCAL_VAR(LHS, "lhs") \
+    STX_LOCAL_VAR(LENGTH, "length") \
     STX_LOCAL_VAR(LINE, "line") \
     STX_LOCAL_VAR(MASK, "mask") \
+    STX_LOCAL_VAR(MUL0, "mul0") \
+    STX_LOCAL_VAR(MUL1, "mul1") \
     STX_LOCAL_VAR(NAME, "name") \
     STX_LOCAL_VAR(NEED, "need") \
     STX_LOCAL_VAR(NEG, "neg") \
@@ -359,16 +372,20 @@ using StxCodes = list_t<StxCode>;
     STX_LOCAL_VAR(RETVAL, "retval") \
     STX_LOCAL_VAR(RHS, "rhs") \
     STX_LOCAL_VAR(ROW, "row") \
+    STX_LOCAL_VAR(SHIFTBITS, "shift") \
     STX_LOCAL_VAR(SIGIL, "sigil") \
     STX_LOCAL_VAR(SIZE, "size") \
     STX_LOCAL_VAR(STATE, "state") \
     STX_LOCAL_VAR(STMT, "stmt") \
     STX_LOCAL_VAR(TAG, "tag") \
     STX_LOCAL_VAR(THROW, "throw") \
+    STX_LOCAL_VAR(TOKEN, "token") \
     STX_LOCAL_VAR(TYPE, "type") \
     STX_LOCAL_VAR(VAL, "val") \
     STX_LOCAL_VAR(VAR, "var") \
     STX_LOCAL_VAR(VER, "version") \
+    STX_LOCAL_VAR(WORD0, "word0") \
+    STX_LOCAL_VAR(WORD1, "word1") \
     /* vars for API primitives */ \
     STX_LOCAL_VAR(BACKUP, "YYBACKUP") \
     STX_LOCAL_VAR(BACKUPCTX, "YYBACKUPCTX") \
@@ -496,6 +513,8 @@ enum class StxVarId : uint32_t {
     MUTOPT(bool, nested_ifs, false) \
     MUTOPT(bool, unsafe, true) \
     MUTOPT(bool, monadic, false) \
+    MUTOPT(bool, keywords, false) \
+    MUTOPT(std::string, keywords_token, "") \
     /* YYFILL */ \
     MUTOPT(uint32_t, fill_eof, NOEOF) \
     MUTOPT(uint32_t, fill_sentinel, NOEOF) \

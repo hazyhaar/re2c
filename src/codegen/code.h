@@ -16,6 +16,7 @@ namespace re2c {
 
 // forward decls
 struct Code;
+struct KeywordTable;
 struct CodeGo;
 struct CodeGoIf;
 struct State;
@@ -349,6 +350,7 @@ struct Code {
         CodeTag tag;
         CodeLoop loop;
         CodeList* rfuncs;
+        const KeywordTable* kwtable;
         loc_t loc;
         size_t accept;
     };
@@ -466,6 +468,12 @@ inline Code* code_fmt(OutAllocator& alc,
     x->fmt.block_names = blocks;
     x->fmt.format = format;
     x->fmt.separator = separator;
+    return x;
+}
+
+inline Code* code_kwtable(OutAllocator& alc, const KeywordTable* kwtable) {
+    Code* x = new_code(alc, CodeKind::KWTABLE);
+    x->kwtable = kwtable;
     return x;
 }
 

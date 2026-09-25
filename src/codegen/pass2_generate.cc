@@ -13,6 +13,7 @@
 #include "src/msg/location.h"
 #include "src/msg/msg.h"
 #include "src/options/opt.h"
+#include "src/regexp/keywords.h"
 #include "src/regexp/rule.h"
 #include "src/regexp/tag.h"
 #include "src/skeleton/skeleton.h"
@@ -1051,19 +1052,13 @@ static void gen_action(Output& output, const SemAct* action, CodeList* stmts) {
     if (opts->line_dirs) append(stmts, code_line_info_output(alc));
 }
 
-static void emit_rule(Output& output, CodeList* stmts, const Adfa& dfa, size_t rule_idx) {
+// Generate the code executed when a rule with the given semantic action matches: condition and
+// state updates, the user-defined action surrounded by pre-rule and post-rule code, or the jump to
+// the next condition for :=> rules.
+static void emit_semact(Output& output, CodeList* stmts, const Adfa& dfa, const SemAct* semact) {
     const opt_t* opts = output.block().opts;
-    const Rule& rule = dfa.rules[rule_idx];
-    const SemAct* semact = rule.semact;
     OutAllocator& alc = output.allocator;
     Scratchbuf& o = output.scratchbuf;
-
-    gen_fintags(output, stmts, dfa, rule);
-
-    if (opts->target == Target::SKELETON) {
-        emit_skeleton_action(output, stmts, dfa, rule_idx);
-        return;
-    }
 
     // Condition in the semantic action is the one set with => or :=> rule.
     const char* cond = semact->cond == nullptr ? dfa.cond.c_str() : semact->cond;
@@ -1127,6 +1122,70 @@ static void emit_rule(Output& output, CodeList* stmts, const Adfa& dfa, size_t r
                     alc, fn_name_for_cond(o, cond), fn->args, fn->type != nullptr));
             break;
         }}
+    }
+}
+
+class GenKeywordLookup : public RenderCallback {
+    std::ostream& os;
+    const opt_t* opts;
+    const KeywordTable* table;
+
+  public:
+    GenKeywordLookup(std::ostream& os, const opt_t* opts, const KeywordTable* table)
+        : os(os), opts(opts), table(table) {}
+
+    void render_var(StxVarId var) override {
+        switch (var) {
+        case StxVarId::NAME: os << table->name; break;
+        case StxVarId::TOKEN: os << opts->keywords_token; break;
+        case StxVarId::INPUT: os << opts->api_input; break;
+        case StxVarId::CURSOR: os << opts->api_cursor; break;
+        case StxVarId::RECORD: os << opts->var_record; break;
+        default: UNREACHABLE(); break;
+        }
+    }
+
+    FORBID_COPY(GenKeywordLookup);
+};
+
+// The semantic action of the host rule of a keyword table classifies the matched token and
+// dispatches to the action of the matching keyword rule, or to its own action if the token is not
+// a keyword (see note [keyword tables]).
+static void emit_keyword_dispatch(
+        Output& output, CodeList* stmts, const Adfa& dfa, const SemAct* host_semact) {
+    const opt_t* opts = output.block().opts;
+    OutAllocator& alc = output.allocator;
+    Scratchbuf& o = output.scratchbuf;
+    const KeywordTable* table = dfa.kwtable;
+
+    GenKeywordLookup callback(o.stream(), opts, table);
+    const char* expr = opts->gen_code_keyword_lookup(o, callback);
+
+    CodeCases* cases = code_cases(alc);
+    for (size_t i = 0; i < table->keys.size(); ++i) {
+        CodeList* body = code_list(alc);
+        emit_semact(output, body, dfa, table->keys[i].semact);
+        append(cases, code_case_number(alc, body, static_cast<int32_t>(i + 1)));
+    }
+    CodeList* body = code_list(alc);
+    emit_semact(output, body, dfa, host_semact);
+    append(cases, code_case_default(alc, body));
+
+    append(stmts, code_switch(alc, expr, cases));
+}
+
+static void emit_rule(Output& output, CodeList* stmts, const Adfa& dfa, size_t rule_idx) {
+    const opt_t* opts = output.block().opts;
+    const Rule& rule = dfa.rules[rule_idx];
+
+    gen_fintags(output, stmts, dfa, rule);
+
+    if (opts->target == Target::SKELETON) {
+        emit_skeleton_action(output, stmts, dfa, rule_idx);
+    } else if (dfa.kwtable != nullptr && dfa.kwtable->host_rule == rule_idx) {
+        emit_keyword_dispatch(output, stmts, dfa, rule.semact);
+    } else {
+        emit_semact(output, stmts, dfa, rule.semact);
     }
 }
 
@@ -1514,6 +1573,38 @@ LOCAL_NODISCARD(Ret expand_tags_directive(Output& output, Code* code)) {
         add_tags_from_blocks(output.tmpblocks, tags, code->kind);
     }
     gen_tags(buf, opts, code, tags);
+    return Ret::OK;
+}
+
+static void add_kwtables_from_blocks(OutAllocator& alc, const blocks_t& blocks, CodeList* stmts) {
+    for (const OutputBlock* b : blocks) {
+        for (const std::unique_ptr<KeywordTable>& t : b->kwtables) {
+            append(stmts, code_kwtable(alc, t.get()));
+            t->emitted = true;
+        }
+    }
+}
+
+// Expand `keywords` directive into the tables and lookup functions of keyword tables of all blocks
+// or of the blocks on the list (see note [keyword tables]).
+LOCAL_NODISCARD(Ret expand_keywords_directive(Output& output, Code* code)) {
+    DCHECK(code->kind == CodeKind::KEYWORDS);
+    OutAllocator& alc = output.allocator;
+    CodeList* stmts = code_list(alc);
+
+    if (output.block().opts->target == Target::CODE) {
+        if (code->fmt.block_names == nullptr) {
+            add_kwtables_from_blocks(alc, output.cblocks, stmts);
+            add_kwtables_from_blocks(alc, output.hblocks, stmts);
+        } else {
+            CHECK_RET(find_blocks(output, code->fmt.block_names, output.tmpblocks, "keywords"));
+            add_kwtables_from_blocks(alc, output.tmpblocks, stmts);
+        }
+    }
+
+    code->kind = CodeKind::BLOCK;
+    code->block.kind = CodeBlock::Kind::RAW;
+    code->block.stmts = stmts;
     return Ret::OK;
 }
 
@@ -2231,6 +2322,9 @@ LOCAL_NODISCARD(Ret codegen_generate_block(Output& output)) {
         case CodeKind::COND_ENUM:
             CHECK_RET(expand_cond_enum(output, code));
             break;
+        case CodeKind::KEYWORDS:
+            CHECK_RET(expand_keywords_directive(output, code));
+            break;
         case CodeKind::MAXFILL:
         case CodeKind::MAXNMATCH:
             CHECK_RET(gen_yymax(output, code));
@@ -2253,6 +2347,19 @@ Ret codegen_generate(Output& output) {
         }
     }
     output.set_current_block(nullptr);
+
+    // Keyword tables are used in semantic actions, so they must be emitted somewhere.
+    for (const blocks_t& bs : {output.cblocks, output.hblocks}) {
+        for (const OutputBlock* b : bs) {
+            for (const std::unique_ptr<KeywordTable>& t : b->kwtables) {
+                if (!t->emitted) {
+                    RET_FAIL(output.msg.error(b->loc,
+                            "keyword table `%s` is not emitted: add a `/*!keywords:re2c*/` "
+                            "directive at file or package scope", t->name.c_str()));
+                }
+            }
+        }
+    }
     return Ret::OK;
 }
 

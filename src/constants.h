@@ -131,6 +131,8 @@ enum class CodeKind: uint32_t {
     MVARS,
     MAXFILL,
     MAXNMATCH,
+    KEYWORDS,
+    KWTABLE,
     VAR,
     CONST,
     ARRAY,
@@ -220,7 +222,8 @@ enum class StxLOpt {
     TYPE,
     RETVAL,
     MANY,
-    NESTED
+    NESTED,
+    WIDE
 };
 
 extern const char* ZERO_COND;

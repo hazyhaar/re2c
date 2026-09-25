@@ -308,6 +308,13 @@ LOCAL_NODISCARD(Ret fix_mutopt(
     if (!is_default.monadic && !glob.supported_features_contains("monadic")) {
         RET_FAIL(error("`monadic` feature is not supported for this backend"));
     }
+    if (!is_default.keywords && real.keywords && !glob.supported_features_contains("keywords")) {
+        RET_FAIL(error("`keywords` feature is not supported for this backend"));
+    }
+    if (real.keywords && real.keywords_token.empty()) {
+        RET_FAIL(error("`re2c:keywords` requires `re2c:keywords:token` to be set to the "
+                       "expression holding the start of the current token"));
+    }
     if (!is_default.tags && !glob.supported_features_contains("tags")) {
         RET_FAIL(error("`tags` feature is not supported for this backend"));
     }

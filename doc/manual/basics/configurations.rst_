@@ -175,6 +175,23 @@ Here is a full list of configurations supported by |re2c|:
 ``re2c:lookahead``, ``re2c:flags:lookahead``
     Deprecated (see the deprecated ``--no-lookahead`` option).
 
+``re2c:keywords``
+    If set to non-zero, string literal rules (up to 16 code units) that are
+    fully subsumed by a later rule, typically keywords followed by an identifier
+    rule, are removed from the DFA. The later rule matches them instead, and its
+    semantic action classifies the matched token with a perfect hash table
+    computed at generation time and dispatches to the semantic action of the
+    keyword rule. Rule priority and longest-match semantics are preserved: a
+    literal is only moved if it is the first rule matching its string and its
+    host is the next one. The tables are emitted by a ``/*!keywords:re2c*/``
+    block. Only the backends that list ``keywords`` in ``supported_features``
+    support it.
+
+``re2c:keywords:token``
+    An expression that holds the start of the current token (a pointer or an
+    index, depending on the backend) in the semantic actions. It is required
+    with ``re2c:keywords``.
+
 ``re2c:monadic``
     If set to non-zero, the generated lexer will use monadic notation (this
     configuration is specific to Haskell).

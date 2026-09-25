@@ -22,6 +22,7 @@ namespace re2c {
 // forward decls
 class Msg;
 struct Adfa;
+struct KeywordTable;
 struct Opt;
 struct opt_t;
 struct OutputBlock;
@@ -100,6 +101,7 @@ struct OutputBlock {
     tagnames_t mvars;
     const opt_t* opts;
     Adfas dfas;
+    std::vector<std::unique_ptr<KeywordTable>> kwtables; // see note [keyword tables]
 
     size_t max_fill;   // YYMAXFILL
     size_t max_nmatch; // YYMAXNMATCH
@@ -127,6 +129,7 @@ struct Output {
     blocks_t tmpblocks;
     uint32_t label_counter;
     uint32_t fill_label_counter;
+    uint32_t kwtable_counter;
     bool state_goto;
     bool cond_enum_autogen; // true unless an explicit `conditions` block is used
     bool warn_condition_order;
