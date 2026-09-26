@@ -50,6 +50,10 @@ yy3:
 	cursor += 1
 	marker = cursor
 	yych = str[cursor]
+	if (YYPEEKN(cursor, 4) == 0x54454c45) {
+		YYSKIPN(cursor, 3)
+		goto yy20
+	}
 	if (yych == 'E') {
 		goto yy7
 	}
@@ -58,6 +62,10 @@ yy4:
 	cursor += 1
 	marker = cursor
 	yych = str[cursor]
+	if (YYPEEKN(cursor, 4) == 0x5245534e) {
+		YYSKIPN(cursor, 3)
+		goto yy21
+	}
 	if (yych == 'N') {
 		goto yy9
 	}
@@ -66,6 +74,10 @@ yy5:
 	cursor += 1
 	marker = cursor
 	yych = str[cursor]
+	if (YYPEEKN(cursor, 4) == 0x43454c45) {
+		YYSKIPN(cursor, 3)
+		goto yy22
+	}
 	if (yych == 'E') {
 		goto yy10
 	}
@@ -74,6 +86,10 @@ yy6:
 	cursor += 1
 	marker = cursor
 	yych = str[cursor]
+	if (YYPEEKN(cursor, 4) == 0x54414450) {
+		YYSKIPN(cursor, 3)
+		goto yy23
+	}
 	if (yych == 'P') {
 		goto yy11
 	}
@@ -127,9 +143,9 @@ yy11:
 yy12:
 	cursor += 1
 	yych = str[cursor]
-	if (YYPEEKN(cursor, 2) == 0x5445) {
-		YYSKIPN(cursor, 1)
-		goto yy20
+	if (YYPEEKN(cursor, 4) == 0x455445) {
+		YYSKIPN(cursor, 3)
+		goto yy28
 	}
 	if (yych == 'E') {
 		goto yy16
@@ -138,9 +154,9 @@ yy12:
 yy13:
 	cursor += 1
 	yych = str[cursor]
-	if (YYPEEKN(cursor, 2) == 0x5245) {
-		YYSKIPN(cursor, 1)
-		goto yy21
+	if (YYPEEKN(cursor, 4) == 0x545245) {
+		YYSKIPN(cursor, 3)
+		goto yy29
 	}
 	if (yych == 'E') {
 		goto yy17
@@ -149,9 +165,9 @@ yy13:
 yy14:
 	cursor += 1
 	yych = str[cursor]
-	if (YYPEEKN(cursor, 2) == 0x4345) {
-		YYSKIPN(cursor, 1)
-		goto yy22
+	if (YYPEEKN(cursor, 4) == 0x544345) {
+		YYSKIPN(cursor, 3)
+		goto yy30
 	}
 	if (yych == 'E') {
 		goto yy18
@@ -160,9 +176,9 @@ yy14:
 yy15:
 	cursor += 1
 	yych = str[cursor]
-	if (YYPEEKN(cursor, 2) == 0x5441) {
-		YYSKIPN(cursor, 1)
-		goto yy23
+	if (YYPEEKN(cursor, 4) == 0x455441) {
+		YYSKIPN(cursor, 3)
+		goto yy31
 	}
 	if (yych == 'A') {
 		goto yy19
@@ -215,6 +231,10 @@ yy19:
 yy20:
 	cursor += 1
 	yych = str[cursor]
+	if (YYPEEKN(cursor, 2) == 0x45) {
+		YYSKIPN(cursor, 1)
+		goto yy28
+	}
 	if (yych == 'E') {
 		goto yy24
 	}
@@ -222,6 +242,10 @@ yy20:
 yy21:
 	cursor += 1
 	yych = str[cursor]
+	if (YYPEEKN(cursor, 2) == 0x54) {
+		YYSKIPN(cursor, 1)
+		goto yy29
+	}
 	if (yych == 'T') {
 		goto yy25
 	}
@@ -229,6 +253,10 @@ yy21:
 yy22:
 	cursor += 1
 	yych = str[cursor]
+	if (YYPEEKN(cursor, 2) == 0x54) {
+		YYSKIPN(cursor, 1)
+		goto yy30
+	}
 	if (yych == 'T') {
 		goto yy26
 	}
@@ -236,6 +264,10 @@ yy22:
 yy23:
 	cursor += 1
 	yych = str[cursor]
+	if (YYPEEKN(cursor, 2) == 0x45) {
+		YYSKIPN(cursor, 1)
+		goto yy31
+	}
 	if (yych == 'E') {
 		goto yy27
 	}

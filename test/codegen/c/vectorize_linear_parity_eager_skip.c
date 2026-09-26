@@ -1811,10 +1811,10 @@ yy129:
 	}
 yy130:
 	yych = *YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 4) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x67412d72) {
-			YYCURSOR += 4;
-			goto yy158;
+	if ((YYLIMIT - YYCURSOR) >= 8) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x3a746e6567412d72) {
+			YYCURSOR += 8;
+			goto yy189;
 		}
 	}
 	switch (yych) {
@@ -2035,10 +2035,10 @@ yy145:
 	}
 yy146:
 	yych = *YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 4) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x74617a69) {
-			YYCURSOR += 4;
-			goto yy175;
+	if ((YYLIMIT - YYCURSOR) >= 8) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x3a6e6f6974617a69) {
+			YYCURSOR += 8;
+			goto yy203;
 		}
 	}
 	switch (yych) {
@@ -2049,10 +2049,10 @@ yy146:
 	}
 yy147:
 	yych = *YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 4) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x746e6f43) {
-			YYCURSOR += 4;
-			goto yy176;
+	if ((YYLIMIT - YYCURSOR) >= 8) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x3a6c6f72746e6f43) {
+			YYCURSOR += 8;
+			goto yy204;
 		}
 	}
 	switch (yych) {
@@ -2161,10 +2161,10 @@ yy154:
 	}
 yy155:
 	yych = *YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 2) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x6f69) {
-			YYCURSOR += 2;
-			goto yy169;
+	if ((YYLIMIT - YYCURSOR) >= 4) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x3a6e6f69) {
+			YYCURSOR += 4;
+			goto yy185;
 		}
 	}
 	switch (yych) {
@@ -2197,10 +2197,10 @@ yy157:
 	}
 yy158:
 	yych = *YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 2) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x6e65) {
-			YYCURSOR += 2;
-			goto yy173;
+	if ((YYLIMIT - YYCURSOR) >= 4) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x3a746e65) {
+			YYCURSOR += 4;
+			goto yy189;
 		}
 	}
 	switch (yych) {
@@ -2211,10 +2211,10 @@ yy158:
 	}
 yy159:
 	yych = *YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 4) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x646f636e) {
-			YYCURSOR += 4;
-			goto yy190;
+	if ((YYLIMIT - YYCURSOR) >= 8) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x3a676e69646f636e) {
+			YYCURSOR += 8;
+			goto yy210;
 		}
 	}
 	switch (yych) {
@@ -2348,6 +2348,12 @@ yy168:
 	}
 yy169:
 	yych = *YYCURSOR;
+	if ((YYLIMIT - YYCURSOR) >= 2) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x3a6e) {
+			YYCURSOR += 2;
+			goto yy185;
+		}
+	}
 	switch (yych) {
 		case 'n':
 			++YYCURSOR;
@@ -2370,10 +2376,10 @@ yy170:
 	}
 yy171:
 	yych = *YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 2) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x7079) {
-			YYCURSOR += 2;
-			goto yy187;
+	if ((YYLIMIT - YYCURSOR) >= 4) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x3a657079) {
+			YYCURSOR += 4;
+			goto yy200;
 		}
 	}
 	switch (yych) {
@@ -2398,6 +2404,12 @@ yy172:
 	}
 yy173:
 	yych = *YYCURSOR;
+	if ((YYLIMIT - YYCURSOR) >= 2) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x3a74) {
+			YYCURSOR += 2;
+			goto yy189;
+		}
+	}
 	switch (yych) {
 		case 't':
 			++YYCURSOR;
@@ -2420,10 +2432,10 @@ yy174:
 	}
 yy175:
 	yych = *YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 2) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x6f69) {
-			YYCURSOR += 2;
-			goto yy191;
+	if ((YYLIMIT - YYCURSOR) >= 4) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x3a6e6f69) {
+			YYCURSOR += 4;
+			goto yy203;
 		}
 	}
 	switch (yych) {
@@ -2434,10 +2446,10 @@ yy175:
 	}
 yy176:
 	yych = *YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 2) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x6f72) {
-			YYCURSOR += 2;
-			goto yy192;
+	if ((YYLIMIT - YYCURSOR) >= 4) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x3a6c6f72) {
+			YYCURSOR += 4;
+			goto yy204;
 		}
 	}
 	switch (yych) {
@@ -2484,10 +2496,10 @@ yy179:
 	}
 yy180:
 	yych = *YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 4) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x646f636e) {
-			YYCURSOR += 4;
-			goto yy206;
+	if ((YYLIMIT - YYCURSOR) >= 8) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x3a676e69646f636e) {
+			YYCURSOR += 8;
+			goto yy213;
 		}
 	}
 	switch (yych) {
@@ -2550,10 +2562,10 @@ yy185:
 	{ RET(8); }
 yy186:
 	yych = *YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 2) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x7467) {
-			YYCURSOR += 2;
-			goto yy199;
+	if ((YYLIMIT - YYCURSOR) >= 4) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x3a687467) {
+			YYCURSOR += 4;
+			goto yy208;
 		}
 	}
 	switch (yych) {
@@ -2564,6 +2576,12 @@ yy186:
 	}
 yy187:
 	yych = *YYCURSOR;
+	if ((YYLIMIT - YYCURSOR) >= 2) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x3a65) {
+			YYCURSOR += 2;
+			goto yy200;
+		}
+	}
 	switch (yych) {
 		case 'e':
 			++YYCURSOR;
@@ -2588,10 +2606,10 @@ yy189:
 	{ RET(6); }
 yy190:
 	yych = *YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 2) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x6e69) {
-			YYCURSOR += 2;
-			goto yy202;
+	if ((YYLIMIT - YYCURSOR) >= 4) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x3a676e69) {
+			YYCURSOR += 4;
+			goto yy210;
 		}
 	}
 	switch (yych) {
@@ -2602,6 +2620,12 @@ yy190:
 	}
 yy191:
 	yych = *YYCURSOR;
+	if ((YYLIMIT - YYCURSOR) >= 2) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x3a6e) {
+			YYCURSOR += 2;
+			goto yy203;
+		}
+	}
 	switch (yych) {
 		case 'n':
 			++YYCURSOR;
@@ -2610,6 +2634,12 @@ yy191:
 	}
 yy192:
 	yych = *YYCURSOR;
+	if ((YYLIMIT - YYCURSOR) >= 2) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x3a6c) {
+			YYCURSOR += 2;
+			goto yy204;
+		}
+	}
 	switch (yych) {
 		case 'l':
 			++YYCURSOR;
@@ -2684,6 +2714,12 @@ yy198:
 	}
 yy199:
 	yych = *YYCURSOR;
+	if ((YYLIMIT - YYCURSOR) >= 2) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x3a68) {
+			YYCURSOR += 2;
+			goto yy208;
+		}
+	}
 	switch (yych) {
 		case 'h':
 			++YYCURSOR;
@@ -2708,6 +2744,12 @@ yy201:
 	}
 yy202:
 	yych = *YYCURSOR;
+	if ((YYLIMIT - YYCURSOR) >= 2) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x3a67) {
+			YYCURSOR += 2;
+			goto yy210;
+		}
+	}
 	switch (yych) {
 		case 'g':
 			++YYCURSOR;
@@ -2728,10 +2770,10 @@ yy205:
 	}
 yy206:
 	yych = *YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 2) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x6e69) {
-			YYCURSOR += 2;
-			goto yy211;
+	if ((YYLIMIT - YYCURSOR) >= 4) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x3a676e69) {
+			YYCURSOR += 4;
+			goto yy213;
 		}
 	}
 	switch (yych) {
@@ -2768,6 +2810,12 @@ yy210:
 	{ RET(5); }
 yy211:
 	yych = *YYCURSOR;
+	if ((YYLIMIT - YYCURSOR) >= 2) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x3a67) {
+			YYCURSOR += 2;
+			goto yy213;
+		}
+	}
 	switch (yych) {
 		case 'g':
 			++YYCURSOR;
@@ -5261,6 +5309,12 @@ yy383:
 yy384:
 	yyaccept = 0;
 	yych = *(YYMARKER = YYCURSOR);
+	if ((YYLIMIT - YYCURSOR) >= 4) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x66656463) {
+			YYCURSOR += 4;
+			goto yy404;
+		}
+	}
 	switch (yych) {
 		case 'c':
 			++YYCURSOR;
@@ -5288,6 +5342,12 @@ yy385:
 yy386:
 	yyaccept = 0;
 	yych = *(YYMARKER = YYCURSOR);
+	if ((YYLIMIT - YYCURSOR) >= 8) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x7a7a7978797a7a79) {
+			YYCURSOR += 8;
+			goto yy418;
+		}
+	}
 	switch (yych) {
 		case 'y':
 			++YYCURSOR;
@@ -5349,10 +5409,10 @@ yy391:
 	}
 yy392:
 	yych = *YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 4) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x78797a7a) {
-			YYCURSOR += 4;
-			goto yy409;
+	if ((YYLIMIT - YYCURSOR) >= 8) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x797a7a7978797a7a) {
+			YYCURSOR += 8;
+			goto yy420;
 		}
 	}
 	switch (yych) {
@@ -5388,6 +5448,12 @@ yy394:
 	}
 yy395:
 	yych = *YYCURSOR;
+	if ((YYLIMIT - YYCURSOR) >= 2) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x646e) {
+			YYCURSOR += 2;
+			goto yy405;
+		}
+	}
 	switch (yych) {
 		case 'n':
 			++YYCURSOR;
@@ -5411,6 +5477,12 @@ yy396:
 yy397:
 	yyaccept = 2;
 	yych = *(YYMARKER = YYCURSOR);
+	if ((YYLIMIT - YYCURSOR) >= 4) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x68676665) {
+			YYCURSOR += 4;
+			goto yy413;
+		}
+	}
 	switch (yych) {
 		case 'e':
 			++YYCURSOR;
@@ -5423,10 +5495,10 @@ yy399:
 	{ RET(5); }
 yy400:
 	yych = *YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 2) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x6766) {
-			YYCURSOR += 2;
-			goto yy408;
+	if ((YYLIMIT - YYCURSOR) >= 4) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x69686766) {
+			YYCURSOR += 4;
+			goto yy415;
 		}
 	}
 	switch (yych) {
@@ -5503,6 +5575,12 @@ yy406:
 	}
 yy407:
 	yych = *YYCURSOR;
+	if ((YYLIMIT - YYCURSOR) >= 2) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x6867) {
+			YYCURSOR += 2;
+			goto yy413;
+		}
+	}
 	switch (yych) {
 		case 'g':
 			++YYCURSOR;
@@ -5511,6 +5589,12 @@ yy407:
 	}
 yy408:
 	yych = *YYCURSOR;
+	if ((YYLIMIT - YYCURSOR) >= 2) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x6968) {
+			YYCURSOR += 2;
+			goto yy415;
+		}
+	}
 	switch (yych) {
 		case 'h':
 			++YYCURSOR;
@@ -5519,10 +5603,10 @@ yy408:
 	}
 yy409:
 	yych = *YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 2) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x7a79) {
-			YYCURSOR += 2;
-			goto yy416;
+	if ((YYLIMIT - YYCURSOR) >= 4) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x797a7a79) {
+			YYCURSOR += 4;
+			goto yy420;
 		}
 	}
 	switch (yych) {
@@ -5564,6 +5648,12 @@ yy412:
 yy413:
 	yyaccept = 3;
 	yych = *(YYMARKER = YYCURSOR);
+	if ((YYLIMIT - YYCURSOR) >= 2) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x6a69) {
+			YYCURSOR += 2;
+			goto yy419;
+		}
+	}
 	switch (yych) {
 		case 'i':
 			++YYCURSOR;
@@ -5576,6 +5666,12 @@ yy415:
 	{ RET(6); }
 yy416:
 	yych = *YYCURSOR;
+	if ((YYLIMIT - YYCURSOR) >= 2) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x797a) {
+			YYCURSOR += 2;
+			goto yy420;
+		}
+	}
 	switch (yych) {
 		case 'z':
 			++YYCURSOR;
@@ -5584,6 +5680,12 @@ yy416:
 	}
 yy417:
 	yych = *YYCURSOR;
+	if ((YYLIMIT - YYCURSOR) >= 2) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x6b6a) {
+			YYCURSOR += 2;
+			goto yy421;
+		}
+	}
 	switch (yych) {
 		case 'j':
 			++YYCURSOR;
@@ -6394,6 +6496,12 @@ yy460:
 	{ RET(0); }
 yy461:
 	yych = *(YYMARKER = YYCURSOR);
+	if ((YYLIMIT - YYCURSOR) >= 4) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x2d464450) {
+			YYCURSOR += 4;
+			goto yy485;
+		}
+	}
 	switch (yych) {
 		case 'P':
 			++YYCURSOR;
@@ -6402,6 +6510,12 @@ yy461:
 	}
 yy462:
 	yych = *(YYMARKER = YYCURSOR);
+	if ((YYLIMIT - YYCURSOR) >= 4) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x39384649) {
+			YYCURSOR += 4;
+			goto yy486;
+		}
+	}
 	switch (yych) {
 		case 'I':
 			++YYCURSOR;
@@ -6410,6 +6524,12 @@ yy462:
 	}
 yy463:
 	yych = *(YYMARKER = YYCURSOR);
+	if ((YYLIMIT - YYCURSOR) >= 2) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x34b) {
+			YYCURSOR += 2;
+			goto yy476;
+		}
+	}
 	switch (yych) {
 		case 'K':
 			++YYCURSOR;
@@ -6418,6 +6538,12 @@ yy463:
 	}
 yy464:
 	yych = *(YYMARKER = YYCURSOR);
+	if ((YYLIMIT - YYCURSOR) >= 4) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0xd474e50) {
+			YYCURSOR += 4;
+			goto yy487;
+		}
+	}
 	switch (yych) {
 		case 'P':
 			++YYCURSOR;
@@ -6426,6 +6552,12 @@ yy464:
 	}
 yy465:
 	yych = *(YYMARKER = YYCURSOR);
+	if ((YYLIMIT - YYCURSOR) >= 2) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0xbfbb) {
+			YYCURSOR += 2;
+			goto yy478;
+		}
+	}
 	switch (yych) {
 		case 0xBB:
 			++YYCURSOR;
@@ -6434,6 +6566,12 @@ yy465:
 	}
 yy466:
 	yych = *(YYMARKER = YYCURSOR);
+	if ((YYLIMIT - YYCURSOR) >= 2) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0xffd8) {
+			YYCURSOR += 2;
+			goto yy479;
+		}
+	}
 	switch (yych) {
 		case 0xD8:
 			++YYCURSOR;
@@ -6459,10 +6597,10 @@ yy468:
 	goto yy460;
 yy469:
 	yych = *YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 2) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x3846) {
-			YYCURSOR += 2;
-			goto yy481;
+	if ((YYLIMIT - YYCURSOR) >= 4) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x61393846) {
+			YYCURSOR += 4;
+			goto yy489;
 		}
 	}
 	switch (yych) {
@@ -6473,6 +6611,12 @@ yy469:
 	}
 yy470:
 	yych = *YYCURSOR;
+	if ((YYLIMIT - YYCURSOR) >= 2) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x403) {
+			YYCURSOR += 2;
+			goto yy482;
+		}
+	}
 	switch (yych) {
 		case 0x03:
 			++YYCURSOR;
@@ -6503,15 +6647,21 @@ yy472:
 	}
 yy473:
 	yych = *YYCURSOR;
+	if ((YYLIMIT - YYCURSOR) >= 2) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0xe0ff) {
+			YYCURSOR += 2;
+			goto yy484;
+		}
+	}
 	if (yych <= 0xFE) goto yy468;
 	++YYCURSOR;
 	goto yy479;
 yy474:
 	yych = *YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 2) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x2d46) {
-			YYCURSOR += 2;
-			goto yy485;
+	if ((YYLIMIT - YYCURSOR) >= 4) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x2e312d46) {
+			YYCURSOR += 4;
+			goto yy491;
 		}
 	}
 	switch (yych) {
@@ -6582,6 +6732,12 @@ yy480:
 	}
 yy481:
 	yych = *YYCURSOR;
+	if ((YYLIMIT - YYCURSOR) >= 2) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x6139) {
+			YYCURSOR += 2;
+			goto yy489;
+		}
+	}
 	switch (yych) {
 		case '9':
 			++YYCURSOR;
@@ -6592,10 +6748,10 @@ yy482:
 	{ RET(4); }
 yy483:
 	yych = *YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 2) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0xa0d) {
-			YYCURSOR += 2;
-			goto yy490;
+	if ((YYLIMIT - YYCURSOR) >= 4) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0xa1a0a0d) {
+			YYCURSOR += 4;
+			goto yy493;
 		}
 	}
 	switch (yych) {
@@ -6608,6 +6764,12 @@ yy484:
 	{ RET(6); }
 yy485:
 	yych = *YYCURSOR;
+	if ((YYLIMIT - YYCURSOR) >= 2) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x2e31) {
+			YYCURSOR += 2;
+			goto yy491;
+		}
+	}
 	switch (yych) {
 		case '1':
 			++YYCURSOR;
@@ -6648,6 +6810,12 @@ yy489:
 	{ RET(2); }
 yy490:
 	yych = *YYCURSOR;
+	if ((YYLIMIT - YYCURSOR) >= 2) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0xa1a) {
+			YYCURSOR += 2;
+			goto yy493;
+		}
+	}
 	switch (yych) {
 		case 0x1A:
 			++YYCURSOR;
@@ -6679,6 +6847,198 @@ static const struct word binary_words[] = {
     {"\x25\x50\x44\x46\x2d\x31\x2e", 7},
     {"\xff\xd8\xff\xe0", 4},
     {"\xff\xd8\xff\xe1", 4},
+    {NULL, 0}
+};
+
+
+
+static int anchored_0(
+        const unsigned char* YYCURSOR, const unsigned char* YYLIMIT, const unsigned char** end) {
+    const unsigned char* YYMARKER;
+    (void)YYLIMIT;
+    
+{
+	unsigned char yych;
+	yych = *YYCURSOR++;
+	switch (yych) {
+		case 0x00:
+		case 0x01: goto yy495;
+		case 'G': goto yy497;
+		default: goto yy496;
+	}
+yy495:
+	{ RET(3); }
+yy496:
+	yych = *YYCURSOR++;
+	if (yych <= 0x01) goto yy498;
+	goto yy499;
+yy497:
+	yych = *YYCURSOR++;
+	switch (yych) {
+		case 0x00:
+		case 0x01: goto yy498;
+		case 'I': goto yy501;
+		default: goto yy499;
+	}
+yy498:
+	{ RET(3); }
+yy499:
+yy500:
+	{ RET(0); }
+yy501:
+	yych = *(YYMARKER = YYCURSOR);
+	switch (yych) {
+		case 'F':
+			++YYCURSOR;
+			goto yy502;
+		default: goto yy500;
+	}
+yy502:
+	yych = *YYCURSOR;
+	switch (yych) {
+		case '8':
+			++YYCURSOR;
+			goto yy504;
+		default: goto yy503;
+	}
+yy503:
+	YYCURSOR = YYMARKER;
+	goto yy500;
+yy504:
+	yych = *YYCURSOR;
+	switch (yych) {
+		case '7':
+			++YYCURSOR;
+			goto yy505;
+		case '9':
+			++YYCURSOR;
+			goto yy506;
+		default: goto yy503;
+	}
+yy505:
+	yych = *YYCURSOR;
+	switch (yych) {
+		case 'a':
+			++YYCURSOR;
+			goto yy507;
+		default: goto yy503;
+	}
+yy506:
+	yych = *YYCURSOR;
+	switch (yych) {
+		case 'a':
+			++YYCURSOR;
+			goto yy508;
+		default: goto yy503;
+	}
+yy507:
+	{ RET(2); }
+yy508:
+	{ RET(1); }
+}
+
+}
+
+static int anchored_1(
+        const unsigned char* YYCURSOR, const unsigned char* YYLIMIT, const unsigned char** end) {
+    const unsigned char* YYMARKER;
+    (void)YYLIMIT;
+    
+{
+	unsigned char yych;
+	yych = *YYCURSOR++;
+	switch (yych) {
+		case 0x00:
+		case 0x01: goto yy510;
+		case 'G': goto yy512;
+		default: goto yy511;
+	}
+yy510:
+	{ RET(3); }
+yy511:
+	yych = *YYCURSOR++;
+	if (yych <= 0x01) goto yy513;
+	goto yy514;
+yy512:
+	yych = *YYCURSOR++;
+	switch (yych) {
+		case 0x00:
+		case 0x01: goto yy513;
+		case 'I': goto yy516;
+		default: goto yy514;
+	}
+yy513:
+	{ RET(3); }
+yy514:
+yy515:
+	{ RET(0); }
+yy516:
+	yych = *(YYMARKER = YYCURSOR);
+	if ((YYLIMIT - YYCURSOR) >= 2) {
+		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x3846) {
+			YYCURSOR += 2;
+			goto yy519;
+		}
+	}
+	switch (yych) {
+		case 'F':
+			++YYCURSOR;
+			goto yy517;
+		default: goto yy515;
+	}
+yy517:
+	yych = *YYCURSOR;
+	switch (yych) {
+		case '8':
+			++YYCURSOR;
+			goto yy519;
+		default: goto yy518;
+	}
+yy518:
+	YYCURSOR = YYMARKER;
+	goto yy515;
+yy519:
+	yych = *YYCURSOR;
+	switch (yych) {
+		case '7':
+			++YYCURSOR;
+			goto yy520;
+		case '9':
+			++YYCURSOR;
+			goto yy521;
+		default: goto yy518;
+	}
+yy520:
+	yych = *YYCURSOR;
+	switch (yych) {
+		case 'a':
+			++YYCURSOR;
+			goto yy522;
+		default: goto yy518;
+	}
+yy521:
+	yych = *YYCURSOR;
+	switch (yych) {
+		case 'a':
+			++YYCURSOR;
+			goto yy523;
+		default: goto yy518;
+	}
+yy522:
+	{ RET(2); }
+yy523:
+	{ RET(1); }
+}
+
+}
+
+static const struct word anchored_words[] = {
+    {"\x47\x49\x46\x38\x39\x61", 6},
+    {"\x47\x49\x46\x38\x37\x61", 6},
+    {"\x47\x49\x46\x38", 4},
+    {"\x47\x49", 2},
+    {"\x47", 1},
+    {"\x47\x4a", 2},
     {NULL, 0}
 };
 
@@ -6741,6 +7101,7 @@ int main() {
     check_set(keywords_0, keywords_1, keywords_words);
     check_set(backtrack_0, backtrack_1, backtrack_words);
     check_set(binary_0, binary_1, binary_words);
+    check_set(anchored_0, anchored_1, anchored_words);
     if (failures > 0) {
         fprintf(stderr, "%d of %ld checks failed\n", failures, checks);
         return 1;

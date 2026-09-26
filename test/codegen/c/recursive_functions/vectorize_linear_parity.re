@@ -253,6 +253,56 @@ static const struct word binary_words[] = {
     {NULL, 0}
 };
 
+/*!rules:re2c:anchored
+    "GIF89a"                     { RET(1); }
+    "GIF87a"                     { RET(2); }
+    [\x00\x01]                   { RET(3); }
+    [^\x00\x01] [\x00\x01]       { RET(3); }
+    [^\x00\x01] [^\x00\x01]      { RET(0); }
+*/
+
+/*!use:re2c:anchored
+    re2c:api = record;
+    re2c:YYFN = ["anchored_0_rf;int", "yyrecord;Rec*"];
+    re2c:yyfill:enable = 0;
+    re2c:vectorize:linear = 0;
+    re2c:YYCTYPE = "unsigned char";
+*/
+
+static int anchored_0(
+        const unsigned char* cur, const unsigned char* lim, const unsigned char** end) {
+    Rec r = {cur, cur, lim, 0};
+    const int rule = anchored_0_rf(&r);
+    *end = r.yycursor;
+    return rule;
+}
+
+/*!use:re2c:anchored
+    re2c:api = record;
+    re2c:YYFN = ["anchored_1_rf;int", "yyrecord;Rec*"];
+    re2c:yyfill:enable = 0;
+    re2c:vectorize:linear = 1;
+    re2c:YYCTYPE = "unsigned char";
+*/
+
+static int anchored_1(
+        const unsigned char* cur, const unsigned char* lim, const unsigned char** end) {
+    Rec r = {cur, cur, lim, 0};
+    const int rule = anchored_1_rf(&r);
+    *end = r.yycursor;
+    return rule;
+}
+
+static const struct word anchored_words[] = {
+    {"\x47\x49\x46\x38\x39\x61", 6},
+    {"\x47\x49\x46\x38\x37\x61", 6},
+    {"\x47\x49\x46\x38", 4},
+    {"\x47\x49", 2},
+    {"\x47", 1},
+    {"\x47\x4a", 2},
+    {NULL, 0}
+};
+
 static int failures = 0;
 static long checks = 0;
 
@@ -312,6 +362,7 @@ int main() {
     check_set(keywords_0, keywords_1, keywords_words);
     check_set(backtrack_0, backtrack_1, backtrack_words);
     check_set(binary_0, binary_1, binary_words);
+    check_set(anchored_0, anchored_1, anchored_words);
     if (failures > 0) {
         fprintf(stderr, "%d of %ld checks failed\n", failures, checks);
         return 1;

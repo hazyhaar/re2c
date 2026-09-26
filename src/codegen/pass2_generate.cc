@@ -1234,14 +1234,13 @@ static CodeList* gen_mchar(Output& output, const Adfa& dfa, const State* s) {
 
     DCHECK(n > 1 && s->mchar_to != nullptr && consume(s->mchar_to));
 
+    // The last state of the chain consumes a character on entry, unless the skip is generated on
+    // transitions (--eager-skip), so the fast path skips one character less. This does not depend
+    // on whether the first state has a skip of its own: the cursor points at the first character of
+    // the chain in any case.
     CodeList* fast = code_list(alc);
-    const bool is_start = s == dfa.start_state;
-    const bool omit_start = is_start && !s->label->used;
-    const bool skip_emitted = !opts->eager_skip && !omit_start;
-    const uint32_t nskip = n - (skip_emitted ? 1u : 0u);
-    if (nskip > 0) {
-        append(fast, code_skipn(alc, static_cast<int32_t>(nskip)));
-    }
+    const uint32_t nskip = opts->eager_skip ? n : n - 1;
+    append(fast, code_skipn(alc, static_cast<int32_t>(nskip)));
     const CodeJump jump = {s->mchar_to, TCID0, false, false, false};
     gen_goto(output, dfa, fast, s, jump);
 

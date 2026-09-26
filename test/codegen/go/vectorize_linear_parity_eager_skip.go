@@ -1316,10 +1316,10 @@ yy129:
 	}
 yy130:
 	yych = yyinput[yycursor]
-	if (len(yyinput)-yycursor >= 4) {
-		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0x67412d72) {
-			yycursor += 4
-			goto yy158
+	if (len(yyinput)-yycursor >= 8) {
+		if (uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) == 0x3a746e6567412d72) {
+			yycursor += 8
+			goto yy189
 		}
 	}
 	switch (yych) {
@@ -1556,10 +1556,10 @@ yy145:
 	}
 yy146:
 	yych = yyinput[yycursor]
-	if (len(yyinput)-yycursor >= 4) {
-		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0x74617a69) {
-			yycursor += 4
-			goto yy175
+	if (len(yyinput)-yycursor >= 8) {
+		if (uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) == 0x3a6e6f6974617a69) {
+			yycursor += 8
+			goto yy203
 		}
 	}
 	switch (yych) {
@@ -1571,10 +1571,10 @@ yy146:
 	}
 yy147:
 	yych = yyinput[yycursor]
-	if (len(yyinput)-yycursor >= 4) {
-		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0x746e6f43) {
-			yycursor += 4
-			goto yy176
+	if (len(yyinput)-yycursor >= 8) {
+		if (uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) == 0x3a6c6f72746e6f43) {
+			yycursor += 8
+			goto yy204
 		}
 	}
 	switch (yych) {
@@ -1691,10 +1691,10 @@ yy154:
 	}
 yy155:
 	yych = yyinput[yycursor]
-	if (len(yyinput)-yycursor >= 2) {
-		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x6f69) {
-			yycursor += 2
-			goto yy169
+	if (len(yyinput)-yycursor >= 4) {
+		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0x3a6e6f69) {
+			yycursor += 4
+			goto yy185
 		}
 	}
 	switch (yych) {
@@ -1730,10 +1730,10 @@ yy157:
 	}
 yy158:
 	yych = yyinput[yycursor]
-	if (len(yyinput)-yycursor >= 2) {
-		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x6e65) {
-			yycursor += 2
-			goto yy173
+	if (len(yyinput)-yycursor >= 4) {
+		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0x3a746e65) {
+			yycursor += 4
+			goto yy189
 		}
 	}
 	switch (yych) {
@@ -1745,10 +1745,10 @@ yy158:
 	}
 yy159:
 	yych = yyinput[yycursor]
-	if (len(yyinput)-yycursor >= 4) {
-		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0x646f636e) {
-			yycursor += 4
-			goto yy190
+	if (len(yyinput)-yycursor >= 8) {
+		if (uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) == 0x3a676e69646f636e) {
+			yycursor += 8
+			goto yy210
 		}
 	}
 	switch (yych) {
@@ -1892,6 +1892,12 @@ yy168:
 	}
 yy169:
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 2) {
+		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x3a6e) {
+			yycursor += 2
+			goto yy185
+		}
+	}
 	switch (yych) {
 	case 'n':
 		yycursor += 1
@@ -1916,10 +1922,10 @@ yy170:
 	}
 yy171:
 	yych = yyinput[yycursor]
-	if (len(yyinput)-yycursor >= 2) {
-		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x7079) {
-			yycursor += 2
-			goto yy187
+	if (len(yyinput)-yycursor >= 4) {
+		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0x3a657079) {
+			yycursor += 4
+			goto yy200
 		}
 	}
 	switch (yych) {
@@ -1946,6 +1952,12 @@ yy172:
 	}
 yy173:
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 2) {
+		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x3a74) {
+			yycursor += 2
+			goto yy189
+		}
+	}
 	switch (yych) {
 	case 't':
 		yycursor += 1
@@ -1970,10 +1982,10 @@ yy174:
 	}
 yy175:
 	yych = yyinput[yycursor]
-	if (len(yyinput)-yycursor >= 2) {
-		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x6f69) {
-			yycursor += 2
-			goto yy191
+	if (len(yyinput)-yycursor >= 4) {
+		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0x3a6e6f69) {
+			yycursor += 4
+			goto yy203
 		}
 	}
 	switch (yych) {
@@ -1985,10 +1997,10 @@ yy175:
 	}
 yy176:
 	yych = yyinput[yycursor]
-	if (len(yyinput)-yycursor >= 2) {
-		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x6f72) {
-			yycursor += 2
-			goto yy192
+	if (len(yyinput)-yycursor >= 4) {
+		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0x3a6c6f72) {
+			yycursor += 4
+			goto yy204
 		}
 	}
 	switch (yych) {
@@ -2039,10 +2051,10 @@ yy179:
 	}
 yy180:
 	yych = yyinput[yycursor]
-	if (len(yyinput)-yycursor >= 4) {
-		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0x646f636e) {
-			yycursor += 4
-			goto yy206
+	if (len(yyinput)-yycursor >= 8) {
+		if (uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) == 0x3a676e69646f636e) {
+			yycursor += 8
+			goto yy213
 		}
 	}
 	switch (yych) {
@@ -2110,10 +2122,10 @@ yy185:
 	{ return 8, yycursor }
 yy186:
 	yych = yyinput[yycursor]
-	if (len(yyinput)-yycursor >= 2) {
-		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x7467) {
-			yycursor += 2
-			goto yy199
+	if (len(yyinput)-yycursor >= 4) {
+		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0x3a687467) {
+			yycursor += 4
+			goto yy208
 		}
 	}
 	switch (yych) {
@@ -2125,6 +2137,12 @@ yy186:
 	}
 yy187:
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 2) {
+		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x3a65) {
+			yycursor += 2
+			goto yy200
+		}
+	}
 	switch (yych) {
 	case 'e':
 		yycursor += 1
@@ -2151,10 +2169,10 @@ yy189:
 	{ return 6, yycursor }
 yy190:
 	yych = yyinput[yycursor]
-	if (len(yyinput)-yycursor >= 2) {
-		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x6e69) {
-			yycursor += 2
-			goto yy202
+	if (len(yyinput)-yycursor >= 4) {
+		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0x3a676e69) {
+			yycursor += 4
+			goto yy210
 		}
 	}
 	switch (yych) {
@@ -2166,6 +2184,12 @@ yy190:
 	}
 yy191:
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 2) {
+		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x3a6e) {
+			yycursor += 2
+			goto yy203
+		}
+	}
 	switch (yych) {
 	case 'n':
 		yycursor += 1
@@ -2175,6 +2199,12 @@ yy191:
 	}
 yy192:
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 2) {
+		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x3a6c) {
+			yycursor += 2
+			goto yy204
+		}
+	}
 	switch (yych) {
 	case 'l':
 		yycursor += 1
@@ -2256,6 +2286,12 @@ yy198:
 	}
 yy199:
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 2) {
+		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x3a68) {
+			yycursor += 2
+			goto yy208
+		}
+	}
 	switch (yych) {
 	case 'h':
 		yycursor += 1
@@ -2282,6 +2318,12 @@ yy201:
 	}
 yy202:
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 2) {
+		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x3a67) {
+			yycursor += 2
+			goto yy210
+		}
+	}
 	switch (yych) {
 	case 'g':
 		yycursor += 1
@@ -2304,10 +2346,10 @@ yy205:
 	}
 yy206:
 	yych = yyinput[yycursor]
-	if (len(yyinput)-yycursor >= 2) {
-		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x6e69) {
-			yycursor += 2
-			goto yy211
+	if (len(yyinput)-yycursor >= 4) {
+		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0x3a676e69) {
+			yycursor += 4
+			goto yy213
 		}
 	}
 	switch (yych) {
@@ -2347,6 +2389,12 @@ yy210:
 	{ return 5, yycursor }
 yy211:
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 2) {
+		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x3a67) {
+			yycursor += 2
+			goto yy213
+		}
+	}
 	switch (yych) {
 	case 'g':
 		yycursor += 1
@@ -3930,6 +3978,12 @@ yy384:
 	yyaccept = 0
 	yymarker = yycursor
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 4) {
+		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0x66656463) {
+			yycursor += 4
+			goto yy404
+		}
+	}
 	switch (yych) {
 	case 'c':
 		yycursor += 1
@@ -3952,6 +4006,12 @@ yy386:
 	yyaccept = 0
 	yymarker = yycursor
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 8) {
+		if (uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) == 0x7a7a7978797a7a79) {
+			yycursor += 8
+			goto yy418
+		}
+	}
 	switch (yych) {
 	case 'y':
 		yycursor += 1
@@ -4013,10 +4073,10 @@ yy391:
 	}
 yy392:
 	yych = yyinput[yycursor]
-	if (len(yyinput)-yycursor >= 4) {
-		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0x78797a7a) {
-			yycursor += 4
-			goto yy409
+	if (len(yyinput)-yycursor >= 8) {
+		if (uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) == 0x797a7a7978797a7a) {
+			yycursor += 8
+			goto yy420
 		}
 	}
 	switch (yych) {
@@ -4055,6 +4115,12 @@ yy394:
 	}
 yy395:
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 2) {
+		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x646e) {
+			yycursor += 2
+			goto yy405
+		}
+	}
 	switch (yych) {
 	case 'n':
 		yycursor += 1
@@ -4081,6 +4147,12 @@ yy397:
 	yyaccept = 2
 	yymarker = yycursor
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 4) {
+		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0x68676665) {
+			yycursor += 4
+			goto yy413
+		}
+	}
 	switch (yych) {
 	case 'e':
 		yycursor += 1
@@ -4094,10 +4166,10 @@ yy399:
 	{ return 5, yycursor }
 yy400:
 	yych = yyinput[yycursor]
-	if (len(yyinput)-yycursor >= 2) {
-		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x6766) {
-			yycursor += 2
-			goto yy408
+	if (len(yyinput)-yycursor >= 4) {
+		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0x69686766) {
+			yycursor += 4
+			goto yy415
 		}
 	}
 	switch (yych) {
@@ -4180,6 +4252,12 @@ yy406:
 	}
 yy407:
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 2) {
+		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x6867) {
+			yycursor += 2
+			goto yy413
+		}
+	}
 	switch (yych) {
 	case 'g':
 		yycursor += 1
@@ -4189,6 +4267,12 @@ yy407:
 	}
 yy408:
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 2) {
+		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x6968) {
+			yycursor += 2
+			goto yy415
+		}
+	}
 	switch (yych) {
 	case 'h':
 		yycursor += 1
@@ -4198,10 +4282,10 @@ yy408:
 	}
 yy409:
 	yych = yyinput[yycursor]
-	if (len(yyinput)-yycursor >= 2) {
-		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x7a79) {
-			yycursor += 2
-			goto yy416
+	if (len(yyinput)-yycursor >= 4) {
+		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0x797a7a79) {
+			yycursor += 4
+			goto yy420
 		}
 	}
 	switch (yych) {
@@ -4248,6 +4332,12 @@ yy413:
 	yyaccept = 3
 	yymarker = yycursor
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 2) {
+		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x6a69) {
+			yycursor += 2
+			goto yy419
+		}
+	}
 	switch (yych) {
 	case 'i':
 		yycursor += 1
@@ -4261,6 +4351,12 @@ yy415:
 	{ return 6, yycursor }
 yy416:
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 2) {
+		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x797a) {
+			yycursor += 2
+			goto yy420
+		}
+	}
 	switch (yych) {
 	case 'z':
 		yycursor += 1
@@ -4270,6 +4366,12 @@ yy416:
 	}
 yy417:
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 2) {
+		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x6b6a) {
+			yycursor += 2
+			goto yy421
+		}
+	}
 	switch (yych) {
 	case 'j':
 		yycursor += 1
@@ -4652,6 +4754,12 @@ yy460:
 yy461:
 	yymarker = yycursor
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 4) {
+		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0x2d464450) {
+			yycursor += 4
+			goto yy485
+		}
+	}
 	switch (yych) {
 	case 'P':
 		yycursor += 1
@@ -4662,6 +4770,12 @@ yy461:
 yy462:
 	yymarker = yycursor
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 4) {
+		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0x39384649) {
+			yycursor += 4
+			goto yy486
+		}
+	}
 	switch (yych) {
 	case 'I':
 		yycursor += 1
@@ -4672,6 +4786,12 @@ yy462:
 yy463:
 	yymarker = yycursor
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 2) {
+		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x34b) {
+			yycursor += 2
+			goto yy476
+		}
+	}
 	switch (yych) {
 	case 'K':
 		yycursor += 1
@@ -4682,6 +4802,12 @@ yy463:
 yy464:
 	yymarker = yycursor
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 4) {
+		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0xd474e50) {
+			yycursor += 4
+			goto yy487
+		}
+	}
 	switch (yych) {
 	case 'P':
 		yycursor += 1
@@ -4692,6 +4818,12 @@ yy464:
 yy465:
 	yymarker = yycursor
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 2) {
+		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0xbfbb) {
+			yycursor += 2
+			goto yy478
+		}
+	}
 	switch (yych) {
 	case 0xBB:
 		yycursor += 1
@@ -4702,6 +4834,12 @@ yy465:
 yy466:
 	yymarker = yycursor
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 2) {
+		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0xffd8) {
+			yycursor += 2
+			goto yy479
+		}
+	}
 	switch (yych) {
 	case 0xD8:
 		yycursor += 1
@@ -4729,10 +4867,10 @@ yy468:
 	goto yy460
 yy469:
 	yych = yyinput[yycursor]
-	if (len(yyinput)-yycursor >= 2) {
-		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x3846) {
-			yycursor += 2
-			goto yy481
+	if (len(yyinput)-yycursor >= 4) {
+		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0x61393846) {
+			yycursor += 4
+			goto yy489
 		}
 	}
 	switch (yych) {
@@ -4744,6 +4882,12 @@ yy469:
 	}
 yy470:
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 2) {
+		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x403) {
+			yycursor += 2
+			goto yy482
+		}
+	}
 	switch (yych) {
 	case 0x03:
 		yycursor += 1
@@ -4777,6 +4921,12 @@ yy472:
 	}
 yy473:
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 2) {
+		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0xe0ff) {
+			yycursor += 2
+			goto yy484
+		}
+	}
 	if (yych <= 0xFE) {
 		goto yy468
 	}
@@ -4784,10 +4934,10 @@ yy473:
 	goto yy479
 yy474:
 	yych = yyinput[yycursor]
-	if (len(yyinput)-yycursor >= 2) {
-		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x2d46) {
-			yycursor += 2
-			goto yy485
+	if (len(yyinput)-yycursor >= 4) {
+		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0x2e312d46) {
+			yycursor += 4
+			goto yy491
 		}
 	}
 	switch (yych) {
@@ -4864,6 +5014,12 @@ yy480:
 	}
 yy481:
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 2) {
+		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x6139) {
+			yycursor += 2
+			goto yy489
+		}
+	}
 	switch (yych) {
 	case '9':
 		yycursor += 1
@@ -4875,10 +5031,10 @@ yy482:
 	{ return 4, yycursor }
 yy483:
 	yych = yyinput[yycursor]
-	if (len(yyinput)-yycursor >= 2) {
-		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0xa0d) {
-			yycursor += 2
-			goto yy490
+	if (len(yyinput)-yycursor >= 4) {
+		if (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) == 0xa1a0a0d) {
+			yycursor += 4
+			goto yy493
 		}
 	}
 	switch (yych) {
@@ -4892,6 +5048,12 @@ yy484:
 	{ return 6, yycursor }
 yy485:
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 2) {
+		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x2e31) {
+			yycursor += 2
+			goto yy491
+		}
+	}
 	switch (yych) {
 	case '1':
 		yycursor += 1
@@ -4936,6 +5098,12 @@ yy489:
 	{ return 2, yycursor }
 yy490:
 	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 2) {
+		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0xa1a) {
+			yycursor += 2
+			goto yy493
+		}
+	}
 	switch (yych) {
 	case 0x1A:
 		yycursor += 1
@@ -4969,6 +5137,225 @@ var binary_words = []string{
 	"\x25\x50\x44\x46\x2d\x31\x2e",
 	"\xff\xd8\xff\xe0",
 	"\xff\xd8\xff\xe1",
+}
+
+
+
+func anchored_0(yyinput string) (int, int) {
+	yycursor, yymarker := 0, 0
+	_ = yymarker
+	
+{
+	var yych byte
+	yych = yyinput[yycursor]
+	yycursor += 1
+	switch (yych) {
+	case 0x00,0x01:
+		goto yy495
+	case 'G':
+		goto yy497
+	default:
+		goto yy496
+	}
+yy495:
+	{ return 3, yycursor }
+yy496:
+	yych = yyinput[yycursor]
+	yycursor += 1
+	if (yych <= 0x01) {
+		goto yy498
+	}
+	goto yy499
+yy497:
+	yych = yyinput[yycursor]
+	yycursor += 1
+	switch (yych) {
+	case 0x00,0x01:
+		goto yy498
+	case 'I':
+		goto yy501
+	default:
+		goto yy499
+	}
+yy498:
+	{ return 3, yycursor }
+yy499:
+yy500:
+	{ return 0, yycursor }
+yy501:
+	yymarker = yycursor
+	yych = yyinput[yycursor]
+	switch (yych) {
+	case 'F':
+		yycursor += 1
+		goto yy502
+	default:
+		goto yy500
+	}
+yy502:
+	yych = yyinput[yycursor]
+	switch (yych) {
+	case '8':
+		yycursor += 1
+		goto yy504
+	default:
+		goto yy503
+	}
+yy503:
+	yycursor = yymarker
+	goto yy500
+yy504:
+	yych = yyinput[yycursor]
+	switch (yych) {
+	case '7':
+		yycursor += 1
+		goto yy505
+	case '9':
+		yycursor += 1
+		goto yy506
+	default:
+		goto yy503
+	}
+yy505:
+	yych = yyinput[yycursor]
+	switch (yych) {
+	case 'a':
+		yycursor += 1
+		goto yy507
+	default:
+		goto yy503
+	}
+yy506:
+	yych = yyinput[yycursor]
+	switch (yych) {
+	case 'a':
+		yycursor += 1
+		goto yy508
+	default:
+		goto yy503
+	}
+yy507:
+	{ return 2, yycursor }
+yy508:
+	{ return 1, yycursor }
+}
+
+}
+
+func anchored_1(yyinput string) (int, int) {
+	yycursor, yymarker := 0, 0
+	_ = yymarker
+	
+{
+	var yych byte
+	yych = yyinput[yycursor]
+	yycursor += 1
+	switch (yych) {
+	case 0x00,0x01:
+		goto yy510
+	case 'G':
+		goto yy512
+	default:
+		goto yy511
+	}
+yy510:
+	{ return 3, yycursor }
+yy511:
+	yych = yyinput[yycursor]
+	yycursor += 1
+	if (yych <= 0x01) {
+		goto yy513
+	}
+	goto yy514
+yy512:
+	yych = yyinput[yycursor]
+	yycursor += 1
+	switch (yych) {
+	case 0x00,0x01:
+		goto yy513
+	case 'I':
+		goto yy516
+	default:
+		goto yy514
+	}
+yy513:
+	{ return 3, yycursor }
+yy514:
+yy515:
+	{ return 0, yycursor }
+yy516:
+	yymarker = yycursor
+	yych = yyinput[yycursor]
+	if (len(yyinput)-yycursor >= 2) {
+		if (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) == 0x3846) {
+			yycursor += 2
+			goto yy519
+		}
+	}
+	switch (yych) {
+	case 'F':
+		yycursor += 1
+		goto yy517
+	default:
+		goto yy515
+	}
+yy517:
+	yych = yyinput[yycursor]
+	switch (yych) {
+	case '8':
+		yycursor += 1
+		goto yy519
+	default:
+		goto yy518
+	}
+yy518:
+	yycursor = yymarker
+	goto yy515
+yy519:
+	yych = yyinput[yycursor]
+	switch (yych) {
+	case '7':
+		yycursor += 1
+		goto yy520
+	case '9':
+		yycursor += 1
+		goto yy521
+	default:
+		goto yy518
+	}
+yy520:
+	yych = yyinput[yycursor]
+	switch (yych) {
+	case 'a':
+		yycursor += 1
+		goto yy522
+	default:
+		goto yy518
+	}
+yy521:
+	yych = yyinput[yycursor]
+	switch (yych) {
+	case 'a':
+		yycursor += 1
+		goto yy523
+	default:
+		goto yy518
+	}
+yy522:
+	{ return 2, yycursor }
+yy523:
+	{ return 1, yycursor }
+}
+
+}
+
+var anchored_words = []string{
+	"\x47\x49\x46\x38\x39\x61",
+	"\x47\x49\x46\x38\x37\x61",
+	"\x47\x49\x46\x38",
+	"\x47\x49",
+	"\x47",
+	"\x47\x4a",
 }
 
 var failures, checks int
@@ -5016,6 +5403,7 @@ func main() {
 	checkSet(keywords_0, keywords_1, keywords_words)
 	checkSet(backtrack_0, backtrack_1, backtrack_words)
 	checkSet(binary_0, binary_1, binary_words)
+	checkSet(anchored_0, anchored_1, anchored_words)
 	if failures > 0 {
 		panic(fmt.Sprintf("%d of %d checks failed", failures, checks))
 	}

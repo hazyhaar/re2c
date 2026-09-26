@@ -201,6 +201,45 @@ var binary_words = []string{
 	"\xff\xd8\xff\xe1",
 }
 
+/*!rules:re2c:anchored
+	"GIF89a"                     { return 1, yycursor }
+	"GIF87a"                     { return 2, yycursor }
+	[\x00\x01]                   { return 3, yycursor }
+	[^\x00\x01] [\x00\x01]       { return 3, yycursor }
+	[^\x00\x01] [^\x00\x01]      { return 0, yycursor }
+*/
+
+func anchored_0(yyinput string) (int, int) {
+	yycursor, yymarker := 0, 0
+	_ = yymarker
+	/*!use:re2c:anchored
+		re2c:api = simple;
+		re2c:yyfill:enable = 0;
+		re2c:vectorize:linear = 0;
+		re2c:YYCTYPE = byte;
+	*/
+}
+
+func anchored_1(yyinput string) (int, int) {
+	yycursor, yymarker := 0, 0
+	_ = yymarker
+	/*!use:re2c:anchored
+		re2c:api = simple;
+		re2c:yyfill:enable = 0;
+		re2c:vectorize:linear = 1;
+		re2c:YYCTYPE = byte;
+	*/
+}
+
+var anchored_words = []string{
+	"\x47\x49\x46\x38\x39\x61",
+	"\x47\x49\x46\x38\x37\x61",
+	"\x47\x49\x46\x38",
+	"\x47\x49",
+	"\x47",
+	"\x47\x4a",
+}
+
 var failures, checks int
 
 func check1(f, g func(string) (int, int), in string) {
@@ -246,6 +285,7 @@ func main() {
 	checkSet(keywords_0, keywords_1, keywords_words)
 	checkSet(backtrack_0, backtrack_1, backtrack_words)
 	checkSet(binary_0, binary_1, binary_words)
+	checkSet(anchored_0, anchored_1, anchored_words)
 	if failures > 0 {
 		panic(fmt.Sprintf("%d of %d checks failed", failures, checks))
 	}
