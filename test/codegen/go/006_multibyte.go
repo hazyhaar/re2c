@@ -81,14 +81,12 @@ yy6:
 yy7:
 	cursor += 1
 	yych = str[cursor]
-	switch (YYPEEKN(cursor, 4)) {
-	case 0x4554454c:
+	if (YYPEEKN(cursor, 4) == 0x4554454c) {
 		YYSKIPN(cursor, 3)
 		goto yy24
-	default:
-		if (yych == 'L') {
-			goto yy12
-		}
+	}
+	if (yych == 'L') {
+		goto yy12
 	}
 yy8:
 	cursor = marker
@@ -96,146 +94,124 @@ yy8:
 yy9:
 	cursor += 1
 	yych = str[cursor]
-	switch (YYPEEKN(cursor, 4)) {
-	case 0x54524553:
+	if (YYPEEKN(cursor, 4) == 0x54524553) {
 		YYSKIPN(cursor, 3)
 		goto yy25
-	default:
-		if (yych == 'S') {
-			goto yy13
-		}
-		goto yy8
 	}
+	if (yych == 'S') {
+		goto yy13
+	}
+	goto yy8
 yy10:
 	cursor += 1
 	yych = str[cursor]
-	switch (YYPEEKN(cursor, 4)) {
-	case 0x5443454c:
+	if (YYPEEKN(cursor, 4) == 0x5443454c) {
 		YYSKIPN(cursor, 3)
 		goto yy26
-	default:
-		if (yych == 'L') {
-			goto yy14
-		}
-		goto yy8
 	}
+	if (yych == 'L') {
+		goto yy14
+	}
+	goto yy8
 yy11:
 	cursor += 1
 	yych = str[cursor]
-	switch (YYPEEKN(cursor, 4)) {
-	case 0x45544144:
+	if (YYPEEKN(cursor, 4) == 0x45544144) {
 		YYSKIPN(cursor, 3)
 		goto yy27
-	default:
-		if (yych == 'D') {
-			goto yy15
-		}
-		goto yy8
 	}
+	if (yych == 'D') {
+		goto yy15
+	}
+	goto yy8
 yy12:
 	cursor += 1
 	yych = str[cursor]
-	switch (YYPEEKN(cursor, 2)) {
-	case 0x5445:
+	if (YYPEEKN(cursor, 2) == 0x5445) {
 		YYSKIPN(cursor, 1)
 		goto yy20
-	default:
-		if (yych == 'E') {
-			goto yy16
-		}
-		goto yy8
 	}
+	if (yych == 'E') {
+		goto yy16
+	}
+	goto yy8
 yy13:
 	cursor += 1
 	yych = str[cursor]
-	switch (YYPEEKN(cursor, 2)) {
-	case 0x5245:
+	if (YYPEEKN(cursor, 2) == 0x5245) {
 		YYSKIPN(cursor, 1)
 		goto yy21
-	default:
-		if (yych == 'E') {
-			goto yy17
-		}
-		goto yy8
 	}
+	if (yych == 'E') {
+		goto yy17
+	}
+	goto yy8
 yy14:
 	cursor += 1
 	yych = str[cursor]
-	switch (YYPEEKN(cursor, 2)) {
-	case 0x4345:
+	if (YYPEEKN(cursor, 2) == 0x4345) {
 		YYSKIPN(cursor, 1)
 		goto yy22
-	default:
-		if (yych == 'E') {
-			goto yy18
-		}
-		goto yy8
 	}
+	if (yych == 'E') {
+		goto yy18
+	}
+	goto yy8
 yy15:
 	cursor += 1
 	yych = str[cursor]
-	switch (YYPEEKN(cursor, 2)) {
-	case 0x5441:
+	if (YYPEEKN(cursor, 2) == 0x5441) {
 		YYSKIPN(cursor, 1)
 		goto yy23
-	default:
-		if (yych == 'A') {
-			goto yy19
-		}
-		goto yy8
 	}
+	if (yych == 'A') {
+		goto yy19
+	}
+	goto yy8
 yy16:
 	cursor += 1
 	yych = str[cursor]
-	switch (YYPEEKN(cursor, 2)) {
-	case 0x4554:
+	if (YYPEEKN(cursor, 2) == 0x4554) {
 		YYSKIPN(cursor, 1)
 		goto yy24
-	default:
-		if (yych == 'T') {
-			goto yy20
-		}
-		goto yy8
 	}
+	if (yych == 'T') {
+		goto yy20
+	}
+	goto yy8
 yy17:
 	cursor += 1
 	yych = str[cursor]
-	switch (YYPEEKN(cursor, 2)) {
-	case 0x5452:
+	if (YYPEEKN(cursor, 2) == 0x5452) {
 		YYSKIPN(cursor, 1)
 		goto yy25
-	default:
-		if (yych == 'R') {
-			goto yy21
-		}
-		goto yy8
 	}
+	if (yych == 'R') {
+		goto yy21
+	}
+	goto yy8
 yy18:
 	cursor += 1
 	yych = str[cursor]
-	switch (YYPEEKN(cursor, 2)) {
-	case 0x5443:
+	if (YYPEEKN(cursor, 2) == 0x5443) {
 		YYSKIPN(cursor, 1)
 		goto yy26
-	default:
-		if (yych == 'C') {
-			goto yy22
-		}
-		goto yy8
 	}
+	if (yych == 'C') {
+		goto yy22
+	}
+	goto yy8
 yy19:
 	cursor += 1
 	yych = str[cursor]
-	switch (YYPEEKN(cursor, 2)) {
-	case 0x4554:
+	if (YYPEEKN(cursor, 2) == 0x4554) {
 		YYSKIPN(cursor, 1)
 		goto yy27
-	default:
-		if (yych == 'T') {
-			goto yy23
-		}
-		goto yy8
 	}
+	if (yych == 'T') {
+		goto yy23
+	}
+	goto yy8
 yy20:
 	cursor += 1
 	yych = str[cursor]

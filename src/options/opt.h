@@ -218,10 +218,15 @@ using StxCodes = list_t<StxCode>;
         ({StxVarId::SKIP, StxVarId::CURSOR, StxVarId::RECORD}), ({}), ({}) \
     ) \
     CODE_TEMPLATE(yypeekn, \
-        ({StxVarId::N, StxVarId::CURSOR}), ({}), ({}) \
+        ({StxVarId::N, StxVarId::OFFSET, StxVarId::INPUT, StxVarId::CURSOR, StxVarId::RECORD}), \
+        ({StxVarId::OFFSET}), ({}) \
+    ) \
+    CODE_TEMPLATE(yypeekn_guard, \
+        ({StxVarId::N, StxVarId::INPUT, StxVarId::CURSOR, StxVarId::LIMIT, StxVarId::RECORD}), \
+        ({}), ({}) \
     ) \
     CODE_TEMPLATE(yyskipn, \
-        ({StxVarId::N, StxVarId::CURSOR}), ({}), ({}) \
+        ({StxVarId::N, StxVarId::INPUT, StxVarId::CURSOR, StxVarId::RECORD}), ({}), ({}) \
     ) \
     CODE_TEMPLATE(yybackup, \
         ({StxVarId::BACKUP, StxVarId::CURSOR, StxVarId::MARKER, StxVarId::RECORD}), ({}), ({}) \

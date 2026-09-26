@@ -423,6 +423,8 @@ static constexpr const char* DEFAULT_SYNTAX_RUST =
     "\n"
     "code:yypeekn = \"YYPEEKN(\" YYCURSOR \", \" n \")\";\n"
     "\n"
+    "code:yypeekn_guard = <undefined>;\n"
+    "\n"
     "code:yyskipn = topindent (.api.generic\n"
     "    ? \"YYSKIPN(\" YYCURSOR \", \" n \");\"\n"
     "    : YYCURSOR \" += \" n \";\"\n"

@@ -1,21 +1,7 @@
 //go:generate re2go $INPUT -o $OUTPUT -i --api simple --vectorize-linear
 package main
 
-import (
-	"encoding/binary"
-	"fmt"
-)
-
-var curInput string
-
-func YYPEEKN(cur int, n int) uint64 {
-	if cur+n > len(curInput) {
-		return 0
-	}
-	var buf [8]byte
-	copy(buf[:], curInput[cur:cur+n])
-	return binary.LittleEndian.Uint64(buf[:])
-}
+import "fmt"
 
 const (
 	TokUnknown = 0
@@ -29,7 +15,6 @@ const (
 
 // LexKeyword reconnaît un mot-clé avec le fast-path broadword vectorisé.
 func LexKeyword(yyinput string) int {
-	curInput = yyinput
 	var yycursor int
 	var yymarker int
 

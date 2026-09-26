@@ -1,21 +1,14 @@
 // re2c $INPUT -o $OUTPUT -i --vectorize-linear
 #include <assert.h>
-#include <stdint.h>
 #include <string.h>
 
 #define YYCTYPE char
-#define YYPEEKN(s, n) ({ \
-    uint64_t v = 0; \
-    for (size_t _i = 0; _i < (size_t)(n); ++_i) { \
-        v |= (uint64_t)(unsigned char)(s)[_i] << (8 * _i); \
-        if ((s)[_i] == '\0') break; \
-    } \
-    v; \
-})
 
-static int lex(const char *YYCURSOR)
+// The default API needs neither YYPEEKN nor YYSKIPN. Without YYFILL, the multi-character reads are
+// guarded by YYLIMIT.
+static int lex(const char *s)
 {
-    const char *YYMARKER;
+    const char *YYCURSOR = s, *YYLIMIT = s + strlen(s), *YYMARKER;
     /*!re2c
     re2c:yyfill:enable = 0;
 

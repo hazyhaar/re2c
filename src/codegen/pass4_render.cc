@@ -1038,7 +1038,9 @@ class RenderSkipN : public RenderCallback {
     void render_var(StxVarId var) override {
         switch (var) {
         case StxVarId::N: rctx.os << n; break;
+        case StxVarId::INPUT: rctx.os << rctx.opts->api_input; break;
         case StxVarId::CURSOR: rctx.os << rctx.opts->api_cursor; break;
+        case StxVarId::RECORD: rctx.os << rctx.opts->var_record; break;
         default: render_global_var(rctx, var); break;
         }
     }

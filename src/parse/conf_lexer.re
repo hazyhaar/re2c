@@ -632,6 +632,7 @@ start:
     "code:yydebug"                { RET_CODE(code_yydebug); }
     "code:yypeek"                 { RET_CODE(code_yypeek); }
     "code:yypeekn"                { RET_CODE(code_yypeekn); }
+    "code:yypeekn_guard"          { RET_CODE(code_yypeekn_guard); }
     "code:yyskip"                 { RET_CODE(code_yyskip); }
     "code:yyskipn"                { RET_CODE(code_yyskipn); }
     "code:yybackup"               { RET_CODE(code_yybackup); }

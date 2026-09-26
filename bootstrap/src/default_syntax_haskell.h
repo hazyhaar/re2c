@@ -431,6 +431,8 @@ static constexpr const char* DEFAULT_SYNTAX_HASKELL =
     "\n"
     "code:yypeekn = \"YYPEEKN(\" YYCURSOR \", \" n \")\";\n"
     "\n"
+    "code:yypeekn_guard = <undefined>;\n"
+    "\n"
     "code:yyskipn = topindent (.api.record\n"
     "    ? (.monadic\n"
     "        ? YYCURSOR \" <- return $ \" YYCURSOR \" + \" n\n"

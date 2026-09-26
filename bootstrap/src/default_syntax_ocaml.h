@@ -410,6 +410,8 @@ static constexpr const char* DEFAULT_SYNTAX_OCAML =
     "\n"
     "code:yypeekn = \"YYPEEKN(\" YYCURSOR \", \" n \")\";\n"
     "\n"
+    "code:yypeekn_guard = <undefined>;\n"
+    "\n"
     "code:yyskipn = topindent (.api.record\n"
     "    ? YYCURSOR \" <- \" YYCURSOR \" + \" n \";\"\n"
     "    : \"YYSKIPN(\" YYCURSOR \", \" n \");\"\n"
