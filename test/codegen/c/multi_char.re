@@ -12,7 +12,6 @@
     } \
     v; \
 })
-#define YYSKIPN(s, n) (s += (n))
 
 static int lex(const char *YYCURSOR)
 {

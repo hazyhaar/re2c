@@ -13,7 +13,6 @@
     } \
     v; \
 })
-#define YYSKIPN(s, n) (s += (n))
 
 static int lex(const char *YYCURSOR)
 {
@@ -61,7 +60,7 @@ yy7:
 	yych = *++YYCURSOR;
 	switch (YYPEEKN(YYCURSOR, 2)) {
 		case 0x454c:
-			YYSKIPN(YYCURSOR, 1);
+			YYCURSOR += 1;
 			goto yy16;
 		default:
 			switch (yych) {
@@ -76,7 +75,7 @@ yy9:
 	yych = *++YYCURSOR;
 	switch (YYPEEKN(YYCURSOR, 2)) {
 		case 0x4553:
-			YYSKIPN(YYCURSOR, 1);
+			YYCURSOR += 1;
 			goto yy17;
 		default:
 			switch (yych) {
@@ -88,7 +87,7 @@ yy10:
 	yych = *++YYCURSOR;
 	switch (YYPEEKN(YYCURSOR, 2)) {
 		case 0x454c:
-			YYSKIPN(YYCURSOR, 1);
+			YYCURSOR += 1;
 			goto yy18;
 		default:
 			switch (yych) {
@@ -100,7 +99,7 @@ yy11:
 	yych = *++YYCURSOR;
 	switch (YYPEEKN(YYCURSOR, 2)) {
 		case 0x4144:
-			YYSKIPN(YYCURSOR, 1);
+			YYCURSOR += 1;
 			goto yy19;
 		default:
 			switch (yych) {
@@ -112,7 +111,7 @@ yy12:
 	yych = *++YYCURSOR;
 	switch (YYPEEKN(YYCURSOR, 2)) {
 		case 0x5445:
-			YYSKIPN(YYCURSOR, 1);
+			YYCURSOR += 1;
 			goto yy20;
 		default:
 			switch (yych) {
@@ -124,7 +123,7 @@ yy13:
 	yych = *++YYCURSOR;
 	switch (YYPEEKN(YYCURSOR, 2)) {
 		case 0x5245:
-			YYSKIPN(YYCURSOR, 1);
+			YYCURSOR += 1;
 			goto yy21;
 		default:
 			switch (yych) {
@@ -136,7 +135,7 @@ yy14:
 	yych = *++YYCURSOR;
 	switch (YYPEEKN(YYCURSOR, 2)) {
 		case 0x4345:
-			YYSKIPN(YYCURSOR, 1);
+			YYCURSOR += 1;
 			goto yy22;
 		default:
 			switch (yych) {
@@ -148,7 +147,7 @@ yy15:
 	yych = *++YYCURSOR;
 	switch (YYPEEKN(YYCURSOR, 2)) {
 		case 0x5441:
-			YYSKIPN(YYCURSOR, 1);
+			YYCURSOR += 1;
 			goto yy23;
 		default:
 			switch (yych) {
