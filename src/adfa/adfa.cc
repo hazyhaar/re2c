@@ -523,6 +523,9 @@ void Adfa::coalesce_multichar(const opt_t* opts) {
     // Only one-byte code unit encodings can be read as raw bytes.
     if (opts->target != Target::CODE) return;
     if (opts->input_encoding != Enc::Type::ASCII) return;
+    // With the end-of-input rule $ YYFILL does not reserve input for the whole chain in advance, so
+    // a multi-character read may go past the end of the buffer.
+    if (opts->fill_eof != NOEOF) return;
     if (opts->code_yypeekn == nullptr || is_undefined(opts->code_yypeekn)) return;
     if (opts->code_yyskipn == nullptr || is_undefined(opts->code_yyskipn)) return;
 
