@@ -75,12 +75,6 @@ yy6:
 	}
 yy7:
 	yych = *++YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 4) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x4554454c) {
-			YYCURSOR += 3;
-			goto yy24;
-		}
-	}
 	switch (yych) {
 		case 'L': goto yy12;
 		default: goto yy8;
@@ -90,132 +84,66 @@ yy8:
 	goto yy2;
 yy9:
 	yych = *++YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 4) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x54524553) {
-			YYCURSOR += 3;
-			goto yy25;
-		}
-	}
 	switch (yych) {
 		case 'S': goto yy13;
 		default: goto yy8;
 	}
 yy10:
 	yych = *++YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 4) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x5443454c) {
-			YYCURSOR += 3;
-			goto yy26;
-		}
-	}
 	switch (yych) {
 		case 'L': goto yy14;
 		default: goto yy8;
 	}
 yy11:
 	yych = *++YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 4) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x45544144) {
-			YYCURSOR += 3;
-			goto yy27;
-		}
-	}
 	switch (yych) {
 		case 'D': goto yy15;
 		default: goto yy8;
 	}
 yy12:
 	yych = *++YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 2) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x5445) {
-			YYCURSOR += 1;
-			goto yy20;
-		}
-	}
 	switch (yych) {
 		case 'E': goto yy16;
 		default: goto yy8;
 	}
 yy13:
 	yych = *++YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 2) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x5245) {
-			YYCURSOR += 1;
-			goto yy21;
-		}
-	}
 	switch (yych) {
 		case 'E': goto yy17;
 		default: goto yy8;
 	}
 yy14:
 	yych = *++YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 2) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x4345) {
-			YYCURSOR += 1;
-			goto yy22;
-		}
-	}
 	switch (yych) {
 		case 'E': goto yy18;
 		default: goto yy8;
 	}
 yy15:
 	yych = *++YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 2) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x5441) {
-			YYCURSOR += 1;
-			goto yy23;
-		}
-	}
 	switch (yych) {
 		case 'A': goto yy19;
 		default: goto yy8;
 	}
 yy16:
 	yych = *++YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 2) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x4554) {
-			YYCURSOR += 1;
-			goto yy24;
-		}
-	}
 	switch (yych) {
 		case 'T': goto yy20;
 		default: goto yy8;
 	}
 yy17:
 	yych = *++YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 2) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x5452) {
-			YYCURSOR += 1;
-			goto yy25;
-		}
-	}
 	switch (yych) {
 		case 'R': goto yy21;
 		default: goto yy8;
 	}
 yy18:
 	yych = *++YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 2) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x5443) {
-			YYCURSOR += 1;
-			goto yy26;
-		}
-	}
 	switch (yych) {
 		case 'C': goto yy22;
 		default: goto yy8;
 	}
 yy19:
 	yych = *++YYCURSOR;
-	if ((YYLIMIT - YYCURSOR) >= 2) {
-		if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x4554) {
-			YYCURSOR += 1;
-			goto yy27;
-		}
-	}
 	switch (yych) {
 		case 'T': goto yy23;
 		default: goto yy8;

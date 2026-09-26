@@ -1514,50 +1514,30 @@ yy124:
 	}
 yy125:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x452d726566736e61) {
-		in->cur += 7;
-		goto yy182;
-	}
 	switch (yych) {
 		case 'a': goto yy131;
 		default: goto yy118;
 	}
 yy126:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x746e6567412d7265) {
-		in->cur += 7;
-		goto yy183;
-	}
 	switch (yych) {
 		case 'e': goto yy132;
 		default: goto yy118;
 	}
 yy127:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x6f636e452d747065) {
-		in->cur += 7;
-		goto yy184;
-	}
 	switch (yych) {
 		case 'e': goto yy133;
 		default: goto yy118;
 	}
 yy128:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x6974617a69726f68) {
-		in->cur += 7;
-		goto yy185;
-	}
 	switch (yych) {
 		case 'h': goto yy134;
 		default: goto yy118;
 	}
 yy129:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x72746e6f432d6568) {
-		in->cur += 7;
-		goto yy186;
-	}
 	switch (yych) {
 		case 'h': goto yy135;
 		default: goto yy118;
@@ -1571,50 +1551,30 @@ yy130:
 	}
 yy131:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x6e452d726566736e) {
-		in->cur += 7;
-		goto yy190;
-	}
 	switch (yych) {
 		case 'n': goto yy138;
 		default: goto yy118;
 	}
 yy132:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x3a746e6567412d72) {
-		in->cur += 7;
-		goto yy191;
-	}
 	switch (yych) {
 		case 'r': goto yy139;
 		default: goto yy118;
 	}
 yy133:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x646f636e452d7470) {
-		in->cur += 7;
-		goto yy192;
-	}
 	switch (yych) {
 		case 'p': goto yy140;
 		default: goto yy118;
 	}
 yy134:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x6f6974617a69726f) {
-		in->cur += 7;
-		goto yy193;
-	}
 	switch (yych) {
 		case 'o': goto yy141;
 		default: goto yy118;
 	}
 yy135:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x6f72746e6f432d65) {
-		in->cur += 7;
-		goto yy194;
-	}
 	switch (yych) {
 		case 'e': goto yy142;
 		default: goto yy118;
@@ -1641,200 +1601,120 @@ yy137:
 	}
 yy138:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x636e452d72656673) {
-		in->cur += 7;
-		goto yy197;
-	}
 	switch (yych) {
 		case 's': goto yy145;
 		default: goto yy118;
 	}
 yy139:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x6567412d) {
-		in->cur += 3;
-		goto yy167;
-	}
 	switch (yych) {
 		case '-': goto yy146;
 		default: goto yy118;
 	}
 yy140:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x69646f636e452d74) {
-		in->cur += 7;
-		goto yy198;
-	}
 	switch (yych) {
 		case 't': goto yy147;
 		default: goto yy118;
 	}
 yy141:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x6e6f6974617a6972) {
-		in->cur += 7;
-		goto yy199;
-	}
 	switch (yych) {
 		case 'r': goto yy148;
 		default: goto yy118;
 	}
 yy142:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x6c6f72746e6f432d) {
-		in->cur += 7;
-		goto yy200;
-	}
 	switch (yych) {
 		case '-': goto yy149;
 		default: goto yy118;
 	}
 yy143:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x6f697463) {
-		in->cur += 3;
-		goto yy171;
-	}
 	switch (yych) {
 		case 'c': goto yy150;
 		default: goto yy118;
 	}
 yy144:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1) == 0x746e) {
-		in->cur += 1;
-		goto yy158;
-	}
 	switch (yych) {
 		case 'n': goto yy151;
 		default: goto yy118;
 	}
 yy145:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x6f636e452d726566) {
-		in->cur += 7;
-		goto yy203;
-	}
 	switch (yych) {
 		case 'f': goto yy152;
 		default: goto yy118;
 	}
 yy146:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x6e656741) {
-		in->cur += 3;
-		goto yy175;
-	}
 	switch (yych) {
 		case 'A': goto yy153;
 		default: goto yy118;
 	}
 yy147:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x6e69646f636e452d) {
-		in->cur += 7;
-		goto yy204;
-	}
 	switch (yych) {
 		case '-': goto yy154;
 		default: goto yy118;
 	}
 yy148:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x3a6e6f6974617a69) {
-		in->cur += 7;
-		goto yy205;
-	}
 	switch (yych) {
 		case 'i': goto yy155;
 		default: goto yy118;
 	}
 yy149:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x3a6c6f72746e6f43) {
-		in->cur += 7;
-		goto yy206;
-	}
 	switch (yych) {
 		case 'C': goto yy156;
 		default: goto yy118;
 	}
 yy150:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x6e6f6974) {
-		in->cur += 3;
-		goto yy179;
-	}
 	switch (yych) {
 		case 't': goto yy157;
 		default: goto yy118;
 	}
 yy151:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1) == 0x2d74) {
-		in->cur += 1;
-		goto yy165;
-	}
 	switch (yych) {
 		case 't': goto yy158;
 		default: goto yy118;
 	}
 yy152:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x646f636e452d7265) {
-		in->cur += 7;
-		goto yy208;
-	}
 	switch (yych) {
 		case 'e': goto yy159;
 		default: goto yy118;
 	}
 yy153:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x746e6567) {
-		in->cur += 3;
-		goto yy183;
-	}
 	switch (yych) {
 		case 'g': goto yy160;
 		default: goto yy118;
 	}
 yy154:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x676e69646f636e45) {
-		in->cur += 7;
-		goto yy209;
-	}
 	switch (yych) {
 		case 'E': goto yy161;
 		default: goto yy118;
 	}
 yy155:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x6974617a) {
-		in->cur += 3;
-		goto yy185;
-	}
 	switch (yych) {
 		case 'z': goto yy162;
 		default: goto yy118;
 	}
 yy156:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x72746e6f) {
-		in->cur += 3;
-		goto yy186;
-	}
 	switch (yych) {
 		case 'o': goto yy163;
 		default: goto yy118;
 	}
 yy157:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x3a6e6f69) {
-		in->cur += 3;
-		goto yy187;
-	}
 	switch (yych) {
 		case 'i': goto yy164;
 		default: goto yy118;
@@ -1847,50 +1727,30 @@ yy158:
 	}
 yy159:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x69646f636e452d72) {
-		in->cur += 7;
-		goto yy211;
-	}
 	switch (yych) {
 		case 'r': goto yy166;
 		default: goto yy118;
 	}
 yy160:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x3a746e65) {
-		in->cur += 3;
-		goto yy191;
-	}
 	switch (yych) {
 		case 'e': goto yy167;
 		default: goto yy118;
 	}
 yy161:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x3a676e69646f636e) {
-		in->cur += 7;
-		goto yy212;
-	}
 	switch (yych) {
 		case 'n': goto yy168;
 		default: goto yy118;
 	}
 yy162:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x6f697461) {
-		in->cur += 3;
-		goto yy193;
-	}
 	switch (yych) {
 		case 'a': goto yy169;
 		default: goto yy118;
 	}
 yy163:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x6f72746e) {
-		in->cur += 3;
-		goto yy194;
-	}
 	switch (yych) {
 		case 'n': goto yy170;
 		default: goto yy118;
@@ -1914,60 +1774,36 @@ yy165:
 	}
 yy166:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x6e69646f636e452d) {
-		in->cur += 7;
-		goto yy213;
-	}
 	switch (yych) {
 		case '-': goto yy174;
 		default: goto yy118;
 	}
 yy167:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1) == 0x746e) {
-		in->cur += 1;
-		goto yy183;
-	}
 	switch (yych) {
 		case 'n': goto yy175;
 		default: goto yy118;
 	}
 yy168:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x69646f63) {
-		in->cur += 3;
-		goto yy198;
-	}
 	switch (yych) {
 		case 'c': goto yy176;
 		default: goto yy118;
 	}
 yy169:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x6e6f6974) {
-		in->cur += 3;
-		goto yy199;
-	}
 	switch (yych) {
 		case 't': goto yy177;
 		default: goto yy118;
 	}
 yy170:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x6c6f7274) {
-		in->cur += 3;
-		goto yy200;
-	}
 	switch (yych) {
 		case 't': goto yy178;
 		default: goto yy118;
 	}
 yy171:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1) == 0x3a6e) {
-		in->cur += 1;
-		goto yy187;
-	}
 	switch (yych) {
 		case 'n': goto yy179;
 		default: goto yy118;
@@ -2050,30 +1886,18 @@ yy179:
 	}
 yy180:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x6874676e) {
-		in->cur += 3;
-		goto yy207;
-	}
 	switch (yych) {
 		case 'n': goto yy188;
 		default: goto yy118;
 	}
 yy181:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1) == 0x6570) {
-		in->cur += 1;
-		goto yy196;
-	}
 	switch (yych) {
 		case 'p': goto yy189;
 		default: goto yy118;
 	}
 yy182:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x3a676e69646f636e) {
-		in->cur += 7;
-		goto yy215;
-	}
 	switch (yych) {
 		case 'n': goto yy190;
 		default: goto yy118;
@@ -2086,30 +1910,18 @@ yy183:
 	}
 yy184:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x676e6964) {
-		in->cur += 3;
-		goto yy209;
-	}
 	switch (yych) {
 		case 'd': goto yy192;
 		default: goto yy118;
 	}
 yy185:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1) == 0x6e6f) {
-		in->cur += 1;
-		goto yy199;
-	}
 	switch (yych) {
 		case 'o': goto yy193;
 		default: goto yy118;
 	}
 yy186:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1) == 0x6c6f) {
-		in->cur += 1;
-		goto yy200;
-	}
 	switch (yych) {
 		case 'o': goto yy194;
 		default: goto yy118;
@@ -2119,30 +1931,18 @@ yy187:
 	{ *len = (size_t)(in->cur - in->tok); return 8; }
 yy188:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x3a687467) {
-		in->cur += 3;
-		goto yy210;
-	}
 	switch (yych) {
 		case 'g': goto yy195;
 		default: goto yy118;
 	}
 yy189:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1) == 0x3a65) {
-		in->cur += 1;
-		goto yy202;
-	}
 	switch (yych) {
 		case 'e': goto yy196;
 		default: goto yy118;
 	}
 yy190:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x69646f63) {
-		in->cur += 3;
-		goto yy211;
-	}
 	switch (yych) {
 		case 'c': goto yy197;
 		default: goto yy118;
@@ -2152,40 +1952,24 @@ yy191:
 	{ *len = (size_t)(in->cur - in->tok); return 6; }
 yy192:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x3a676e69) {
-		in->cur += 3;
-		goto yy212;
-	}
 	switch (yych) {
 		case 'i': goto yy198;
 		default: goto yy118;
 	}
 yy193:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1) == 0x3a6e) {
-		in->cur += 1;
-		goto yy205;
-	}
 	switch (yych) {
 		case 'n': goto yy199;
 		default: goto yy118;
 	}
 yy194:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1) == 0x3a6c) {
-		in->cur += 1;
-		goto yy206;
-	}
 	switch (yych) {
 		case 'l': goto yy200;
 		default: goto yy118;
 	}
 yy195:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1) == 0x6874) {
-		in->cur += 1;
-		goto yy207;
-	}
 	switch (yych) {
 		case 't': goto yy201;
 		default: goto yy118;
@@ -2198,20 +1982,12 @@ yy196:
 	}
 yy197:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x6e69646f) {
-		in->cur += 3;
-		goto yy213;
-	}
 	switch (yych) {
 		case 'o': goto yy203;
 		default: goto yy118;
 	}
 yy198:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1) == 0x676e) {
-		in->cur += 1;
-		goto yy209;
-	}
 	switch (yych) {
 		case 'n': goto yy204;
 		default: goto yy118;
@@ -2243,10 +2019,6 @@ yy202:
 	{ *len = (size_t)(in->cur - in->tok); return 2; }
 yy203:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x676e6964) {
-		in->cur += 3;
-		goto yy214;
-	}
 	switch (yych) {
 		case 'd': goto yy208;
 		default: goto yy118;
@@ -2275,10 +2047,6 @@ yy207:
 	}
 yy208:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x3a676e69) {
-		in->cur += 3;
-		goto yy215;
-	}
 	switch (yych) {
 		case 'i': goto yy211;
 		default: goto yy118;
@@ -2294,10 +2062,6 @@ yy210:
 	{ *len = (size_t)(in->cur - in->tok); return 1; }
 yy211:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1) == 0x676e) {
-		in->cur += 1;
-		goto yy214;
-	}
 	switch (yych) {
 		case 'n': goto yy213;
 		default: goto yy118;
@@ -2307,10 +2071,6 @@ yy212:
 	{ *len = (size_t)(in->cur - in->tok); return 5; }
 yy213:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1) == 0x3a67) {
-		in->cur += 1;
-		goto yy215;
-	}
 	switch (yych) {
 		case 'g': goto yy214;
 		default: goto yy118;
@@ -4612,10 +4372,6 @@ yy394:
 	{ *len = (size_t)(in->cur - in->tok); return 1; }
 yy395:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x67666564) {
-		in->cur += 3;
-		goto yy414;
-	}
 	switch (yych) {
 		case 'd': goto yy400;
 		default: goto yy396;
@@ -4648,10 +4404,6 @@ yy397:
 	}
 yy398:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3 | (unsigned long long)(unsigned char)in->cur[4] << 8 * 4 | (unsigned long long)(unsigned char)in->cur[5] << 8 * 5 | (unsigned long long)(unsigned char)in->cur[6] << 8 * 6 | (unsigned long long)(unsigned char)in->cur[7] << 8 * 7) == 0x797a7a7978797a7a) {
-		in->cur += 7;
-		goto yy426;
-	}
 	switch (yych) {
 		case 'z': goto yy402;
 		default: goto yy396;
@@ -4665,10 +4417,6 @@ yy399:
 	}
 yy400:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x68676665) {
-		in->cur += 3;
-		goto yy417;
-	}
 	switch (yych) {
 		case 'e': goto yy406;
 		default: goto yy396;
@@ -4685,10 +4433,6 @@ yy401:
 	}
 yy402:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x7978797a) {
-		in->cur += 3;
-		goto yy418;
-	}
 	switch (yych) {
 		case 'z': goto yy408;
 		default: goto yy396;
@@ -4711,10 +4455,6 @@ yy405:
 	{ *len = (size_t)(in->cur - in->tok); return 5; }
 yy406:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x69686766) {
-		in->cur += 3;
-		goto yy421;
-	}
 	switch (yych) {
 		case 'f': goto yy410;
 		default: goto yy396;
@@ -4727,20 +4467,12 @@ yy407:
 	}
 yy408:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x7a797879) {
-		in->cur += 3;
-		goto yy422;
-	}
 	switch (yych) {
 		case 'y': goto yy412;
 		default: goto yy396;
 	}
 yy409:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1) == 0x6766) {
-		in->cur += 1;
-		goto yy416;
-	}
 	switch (yych) {
 		case 'f': goto yy413;
 		default: goto yy396;
@@ -4760,40 +4492,24 @@ yy411:
 	{ *len = (size_t)(in->cur - in->tok); return 8; }
 yy412:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x7a7a7978) {
-		in->cur += 3;
-		goto yy424;
-	}
 	switch (yych) {
 		case 'x': goto yy415;
 		default: goto yy396;
 	}
 yy413:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1) == 0x6867) {
-		in->cur += 1;
-		goto yy419;
-	}
 	switch (yych) {
 		case 'g': goto yy416;
 		default: goto yy396;
 	}
 yy414:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1) == 0x6968) {
-		in->cur += 1;
-		goto yy421;
-	}
 	switch (yych) {
 		case 'h': goto yy417;
 		default: goto yy396;
 	}
 yy415:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1 | (unsigned long long)(unsigned char)in->cur[2] << 8 * 2 | (unsigned long long)(unsigned char)in->cur[3] << 8 * 3) == 0x797a7a79) {
-		in->cur += 3;
-		goto yy426;
-	}
 	switch (yych) {
 		case 'y': goto yy418;
 		default: goto yy396;
@@ -4812,10 +4528,6 @@ yy417:
 	}
 yy418:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1) == 0x7a7a) {
-		in->cur += 1;
-		goto yy424;
-	}
 	switch (yych) {
 		case 'z': goto yy422;
 		default: goto yy396;
@@ -4838,20 +4550,12 @@ yy421:
 	{ *len = (size_t)(in->cur - in->tok); return 6; }
 yy422:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1) == 0x797a) {
-		in->cur += 1;
-		goto yy426;
-	}
 	switch (yych) {
 		case 'z': goto yy424;
 		default: goto yy396;
 	}
 yy423:
 	yych = *++in->cur;
-	if (((unsigned long long)(unsigned char)in->cur[0] | (unsigned long long)(unsigned char)in->cur[1] << 8 * 1) == 0x6b6a) {
-		in->cur += 1;
-		goto yy427;
-	}
 	switch (yych) {
 		case 'j': goto yy425;
 		default: goto yy396;

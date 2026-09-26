@@ -484,7 +484,10 @@ void Adfa::prepare(const opt_t* opts) {
 //
 // Chains are followed while each state has exactly one single-character transition to a state
 // that the chain can pass through; the last transition may instead be the only one to a consuming
-// state.
+// state. Chains are selected in breadth-first order from the start state, and the intermediate
+// states of a selected chain are not used as heads of other chains: otherwise, after a failed
+// wide comparison, the ordinary dispatch would enter the next state and start another wide
+// comparison shifted by one character.
 //
 // The reads cover 2, 4 or 8 code units. They are safe with YYFILL (the YYFILL check that dominates
 // the chain reserves enough input for the longest path, which includes the chain), and without
@@ -561,8 +564,29 @@ void Adfa::coalesce_multichar(const opt_t* opts) {
     if (opts->code_yypeekn == nullptr || is_undefined(opts->code_yypeekn)) return;
     if (opts->code_yyskipn == nullptr || is_undefined(opts->code_yyskipn)) return;
 
+    // Order states breadth-first from the initial state, so that a chain is found from its first
+    // state before any of its intermediate states is considered as a head.
+    std::vector<State*> order;
+    std::set<const State*> seen;
+    std::queue<State*> todo;
+    todo.push(head);
+    seen.insert(head);
+    while (!todo.empty()) {
+        State* s = todo.front();
+        todo.pop();
+        order.push_back(s);
+        for (uint32_t i = 0; i < s->go.span_count; ++i) {
+            State* t = s->go.span[i].to;
+            if (t != nullptr && seen.insert(t).second) todo.push(t);
+        }
+    }
     for (State* s = head; s; s = s->next) {
-        if (!mchar_head(s)) continue;
+        if (seen.insert(s).second) order.push_back(s);
+    }
+
+    std::set<const State*> inner; // intermediate states of the selected chains
+    for (State* s : order) {
+        if (inner.count(s) != 0 || !mchar_head(s)) continue;
 
         // Extend the chain up to 8 characters, rejecting cycles.
         State* path[9];
@@ -606,6 +630,9 @@ void Adfa::coalesce_multichar(const opt_t* opts) {
             s->mchar_n = best_n;
             s->mchar_value = best_value;
             s->mchar_to = best_to;
+            for (uint32_t i = 1; i < best_n; ++i) {
+                inner.insert(path[i]);
+            }
         }
     }
 }

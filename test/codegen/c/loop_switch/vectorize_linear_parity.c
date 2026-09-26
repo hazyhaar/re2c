@@ -2134,13 +2134,6 @@ static int headers_1(
 				}
 			case 18:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 8) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x6f636e452d747065) {
-						YYCURSOR += 8;
-						yystate = 75;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'e':
 						++YYCURSOR;
@@ -2152,13 +2145,6 @@ static int headers_1(
 				}
 			case 19:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 8) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x6974617a69726f68) {
-						YYCURSOR += 8;
-						yystate = 76;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'h':
 						++YYCURSOR;
@@ -2170,13 +2156,6 @@ static int headers_1(
 				}
 			case 20:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 8) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x72746e6f432d6568) {
-						YYCURSOR += 8;
-						yystate = 77;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'h':
 						++YYCURSOR;
@@ -2203,13 +2182,6 @@ static int headers_1(
 				}
 			case 22:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 8) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x6e452d726566736e) {
-						YYCURSOR += 8;
-						yystate = 81;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'n':
 						++YYCURSOR;
@@ -2221,13 +2193,6 @@ static int headers_1(
 				}
 			case 23:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 8) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x3a746e6567412d72) {
-						YYCURSOR += 8;
-						yystate = 82;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'r':
 						++YYCURSOR;
@@ -2239,13 +2204,6 @@ static int headers_1(
 				}
 			case 24:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 8) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x646f636e452d7470) {
-						YYCURSOR += 8;
-						yystate = 83;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'p':
 						++YYCURSOR;
@@ -2257,13 +2215,6 @@ static int headers_1(
 				}
 			case 25:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 8) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x6f6974617a69726f) {
-						YYCURSOR += 8;
-						yystate = 84;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'o':
 						++YYCURSOR;
@@ -2275,13 +2226,6 @@ static int headers_1(
 				}
 			case 26:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 8) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x6f72746e6f432d65) {
-						YYCURSOR += 8;
-						yystate = 85;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'e':
 						++YYCURSOR;
@@ -2329,13 +2273,6 @@ static int headers_1(
 				}
 			case 29:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 8) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x636e452d72656673) {
-						YYCURSOR += 8;
-						yystate = 88;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 's':
 						++YYCURSOR;
@@ -2347,13 +2284,6 @@ static int headers_1(
 				}
 			case 30:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x6567412d) {
-						YYCURSOR += 4;
-						yystate = 58;
-						continue;
-					}
-				}
 				switch (yych) {
 					case '-':
 						++YYCURSOR;
@@ -2365,13 +2295,6 @@ static int headers_1(
 				}
 			case 31:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 8) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x69646f636e452d74) {
-						YYCURSOR += 8;
-						yystate = 89;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 't':
 						++YYCURSOR;
@@ -2383,13 +2306,6 @@ static int headers_1(
 				}
 			case 32:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 8) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x6e6f6974617a6972) {
-						YYCURSOR += 8;
-						yystate = 90;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'r':
 						++YYCURSOR;
@@ -2401,13 +2317,6 @@ static int headers_1(
 				}
 			case 33:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 8) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x6c6f72746e6f432d) {
-						YYCURSOR += 8;
-						yystate = 91;
-						continue;
-					}
-				}
 				switch (yych) {
 					case '-':
 						++YYCURSOR;
@@ -2419,13 +2328,6 @@ static int headers_1(
 				}
 			case 34:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x6f697463) {
-						YYCURSOR += 4;
-						yystate = 62;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'c':
 						++YYCURSOR;
@@ -2437,13 +2339,6 @@ static int headers_1(
 				}
 			case 35:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x746e) {
-						YYCURSOR += 2;
-						yystate = 49;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'n':
 						++YYCURSOR;
@@ -2455,13 +2350,6 @@ static int headers_1(
 				}
 			case 36:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 8) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x6f636e452d726566) {
-						YYCURSOR += 8;
-						yystate = 94;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'f':
 						++YYCURSOR;
@@ -2473,13 +2361,6 @@ static int headers_1(
 				}
 			case 37:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x6e656741) {
-						YYCURSOR += 4;
-						yystate = 66;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'A':
 						++YYCURSOR;
@@ -2491,13 +2372,6 @@ static int headers_1(
 				}
 			case 38:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 8) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x6e69646f636e452d) {
-						YYCURSOR += 8;
-						yystate = 95;
-						continue;
-					}
-				}
 				switch (yych) {
 					case '-':
 						++YYCURSOR;
@@ -2509,13 +2383,6 @@ static int headers_1(
 				}
 			case 39:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 8) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x3a6e6f6974617a69) {
-						YYCURSOR += 8;
-						yystate = 96;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'i':
 						++YYCURSOR;
@@ -2527,13 +2394,6 @@ static int headers_1(
 				}
 			case 40:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 8) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x3a6c6f72746e6f43) {
-						YYCURSOR += 8;
-						yystate = 97;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'C':
 						++YYCURSOR;
@@ -2545,13 +2405,6 @@ static int headers_1(
 				}
 			case 41:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x6e6f6974) {
-						YYCURSOR += 4;
-						yystate = 70;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 't':
 						++YYCURSOR;
@@ -2563,13 +2416,6 @@ static int headers_1(
 				}
 			case 42:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x2d74) {
-						YYCURSOR += 2;
-						yystate = 56;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 't':
 						++YYCURSOR;
@@ -2581,13 +2427,6 @@ static int headers_1(
 				}
 			case 43:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 8) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x646f636e452d7265) {
-						YYCURSOR += 8;
-						yystate = 99;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'e':
 						++YYCURSOR;
@@ -2599,13 +2438,6 @@ static int headers_1(
 				}
 			case 44:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x746e6567) {
-						YYCURSOR += 4;
-						yystate = 74;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'g':
 						++YYCURSOR;
@@ -2617,13 +2449,6 @@ static int headers_1(
 				}
 			case 45:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 8) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x676e69646f636e45) {
-						YYCURSOR += 8;
-						yystate = 100;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'E':
 						++YYCURSOR;
@@ -2635,13 +2460,6 @@ static int headers_1(
 				}
 			case 46:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x6974617a) {
-						YYCURSOR += 4;
-						yystate = 76;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'z':
 						++YYCURSOR;
@@ -2653,13 +2471,6 @@ static int headers_1(
 				}
 			case 47:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x72746e6f) {
-						YYCURSOR += 4;
-						yystate = 77;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'o':
 						++YYCURSOR;
@@ -2671,13 +2482,6 @@ static int headers_1(
 				}
 			case 48:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x3a6e6f69) {
-						YYCURSOR += 4;
-						yystate = 78;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'i':
 						++YYCURSOR;
@@ -2700,13 +2504,6 @@ static int headers_1(
 				}
 			case 50:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 8) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x69646f636e452d72) {
-						YYCURSOR += 8;
-						yystate = 102;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'r':
 						++YYCURSOR;
@@ -2718,13 +2515,6 @@ static int headers_1(
 				}
 			case 51:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x3a746e65) {
-						YYCURSOR += 4;
-						yystate = 82;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'e':
 						++YYCURSOR;
@@ -2736,13 +2526,6 @@ static int headers_1(
 				}
 			case 52:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 8) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x3a676e69646f636e) {
-						YYCURSOR += 8;
-						yystate = 103;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'n':
 						++YYCURSOR;
@@ -2754,13 +2537,6 @@ static int headers_1(
 				}
 			case 53:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x6f697461) {
-						YYCURSOR += 4;
-						yystate = 84;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'a':
 						++YYCURSOR;
@@ -2772,13 +2548,6 @@ static int headers_1(
 				}
 			case 54:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x6f72746e) {
-						YYCURSOR += 4;
-						yystate = 85;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'n':
 						++YYCURSOR;
@@ -2823,13 +2592,6 @@ static int headers_1(
 				}
 			case 57:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 8) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x6e69646f636e452d) {
-						YYCURSOR += 8;
-						yystate = 104;
-						continue;
-					}
-				}
 				switch (yych) {
 					case '-':
 						++YYCURSOR;
@@ -2841,13 +2603,6 @@ static int headers_1(
 				}
 			case 58:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x746e) {
-						YYCURSOR += 2;
-						yystate = 74;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'n':
 						++YYCURSOR;
@@ -2859,13 +2614,6 @@ static int headers_1(
 				}
 			case 59:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x69646f63) {
-						YYCURSOR += 4;
-						yystate = 89;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'c':
 						++YYCURSOR;
@@ -2877,13 +2625,6 @@ static int headers_1(
 				}
 			case 60:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x6e6f6974) {
-						YYCURSOR += 4;
-						yystate = 90;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 't':
 						++YYCURSOR;
@@ -2895,13 +2636,6 @@ static int headers_1(
 				}
 			case 61:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x6c6f7274) {
-						YYCURSOR += 4;
-						yystate = 91;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 't':
 						++YYCURSOR;
@@ -2913,13 +2647,6 @@ static int headers_1(
 				}
 			case 62:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x3a6e) {
-						YYCURSOR += 2;
-						yystate = 78;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'n':
 						++YYCURSOR;
@@ -2967,13 +2694,6 @@ static int headers_1(
 				}
 			case 65:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 8) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x676e69646f636e45) {
-						YYCURSOR += 8;
-						yystate = 105;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'E':
 						++YYCURSOR;
@@ -2985,13 +2705,6 @@ static int headers_1(
 				}
 			case 66:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x3a74) {
-						YYCURSOR += 2;
-						yystate = 82;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 't':
 						++YYCURSOR;
@@ -3068,13 +2781,6 @@ static int headers_1(
 				}
 			case 71:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x6874676e) {
-						YYCURSOR += 4;
-						yystate = 98;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'n':
 						++YYCURSOR;
@@ -3086,13 +2792,6 @@ static int headers_1(
 				}
 			case 72:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x6570) {
-						YYCURSOR += 2;
-						yystate = 87;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'p':
 						++YYCURSOR;
@@ -3133,13 +2832,6 @@ static int headers_1(
 				}
 			case 75:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x676e6964) {
-						YYCURSOR += 4;
-						yystate = 100;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'd':
 						++YYCURSOR;
@@ -3151,13 +2843,6 @@ static int headers_1(
 				}
 			case 76:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x6e6f) {
-						YYCURSOR += 2;
-						yystate = 90;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'o':
 						++YYCURSOR;
@@ -3169,13 +2854,6 @@ static int headers_1(
 				}
 			case 77:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x6c6f) {
-						YYCURSOR += 2;
-						yystate = 91;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'o':
 						++YYCURSOR;
@@ -3188,13 +2866,6 @@ static int headers_1(
 			case 78: { RET(8); }
 			case 79:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x3a687467) {
-						YYCURSOR += 4;
-						yystate = 101;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'g':
 						++YYCURSOR;
@@ -3206,13 +2877,6 @@ static int headers_1(
 				}
 			case 80:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x3a65) {
-						YYCURSOR += 2;
-						yystate = 93;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'e':
 						++YYCURSOR;
@@ -3224,13 +2888,6 @@ static int headers_1(
 				}
 			case 81:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x69646f63) {
-						YYCURSOR += 4;
-						yystate = 102;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'c':
 						++YYCURSOR;
@@ -3243,13 +2900,6 @@ static int headers_1(
 			case 82: { RET(6); }
 			case 83:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x3a676e69) {
-						YYCURSOR += 4;
-						yystate = 103;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'i':
 						++YYCURSOR;
@@ -3261,13 +2911,6 @@ static int headers_1(
 				}
 			case 84:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x3a6e) {
-						YYCURSOR += 2;
-						yystate = 96;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'n':
 						++YYCURSOR;
@@ -3279,13 +2922,6 @@ static int headers_1(
 				}
 			case 85:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x3a6c) {
-						YYCURSOR += 2;
-						yystate = 97;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'l':
 						++YYCURSOR;
@@ -3297,13 +2933,6 @@ static int headers_1(
 				}
 			case 86:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x6874) {
-						YYCURSOR += 2;
-						yystate = 98;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 't':
 						++YYCURSOR;
@@ -3326,13 +2955,6 @@ static int headers_1(
 				}
 			case 88:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x6e69646f) {
-						YYCURSOR += 4;
-						yystate = 104;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'o':
 						++YYCURSOR;
@@ -3344,13 +2966,6 @@ static int headers_1(
 				}
 			case 89:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x676e) {
-						YYCURSOR += 2;
-						yystate = 100;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'n':
 						++YYCURSOR;
@@ -3403,13 +3018,6 @@ static int headers_1(
 			case 93: { RET(2); }
 			case 94:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x676e6964) {
-						YYCURSOR += 4;
-						yystate = 105;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'd':
 						++YYCURSOR;
@@ -3452,13 +3060,6 @@ static int headers_1(
 				}
 			case 99:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x3a676e69) {
-						YYCURSOR += 4;
-						yystate = 106;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'i':
 						++YYCURSOR;
@@ -3482,13 +3083,6 @@ static int headers_1(
 			case 101: { RET(1); }
 			case 102:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x676e) {
-						YYCURSOR += 2;
-						yystate = 105;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'n':
 						++YYCURSOR;
@@ -3501,13 +3095,6 @@ static int headers_1(
 			case 103: { RET(5); }
 			case 104:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x3a67) {
-						YYCURSOR += 2;
-						yystate = 106;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'g':
 						++YYCURSOR;
@@ -6550,13 +6137,6 @@ static int backtrack_1(
 			case 8: { RET(1); }
 			case 9:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x67666564) {
-						YYCURSOR += 4;
-						yystate = 28;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'd':
 						++YYCURSOR;
@@ -6608,13 +6188,6 @@ static int backtrack_1(
 				}
 			case 12:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 8) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3 | (unsigned long long)(unsigned char)YYCURSOR[4] << 8 * 4 | (unsigned long long)(unsigned char)YYCURSOR[5] << 8 * 5 | (unsigned long long)(unsigned char)YYCURSOR[6] << 8 * 6 | (unsigned long long)(unsigned char)YYCURSOR[7] << 8 * 7) == 0x797a7a7978797a7a) {
-						YYCURSOR += 8;
-						yystate = 40;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'z':
 						++YYCURSOR;
@@ -6641,13 +6214,6 @@ static int backtrack_1(
 				}
 			case 14:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x68676665) {
-						YYCURSOR += 4;
-						yystate = 31;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'e':
 						++YYCURSOR;
@@ -6677,13 +6243,6 @@ static int backtrack_1(
 				}
 			case 16:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x7978797a) {
-						YYCURSOR += 4;
-						yystate = 32;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'z':
 						++YYCURSOR;
@@ -6717,13 +6276,6 @@ static int backtrack_1(
 			case 19: { RET(5); }
 			case 20:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x69686766) {
-						YYCURSOR += 4;
-						yystate = 35;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'f':
 						++YYCURSOR;
@@ -6746,13 +6298,6 @@ static int backtrack_1(
 				}
 			case 22:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x7a797879) {
-						YYCURSOR += 4;
-						yystate = 36;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'y':
 						++YYCURSOR;
@@ -6764,13 +6309,6 @@ static int backtrack_1(
 				}
 			case 23:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x6766) {
-						YYCURSOR += 2;
-						yystate = 30;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'f':
 						++YYCURSOR;
@@ -6801,13 +6339,6 @@ static int backtrack_1(
 			case 25: { RET(8); }
 			case 26:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x7a7a7978) {
-						YYCURSOR += 4;
-						yystate = 38;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'x':
 						++YYCURSOR;
@@ -6819,13 +6350,6 @@ static int backtrack_1(
 				}
 			case 27:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x6867) {
-						YYCURSOR += 2;
-						yystate = 33;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'g':
 						++YYCURSOR;
@@ -6837,13 +6361,6 @@ static int backtrack_1(
 				}
 			case 28:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x6968) {
-						YYCURSOR += 2;
-						yystate = 35;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'h':
 						++YYCURSOR;
@@ -6855,13 +6372,6 @@ static int backtrack_1(
 				}
 			case 29:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x797a7a79) {
-						YYCURSOR += 4;
-						yystate = 40;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'y':
 						++YYCURSOR;
@@ -6895,13 +6405,6 @@ static int backtrack_1(
 				}
 			case 32:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x7a7a) {
-						YYCURSOR += 2;
-						yystate = 38;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'z':
 						++YYCURSOR;
@@ -6935,13 +6438,6 @@ static int backtrack_1(
 			case 35: { RET(6); }
 			case 36:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x797a) {
-						YYCURSOR += 2;
-						yystate = 40;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'z':
 						++YYCURSOR;
@@ -6953,13 +6449,6 @@ static int backtrack_1(
 				}
 			case 37:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x6b6a) {
-						YYCURSOR += 2;
-						yystate = 41;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'j':
 						++YYCURSOR;
@@ -8015,13 +7504,6 @@ static int binary_1(
 				}
 			case 9:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x312d4644) {
-						YYCURSOR += 4;
-						yystate = 30;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'D':
 						++YYCURSOR;
@@ -8037,13 +7519,6 @@ static int binary_1(
 				continue;
 			case 11:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x61393846) {
-						YYCURSOR += 4;
-						yystate = 31;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'F':
 						++YYCURSOR;
@@ -8055,13 +7530,6 @@ static int binary_1(
 				}
 			case 12:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x403) {
-						YYCURSOR += 2;
-						yystate = 24;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 0x03:
 						++YYCURSOR;
@@ -8073,13 +7541,6 @@ static int binary_1(
 				}
 			case 13:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0xa0d474e) {
-						YYCURSOR += 4;
-						yystate = 32;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'N':
 						++YYCURSOR;
@@ -8102,13 +7563,6 @@ static int binary_1(
 				}
 			case 15:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0xe0ff) {
-						YYCURSOR += 2;
-						yystate = 26;
-						continue;
-					}
-				}
 				if (yych <= 0xFE) {
 					yystate = 10;
 					continue;
@@ -8118,13 +7572,6 @@ static int binary_1(
 				continue;
 			case 16:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x2e312d46) {
-						YYCURSOR += 4;
-						yystate = 33;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'F':
 						++YYCURSOR;
@@ -8136,13 +7583,6 @@ static int binary_1(
 				}
 			case 17:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x3938) {
-						YYCURSOR += 2;
-						yystate = 28;
-						continue;
-					}
-				}
 				switch (yych) {
 					case '8':
 						++YYCURSOR;
@@ -8165,13 +7605,6 @@ static int binary_1(
 				}
 			case 19:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0x1a0a0d47) {
-						YYCURSOR += 4;
-						yystate = 34;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 'G':
 						++YYCURSOR;
@@ -8195,13 +7628,6 @@ static int binary_1(
 				}
 			case 22:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x312d) {
-						YYCURSOR += 2;
-						yystate = 30;
-						continue;
-					}
-				}
 				switch (yych) {
 					case '-':
 						++YYCURSOR;
@@ -8213,13 +7639,6 @@ static int binary_1(
 				}
 			case 23:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0x6139) {
-						YYCURSOR += 2;
-						yystate = 31;
-						continue;
-					}
-				}
 				switch (yych) {
 					case '9':
 						++YYCURSOR;
@@ -8232,13 +7651,6 @@ static int binary_1(
 			case 24: { RET(4); }
 			case 25:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 4) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1 | (unsigned long long)(unsigned char)YYCURSOR[2] << 8 * 2 | (unsigned long long)(unsigned char)YYCURSOR[3] << 8 * 3) == 0xa1a0a0d) {
-						YYCURSOR += 4;
-						yystate = 35;
-						continue;
-					}
-				}
 				switch (yych) {
 					case '\r':
 						++YYCURSOR;
@@ -8310,13 +7722,6 @@ static int binary_1(
 			case 31: { RET(2); }
 			case 32:
 				yych = *YYCURSOR;
-				if ((YYLIMIT - YYCURSOR) >= 2) {
-					if (((unsigned long long)(unsigned char)YYCURSOR[0] | (unsigned long long)(unsigned char)YYCURSOR[1] << 8 * 1) == 0xa1a) {
-						YYCURSOR += 2;
-						yystate = 35;
-						continue;
-					}
-				}
 				switch (yych) {
 					case 0x1A:
 						++YYCURSOR;

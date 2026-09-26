@@ -2273,73 +2273,31 @@ int yy124(Rec* yyrecord) {
 
 int yy125(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 8) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3 | (unsigned long long)(unsigned char)yyrecord->yycursor[4] << 8 * 4 | (unsigned long long)(unsigned char)yyrecord->yycursor[5] << 8 * 5 | (unsigned long long)(unsigned char)yyrecord->yycursor[6] << 8 * 6 | (unsigned long long)(unsigned char)yyrecord->yycursor[7] << 8 * 7) == 0x6f636e452d747065) {
-			yyrecord->yycursor += 8;
-			return yy182(yyrecord);
-		} else {
-			switch (yych) {
-				case 'e':
-					++yyrecord->yycursor;
-					return yy131(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'e':
-				++yyrecord->yycursor;
-				return yy131(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'e':
+			++yyrecord->yycursor;
+			return yy131(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy126(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 8) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3 | (unsigned long long)(unsigned char)yyrecord->yycursor[4] << 8 * 4 | (unsigned long long)(unsigned char)yyrecord->yycursor[5] << 8 * 5 | (unsigned long long)(unsigned char)yyrecord->yycursor[6] << 8 * 6 | (unsigned long long)(unsigned char)yyrecord->yycursor[7] << 8 * 7) == 0x6974617a69726f68) {
-			yyrecord->yycursor += 8;
-			return yy183(yyrecord);
-		} else {
-			switch (yych) {
-				case 'h':
-					++yyrecord->yycursor;
-					return yy132(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'h':
-				++yyrecord->yycursor;
-				return yy132(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'h':
+			++yyrecord->yycursor;
+			return yy132(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy127(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 8) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3 | (unsigned long long)(unsigned char)yyrecord->yycursor[4] << 8 * 4 | (unsigned long long)(unsigned char)yyrecord->yycursor[5] << 8 * 5 | (unsigned long long)(unsigned char)yyrecord->yycursor[6] << 8 * 6 | (unsigned long long)(unsigned char)yyrecord->yycursor[7] << 8 * 7) == 0x72746e6f432d6568) {
-			yyrecord->yycursor += 8;
-			return yy184(yyrecord);
-		} else {
-			switch (yych) {
-				case 'h':
-					++yyrecord->yycursor;
-					return yy133(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'h':
-				++yyrecord->yycursor;
-				return yy133(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'h':
+			++yyrecord->yycursor;
+			return yy133(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
@@ -2358,121 +2316,51 @@ int yy128(Rec* yyrecord) {
 
 int yy129(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 8) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3 | (unsigned long long)(unsigned char)yyrecord->yycursor[4] << 8 * 4 | (unsigned long long)(unsigned char)yyrecord->yycursor[5] << 8 * 5 | (unsigned long long)(unsigned char)yyrecord->yycursor[6] << 8 * 6 | (unsigned long long)(unsigned char)yyrecord->yycursor[7] << 8 * 7) == 0x6e452d726566736e) {
-			yyrecord->yycursor += 8;
-			return yy188(yyrecord);
-		} else {
-			switch (yych) {
-				case 'n':
-					++yyrecord->yycursor;
-					return yy136(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'n':
-				++yyrecord->yycursor;
-				return yy136(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'n':
+			++yyrecord->yycursor;
+			return yy136(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy130(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 8) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3 | (unsigned long long)(unsigned char)yyrecord->yycursor[4] << 8 * 4 | (unsigned long long)(unsigned char)yyrecord->yycursor[5] << 8 * 5 | (unsigned long long)(unsigned char)yyrecord->yycursor[6] << 8 * 6 | (unsigned long long)(unsigned char)yyrecord->yycursor[7] << 8 * 7) == 0x3a746e6567412d72) {
-			yyrecord->yycursor += 8;
-			return yy189(yyrecord);
-		} else {
-			switch (yych) {
-				case 'r':
-					++yyrecord->yycursor;
-					return yy137(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'r':
-				++yyrecord->yycursor;
-				return yy137(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'r':
+			++yyrecord->yycursor;
+			return yy137(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy131(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 8) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3 | (unsigned long long)(unsigned char)yyrecord->yycursor[4] << 8 * 4 | (unsigned long long)(unsigned char)yyrecord->yycursor[5] << 8 * 5 | (unsigned long long)(unsigned char)yyrecord->yycursor[6] << 8 * 6 | (unsigned long long)(unsigned char)yyrecord->yycursor[7] << 8 * 7) == 0x646f636e452d7470) {
-			yyrecord->yycursor += 8;
-			return yy190(yyrecord);
-		} else {
-			switch (yych) {
-				case 'p':
-					++yyrecord->yycursor;
-					return yy138(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'p':
-				++yyrecord->yycursor;
-				return yy138(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'p':
+			++yyrecord->yycursor;
+			return yy138(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy132(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 8) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3 | (unsigned long long)(unsigned char)yyrecord->yycursor[4] << 8 * 4 | (unsigned long long)(unsigned char)yyrecord->yycursor[5] << 8 * 5 | (unsigned long long)(unsigned char)yyrecord->yycursor[6] << 8 * 6 | (unsigned long long)(unsigned char)yyrecord->yycursor[7] << 8 * 7) == 0x6f6974617a69726f) {
-			yyrecord->yycursor += 8;
-			return yy191(yyrecord);
-		} else {
-			switch (yych) {
-				case 'o':
-					++yyrecord->yycursor;
-					return yy139(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'o':
-				++yyrecord->yycursor;
-				return yy139(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'o':
+			++yyrecord->yycursor;
+			return yy139(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy133(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 8) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3 | (unsigned long long)(unsigned char)yyrecord->yycursor[4] << 8 * 4 | (unsigned long long)(unsigned char)yyrecord->yycursor[5] << 8 * 5 | (unsigned long long)(unsigned char)yyrecord->yycursor[6] << 8 * 6 | (unsigned long long)(unsigned char)yyrecord->yycursor[7] << 8 * 7) == 0x6f72746e6f432d65) {
-			yyrecord->yycursor += 8;
-			return yy192(yyrecord);
-		} else {
-			switch (yych) {
-				case 'e':
-					++yyrecord->yycursor;
-					return yy140(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'e':
-				++yyrecord->yycursor;
-				return yy140(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'e':
+			++yyrecord->yycursor;
+			return yy140(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
@@ -2526,481 +2414,201 @@ int yy135(Rec* yyrecord) {
 
 int yy136(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 8) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3 | (unsigned long long)(unsigned char)yyrecord->yycursor[4] << 8 * 4 | (unsigned long long)(unsigned char)yyrecord->yycursor[5] << 8 * 5 | (unsigned long long)(unsigned char)yyrecord->yycursor[6] << 8 * 6 | (unsigned long long)(unsigned char)yyrecord->yycursor[7] << 8 * 7) == 0x636e452d72656673) {
-			yyrecord->yycursor += 8;
-			return yy195(yyrecord);
-		} else {
-			switch (yych) {
-				case 's':
-					++yyrecord->yycursor;
-					return yy143(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 's':
-				++yyrecord->yycursor;
-				return yy143(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 's':
+			++yyrecord->yycursor;
+			return yy143(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy137(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x6567412d) {
-			yyrecord->yycursor += 4;
-			return yy165(yyrecord);
-		} else {
-			switch (yych) {
-				case '-':
-					++yyrecord->yycursor;
-					return yy144(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case '-':
-				++yyrecord->yycursor;
-				return yy144(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case '-':
+			++yyrecord->yycursor;
+			return yy144(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy138(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 8) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3 | (unsigned long long)(unsigned char)yyrecord->yycursor[4] << 8 * 4 | (unsigned long long)(unsigned char)yyrecord->yycursor[5] << 8 * 5 | (unsigned long long)(unsigned char)yyrecord->yycursor[6] << 8 * 6 | (unsigned long long)(unsigned char)yyrecord->yycursor[7] << 8 * 7) == 0x69646f636e452d74) {
-			yyrecord->yycursor += 8;
-			return yy196(yyrecord);
-		} else {
-			switch (yych) {
-				case 't':
-					++yyrecord->yycursor;
-					return yy145(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 't':
-				++yyrecord->yycursor;
-				return yy145(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 't':
+			++yyrecord->yycursor;
+			return yy145(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy139(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 8) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3 | (unsigned long long)(unsigned char)yyrecord->yycursor[4] << 8 * 4 | (unsigned long long)(unsigned char)yyrecord->yycursor[5] << 8 * 5 | (unsigned long long)(unsigned char)yyrecord->yycursor[6] << 8 * 6 | (unsigned long long)(unsigned char)yyrecord->yycursor[7] << 8 * 7) == 0x6e6f6974617a6972) {
-			yyrecord->yycursor += 8;
-			return yy197(yyrecord);
-		} else {
-			switch (yych) {
-				case 'r':
-					++yyrecord->yycursor;
-					return yy146(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'r':
-				++yyrecord->yycursor;
-				return yy146(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'r':
+			++yyrecord->yycursor;
+			return yy146(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy140(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 8) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3 | (unsigned long long)(unsigned char)yyrecord->yycursor[4] << 8 * 4 | (unsigned long long)(unsigned char)yyrecord->yycursor[5] << 8 * 5 | (unsigned long long)(unsigned char)yyrecord->yycursor[6] << 8 * 6 | (unsigned long long)(unsigned char)yyrecord->yycursor[7] << 8 * 7) == 0x6c6f72746e6f432d) {
-			yyrecord->yycursor += 8;
-			return yy198(yyrecord);
-		} else {
-			switch (yych) {
-				case '-':
-					++yyrecord->yycursor;
-					return yy147(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case '-':
-				++yyrecord->yycursor;
-				return yy147(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case '-':
+			++yyrecord->yycursor;
+			return yy147(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy141(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x6f697463) {
-			yyrecord->yycursor += 4;
-			return yy169(yyrecord);
-		} else {
-			switch (yych) {
-				case 'c':
-					++yyrecord->yycursor;
-					return yy148(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'c':
-				++yyrecord->yycursor;
-				return yy148(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'c':
+			++yyrecord->yycursor;
+			return yy148(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy142(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x746e) {
-			yyrecord->yycursor += 2;
-			return yy156(yyrecord);
-		} else {
-			switch (yych) {
-				case 'n':
-					++yyrecord->yycursor;
-					return yy149(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'n':
-				++yyrecord->yycursor;
-				return yy149(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'n':
+			++yyrecord->yycursor;
+			return yy149(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy143(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 8) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3 | (unsigned long long)(unsigned char)yyrecord->yycursor[4] << 8 * 4 | (unsigned long long)(unsigned char)yyrecord->yycursor[5] << 8 * 5 | (unsigned long long)(unsigned char)yyrecord->yycursor[6] << 8 * 6 | (unsigned long long)(unsigned char)yyrecord->yycursor[7] << 8 * 7) == 0x6f636e452d726566) {
-			yyrecord->yycursor += 8;
-			return yy201(yyrecord);
-		} else {
-			switch (yych) {
-				case 'f':
-					++yyrecord->yycursor;
-					return yy150(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'f':
-				++yyrecord->yycursor;
-				return yy150(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'f':
+			++yyrecord->yycursor;
+			return yy150(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy144(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x6e656741) {
-			yyrecord->yycursor += 4;
-			return yy173(yyrecord);
-		} else {
-			switch (yych) {
-				case 'A':
-					++yyrecord->yycursor;
-					return yy151(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'A':
-				++yyrecord->yycursor;
-				return yy151(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'A':
+			++yyrecord->yycursor;
+			return yy151(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy145(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 8) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3 | (unsigned long long)(unsigned char)yyrecord->yycursor[4] << 8 * 4 | (unsigned long long)(unsigned char)yyrecord->yycursor[5] << 8 * 5 | (unsigned long long)(unsigned char)yyrecord->yycursor[6] << 8 * 6 | (unsigned long long)(unsigned char)yyrecord->yycursor[7] << 8 * 7) == 0x6e69646f636e452d) {
-			yyrecord->yycursor += 8;
-			return yy202(yyrecord);
-		} else {
-			switch (yych) {
-				case '-':
-					++yyrecord->yycursor;
-					return yy152(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case '-':
-				++yyrecord->yycursor;
-				return yy152(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case '-':
+			++yyrecord->yycursor;
+			return yy152(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy146(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 8) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3 | (unsigned long long)(unsigned char)yyrecord->yycursor[4] << 8 * 4 | (unsigned long long)(unsigned char)yyrecord->yycursor[5] << 8 * 5 | (unsigned long long)(unsigned char)yyrecord->yycursor[6] << 8 * 6 | (unsigned long long)(unsigned char)yyrecord->yycursor[7] << 8 * 7) == 0x3a6e6f6974617a69) {
-			yyrecord->yycursor += 8;
-			return yy203(yyrecord);
-		} else {
-			switch (yych) {
-				case 'i':
-					++yyrecord->yycursor;
-					return yy153(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'i':
-				++yyrecord->yycursor;
-				return yy153(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'i':
+			++yyrecord->yycursor;
+			return yy153(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy147(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 8) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3 | (unsigned long long)(unsigned char)yyrecord->yycursor[4] << 8 * 4 | (unsigned long long)(unsigned char)yyrecord->yycursor[5] << 8 * 5 | (unsigned long long)(unsigned char)yyrecord->yycursor[6] << 8 * 6 | (unsigned long long)(unsigned char)yyrecord->yycursor[7] << 8 * 7) == 0x3a6c6f72746e6f43) {
-			yyrecord->yycursor += 8;
-			return yy204(yyrecord);
-		} else {
-			switch (yych) {
-				case 'C':
-					++yyrecord->yycursor;
-					return yy154(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'C':
-				++yyrecord->yycursor;
-				return yy154(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'C':
+			++yyrecord->yycursor;
+			return yy154(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy148(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x6e6f6974) {
-			yyrecord->yycursor += 4;
-			return yy177(yyrecord);
-		} else {
-			switch (yych) {
-				case 't':
-					++yyrecord->yycursor;
-					return yy155(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 't':
-				++yyrecord->yycursor;
-				return yy155(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 't':
+			++yyrecord->yycursor;
+			return yy155(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy149(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x2d74) {
-			yyrecord->yycursor += 2;
-			return yy163(yyrecord);
-		} else {
-			switch (yych) {
-				case 't':
-					++yyrecord->yycursor;
-					return yy156(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 't':
-				++yyrecord->yycursor;
-				return yy156(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 't':
+			++yyrecord->yycursor;
+			return yy156(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy150(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 8) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3 | (unsigned long long)(unsigned char)yyrecord->yycursor[4] << 8 * 4 | (unsigned long long)(unsigned char)yyrecord->yycursor[5] << 8 * 5 | (unsigned long long)(unsigned char)yyrecord->yycursor[6] << 8 * 6 | (unsigned long long)(unsigned char)yyrecord->yycursor[7] << 8 * 7) == 0x646f636e452d7265) {
-			yyrecord->yycursor += 8;
-			return yy206(yyrecord);
-		} else {
-			switch (yych) {
-				case 'e':
-					++yyrecord->yycursor;
-					return yy157(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'e':
-				++yyrecord->yycursor;
-				return yy157(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'e':
+			++yyrecord->yycursor;
+			return yy157(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy151(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x746e6567) {
-			yyrecord->yycursor += 4;
-			return yy181(yyrecord);
-		} else {
-			switch (yych) {
-				case 'g':
-					++yyrecord->yycursor;
-					return yy158(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'g':
-				++yyrecord->yycursor;
-				return yy158(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'g':
+			++yyrecord->yycursor;
+			return yy158(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy152(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 8) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3 | (unsigned long long)(unsigned char)yyrecord->yycursor[4] << 8 * 4 | (unsigned long long)(unsigned char)yyrecord->yycursor[5] << 8 * 5 | (unsigned long long)(unsigned char)yyrecord->yycursor[6] << 8 * 6 | (unsigned long long)(unsigned char)yyrecord->yycursor[7] << 8 * 7) == 0x676e69646f636e45) {
-			yyrecord->yycursor += 8;
-			return yy207(yyrecord);
-		} else {
-			switch (yych) {
-				case 'E':
-					++yyrecord->yycursor;
-					return yy159(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'E':
-				++yyrecord->yycursor;
-				return yy159(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'E':
+			++yyrecord->yycursor;
+			return yy159(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy153(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x6974617a) {
-			yyrecord->yycursor += 4;
-			return yy183(yyrecord);
-		} else {
-			switch (yych) {
-				case 'z':
-					++yyrecord->yycursor;
-					return yy160(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'z':
-				++yyrecord->yycursor;
-				return yy160(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'z':
+			++yyrecord->yycursor;
+			return yy160(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy154(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x72746e6f) {
-			yyrecord->yycursor += 4;
-			return yy184(yyrecord);
-		} else {
-			switch (yych) {
-				case 'o':
-					++yyrecord->yycursor;
-					return yy161(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'o':
-				++yyrecord->yycursor;
-				return yy161(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'o':
+			++yyrecord->yycursor;
+			return yy161(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy155(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x3a6e6f69) {
-			yyrecord->yycursor += 4;
-			return yy185(yyrecord);
-		} else {
-			switch (yych) {
-				case 'i':
-					++yyrecord->yycursor;
-					return yy162(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'i':
-				++yyrecord->yycursor;
-				return yy162(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'i':
+			++yyrecord->yycursor;
+			return yy162(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
@@ -3016,121 +2624,51 @@ int yy156(Rec* yyrecord) {
 
 int yy157(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 8) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3 | (unsigned long long)(unsigned char)yyrecord->yycursor[4] << 8 * 4 | (unsigned long long)(unsigned char)yyrecord->yycursor[5] << 8 * 5 | (unsigned long long)(unsigned char)yyrecord->yycursor[6] << 8 * 6 | (unsigned long long)(unsigned char)yyrecord->yycursor[7] << 8 * 7) == 0x69646f636e452d72) {
-			yyrecord->yycursor += 8;
-			return yy209(yyrecord);
-		} else {
-			switch (yych) {
-				case 'r':
-					++yyrecord->yycursor;
-					return yy164(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'r':
-				++yyrecord->yycursor;
-				return yy164(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'r':
+			++yyrecord->yycursor;
+			return yy164(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy158(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x3a746e65) {
-			yyrecord->yycursor += 4;
-			return yy189(yyrecord);
-		} else {
-			switch (yych) {
-				case 'e':
-					++yyrecord->yycursor;
-					return yy165(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'e':
-				++yyrecord->yycursor;
-				return yy165(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'e':
+			++yyrecord->yycursor;
+			return yy165(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy159(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 8) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3 | (unsigned long long)(unsigned char)yyrecord->yycursor[4] << 8 * 4 | (unsigned long long)(unsigned char)yyrecord->yycursor[5] << 8 * 5 | (unsigned long long)(unsigned char)yyrecord->yycursor[6] << 8 * 6 | (unsigned long long)(unsigned char)yyrecord->yycursor[7] << 8 * 7) == 0x3a676e69646f636e) {
-			yyrecord->yycursor += 8;
-			return yy210(yyrecord);
-		} else {
-			switch (yych) {
-				case 'n':
-					++yyrecord->yycursor;
-					return yy166(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'n':
-				++yyrecord->yycursor;
-				return yy166(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'n':
+			++yyrecord->yycursor;
+			return yy166(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy160(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x6f697461) {
-			yyrecord->yycursor += 4;
-			return yy191(yyrecord);
-		} else {
-			switch (yych) {
-				case 'a':
-					++yyrecord->yycursor;
-					return yy167(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'a':
-				++yyrecord->yycursor;
-				return yy167(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'a':
+			++yyrecord->yycursor;
+			return yy167(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy161(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x6f72746e) {
-			yyrecord->yycursor += 4;
-			return yy192(yyrecord);
-		} else {
-			switch (yych) {
-				case 'n':
-					++yyrecord->yycursor;
-					return yy168(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'n':
-				++yyrecord->yycursor;
-				return yy168(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'n':
+			++yyrecord->yycursor;
+			return yy168(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
@@ -3173,145 +2711,61 @@ int yy163(Rec* yyrecord) {
 
 int yy164(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 8) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3 | (unsigned long long)(unsigned char)yyrecord->yycursor[4] << 8 * 4 | (unsigned long long)(unsigned char)yyrecord->yycursor[5] << 8 * 5 | (unsigned long long)(unsigned char)yyrecord->yycursor[6] << 8 * 6 | (unsigned long long)(unsigned char)yyrecord->yycursor[7] << 8 * 7) == 0x6e69646f636e452d) {
-			yyrecord->yycursor += 8;
-			return yy211(yyrecord);
-		} else {
-			switch (yych) {
-				case '-':
-					++yyrecord->yycursor;
-					return yy172(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case '-':
-				++yyrecord->yycursor;
-				return yy172(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case '-':
+			++yyrecord->yycursor;
+			return yy172(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy165(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x746e) {
-			yyrecord->yycursor += 2;
-			return yy181(yyrecord);
-		} else {
-			switch (yych) {
-				case 'n':
-					++yyrecord->yycursor;
-					return yy173(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'n':
-				++yyrecord->yycursor;
-				return yy173(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'n':
+			++yyrecord->yycursor;
+			return yy173(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy166(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x69646f63) {
-			yyrecord->yycursor += 4;
-			return yy196(yyrecord);
-		} else {
-			switch (yych) {
-				case 'c':
-					++yyrecord->yycursor;
-					return yy174(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'c':
-				++yyrecord->yycursor;
-				return yy174(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'c':
+			++yyrecord->yycursor;
+			return yy174(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy167(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x6e6f6974) {
-			yyrecord->yycursor += 4;
-			return yy197(yyrecord);
-		} else {
-			switch (yych) {
-				case 't':
-					++yyrecord->yycursor;
-					return yy175(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 't':
-				++yyrecord->yycursor;
-				return yy175(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 't':
+			++yyrecord->yycursor;
+			return yy175(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy168(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x6c6f7274) {
-			yyrecord->yycursor += 4;
-			return yy198(yyrecord);
-		} else {
-			switch (yych) {
-				case 't':
-					++yyrecord->yycursor;
-					return yy176(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 't':
-				++yyrecord->yycursor;
-				return yy176(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 't':
+			++yyrecord->yycursor;
+			return yy176(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy169(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x3a6e) {
-			yyrecord->yycursor += 2;
-			return yy185(yyrecord);
-		} else {
-			switch (yych) {
-				case 'n':
-					++yyrecord->yycursor;
-					return yy177(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'n':
-				++yyrecord->yycursor;
-				return yy177(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'n':
+			++yyrecord->yycursor;
+			return yy177(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
@@ -3365,49 +2819,21 @@ int yy171(Rec* yyrecord) {
 
 int yy172(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 8) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3 | (unsigned long long)(unsigned char)yyrecord->yycursor[4] << 8 * 4 | (unsigned long long)(unsigned char)yyrecord->yycursor[5] << 8 * 5 | (unsigned long long)(unsigned char)yyrecord->yycursor[6] << 8 * 6 | (unsigned long long)(unsigned char)yyrecord->yycursor[7] << 8 * 7) == 0x676e69646f636e45) {
-			yyrecord->yycursor += 8;
-			return yy212(yyrecord);
-		} else {
-			switch (yych) {
-				case 'E':
-					++yyrecord->yycursor;
-					return yy180(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'E':
-				++yyrecord->yycursor;
-				return yy180(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'E':
+			++yyrecord->yycursor;
+			return yy180(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy173(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x3a74) {
-			yyrecord->yycursor += 2;
-			return yy189(yyrecord);
-		} else {
-			switch (yych) {
-				case 't':
-					++yyrecord->yycursor;
-					return yy181(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 't':
-				++yyrecord->yycursor;
-				return yy181(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 't':
+			++yyrecord->yycursor;
+			return yy181(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
@@ -3495,49 +2921,21 @@ int yy177(Rec* yyrecord) {
 
 int yy178(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x6874676e) {
-			yyrecord->yycursor += 4;
-			return yy205(yyrecord);
-		} else {
-			switch (yych) {
-				case 'n':
-					++yyrecord->yycursor;
-					return yy186(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'n':
-				++yyrecord->yycursor;
-				return yy186(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'n':
+			++yyrecord->yycursor;
+			return yy186(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy179(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x6570) {
-			yyrecord->yycursor += 2;
-			return yy194(yyrecord);
-		} else {
-			switch (yych) {
-				case 'p':
-					++yyrecord->yycursor;
-					return yy187(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'p':
-				++yyrecord->yycursor;
-				return yy187(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'p':
+			++yyrecord->yycursor;
+			return yy187(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
@@ -3577,73 +2975,31 @@ int yy181(Rec* yyrecord) {
 
 int yy182(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x676e6964) {
-			yyrecord->yycursor += 4;
-			return yy207(yyrecord);
-		} else {
-			switch (yych) {
-				case 'd':
-					++yyrecord->yycursor;
-					return yy190(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'd':
-				++yyrecord->yycursor;
-				return yy190(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'd':
+			++yyrecord->yycursor;
+			return yy190(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy183(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x6e6f) {
-			yyrecord->yycursor += 2;
-			return yy197(yyrecord);
-		} else {
-			switch (yych) {
-				case 'o':
-					++yyrecord->yycursor;
-					return yy191(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'o':
-				++yyrecord->yycursor;
-				return yy191(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'o':
+			++yyrecord->yycursor;
+			return yy191(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy184(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x6c6f) {
-			yyrecord->yycursor += 2;
-			return yy198(yyrecord);
-		} else {
-			switch (yych) {
-				case 'o':
-					++yyrecord->yycursor;
-					return yy192(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'o':
-				++yyrecord->yycursor;
-				return yy192(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'o':
+			++yyrecord->yycursor;
+			return yy192(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
@@ -3653,73 +3009,31 @@ int yy185(Rec* yyrecord) {
 
 int yy186(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x3a687467) {
-			yyrecord->yycursor += 4;
-			return yy208(yyrecord);
-		} else {
-			switch (yych) {
-				case 'g':
-					++yyrecord->yycursor;
-					return yy193(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'g':
-				++yyrecord->yycursor;
-				return yy193(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'g':
+			++yyrecord->yycursor;
+			return yy193(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy187(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x3a65) {
-			yyrecord->yycursor += 2;
-			return yy200(yyrecord);
-		} else {
-			switch (yych) {
-				case 'e':
-					++yyrecord->yycursor;
-					return yy194(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'e':
-				++yyrecord->yycursor;
-				return yy194(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'e':
+			++yyrecord->yycursor;
+			return yy194(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy188(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x69646f63) {
-			yyrecord->yycursor += 4;
-			return yy209(yyrecord);
-		} else {
-			switch (yych) {
-				case 'c':
-					++yyrecord->yycursor;
-					return yy195(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'c':
-				++yyrecord->yycursor;
-				return yy195(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'c':
+			++yyrecord->yycursor;
+			return yy195(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
@@ -3729,97 +3043,41 @@ int yy189(Rec* yyrecord) {
 
 int yy190(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x3a676e69) {
-			yyrecord->yycursor += 4;
-			return yy210(yyrecord);
-		} else {
-			switch (yych) {
-				case 'i':
-					++yyrecord->yycursor;
-					return yy196(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'i':
-				++yyrecord->yycursor;
-				return yy196(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'i':
+			++yyrecord->yycursor;
+			return yy196(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy191(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x3a6e) {
-			yyrecord->yycursor += 2;
-			return yy203(yyrecord);
-		} else {
-			switch (yych) {
-				case 'n':
-					++yyrecord->yycursor;
-					return yy197(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'n':
-				++yyrecord->yycursor;
-				return yy197(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'n':
+			++yyrecord->yycursor;
+			return yy197(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy192(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x3a6c) {
-			yyrecord->yycursor += 2;
-			return yy204(yyrecord);
-		} else {
-			switch (yych) {
-				case 'l':
-					++yyrecord->yycursor;
-					return yy198(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'l':
-				++yyrecord->yycursor;
-				return yy198(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'l':
+			++yyrecord->yycursor;
+			return yy198(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy193(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x6874) {
-			yyrecord->yycursor += 2;
-			return yy205(yyrecord);
-		} else {
-			switch (yych) {
-				case 't':
-					++yyrecord->yycursor;
-					return yy199(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 't':
-				++yyrecord->yycursor;
-				return yy199(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 't':
+			++yyrecord->yycursor;
+			return yy199(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
@@ -3835,49 +3093,21 @@ int yy194(Rec* yyrecord) {
 
 int yy195(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x6e69646f) {
-			yyrecord->yycursor += 4;
-			return yy211(yyrecord);
-		} else {
-			switch (yych) {
-				case 'o':
-					++yyrecord->yycursor;
-					return yy201(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'o':
-				++yyrecord->yycursor;
-				return yy201(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'o':
+			++yyrecord->yycursor;
+			return yy201(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
 int yy196(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x676e) {
-			yyrecord->yycursor += 2;
-			return yy207(yyrecord);
-		} else {
-			switch (yych) {
-				case 'n':
-					++yyrecord->yycursor;
-					return yy202(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'n':
-				++yyrecord->yycursor;
-				return yy202(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'n':
+			++yyrecord->yycursor;
+			return yy202(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
@@ -3931,25 +3161,11 @@ int yy200(Rec* yyrecord) {
 
 int yy201(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x676e6964) {
-			yyrecord->yycursor += 4;
-			return yy212(yyrecord);
-		} else {
-			switch (yych) {
-				case 'd':
-					++yyrecord->yycursor;
-					return yy206(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'd':
-				++yyrecord->yycursor;
-				return yy206(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'd':
+			++yyrecord->yycursor;
+			return yy206(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
@@ -3997,25 +3213,11 @@ int yy205(Rec* yyrecord) {
 
 int yy206(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x3a676e69) {
-			yyrecord->yycursor += 4;
-			return yy213(yyrecord);
-		} else {
-			switch (yych) {
-				case 'i':
-					++yyrecord->yycursor;
-					return yy209(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'i':
-				++yyrecord->yycursor;
-				return yy209(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'i':
+			++yyrecord->yycursor;
+			return yy209(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
@@ -4035,25 +3237,11 @@ int yy208(Rec* yyrecord) {
 
 int yy209(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x676e) {
-			yyrecord->yycursor += 2;
-			return yy212(yyrecord);
-		} else {
-			switch (yych) {
-				case 'n':
-					++yyrecord->yycursor;
-					return yy211(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'n':
-				++yyrecord->yycursor;
-				return yy211(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'n':
+			++yyrecord->yycursor;
+			return yy211(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
@@ -4063,25 +3251,11 @@ int yy210(Rec* yyrecord) {
 
 int yy211(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x3a67) {
-			yyrecord->yycursor += 2;
-			return yy213(yyrecord);
-		} else {
-			switch (yych) {
-				case 'g':
-					++yyrecord->yycursor;
-					return yy212(yyrecord);
-				default: return yy116(yyrecord, yych);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'g':
-				++yyrecord->yycursor;
-				return yy212(yyrecord);
-			default: return yy116(yyrecord, yych);
-		}
+	switch (yych) {
+		case 'g':
+			++yyrecord->yycursor;
+			return yy212(yyrecord);
+		default: return yy116(yyrecord, yych);
 	}
 }
 
@@ -7252,25 +6426,11 @@ int yy388(Rec* yyrecord) {
 
 int yy389(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x67666564) {
-			yyrecord->yycursor += 4;
-			return yy408(yyrecord);
-		} else {
-			switch (yych) {
-				case 'd':
-					++yyrecord->yycursor;
-					return yy394(yyrecord);
-				default: return yy390(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'd':
-				++yyrecord->yycursor;
-				return yy394(yyrecord);
-			default: return yy390(yyrecord);
-		}
+	switch (yych) {
+		case 'd':
+			++yyrecord->yycursor;
+			return yy394(yyrecord);
+		default: return yy390(yyrecord);
 	}
 }
 
@@ -7308,25 +6468,11 @@ int yy391(Rec* yyrecord) {
 
 int yy392(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 8) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3 | (unsigned long long)(unsigned char)yyrecord->yycursor[4] << 8 * 4 | (unsigned long long)(unsigned char)yyrecord->yycursor[5] << 8 * 5 | (unsigned long long)(unsigned char)yyrecord->yycursor[6] << 8 * 6 | (unsigned long long)(unsigned char)yyrecord->yycursor[7] << 8 * 7) == 0x797a7a7978797a7a) {
-			yyrecord->yycursor += 8;
-			return yy420(yyrecord);
-		} else {
-			switch (yych) {
-				case 'z':
-					++yyrecord->yycursor;
-					return yy396(yyrecord);
-				default: return yy390(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'z':
-				++yyrecord->yycursor;
-				return yy396(yyrecord);
-			default: return yy390(yyrecord);
-		}
+	switch (yych) {
+		case 'z':
+			++yyrecord->yycursor;
+			return yy396(yyrecord);
+		default: return yy390(yyrecord);
 	}
 }
 
@@ -7345,25 +6491,11 @@ int yy393(Rec* yyrecord) {
 
 int yy394(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x68676665) {
-			yyrecord->yycursor += 4;
-			return yy411(yyrecord);
-		} else {
-			switch (yych) {
-				case 'e':
-					++yyrecord->yycursor;
-					return yy400(yyrecord);
-				default: return yy390(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'e':
-				++yyrecord->yycursor;
-				return yy400(yyrecord);
-			default: return yy390(yyrecord);
-		}
+	switch (yych) {
+		case 'e':
+			++yyrecord->yycursor;
+			return yy400(yyrecord);
+		default: return yy390(yyrecord);
 	}
 }
 
@@ -7393,25 +6525,11 @@ int yy395(Rec* yyrecord) {
 
 int yy396(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x7978797a) {
-			yyrecord->yycursor += 4;
-			return yy412(yyrecord);
-		} else {
-			switch (yych) {
-				case 'z':
-					++yyrecord->yycursor;
-					return yy402(yyrecord);
-				default: return yy390(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'z':
-				++yyrecord->yycursor;
-				return yy402(yyrecord);
-			default: return yy390(yyrecord);
-		}
+	switch (yych) {
+		case 'z':
+			++yyrecord->yycursor;
+			return yy402(yyrecord);
+		default: return yy390(yyrecord);
 	}
 }
 
@@ -7451,25 +6569,11 @@ int yy399(Rec* yyrecord) {
 
 int yy400(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x69686766) {
-			yyrecord->yycursor += 4;
-			return yy415(yyrecord);
-		} else {
-			switch (yych) {
-				case 'f':
-					++yyrecord->yycursor;
-					return yy404(yyrecord);
-				default: return yy390(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'f':
-				++yyrecord->yycursor;
-				return yy404(yyrecord);
-			default: return yy390(yyrecord);
-		}
+	switch (yych) {
+		case 'f':
+			++yyrecord->yycursor;
+			return yy404(yyrecord);
+		default: return yy390(yyrecord);
 	}
 }
 
@@ -7485,49 +6589,21 @@ int yy401(Rec* yyrecord) {
 
 int yy402(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x7a797879) {
-			yyrecord->yycursor += 4;
-			return yy416(yyrecord);
-		} else {
-			switch (yych) {
-				case 'y':
-					++yyrecord->yycursor;
-					return yy406(yyrecord);
-				default: return yy390(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'y':
-				++yyrecord->yycursor;
-				return yy406(yyrecord);
-			default: return yy390(yyrecord);
-		}
+	switch (yych) {
+		case 'y':
+			++yyrecord->yycursor;
+			return yy406(yyrecord);
+		default: return yy390(yyrecord);
 	}
 }
 
 int yy403(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x6766) {
-			yyrecord->yycursor += 2;
-			return yy410(yyrecord);
-		} else {
-			switch (yych) {
-				case 'f':
-					++yyrecord->yycursor;
-					return yy407(yyrecord);
-				default: return yy390(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'f':
-				++yyrecord->yycursor;
-				return yy407(yyrecord);
-			default: return yy390(yyrecord);
-		}
+	switch (yych) {
+		case 'f':
+			++yyrecord->yycursor;
+			return yy407(yyrecord);
+		default: return yy390(yyrecord);
 	}
 }
 
@@ -7561,97 +6637,41 @@ int yy405(Rec* yyrecord) {
 
 int yy406(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x7a7a7978) {
-			yyrecord->yycursor += 4;
-			return yy418(yyrecord);
-		} else {
-			switch (yych) {
-				case 'x':
-					++yyrecord->yycursor;
-					return yy409(yyrecord);
-				default: return yy390(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'x':
-				++yyrecord->yycursor;
-				return yy409(yyrecord);
-			default: return yy390(yyrecord);
-		}
+	switch (yych) {
+		case 'x':
+			++yyrecord->yycursor;
+			return yy409(yyrecord);
+		default: return yy390(yyrecord);
 	}
 }
 
 int yy407(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x6867) {
-			yyrecord->yycursor += 2;
-			return yy413(yyrecord);
-		} else {
-			switch (yych) {
-				case 'g':
-					++yyrecord->yycursor;
-					return yy410(yyrecord);
-				default: return yy390(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'g':
-				++yyrecord->yycursor;
-				return yy410(yyrecord);
-			default: return yy390(yyrecord);
-		}
+	switch (yych) {
+		case 'g':
+			++yyrecord->yycursor;
+			return yy410(yyrecord);
+		default: return yy390(yyrecord);
 	}
 }
 
 int yy408(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x6968) {
-			yyrecord->yycursor += 2;
-			return yy415(yyrecord);
-		} else {
-			switch (yych) {
-				case 'h':
-					++yyrecord->yycursor;
-					return yy411(yyrecord);
-				default: return yy390(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'h':
-				++yyrecord->yycursor;
-				return yy411(yyrecord);
-			default: return yy390(yyrecord);
-		}
+	switch (yych) {
+		case 'h':
+			++yyrecord->yycursor;
+			return yy411(yyrecord);
+		default: return yy390(yyrecord);
 	}
 }
 
 int yy409(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x797a7a79) {
-			yyrecord->yycursor += 4;
-			return yy420(yyrecord);
-		} else {
-			switch (yych) {
-				case 'y':
-					++yyrecord->yycursor;
-					return yy412(yyrecord);
-				default: return yy390(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'y':
-				++yyrecord->yycursor;
-				return yy412(yyrecord);
-			default: return yy390(yyrecord);
-		}
+	switch (yych) {
+		case 'y':
+			++yyrecord->yycursor;
+			return yy412(yyrecord);
+		default: return yy390(yyrecord);
 	}
 }
 
@@ -7677,25 +6697,11 @@ int yy411(Rec* yyrecord) {
 
 int yy412(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x7a7a) {
-			yyrecord->yycursor += 2;
-			return yy418(yyrecord);
-		} else {
-			switch (yych) {
-				case 'z':
-					++yyrecord->yycursor;
-					return yy416(yyrecord);
-				default: return yy390(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'z':
-				++yyrecord->yycursor;
-				return yy416(yyrecord);
-			default: return yy390(yyrecord);
-		}
+	switch (yych) {
+		case 'z':
+			++yyrecord->yycursor;
+			return yy416(yyrecord);
+		default: return yy390(yyrecord);
 	}
 }
 
@@ -7735,49 +6741,21 @@ int yy415(Rec* yyrecord) {
 
 int yy416(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x797a) {
-			yyrecord->yycursor += 2;
-			return yy420(yyrecord);
-		} else {
-			switch (yych) {
-				case 'z':
-					++yyrecord->yycursor;
-					return yy418(yyrecord);
-				default: return yy390(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'z':
-				++yyrecord->yycursor;
-				return yy418(yyrecord);
-			default: return yy390(yyrecord);
-		}
+	switch (yych) {
+		case 'z':
+			++yyrecord->yycursor;
+			return yy418(yyrecord);
+		default: return yy390(yyrecord);
 	}
 }
 
 int yy417(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x6b6a) {
-			yyrecord->yycursor += 2;
-			return yy421(yyrecord);
-		} else {
-			switch (yych) {
-				case 'j':
-					++yyrecord->yycursor;
-					return yy419(yyrecord);
-				default: return yy390(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'j':
-				++yyrecord->yycursor;
-				return yy419(yyrecord);
-			default: return yy390(yyrecord);
-		}
+	switch (yych) {
+		case 'j':
+			++yyrecord->yycursor;
+			return yy419(yyrecord);
+		default: return yy390(yyrecord);
 	}
 }
 
@@ -8920,25 +7898,11 @@ int yy466(Rec* yyrecord) {
 
 int yy467(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x312d4644) {
-			yyrecord->yycursor += 4;
-			return yy488(yyrecord);
-		} else {
-			switch (yych) {
-				case 'D':
-					++yyrecord->yycursor;
-					return yy474(yyrecord);
-				default: return yy468(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'D':
-				++yyrecord->yycursor;
-				return yy474(yyrecord);
-			default: return yy468(yyrecord);
-		}
+	switch (yych) {
+		case 'D':
+			++yyrecord->yycursor;
+			return yy474(yyrecord);
+		default: return yy468(yyrecord);
 	}
 }
 
@@ -8949,73 +7913,31 @@ int yy468(Rec* yyrecord) {
 
 int yy469(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x61393846) {
-			yyrecord->yycursor += 4;
-			return yy489(yyrecord);
-		} else {
-			switch (yych) {
-				case 'F':
-					++yyrecord->yycursor;
-					return yy475(yyrecord);
-				default: return yy468(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'F':
-				++yyrecord->yycursor;
-				return yy475(yyrecord);
-			default: return yy468(yyrecord);
-		}
+	switch (yych) {
+		case 'F':
+			++yyrecord->yycursor;
+			return yy475(yyrecord);
+		default: return yy468(yyrecord);
 	}
 }
 
 int yy470(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x403) {
-			yyrecord->yycursor += 2;
-			return yy482(yyrecord);
-		} else {
-			switch (yych) {
-				case 0x03:
-					++yyrecord->yycursor;
-					return yy476(yyrecord);
-				default: return yy468(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 0x03:
-				++yyrecord->yycursor;
-				return yy476(yyrecord);
-			default: return yy468(yyrecord);
-		}
+	switch (yych) {
+		case 0x03:
+			++yyrecord->yycursor;
+			return yy476(yyrecord);
+		default: return yy468(yyrecord);
 	}
 }
 
 int yy471(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0xa0d474e) {
-			yyrecord->yycursor += 4;
-			return yy490(yyrecord);
-		} else {
-			switch (yych) {
-				case 'N':
-					++yyrecord->yycursor;
-					return yy477(yyrecord);
-				default: return yy468(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'N':
-				++yyrecord->yycursor;
-				return yy477(yyrecord);
-			default: return yy468(yyrecord);
-		}
+	switch (yych) {
+		case 'N':
+			++yyrecord->yycursor;
+			return yy477(yyrecord);
+		default: return yy468(yyrecord);
 	}
 }
 
@@ -9031,73 +7953,31 @@ int yy472(Rec* yyrecord) {
 
 int yy473(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0xe0ff) {
-			yyrecord->yycursor += 2;
-			return yy484(yyrecord);
-		} else {
-			if (yych <= 0xFE) {
-				return yy468(yyrecord);
-			} else {
-				++yyrecord->yycursor;
-				return yy479(yyrecord);
-			}
-		}
+	if (yych <= 0xFE) {
+		return yy468(yyrecord);
 	} else {
-		if (yych <= 0xFE) {
-			return yy468(yyrecord);
-		} else {
-			++yyrecord->yycursor;
-			return yy479(yyrecord);
-		}
+		++yyrecord->yycursor;
+		return yy479(yyrecord);
 	}
 }
 
 int yy474(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x2e312d46) {
-			yyrecord->yycursor += 4;
-			return yy491(yyrecord);
-		} else {
-			switch (yych) {
-				case 'F':
-					++yyrecord->yycursor;
-					return yy480(yyrecord);
-				default: return yy468(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'F':
-				++yyrecord->yycursor;
-				return yy480(yyrecord);
-			default: return yy468(yyrecord);
-		}
+	switch (yych) {
+		case 'F':
+			++yyrecord->yycursor;
+			return yy480(yyrecord);
+		default: return yy468(yyrecord);
 	}
 }
 
 int yy475(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x3938) {
-			yyrecord->yycursor += 2;
-			return yy486(yyrecord);
-		} else {
-			switch (yych) {
-				case '8':
-					++yyrecord->yycursor;
-					return yy481(yyrecord);
-				default: return yy468(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case '8':
-				++yyrecord->yycursor;
-				return yy481(yyrecord);
-			default: return yy468(yyrecord);
-		}
+	switch (yych) {
+		case '8':
+			++yyrecord->yycursor;
+			return yy481(yyrecord);
+		default: return yy468(yyrecord);
 	}
 }
 
@@ -9113,25 +7993,11 @@ int yy476(Rec* yyrecord) {
 
 int yy477(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0x1a0a0d47) {
-			yyrecord->yycursor += 4;
-			return yy492(yyrecord);
-		} else {
-			switch (yych) {
-				case 'G':
-					++yyrecord->yycursor;
-					return yy483(yyrecord);
-				default: return yy468(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 'G':
-				++yyrecord->yycursor;
-				return yy483(yyrecord);
-			default: return yy468(yyrecord);
-		}
+	switch (yych) {
+		case 'G':
+			++yyrecord->yycursor;
+			return yy483(yyrecord);
+		default: return yy468(yyrecord);
 	}
 }
 
@@ -9151,49 +8017,21 @@ int yy479(Rec* yyrecord) {
 
 int yy480(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x312d) {
-			yyrecord->yycursor += 2;
-			return yy488(yyrecord);
-		} else {
-			switch (yych) {
-				case '-':
-					++yyrecord->yycursor;
-					return yy485(yyrecord);
-				default: return yy468(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case '-':
-				++yyrecord->yycursor;
-				return yy485(yyrecord);
-			default: return yy468(yyrecord);
-		}
+	switch (yych) {
+		case '-':
+			++yyrecord->yycursor;
+			return yy485(yyrecord);
+		default: return yy468(yyrecord);
 	}
 }
 
 int yy481(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0x6139) {
-			yyrecord->yycursor += 2;
-			return yy489(yyrecord);
-		} else {
-			switch (yych) {
-				case '9':
-					++yyrecord->yycursor;
-					return yy486(yyrecord);
-				default: return yy468(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case '9':
-				++yyrecord->yycursor;
-				return yy486(yyrecord);
-			default: return yy468(yyrecord);
-		}
+	switch (yych) {
+		case '9':
+			++yyrecord->yycursor;
+			return yy486(yyrecord);
+		default: return yy468(yyrecord);
 	}
 }
 
@@ -9203,25 +8041,11 @@ int yy482(Rec* yyrecord) {
 
 int yy483(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 4) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1 | (unsigned long long)(unsigned char)yyrecord->yycursor[2] << 8 * 2 | (unsigned long long)(unsigned char)yyrecord->yycursor[3] << 8 * 3) == 0xa1a0a0d) {
-			yyrecord->yycursor += 4;
-			return yy493(yyrecord);
-		} else {
-			switch (yych) {
-				case '\r':
-					++yyrecord->yycursor;
-					return yy487(yyrecord);
-				default: return yy468(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case '\r':
-				++yyrecord->yycursor;
-				return yy487(yyrecord);
-			default: return yy468(yyrecord);
-		}
+	switch (yych) {
+		case '\r':
+			++yyrecord->yycursor;
+			return yy487(yyrecord);
+		default: return yy468(yyrecord);
 	}
 }
 
@@ -9303,25 +8127,11 @@ int yy489(Rec* yyrecord) {
 
 int yy490(Rec* yyrecord) {
 	unsigned char yych = *yyrecord->yycursor;
-	if ((yyrecord->yylimit - yyrecord->yycursor) >= 2) {
-		if (((unsigned long long)(unsigned char)yyrecord->yycursor[0] | (unsigned long long)(unsigned char)yyrecord->yycursor[1] << 8 * 1) == 0xa1a) {
-			yyrecord->yycursor += 2;
-			return yy493(yyrecord);
-		} else {
-			switch (yych) {
-				case 0x1A:
-					++yyrecord->yycursor;
-					return yy492(yyrecord);
-				default: return yy468(yyrecord);
-			}
-		}
-	} else {
-		switch (yych) {
-			case 0x1A:
-				++yyrecord->yycursor;
-				return yy492(yyrecord);
-			default: return yy468(yyrecord);
-		}
+	switch (yych) {
+		case 0x1A:
+			++yyrecord->yycursor;
+			return yy492(yyrecord);
+		default: return yy468(yyrecord);
 	}
 }
 
