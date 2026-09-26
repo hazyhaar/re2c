@@ -264,6 +264,7 @@ re2c_SRC_DOC_EXT = \
 	doc/manual/features/encodings/encodings.rst_ \
 	doc/manual/features/headers/headers.rst_ \
 	doc/manual/features/includes/includes.rst_ \
+	doc/manual/features/multibyte/multibyte.rst_ \
 	doc/manual/features/reuse/reuse.rst_ \
 	doc/manual/features/skeleton/skeleton.rst_ \
 	doc/manual/features/state/state.rst_ \
@@ -348,6 +349,7 @@ re2c_SRC_DOC_EXT = \
 	examples/go/headers/lexer/state.go \
 	examples/go/includes/definitions.go \
 	examples/go/includes/include.re \
+	examples/go/multibyte/01_headers.re \
 	examples/go/reuse/reuse.re \
 	examples/go/reuse/usedir.re \
 	examples/go/state/push.re \
