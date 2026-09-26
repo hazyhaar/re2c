@@ -1547,33 +1547,33 @@ yy118:
 	{ RET(9); }
 yy119:
 	++YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 8) == 0x636e452d74706563) {
 		YYSKIPN(YYCURSOR, 7);
 		goto yy174;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'c': goto yy125;
 		default: goto yy116;
 	}
 yy120:
 	++YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 8) == 0x74617a69726f6874) {
 		YYSKIPN(YYCURSOR, 7);
 		goto yy175;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 't': goto yy126;
 		default: goto yy116;
 	}
 yy121:
 	++YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 8) == 0x746e6f432d656863) {
 		YYSKIPN(YYCURSOR, 7);
 		goto yy176;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'c': goto yy127;
 		default: goto yy116;
@@ -1587,22 +1587,22 @@ yy122:
 	}
 yy123:
 	++YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 8) == 0x452d726566736e61) {
 		YYSKIPN(YYCURSOR, 7);
 		goto yy180;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'a': goto yy129;
 		default: goto yy116;
 	}
 yy124:
 	++YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 8) == 0x746e6567412d7265) {
 		YYSKIPN(YYCURSOR, 7);
 		goto yy181;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'e': goto yy130;
 		default: goto yy116;
@@ -1673,22 +1673,22 @@ yy133:
 	}
 yy134:
 	++YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 4) == 0x69746365) {
 		YYSKIPN(YYCURSOR, 3);
 		goto yy162;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'e': goto yy141;
 		default: goto yy116;
 	}
 yy135:
 	++YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 4) == 0x2d746e65) {
 		YYSKIPN(YYCURSOR, 3);
 		goto yy163;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'e': goto yy142;
 		default: goto yy116;
@@ -1877,11 +1877,11 @@ yy161:
 	}
 yy162:
 	++YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 2) == 0x6e6f) {
 		YYSKIPN(YYCURSOR, 1);
 		goto yy177;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'o': goto yy169;
 		default: goto yy116;
@@ -1938,22 +1938,22 @@ yy169:
 	}
 yy170:
 	++YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 4) == 0x74676e65) {
 		YYSKIPN(YYCURSOR, 3);
 		goto yy199;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'e': goto yy178;
 		default: goto yy116;
 	}
 yy171:
 	++YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 4) == 0x3a657079) {
 		YYSKIPN(YYCURSOR, 3);
 		goto yy200;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'y': goto yy179;
 		default: goto yy116;
@@ -1974,33 +1974,33 @@ yy173:
 	}
 yy174:
 	++YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 4) == 0x6e69646f) {
 		YYSKIPN(YYCURSOR, 3);
 		goto yy202;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'o': goto yy182;
 		default: goto yy116;
 	}
 yy175:
 	++YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 4) == 0x3a6e6f69) {
 		YYSKIPN(YYCURSOR, 3);
 		goto yy203;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'i': goto yy183;
 		default: goto yy116;
 	}
 yy176:
 	++YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 4) == 0x3a6c6f72) {
 		YYSKIPN(YYCURSOR, 3);
 		goto yy204;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'r': goto yy184;
 		default: goto yy116;
@@ -2028,11 +2028,11 @@ yy179:
 	}
 yy180:
 	++YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 8) == 0x3a676e69646f636e) {
 		YYSKIPN(YYCURSOR, 7);
 		goto yy213;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'n': goto yy188;
 		default: goto yy116;
@@ -2157,11 +2157,11 @@ yy198:
 	}
 yy199:
 	++YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 2) == 0x3a68) {
 		YYSKIPN(YYCURSOR, 1);
 		goto yy208;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'h': goto yy205;
 		default: goto yy116;
@@ -2178,11 +2178,11 @@ yy201:
 	}
 yy202:
 	++YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 2) == 0x3a67) {
 		YYSKIPN(YYCURSOR, 1);
 		goto yy210;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'g': goto yy207;
 		default: goto yy116;
@@ -4600,11 +4600,11 @@ yy384:
 	yyaccept = 0;
 	++YYCURSOR;
 	YYMARKER = YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 4) == 0x66656463) {
 		YYSKIPN(YYCURSOR, 3);
 		goto yy404;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'c': goto yy389;
 		default: goto yy382;
@@ -4631,11 +4631,11 @@ yy386:
 	yyaccept = 0;
 	++YYCURSOR;
 	YYMARKER = YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 8) == 0x7a7a7978797a7a79) {
 		YYSKIPN(YYCURSOR, 7);
 		goto yy418;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'y': goto yy392;
 		default: goto yy382;
@@ -4707,11 +4707,11 @@ yy394:
 	}
 yy395:
 	++YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 2) == 0x646e) {
 		YYSKIPN(YYCURSOR, 1);
 		goto yy405;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'n': goto yy401;
 		default: goto yy390;
@@ -4727,11 +4727,11 @@ yy397:
 	yyaccept = 2;
 	++YYCURSOR;
 	YYMARKER = YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 4) == 0x68676665) {
 		YYSKIPN(YYCURSOR, 3);
 		goto yy413;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'e': goto yy403;
 		default: goto yy398;
@@ -4771,11 +4771,11 @@ yy403:
 	}
 yy404:
 	++YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 2) == 0x6867) {
 		YYSKIPN(YYCURSOR, 1);
 		goto yy411;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'g': goto yy408;
 		default: goto yy390;
@@ -4836,11 +4836,11 @@ yy413:
 	yyaccept = 3;
 	++YYCURSOR;
 	YYMARKER = YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 2) == 0x6a69) {
 		YYSKIPN(YYCURSOR, 1);
 		goto yy419;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'i': goto yy417;
 		default: goto yy414;
@@ -5658,11 +5658,11 @@ yy460:
 yy461:
 	++YYCURSOR;
 	YYMARKER = YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 4) == 0x2d464450) {
 		YYSKIPN(YYCURSOR, 3);
 		goto yy485;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'P': goto yy467;
 		default: goto yy460;
@@ -5670,11 +5670,11 @@ yy461:
 yy462:
 	++YYCURSOR;
 	YYMARKER = YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 4) == 0x39384649) {
 		YYSKIPN(YYCURSOR, 3);
 		goto yy486;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'I': goto yy469;
 		default: goto yy460;
@@ -5682,11 +5682,11 @@ yy462:
 yy463:
 	++YYCURSOR;
 	YYMARKER = YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 2) == 0x34b) {
 		YYSKIPN(YYCURSOR, 1);
 		goto yy476;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'K': goto yy470;
 		default: goto yy460;
@@ -5694,11 +5694,11 @@ yy463:
 yy464:
 	++YYCURSOR;
 	YYMARKER = YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 4) == 0xd474e50) {
 		YYSKIPN(YYCURSOR, 3);
 		goto yy487;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'P': goto yy471;
 		default: goto yy460;
@@ -5706,11 +5706,11 @@ yy464:
 yy465:
 	++YYCURSOR;
 	YYMARKER = YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 2) == 0xbfbb) {
 		YYSKIPN(YYCURSOR, 1);
 		goto yy478;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 0xBB: goto yy472;
 		default: goto yy460;
@@ -5718,11 +5718,11 @@ yy465:
 yy466:
 	++YYCURSOR;
 	YYMARKER = YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 2) == 0xffd8) {
 		YYSKIPN(YYCURSOR, 1);
 		goto yy479;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 0xD8: goto yy473;
 		default: goto yy460;
@@ -5837,11 +5837,11 @@ yy484:
 	{ RET(6); }
 yy485:
 	++YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 2) == 0x2e31) {
 		YYSKIPN(YYCURSOR, 1);
 		goto yy491;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case '1': goto yy488;
 		default: goto yy468;
@@ -5855,11 +5855,11 @@ yy486:
 	}
 yy487:
 	++YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 2) == 0x1a0a) {
 		YYSKIPN(YYCURSOR, 1);
 		goto yy492;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case '\n': goto yy490;
 		default: goto yy468;
@@ -6007,11 +6007,11 @@ static int anchored_1(
     
 {
 	unsigned char yych;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 2) == 0x4947) {
 		YYSKIPN(YYCURSOR, 1);
 		goto yy516;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 0x00:
 		case 0x01: goto yy510;
@@ -6045,11 +6045,11 @@ yy515:
 yy516:
 	++YYCURSOR;
 	YYMARKER = YYCURSOR;
+	yych = *YYCURSOR;
 	if (YYPEEKN(YYCURSOR, 2) == 0x3846) {
 		YYSKIPN(YYCURSOR, 1);
 		goto yy519;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'F': goto yy517;
 		default: goto yy515;
