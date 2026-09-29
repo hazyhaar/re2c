@@ -5,6 +5,7 @@ static constexpr const char* DEFAULT_SYNTAX_C =
     "supported_api_styles = [\"functions\", \"free-form\"];\n"
     "supported_code_models = [\"goto-label\", \"loop-switch\", \"recursive-functions\"];\n"
     "supported_targets = [\"code\", \"dot\", \"skeleton\"];\n"
+    "supported_features = [\"nested-ifs\", \"bitmaps\", \"computed-gotos\", \"case-ranges\",\n"
     "    \"tags\", \"captures\", \"captvars\", \"vectorize-loops\", \"keywords\"];\n"
     "\n"
     "\n"
@@ -570,5 +571,5 @@ static constexpr const char* DEFAULT_SYNTAX_C =
     "        topindent \"return 0;\" nl\n"
     "    dedent topindent \"}\" nl;\n"
     "\n"
-    "code:keyword_lookup = name \"(\" token \", \" YYCURSOR \");\";\n"
+    "code:keyword_lookup = name \"(\" token \", \" YYCURSOR \")\";\n"
     ;

@@ -85,7 +85,7 @@ static inline void init_input_simple(input_t *in, const char* fname) {
 
     in->file = nullptr; // unused
     in->buf = (char*) malloc(flen + 1);
-    in->lim = nullptr; // unused
+    in->lim = in->buf + flen;
     in->cur = in->mar = in->tok = in->buf;
     /*!stags:re2c format = "in->@@ = 0;\n"; */
     /*!mtags:re2c format = "in->@@ = 0;\n"; */
@@ -128,15 +128,17 @@ static inline void init_input_buffered_scc(input_t *in, const char* fname) {
 #define YYCURSOR cur
 #define YYMARKER mar
 #define YYTOKEN tok
+#define YYLIMIT lim
 #define TLP_CLEAR() do { \
     in->tlp.next = in->tlp.head; \
     /*!mtags:re2c format = "@@ = 0;"; */ \
 } while (0)
 
 int lex_simple(input_t *in) {
-    char *cur = in->buf, *mar, *tok;
+    char *cur = in->buf, *mar, *tok, *lim = in->lim;
     (void) mar; // maybe unused
     (void) tok; // maybe unused
+    (void) lim; // maybe unused
     /*!stags:re2c format = "char *@@;\n"; */
     /*!mtags:re2c format = "taglist_t *@@ = nullptr;\n"; */
     /*!svars:re2c:x format = "const char* @@;"; */
@@ -157,6 +159,7 @@ loop:
 #undef YYCURSOR
 #undef YYMARKER
 #undef YYTOKEN
+#undef YYLIMIT
 #undef TLP_CLEAR
 
 #define YYCURSOR in->cur

@@ -345,7 +345,7 @@ using StxCodes = list_t<StxCode>;
     ) \
     CODE_TEMPLATE(keyword_lookup, \
         ({StxVarId::NAME, StxVarId::TOKEN, StxVarId::INPUT, StxVarId::CURSOR, \
-            StxVarId::RECORD}), ({}), ({})
+            StxVarId::RECORD}), ({}), ({}) \
     )
 
 #define RE2C_ONELINE_CODES \
