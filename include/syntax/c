@@ -464,7 +464,11 @@ code:yybm_match = yybm "[" offset "+" yych "] & " mask;
 code:yytarget_filter = yych " & ~0xFF";
 
 code:vector_loop =
+    topindent "#if (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L) || (defined(__cplusplus) && __cplusplus >= 201103L)" nl
+    topindent "static_assert(sizeof(*(" YYCURSOR ")) == 1, \"re2c: 8-bit character unit required for vector loop\");" nl
+    topindent "#elif defined(__GNUC__) || defined(__clang__)" nl
     topindent "_Static_assert(sizeof(*(" YYCURSOR ")) == 1, \"re2c: 8-bit character unit required for vector loop\");" nl
+    topindent "#endif" nl
     topindent "while (!(" lessthan ")) {" nl
         indent
         topindent "#if defined(__AVX2__)" nl
