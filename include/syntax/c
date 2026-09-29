@@ -464,14 +464,36 @@ code:yybm_match = yybm "[" offset "+" yych "] & " mask;
 code:yytarget_filter = yych " & ~0xFF";
 
 code:vector_loop =
+    topindent "_Static_assert(sizeof(*(" YYCURSOR ")) == 1, \"re2c: 8-bit character unit required for vector loop\");" nl
     topindent "while (!(" lessthan ")) {" nl
         indent
+        topindent "#if defined(__AVX2__)" nl
         topindent "__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(" YYCURSOR "));" nl
         [range{0}: topindent "__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_or_si256(_mm256_subs_epu8(yysimd0, _mm256_set1_epi8(" range_hi ")), _mm256_subs_epu8(_mm256_set1_epi8(" range_lo "), yysimd0)), _mm256_setzero_si256());" nl]
         [range{1:-1}: topindent "yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_or_si256(_mm256_subs_epu8(yysimd0, _mm256_set1_epi8(" range_hi ")), _mm256_subs_epu8(_mm256_set1_epi8(" range_lo "), yysimd0)), _mm256_setzero_si256()));" nl]
         topindent "if ((unsigned int)_mm256_movemask_epi8(yysimd1) != " mask ") {" nl
             indent topindent "break;" nl dedent
         topindent "}" nl
+        topindent "#else" nl
+        topindent "{" nl
+        indent
+        topindent "unsigned int yysimd_ok = 1;" nl
+        topindent "for (size_t yyi = 0; yyi < " size "; ++yyi) {" nl
+            indent
+            topindent "unsigned char yyc = (unsigned char)(" YYCURSOR ")[yyi];" nl
+            topindent "if (!("
+            [range{0}: "(yyc >= " range_lo " && yyc <= " range_hi ")"]
+            [range{1:-1}: " || (yyc >= " range_lo " && yyc <= " range_hi ")"]
+            ")) { yysimd_ok = 0; break; }" nl
+            dedent
+        topindent "}" nl
+        topindent "if (!yysimd_ok) break;" nl
+        dedent
+        topindent "}" nl
+        topindent "#endif" nl
         topindent YYCURSOR " += " size ";" nl
         dedent
-    topindent "}" nl;
+    topindent "}" nl
+    topindent "#if defined(__AVX2__)" nl
+    topindent "_mm256_zeroupper();" nl
+    topindent "#endif" nl;
