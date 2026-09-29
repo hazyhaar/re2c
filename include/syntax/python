@@ -402,3 +402,14 @@ code:yybm_match = "(" yybm "[" offset "+" yych "] & " mask ") != 0";
 code:yytarget_filter = <undefined>;
 
 code:vector_loop = <undefined>;
+
+// multi-character (broadword) primitives --------------------------------------
+
+code:yypeekn = "YYPEEKN(" YYCURSOR ", " n ")";
+
+code:yypeekn_guard = <undefined>;
+
+code:yyskipn = topindent (.api.generic
+    ? "YYSKIPN(" YYCURSOR ", " n ")"
+    : YYCURSOR " += " n
+) nl;

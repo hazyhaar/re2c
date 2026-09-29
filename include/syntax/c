@@ -501,3 +501,24 @@ code:vector_loop =
     topindent "#if defined(__AVX2__)" nl
     topindent "_mm256_zeroupper();" nl
     topindent "#endif" nl;
+
+// multi-character primitives (linear vectorization) ---------------------------
+
+// The value of `n` code units at the cursor, the code unit at offset `k` in bits [8*k, 8*k+8).
+// For the simple and record APIs the value is assembled from single bytes, which does not depend on
+// the host byte order and does not assume alignment; compilers turn it into one load.
+code:yypeekn = (.api.generic
+    ? "YYPEEKN(" YYCURSOR ", " n ")"
+    : "("
+        [offset{0}:    "(unsigned long long)(unsigned char)" YYCURSOR "[" offset "]"]
+        [offset{1:-1}: " | (unsigned long long)(unsigned char)" YYCURSOR "[" offset "] << 8 * " offset]
+    ")");
+
+// Without YYFILL nothing guarantees that `n` code units can be read at the cursor.
+code:yypeekn_guard = (.api.generic | .yyfill.enable ? "" : "(" YYLIMIT " - " YYCURSOR ") >= " n);
+
+code:yyskipn =
+    topindent (.api.generic
+        ? "YYSKIPN(" YYCURSOR ", " n ");"
+        : YYCURSOR " += " n ";"
+    ) nl;

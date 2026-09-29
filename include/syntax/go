@@ -417,7 +417,6 @@ code:yybm_filter = yych " & ~0xFF";
 code:yybm_match = "(" yybm "[" offset "+" yych "] & " mask ") != 0";
 
 code:yytarget_filter = <undefined>;
- 
 code:vector_loop =
     topindent "for !(" lessthan ") {" nl
         indent
@@ -430,3 +429,23 @@ code:vector_loop =
         topindent YYCURSOR " += " size nl
         dedent
     topindent "}" nl;
+
+// multi-character primitives (linear vectorization) ---------------------------
+
+// The value of `n` code units at the cursor, the code unit at offset `k` in bits [8*k, 8*k+8).
+// For the simple and record APIs the value is assembled from single bytes of a subslice, which the
+// compiler turns into one load. The byte at the highest offset comes first: its bounds check covers
+// the other bytes.
+code:yypeekn = (.api.generic
+    ? "YYPEEKN(" YYCURSOR ", " n ")"
+    : [offset{-1}:   "uint64(" YYINPUT "[" YYCURSOR ":][" offset "])<<(8*" offset ")"]
+      [offset{0}:    " | uint64(" YYINPUT "[" YYCURSOR ":][" offset "])"]
+      [offset{1:-2}: " | uint64(" YYINPUT "[" YYCURSOR ":][" offset "])<<(8*" offset ")"]);
+
+// Without YYFILL nothing guarantees that `n` code units can be read at the cursor.
+code:yypeekn_guard = (.api.generic | .yyfill.enable ? "" : "len(" YYINPUT ")-" YYCURSOR " >= " n);
+
+code:yyskipn = topindent (.api.generic
+    ? "YYSKIPN(" YYCURSOR ", " n ")"
+    : YYCURSOR " += " n
+) nl;
