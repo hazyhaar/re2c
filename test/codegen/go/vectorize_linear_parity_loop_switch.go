@@ -1425,6 +1425,50 @@ yyl:
 					yycursor += 8
 					yystate = 67
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x636e452d74706563) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x636e452d74706563) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 18
+							continue yyl
+						} else {
+							if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x636e452d74706563) & 0xffffff) != 0) {
+								yycursor += 2
+								yystate = 24
+								continue yyl
+							} else {
+								if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x636e452d74706563) & 0xffffffff) != 0) {
+									yycursor += 3
+									yystate = 31
+									continue yyl
+								} else {
+									if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x636e452d74706563) & 0xffffffffff) != 0) {
+										yycursor += 4
+										yystate = 38
+										continue yyl
+									} else {
+										if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x636e452d74706563) & 0xffffffffffff) != 0) {
+											yycursor += 5
+											yystate = 45
+											continue yyl
+										} else {
+											if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x636e452d74706563) & 0xffffffffffffff) != 0) {
+												yycursor += 6
+												yystate = 52
+												continue yyl
+											} else {
+												if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x636e452d74706563) & 0xffffffffffffffff) != 0) {
+													yycursor += 7
+													yystate = 59
+													continue yyl
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -1443,6 +1487,50 @@ yyl:
 					yycursor += 8
 					yystate = 68
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x74617a69726f6874) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x74617a69726f6874) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 19
+							continue yyl
+						} else {
+							if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x74617a69726f6874) & 0xffffff) != 0) {
+								yycursor += 2
+								yystate = 25
+								continue yyl
+							} else {
+								if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x74617a69726f6874) & 0xffffffff) != 0) {
+									yycursor += 3
+									yystate = 32
+									continue yyl
+								} else {
+									if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x74617a69726f6874) & 0xffffffffff) != 0) {
+										yycursor += 4
+										yystate = 39
+										continue yyl
+									} else {
+										if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x74617a69726f6874) & 0xffffffffffff) != 0) {
+											yycursor += 5
+											yystate = 46
+											continue yyl
+										} else {
+											if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x74617a69726f6874) & 0xffffffffffffff) != 0) {
+												yycursor += 6
+												yystate = 53
+												continue yyl
+											} else {
+												if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x74617a69726f6874) & 0xffffffffffffffff) != 0) {
+													yycursor += 7
+													yystate = 60
+													continue yyl
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -1461,6 +1549,50 @@ yyl:
 					yycursor += 8
 					yystate = 69
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6f432d656863) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6f432d656863) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 20
+							continue yyl
+						} else {
+							if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6f432d656863) & 0xffffff) != 0) {
+								yycursor += 2
+								yystate = 26
+								continue yyl
+							} else {
+								if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6f432d656863) & 0xffffffff) != 0) {
+									yycursor += 3
+									yystate = 33
+									continue yyl
+								} else {
+									if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6f432d656863) & 0xffffffffff) != 0) {
+										yycursor += 4
+										yystate = 40
+										continue yyl
+									} else {
+										if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6f432d656863) & 0xffffffffffff) != 0) {
+											yycursor += 5
+											yystate = 47
+											continue yyl
+										} else {
+											if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6f432d656863) & 0xffffffffffffff) != 0) {
+												yycursor += 6
+												yystate = 54
+												continue yyl
+											} else {
+												if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6f432d656863) & 0xffffffffffffffff) != 0) {
+													yycursor += 7
+													yystate = 61
+													continue yyl
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -1490,6 +1622,50 @@ yyl:
 					yycursor += 8
 					yystate = 73
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x452d726566736e61) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x452d726566736e61) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 22
+							continue yyl
+						} else {
+							if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x452d726566736e61) & 0xffffff) != 0) {
+								yycursor += 2
+								yystate = 29
+								continue yyl
+							} else {
+								if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x452d726566736e61) & 0xffffffff) != 0) {
+									yycursor += 3
+									yystate = 36
+									continue yyl
+								} else {
+									if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x452d726566736e61) & 0xffffffffff) != 0) {
+										yycursor += 4
+										yystate = 43
+										continue yyl
+									} else {
+										if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x452d726566736e61) & 0xffffffffffff) != 0) {
+											yycursor += 5
+											yystate = 50
+											continue yyl
+										} else {
+											if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x452d726566736e61) & 0xffffffffffffff) != 0) {
+												yycursor += 6
+												yystate = 57
+												continue yyl
+											} else {
+												if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x452d726566736e61) & 0xffffffffffffffff) != 0) {
+													yycursor += 7
+													yystate = 65
+													continue yyl
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -1508,6 +1684,50 @@ yyl:
 					yycursor += 8
 					yystate = 74
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6567412d7265) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6567412d7265) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 23
+							continue yyl
+						} else {
+							if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6567412d7265) & 0xffffff) != 0) {
+								yycursor += 2
+								yystate = 30
+								continue yyl
+							} else {
+								if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6567412d7265) & 0xffffffff) != 0) {
+									yycursor += 3
+									yystate = 37
+									continue yyl
+								} else {
+									if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6567412d7265) & 0xffffffffff) != 0) {
+										yycursor += 4
+										yystate = 44
+										continue yyl
+									} else {
+										if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6567412d7265) & 0xffffffffffff) != 0) {
+											yycursor += 5
+											yystate = 51
+											continue yyl
+										} else {
+											if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6567412d7265) & 0xffffffffffffff) != 0) {
+												yycursor += 6
+												yystate = 58
+												continue yyl
+											} else {
+												if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6567412d7265) & 0xffffffffffffffff) != 0) {
+													yycursor += 7
+													yystate = 66
+													continue yyl
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -1629,6 +1849,26 @@ yyl:
 					yycursor += 4
 					yystate = 55
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x69746365) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x69746365) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 34
+							continue yyl
+						} else {
+							if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x69746365) & 0xffffff) != 0) {
+								yycursor += 2
+								yystate = 41
+								continue yyl
+							} else {
+								if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x69746365) & 0xffffffff) != 0) {
+									yycursor += 3
+									yystate = 48
+									continue yyl
+								}
+							}
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -1647,6 +1887,26 @@ yyl:
 					yycursor += 4
 					yystate = 56
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x2d746e65) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x2d746e65) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 35
+							continue yyl
+						} else {
+							if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x2d746e65) & 0xffffff) != 0) {
+								yycursor += 2
+								yystate = 42
+								continue yyl
+							} else {
+								if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x2d746e65) & 0xffffffff) != 0) {
+									yycursor += 3
+									yystate = 49
+									continue yyl
+								}
+							}
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -1951,6 +2211,14 @@ yyl:
 					yycursor += 2
 					yystate = 70
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x6e6f) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x6e6f) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 62
+							continue yyl
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -2050,6 +2318,26 @@ yyl:
 					yycursor += 4
 					yystate = 92
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x74676e65) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x74676e65) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 71
+							continue yyl
+						} else {
+							if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x74676e65) & 0xffffff) != 0) {
+								yycursor += 2
+								yystate = 79
+								continue yyl
+							} else {
+								if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x74676e65) & 0xffffffff) != 0) {
+									yycursor += 3
+									yystate = 86
+									continue yyl
+								}
+							}
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -2068,6 +2356,26 @@ yyl:
 					yycursor += 4
 					yystate = 93
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a657079) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a657079) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 72
+							continue yyl
+						} else {
+							if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a657079) & 0xffffff) != 0) {
+								yycursor += 2
+								yystate = 80
+								continue yyl
+							} else {
+								if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a657079) & 0xffffffff) != 0) {
+									yycursor += 3
+									yystate = 87
+									continue yyl
+								}
+							}
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -2108,6 +2416,26 @@ yyl:
 					yycursor += 4
 					yystate = 95
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x6e69646f) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x6e69646f) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 75
+							continue yyl
+						} else {
+							if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x6e69646f) & 0xffffff) != 0) {
+								yycursor += 2
+								yystate = 83
+								continue yyl
+							} else {
+								if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x6e69646f) & 0xffffffff) != 0) {
+									yycursor += 3
+									yystate = 89
+									continue yyl
+								}
+							}
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -2126,6 +2454,26 @@ yyl:
 					yycursor += 4
 					yystate = 96
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a6e6f69) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a6e6f69) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 76
+							continue yyl
+						} else {
+							if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a6e6f69) & 0xffffff) != 0) {
+								yycursor += 2
+								yystate = 84
+								continue yyl
+							} else {
+								if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a6e6f69) & 0xffffffff) != 0) {
+									yycursor += 3
+									yystate = 90
+									continue yyl
+								}
+							}
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -2144,6 +2492,26 @@ yyl:
 					yycursor += 4
 					yystate = 97
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a6c6f72) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a6c6f72) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 77
+							continue yyl
+						} else {
+							if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a6c6f72) & 0xffffff) != 0) {
+								yycursor += 2
+								yystate = 85
+								continue yyl
+							} else {
+								if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a6c6f72) & 0xffffffff) != 0) {
+									yycursor += 3
+									yystate = 91
+									continue yyl
+								}
+							}
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -2195,6 +2563,50 @@ yyl:
 					yycursor += 8
 					yystate = 106
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x3a676e69646f636e) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x3a676e69646f636e) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 81
+							continue yyl
+						} else {
+							if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x3a676e69646f636e) & 0xffffff) != 0) {
+								yycursor += 2
+								yystate = 88
+								continue yyl
+							} else {
+								if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x3a676e69646f636e) & 0xffffffff) != 0) {
+									yycursor += 3
+									yystate = 94
+									continue yyl
+								} else {
+									if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x3a676e69646f636e) & 0xffffffffff) != 0) {
+										yycursor += 4
+										yystate = 99
+										continue yyl
+									} else {
+										if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x3a676e69646f636e) & 0xffffffffffff) != 0) {
+											yycursor += 5
+											yystate = 102
+											continue yyl
+										} else {
+											if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x3a676e69646f636e) & 0xffffffffffffff) != 0) {
+												yycursor += 6
+												yystate = 104
+												continue yyl
+											} else {
+												if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x3a676e69646f636e) & 0xffffffffffffffff) != 0) {
+													yycursor += 7
+													yystate = 105
+													continue yyl
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -2393,6 +2805,14 @@ yyl:
 					yycursor += 2
 					yystate = 101
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x3a68) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x3a68) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 98
+							continue yyl
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -2424,6 +2844,14 @@ yyl:
 					yycursor += 2
 					yystate = 103
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x3a67) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x3a67) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 100
+							continue yyl
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -4421,6 +4849,26 @@ yyl:
 					yycursor += 4
 					yystate = 24
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x66656463) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x66656463) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 9
+							continue yyl
+						} else {
+							if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x66656463) & 0xffffff) != 0) {
+								yycursor += 2
+								yystate = 14
+								continue yyl
+							} else {
+								if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x66656463) & 0xffffffff) != 0) {
+									yycursor += 3
+									yystate = 20
+									continue yyl
+								}
+							}
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -4454,6 +4902,50 @@ yyl:
 					yycursor += 8
 					yystate = 38
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x7a7a7978797a7a79) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x7a7a7978797a7a79) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 12
+							continue yyl
+						} else {
+							if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x7a7a7978797a7a79) & 0xffffff) != 0) {
+								yycursor += 2
+								yystate = 16
+								continue yyl
+							} else {
+								if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x7a7a7978797a7a79) & 0xffffffff) != 0) {
+									yycursor += 3
+									yystate = 22
+									continue yyl
+								} else {
+									if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x7a7a7978797a7a79) & 0xffffffffff) != 0) {
+										yycursor += 4
+										yystate = 26
+										continue yyl
+									} else {
+										if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x7a7a7978797a7a79) & 0xffffffffffff) != 0) {
+											yycursor += 5
+											yystate = 29
+											continue yyl
+										} else {
+											if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x7a7a7978797a7a79) & 0xffffffffffffff) != 0) {
+												yycursor += 6
+												yystate = 32
+												continue yyl
+											} else {
+												if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x7a7a7978797a7a79) & 0xffffffffffffffff) != 0) {
+													yycursor += 7
+													yystate = 36
+													continue yyl
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -4566,6 +5058,14 @@ yyl:
 					yycursor += 2
 					yystate = 25
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x646e) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x646e) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 21
+							continue yyl
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -4597,6 +5097,26 @@ yyl:
 					yycursor += 4
 					yystate = 33
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x68676665) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x68676665) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 23
+							continue yyl
+						} else {
+							if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x68676665) & 0xffffff) != 0) {
+								yycursor += 2
+								yystate = 27
+								continue yyl
+							} else {
+								if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x68676665) & 0xffffffff) != 0) {
+									yycursor += 3
+									yystate = 30
+									continue yyl
+								}
+							}
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -4663,6 +5183,14 @@ yyl:
 					yycursor += 2
 					yystate = 31
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x6867) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x6867) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 28
+							continue yyl
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -4762,6 +5290,14 @@ yyl:
 					yycursor += 2
 					yystate = 39
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x6a69) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x6a69) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 37
+							continue yyl
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -5272,6 +5808,26 @@ yyl:
 					yycursor += 4
 					yystate = 27
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x2d464450) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x2d464450) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 9
+							continue yyl
+						} else {
+							if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x2d464450) & 0xffffff) != 0) {
+								yycursor += 2
+								yystate = 16
+								continue yyl
+							} else {
+								if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x2d464450) & 0xffffffff) != 0) {
+									yycursor += 3
+									yystate = 22
+									continue yyl
+								}
+							}
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -5291,6 +5847,26 @@ yyl:
 					yycursor += 4
 					yystate = 28
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x39384649) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x39384649) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 11
+							continue yyl
+						} else {
+							if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x39384649) & 0xffffff) != 0) {
+								yycursor += 2
+								yystate = 17
+								continue yyl
+							} else {
+								if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x39384649) & 0xffffffff) != 0) {
+									yycursor += 3
+									yystate = 23
+									continue yyl
+								}
+							}
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -5310,6 +5886,14 @@ yyl:
 					yycursor += 2
 					yystate = 18
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x34b) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x34b) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 12
+							continue yyl
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -5329,6 +5913,26 @@ yyl:
 					yycursor += 4
 					yystate = 29
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0xd474e50) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0xd474e50) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 13
+							continue yyl
+						} else {
+							if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0xd474e50) & 0xffffff) != 0) {
+								yycursor += 2
+								yystate = 19
+								continue yyl
+							} else {
+								if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0xd474e50) & 0xffffffff) != 0) {
+									yycursor += 3
+									yystate = 25
+									continue yyl
+								}
+							}
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -5348,6 +5952,14 @@ yyl:
 					yycursor += 2
 					yystate = 20
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0xbfbb) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0xbfbb) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 14
+							continue yyl
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -5367,6 +5979,14 @@ yyl:
 					yycursor += 2
 					yystate = 21
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0xffd8) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0xffd8) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 15
+							continue yyl
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -5547,6 +6167,14 @@ yyl:
 					yycursor += 2
 					yystate = 33
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x2e31) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x2e31) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 30
+							continue yyl
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -5576,6 +6204,14 @@ yyl:
 					yycursor += 2
 					yystate = 34
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x1a0a) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x1a0a) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 32
+							continue yyl
+						}
+					}
 				}
 			}
 			switch (yych) {
@@ -5843,6 +6479,14 @@ yyl:
 					yycursor += 2
 					yystate = 10
 					continue yyl
+				} else {
+					if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x3846) & 0xff) == 0) {
+						if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x3846) & 0xffff) != 0) {
+							yycursor += 1
+							yystate = 8
+							continue yyl
+						}
+					}
 				}
 			}
 			switch (yych) {

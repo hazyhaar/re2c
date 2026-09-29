@@ -123,10 +123,14 @@ yy3:
 	#if defined(__AVX2__)
 	_mm256_zeroupper();
 	#endif
+yy18:
 	yych = *YYCURSOR;
 	switch (yych) {
 		case '\t':
-		case ' ': goto yy3;
+		case ' ':
+			++YYCURSOR;
+			if (YYLIMIT <= YYCURSOR) fill(0);
+			goto yy18;
 		default: goto yy4;
 	}
 yy4:
@@ -161,6 +165,7 @@ yy5:
 	#if defined(__AVX2__)
 	_mm256_zeroupper();
 	#endif
+yy19:
 	yych = *YYCURSOR;
 	switch (yych) {
 		case '0':
@@ -172,7 +177,10 @@ yy5:
 		case '6':
 		case '7':
 		case '8':
-		case '9': goto yy5;
+		case '9':
+			++YYCURSOR;
+			if (YYLIMIT <= YYCURSOR) fill(0);
+			goto yy19;
 		default: goto yy6;
 	}
 yy6:
@@ -210,6 +218,7 @@ yy7:
 	#if defined(__AVX2__)
 	_mm256_zeroupper();
 	#endif
+yy20:
 	yych = *YYCURSOR;
 	switch (yych) {
 		case '0':
@@ -274,7 +283,10 @@ yy7:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy7;
+		case 'z':
+			++YYCURSOR;
+			if (YYLIMIT <= YYCURSOR) fill(0);
+			goto yy20;
 		default: goto yy8;
 	}
 yy8:

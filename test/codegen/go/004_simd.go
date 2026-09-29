@@ -69,19 +69,24 @@ yy3:
 		}
 		cursor += 32
 	}
+yy18:
 	yych = input[cursor]
 	switch (yych) {
 	case '\t':
 		fallthrough
 	case ' ':
-		goto yy3
+		cursor += 1
+		if (limit <= cursor) {
+			fill(0)
+		}
+		goto yy18
 	default:
 		goto yy4
 	}
 yy4:
 //line "codegen/go/004_simd.re":33
 	{ return 3 }
-//line "codegen/go/004_simd.go":85
+//line "codegen/go/004_simd.go":90
 yy5:
 	cursor += 1
 	if (limit <= cursor) {
@@ -95,17 +100,22 @@ yy5:
 		}
 		cursor += 32
 	}
+yy19:
 	yych = input[cursor]
 	switch (yych) {
 	case '0','1','2','3','4','5','6','7','8','9':
-		goto yy5
+		cursor += 1
+		if (limit <= cursor) {
+			fill(0)
+		}
+		goto yy19
 	default:
 		goto yy6
 	}
 yy6:
 //line "codegen/go/004_simd.re":31
 	{ return 1 }
-//line "codegen/go/004_simd.go":109
+//line "codegen/go/004_simd.go":119
 yy7:
 	cursor += 1
 	if (limit <= cursor) {
@@ -122,6 +132,7 @@ yy7:
 		}
 		cursor += 32
 	}
+yy20:
 	yych = input[cursor]
 	switch (yych) {
 	case '0','1','2','3','4','5','6','7','8','9':
@@ -131,14 +142,18 @@ yy7:
 	case '_':
 		fallthrough
 	case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
-		goto yy7
+		cursor += 1
+		if (limit <= cursor) {
+			fill(0)
+		}
+		goto yy20
 	default:
 		goto yy8
 	}
 yy8:
 //line "codegen/go/004_simd.re":32
 	{ return 2 }
-//line "codegen/go/004_simd.go":142
+//line "codegen/go/004_simd.go":157
 }
 //line "codegen/go/004_simd.re":36
 
@@ -146,7 +161,7 @@ yy8:
 
 func lexScalar() int {
 	
-//line "codegen/go/004_simd.go":150
+//line "codegen/go/004_simd.go":165
 {
 	var yych byte
 	if (limit <= cursor) {
@@ -175,12 +190,12 @@ yy10:
 	cursor += 1
 //line "codegen/go/004_simd.re":54
 	{ return 0 }
-//line "codegen/go/004_simd.go":179
+//line "codegen/go/004_simd.go":194
 yy11:
 	cursor += 1
 //line "codegen/go/004_simd.re":55
 	{ return -1 }
-//line "codegen/go/004_simd.go":184
+//line "codegen/go/004_simd.go":199
 yy12:
 	cursor += 1
 	if (limit <= cursor) {
@@ -198,7 +213,7 @@ yy12:
 yy13:
 //line "codegen/go/004_simd.re":53
 	{ return 3 }
-//line "codegen/go/004_simd.go":202
+//line "codegen/go/004_simd.go":217
 yy14:
 	cursor += 1
 	if (limit <= cursor) {
@@ -214,7 +229,7 @@ yy14:
 yy15:
 //line "codegen/go/004_simd.re":51
 	{ return 1 }
-//line "codegen/go/004_simd.go":218
+//line "codegen/go/004_simd.go":233
 yy16:
 	cursor += 1
 	if (limit <= cursor) {
@@ -236,7 +251,7 @@ yy16:
 yy17:
 //line "codegen/go/004_simd.re":52
 	{ return 2 }
-//line "codegen/go/004_simd.go":240
+//line "codegen/go/004_simd.go":255
 }
 //line "codegen/go/004_simd.re":56
 

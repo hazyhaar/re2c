@@ -747,6 +747,28 @@ static void gen_fill_and_label(Output& output, CodeList* stmts, const Adfa& dfa,
     }
 }
 
+// A reflexive transition of a SIMD state may bypass the state head (skip, YYFILL check, vector loop)
+// and jump to a local label placed right before the scalar peek, provided that the head has no
+// other effect that the transition would have to repeat (backup, debug output, YYEND, YYFILL
+// label). The YYFILL check of the head is repeated on the transition, but not the vector loop.
+static bool simd_scalar_target(
+        const opt_t* opts, const Adfa& dfa, const State* from, const CodeJump& jump) {
+    if (from == nullptr || !jump.to->simd || jump.to->simd_body == nullptr) return false;
+    const State* t = jump.to;
+    if (t != from && t->simd_body != from) return false;
+    return opts->code_model == CodeModel::GOTO_LABEL
+            && t->simd_scalar != nullptr
+            && t->kind == StateKind::MATCH
+            && t != dfa.start_state
+            && t->save == NOSAVE
+            && t->fill_label == nullptr
+            && !t->go.eof
+            && t->eof_state == nullptr
+            && !jump.eof
+            && opts->fill_eof == NOEOF
+            && !opts->debug;
+}
+
 static void gen_goto(
         Output& output, const Adfa& dfa, CodeList* stmts, const State* from, const CodeJump& jump) {
     const opt_t* opts = output.block().opts;
@@ -761,7 +783,20 @@ static void gen_goto(
         append(transition, code_skip(alc));
     }
 
-    if (!jump.elide && jump.to->label->used) {
+    if (!jump.elide && jump.to->label->used && simd_scalar_target(opts, dfa, from, jump)) {
+        // The state head would perform the skip (unless it is already generated on transitions).
+        if (!opts->eager_skip) append(transition, code_skip(alc));
+        if (opts->fill_enable && !endstate(jump.to) && jump.to->fill > 0) {
+            gen_fill(output, transition, nullptr, dfa, jump.to, nullptr);
+        }
+        Label* l = jump.to->simd_scalar;
+        if (!l->used) {
+            l->used = true;
+            l->index = output.label_counter++;
+        }
+        o.str(opts->label_prefix).label(*l);
+        append(transition, code_goto(alc, o.flush()));
+    } else if (!jump.elide && jump.to->label->used) {
         switch (opts->code_model) {
         case CodeModel::GOTO_LABEL:
             o.str(opts->label_prefix).label(*jump.to->label);
@@ -1318,6 +1353,55 @@ static CodeList* gen_transitions(Output& output, const Adfa& dfa, const State* s
     return transitions;
 }
 
+// After a failed wide comparison the first `d` code units may still agree with the chain. With
+// `diff = peek ^ literal`, `d` is the number of low-order zero bytes of `diff`; then the states
+// `mchar_path[0..d]` have already been traversed and the dispatch continues directly at
+// `mchar_path[d]` (`d == 0` is the ordinary dispatch of the head state), without reading the input
+// again. Without a count-trailing-zeros primitive in the syntax file, `d` is found by testing the
+// masks of the low 1, 2, ... bytes of `diff` in ascending order. Only the leading nonzero bytes of
+// the literal are considered: a generic read past the end of the input may yield zero bytes that
+// would otherwise look like a match. Returns null if the dispatch is not applicable.
+static CodeList* gen_mchar_diverge(
+        Output& output, const Adfa& dfa, const State* s, const char* peek) {
+    const opt_t* opts = output.block().opts;
+    OutAllocator& alc = output.allocator;
+    Scratchbuf& buf = output.scratchbuf;
+    const uint32_t n = s->mchar_n;
+
+    if (opts->api == Api::GENERIC || opts->code_model == CodeModel::REC_FUNC) return nullptr;
+
+    uint32_t dmax = 0;
+    while (dmax < n - 1 && ((s->mchar_value >> (8 * dmax)) & 0xFF) != 0) ++dmax;
+    if (dmax == 0) return nullptr;
+
+    const std::string peek_str(peek);
+    const auto diff_test = [&](uint32_t nbytes, OpKind op) {
+        const uint64_t mask = nbytes >= 8 ? ~UINT64_C(0) : (UINT64_C(1) << (8 * nbytes)) - 1;
+        buf.cstr("((").str(peek_str).cstr(" ^ 0x");
+        buf.stream() << std::hex << s->mchar_value << ") & 0x" << mask << std::dec;
+        buf.cstr(") ").cstr(output.block().binops[op]).cstr(" 0");
+        return buf.flush();
+    };
+
+    // Innermost branch: the first `dmax` code units agree, so no test is needed beyond mismatch.
+    CodeList* chain = nullptr;
+    for (uint32_t d = dmax; d >= 1; --d) {
+        CodeList* to = code_list(alc);
+        const uint32_t nskip = opts->eager_skip ? d : d - 1;
+        if (nskip > 0) append(to, code_skipn(alc, static_cast<int32_t>(nskip)));
+        const CodeJump jump = {s->mchar_path[d], TCID0, false, false, false};
+        gen_goto(output, dfa, to, s, jump);
+
+        CodeList* step = code_list(alc);
+        append(step, code_if_then_else(alc, diff_test(d + 1, OP_CMP_NE), to, chain));
+        chain = step;
+    }
+
+    CodeList* outer = code_list(alc);
+    append(outer, code_if_then_else(alc, diff_test(1, OP_CMP_EQ), chain, nullptr));
+    return outer;
+}
+
 // Multi-character fast path for the head of a linear chain (see note [broadword multi-character fast path]):
 //
 //     if (<yypeekn_guard>) {                 // only if the syntax file defines a guard
@@ -1363,6 +1447,8 @@ static CodeList* gen_mchar(Output& output, const Adfa& dfa, const State* s) {
         if (*guard == 0) guard = nullptr;
     }
 
+    CodeList* diverge = gen_mchar_diverge(output, dfa, s, peek);
+
     CodeList* stmts = code_list(alc);
     if (opts->code_model == CodeModel::REC_FUNC) {
         CodeList* inner = code_list(alc);
@@ -1374,7 +1460,7 @@ static CodeList* gen_mchar(Output& output, const Adfa& dfa, const State* s) {
         }
     } else {
         CodeList* inner = code_list(alc);
-        append(inner, code_if_then_else(alc, match, fast, nullptr));
+        append(inner, code_if_then_else(alc, match, fast, diverge));
         if (guard != nullptr) {
             append(stmts, code_if_then_else(alc, guard, inner, nullptr));
         } else {
@@ -1426,6 +1512,7 @@ static void emit_state(
         // Vectorized fast-forward runs after YYFILL (so that the input window is refilled) and
         // before the scalar peek.
         gen_vector_loop(output, s, tail);
+        if (s->simd_scalar != nullptr) append(tail, code_nlabel(alc, s->simd_scalar));
         gen_peek(alc, s, tail);
         if (is_start && dfa.custom_start_label && opts->debug) {
             append(tail, code_debug(alc, dfa.custom_start_label->index));

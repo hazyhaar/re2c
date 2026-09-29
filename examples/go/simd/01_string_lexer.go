@@ -63,6 +63,7 @@ yy2:
 		}
 		yycursor += 32
 	}
+yy12:
 	yych = yyinput[yycursor]
 	switch (yych) {
 	case 0x00:
@@ -76,7 +77,11 @@ yy2:
 	case '\\':
 		goto yy3
 	default:
-		goto yy2
+		yycursor += 1
+		if (yylimit <= yycursor) {
+			return -1
+		}
+		goto yy12
 	}
 yy3:
 	{ continue }

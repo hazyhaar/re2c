@@ -63,12 +63,17 @@ yy3:
 		}
 		cursor += 32
 	}
+yy18:
 	yych = input[cursor]
 	switch (yych) {
 	case '\t':
 		fallthrough
 	case ' ':
-		goto yy3
+		cursor += 1
+		if (limit <= cursor) {
+			fill(0)
+		}
+		goto yy18
 	default:
 		goto yy4
 	}
@@ -87,10 +92,15 @@ yy5:
 		}
 		cursor += 32
 	}
+yy19:
 	yych = input[cursor]
 	switch (yych) {
 	case '0','1','2','3','4','5','6','7','8','9':
-		goto yy5
+		cursor += 1
+		if (limit <= cursor) {
+			fill(0)
+		}
+		goto yy19
 	default:
 		goto yy6
 	}
@@ -112,6 +122,7 @@ yy7:
 		}
 		cursor += 32
 	}
+yy20:
 	yych = input[cursor]
 	switch (yych) {
 	case '0','1','2','3','4','5','6','7','8','9':
@@ -121,7 +132,11 @@ yy7:
 	case '_':
 		fallthrough
 	case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
-		goto yy7
+		cursor += 1
+		if (limit <= cursor) {
+			fill(0)
+		}
+		goto yy20
 	default:
 		goto yy8
 	}
