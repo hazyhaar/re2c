@@ -374,6 +374,13 @@ language configurations, inplace configurations and code templates.
       ``YYLIMIT``, ``yyrecord`` (map to the corresponding ``re2c:``
       configurations).
 
+  ``code:yypeekn_diverge``
+      An expression that yields the number of low-order zero code units of
+      ``expr``, the nonzero XOR of ``code:yypeekn`` and the literal of a chain,
+      used to jump directly into the chain after a failed comparison. If it is
+      undefined, the code units are tested one by one. Supported variables:
+      ``expr``.
+
   ``code:yyskipn``
       A statement that advances the cursor by ``n`` code units, used by
       ``--vectorize-linear``. Supported variables: ``n``, ``YYINPUT``,

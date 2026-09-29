@@ -54,6 +54,7 @@ yy3:
 	if (limit <= cursor) {
 		fill(0)
 	}
+yy18:
 	for !((limit - cursor) < 33) {
 		yysimd0 := archsimd.LoadUint8x32(input[cursor:])
 		yysimd1 := yysimd0.GreaterEqual(archsimd.BroadcastUint8x32(9)).And(yysimd0.LessEqual(archsimd.BroadcastUint8x32(9)))
@@ -63,7 +64,7 @@ yy3:
 		}
 		cursor += 32
 	}
-yy18:
+yy19:
 	yych = input[cursor]
 	switch (yych) {
 	case '\t':
@@ -72,8 +73,9 @@ yy18:
 		cursor += 1
 		if (limit <= cursor) {
 			fill(0)
+			goto yy18
 		}
-		goto yy18
+		goto yy19
 	default:
 		goto yy4
 	}
@@ -84,6 +86,7 @@ yy5:
 	if (limit <= cursor) {
 		fill(0)
 	}
+yy20:
 	for !((limit - cursor) < 33) {
 		yysimd0 := archsimd.LoadUint8x32(input[cursor:])
 		yysimd1 := yysimd0.GreaterEqual(archsimd.BroadcastUint8x32(48)).And(yysimd0.LessEqual(archsimd.BroadcastUint8x32(57)))
@@ -92,15 +95,16 @@ yy5:
 		}
 		cursor += 32
 	}
-yy19:
+yy21:
 	yych = input[cursor]
 	switch (yych) {
 	case '0','1','2','3','4','5','6','7','8','9':
 		cursor += 1
 		if (limit <= cursor) {
 			fill(0)
+			goto yy20
 		}
-		goto yy19
+		goto yy21
 	default:
 		goto yy6
 	}
@@ -111,6 +115,7 @@ yy7:
 	if (limit <= cursor) {
 		fill(0)
 	}
+yy22:
 	for !((limit - cursor) < 33) {
 		yysimd0 := archsimd.LoadUint8x32(input[cursor:])
 		yysimd1 := yysimd0.GreaterEqual(archsimd.BroadcastUint8x32(48)).And(yysimd0.LessEqual(archsimd.BroadcastUint8x32(57)))
@@ -122,7 +127,7 @@ yy7:
 		}
 		cursor += 32
 	}
-yy20:
+yy23:
 	yych = input[cursor]
 	switch (yych) {
 	case '0','1','2','3','4','5','6','7','8','9':
@@ -135,8 +140,9 @@ yy20:
 		cursor += 1
 		if (limit <= cursor) {
 			fill(0)
+			goto yy22
 		}
-		goto yy20
+		goto yy23
 	default:
 		goto yy8
 	}

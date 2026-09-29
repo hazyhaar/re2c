@@ -431,6 +431,7 @@ static constexpr const char* DEFAULT_SYNTAX_SWIFT =
     "code:yypeekn = \"YYPEEKN(\" YYCURSOR \", \" n \")\";\n"
     "\n"
     "code:yypeekn_guard = <undefined>;\n"
+    "code:yypeekn_diverge = <undefined>;\n"
     "\n"
     "code:yyskipn = topindent (.api.generic\n"
     "    ? \"YYSKIPN(\" YYCURSOR \", \" n \")\"\n"
@@ -440,6 +441,8 @@ static constexpr const char* DEFAULT_SYNTAX_SWIFT =
     "// keyword tables (see `re2c:keywords`) ----------------------------------------\n"
     "\n"
     "code:keyword_table = <undefined>;\n"
+    "\n"
+    "code:keyword_table_archtime = <undefined>;\n"
     "\n"
     "code:keyword_lookup = <undefined>;\n"
     ;

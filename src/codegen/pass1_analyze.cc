@@ -792,7 +792,10 @@ LOCAL_NODISCARD(Ret codegen_analyze_block(Output& output)) {
         // after the used label analysis only to the labels that are used.
         for (State* s = dfa->head; s; s = s->next) {
             s->label = new_label(alc, Label::NONE);
-            if (s->simd) s->simd_scalar = new_label(alc, Label::NONE);
+            if (s->simd) {
+                s->simd_scalar = new_label(alc, Label::NONE);
+                s->simd_vector = new_label(alc, Label::NONE);
+            }
         }
 
         switch (opts->code_model) {

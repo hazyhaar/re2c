@@ -447,6 +447,14 @@ code:yypeekn = (.api.generic
 // Without YYFILL nothing guarantees that `n` code units can be read at the cursor.
 code:yypeekn_guard = (.api.generic | .yyfill.enable ? "" : "len(" YYINPUT ")-" YYCURSOR " >= " n);
 
+// The number of low-order zero code units of `expr`, the nonzero XOR of the value read by
+// `code:yypeekn` and the literal (that is, the number of leading code units that still agree with
+// the literal). `(expr - 1) &^ expr` keeps the bits below the lowest set bit of `expr`; bit 7 of a
+// byte is set in it only if the whole byte is below that bit, and the multiplication adds these
+// bits up in the top byte. The code is branchless and portable; it may be replaced by
+// `bits.TrailingZeros64(expr) >> 3` if the lexer imports `math/bits`.
+code:yypeekn_diverge = "(((((" expr " - 1) &^ " expr ") >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56";
+
 code:yyskipn = topindent (.api.generic
     ? "YYSKIPN(" YYCURSOR ", " n ")"
     : YYCURSOR " += " n
@@ -494,5 +502,7 @@ code:keyword_table =
         dedent topindent "}" nl
         topindent "return 0" nl
     dedent topindent "}" nl;
+
+code:keyword_table_archtime = <undefined>;
 
 code:keyword_lookup = name "(" YYINPUT "[" token ":" YYCURSOR "])";

@@ -95,42 +95,55 @@ yy2:
 yy3:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) fill(0);
+yy18:
 	#if (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L) || (defined(__cplusplus) && __cplusplus >= 201103L)
 	static_assert(sizeof(*(YYCURSOR)) == 1, "re2c: 8-bit character unit required for vector loop");
 	#elif defined(__GNUC__) || defined(__clang__)
 	_Static_assert(sizeof(*(YYCURSOR)) == 1, "re2c: 8-bit character unit required for vector loop");
 	#endif
-	while (!((YYLIMIT - YYCURSOR) < 33)) {
+	{
 		#if defined(__AVX2__)
-		__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-		__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_or_si256(_mm256_subs_epu8(yysimd0, _mm256_set1_epi8(9)), _mm256_subs_epu8(_mm256_set1_epi8(9), yysimd0)), _mm256_setzero_si256());
-		yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_or_si256(_mm256_subs_epu8(yysimd0, _mm256_set1_epi8(32)), _mm256_subs_epu8(_mm256_set1_epi8(32), yysimd0)), _mm256_setzero_si256()));
-		if ((unsigned int)_mm256_movemask_epi8(yysimd1) != 0xFFFFFFFF) {
-			break;
-		}
-		#else
-		{
-			unsigned int yysimd_ok = 1;
-			for (size_t yyi = 0; yyi < 32; ++yyi) {
-				unsigned char yyc = (unsigned char)(YYCURSOR)[yyi];
-				if (!((yyc >= 9 && yyc <= 9) || (yyc >= 32 && yyc <= 32))) { yysimd_ok = 0; break; }
-			}
-			if (!yysimd_ok) break;
-		}
+		const __m256i yysimdlo9 = _mm256_set1_epi8(9);
+		const __m256i yysimdhi9 = _mm256_set1_epi8(9);
+		const __m256i yysimdlo32 = _mm256_set1_epi8(32);
+		const __m256i yysimdhi32 = _mm256_set1_epi8(32);
+		const __m256i yysimdzero = _mm256_setzero_si256();
 		#endif
-		YYCURSOR += 32;
+		while (!((YYLIMIT - YYCURSOR) < 33)) {
+			#if defined(__AVX2__)
+			__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+			__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_or_si256(_mm256_subs_epu8(yysimd0, yysimdhi9), _mm256_subs_epu8(yysimdlo9, yysimd0)), yysimdzero);
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_or_si256(_mm256_subs_epu8(yysimd0, yysimdhi32), _mm256_subs_epu8(yysimdlo32, yysimd0)), yysimdzero));
+			if ((unsigned int)_mm256_movemask_epi8(yysimd1) != 0xFFFFFFFF) {
+				break;
+			}
+			#else
+			{
+				unsigned int yysimd_ok = 1;
+				for (size_t yyi = 0; yyi < 32; ++yyi) {
+					unsigned char yyc = (unsigned char)(YYCURSOR)[yyi];
+					if (!((yyc >= 9 && yyc <= 9) || (yyc >= 32 && yyc <= 32))) { yysimd_ok = 0; break; }
+				}
+				if (!yysimd_ok) break;
+			}
+			#endif
+			YYCURSOR += 32;
+		}
+		#if defined(__AVX2__)
+		_mm256_zeroupper();
+		#endif
 	}
-	#if defined(__AVX2__)
-	_mm256_zeroupper();
-	#endif
-yy18:
+yy19:
 	yych = *YYCURSOR;
 	switch (yych) {
 		case '\t':
 		case ' ':
 			++YYCURSOR;
-			if (YYLIMIT <= YYCURSOR) fill(0);
-			goto yy18;
+			if (YYLIMIT <= YYCURSOR) {
+				fill(0);
+				goto yy18;
+			}
+			goto yy19;
 		default: goto yy4;
 	}
 yy4:
@@ -138,34 +151,42 @@ yy4:
 yy5:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) fill(0);
+yy20:
 	#if (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L) || (defined(__cplusplus) && __cplusplus >= 201103L)
 	static_assert(sizeof(*(YYCURSOR)) == 1, "re2c: 8-bit character unit required for vector loop");
 	#elif defined(__GNUC__) || defined(__clang__)
 	_Static_assert(sizeof(*(YYCURSOR)) == 1, "re2c: 8-bit character unit required for vector loop");
 	#endif
-	while (!((YYLIMIT - YYCURSOR) < 33)) {
+	{
 		#if defined(__AVX2__)
-		__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-		__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_or_si256(_mm256_subs_epu8(yysimd0, _mm256_set1_epi8(57)), _mm256_subs_epu8(_mm256_set1_epi8(48), yysimd0)), _mm256_setzero_si256());
-		if ((unsigned int)_mm256_movemask_epi8(yysimd1) != 0xFFFFFFFF) {
-			break;
-		}
-		#else
-		{
-			unsigned int yysimd_ok = 1;
-			for (size_t yyi = 0; yyi < 32; ++yyi) {
-				unsigned char yyc = (unsigned char)(YYCURSOR)[yyi];
-				if (!((yyc >= 48 && yyc <= 57))) { yysimd_ok = 0; break; }
-			}
-			if (!yysimd_ok) break;
-		}
+		const __m256i yysimdlo48 = _mm256_set1_epi8(48);
+		const __m256i yysimdhi57 = _mm256_set1_epi8(57);
+		const __m256i yysimdzero = _mm256_setzero_si256();
 		#endif
-		YYCURSOR += 32;
+		while (!((YYLIMIT - YYCURSOR) < 33)) {
+			#if defined(__AVX2__)
+			__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+			__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_or_si256(_mm256_subs_epu8(yysimd0, yysimdhi57), _mm256_subs_epu8(yysimdlo48, yysimd0)), yysimdzero);
+			if ((unsigned int)_mm256_movemask_epi8(yysimd1) != 0xFFFFFFFF) {
+				break;
+			}
+			#else
+			{
+				unsigned int yysimd_ok = 1;
+				for (size_t yyi = 0; yyi < 32; ++yyi) {
+					unsigned char yyc = (unsigned char)(YYCURSOR)[yyi];
+					if (!((yyc >= 48 && yyc <= 57))) { yysimd_ok = 0; break; }
+				}
+				if (!yysimd_ok) break;
+			}
+			#endif
+			YYCURSOR += 32;
+		}
+		#if defined(__AVX2__)
+		_mm256_zeroupper();
+		#endif
 	}
-	#if defined(__AVX2__)
-	_mm256_zeroupper();
-	#endif
-yy19:
+yy21:
 	yych = *YYCURSOR;
 	switch (yych) {
 		case '0':
@@ -179,8 +200,11 @@ yy19:
 		case '8':
 		case '9':
 			++YYCURSOR;
-			if (YYLIMIT <= YYCURSOR) fill(0);
-			goto yy19;
+			if (YYLIMIT <= YYCURSOR) {
+				fill(0);
+				goto yy20;
+			}
+			goto yy21;
 		default: goto yy6;
 	}
 yy6:
@@ -188,37 +212,51 @@ yy6:
 yy7:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) fill(0);
+yy22:
 	#if (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L) || (defined(__cplusplus) && __cplusplus >= 201103L)
 	static_assert(sizeof(*(YYCURSOR)) == 1, "re2c: 8-bit character unit required for vector loop");
 	#elif defined(__GNUC__) || defined(__clang__)
 	_Static_assert(sizeof(*(YYCURSOR)) == 1, "re2c: 8-bit character unit required for vector loop");
 	#endif
-	while (!((YYLIMIT - YYCURSOR) < 33)) {
+	{
 		#if defined(__AVX2__)
-		__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-		__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_or_si256(_mm256_subs_epu8(yysimd0, _mm256_set1_epi8(57)), _mm256_subs_epu8(_mm256_set1_epi8(48), yysimd0)), _mm256_setzero_si256());
-		yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_or_si256(_mm256_subs_epu8(yysimd0, _mm256_set1_epi8(90)), _mm256_subs_epu8(_mm256_set1_epi8(65), yysimd0)), _mm256_setzero_si256()));
-		yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_or_si256(_mm256_subs_epu8(yysimd0, _mm256_set1_epi8(95)), _mm256_subs_epu8(_mm256_set1_epi8(95), yysimd0)), _mm256_setzero_si256()));
-		yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_or_si256(_mm256_subs_epu8(yysimd0, _mm256_set1_epi8(122)), _mm256_subs_epu8(_mm256_set1_epi8(97), yysimd0)), _mm256_setzero_si256()));
-		if ((unsigned int)_mm256_movemask_epi8(yysimd1) != 0xFFFFFFFF) {
-			break;
-		}
-		#else
-		{
-			unsigned int yysimd_ok = 1;
-			for (size_t yyi = 0; yyi < 32; ++yyi) {
-				unsigned char yyc = (unsigned char)(YYCURSOR)[yyi];
-				if (!((yyc >= 48 && yyc <= 57) || (yyc >= 65 && yyc <= 90) || (yyc >= 95 && yyc <= 95) || (yyc >= 97 && yyc <= 122))) { yysimd_ok = 0; break; }
-			}
-			if (!yysimd_ok) break;
-		}
+		const __m256i yysimdlo48 = _mm256_set1_epi8(48);
+		const __m256i yysimdhi57 = _mm256_set1_epi8(57);
+		const __m256i yysimdlo65 = _mm256_set1_epi8(65);
+		const __m256i yysimdhi90 = _mm256_set1_epi8(90);
+		const __m256i yysimdlo95 = _mm256_set1_epi8(95);
+		const __m256i yysimdhi95 = _mm256_set1_epi8(95);
+		const __m256i yysimdlo97 = _mm256_set1_epi8(97);
+		const __m256i yysimdhi122 = _mm256_set1_epi8(122);
+		const __m256i yysimdzero = _mm256_setzero_si256();
 		#endif
-		YYCURSOR += 32;
+		while (!((YYLIMIT - YYCURSOR) < 33)) {
+			#if defined(__AVX2__)
+			__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+			__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_or_si256(_mm256_subs_epu8(yysimd0, yysimdhi57), _mm256_subs_epu8(yysimdlo48, yysimd0)), yysimdzero);
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_or_si256(_mm256_subs_epu8(yysimd0, yysimdhi90), _mm256_subs_epu8(yysimdlo65, yysimd0)), yysimdzero));
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_or_si256(_mm256_subs_epu8(yysimd0, yysimdhi95), _mm256_subs_epu8(yysimdlo95, yysimd0)), yysimdzero));
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_or_si256(_mm256_subs_epu8(yysimd0, yysimdhi122), _mm256_subs_epu8(yysimdlo97, yysimd0)), yysimdzero));
+			if ((unsigned int)_mm256_movemask_epi8(yysimd1) != 0xFFFFFFFF) {
+				break;
+			}
+			#else
+			{
+				unsigned int yysimd_ok = 1;
+				for (size_t yyi = 0; yyi < 32; ++yyi) {
+					unsigned char yyc = (unsigned char)(YYCURSOR)[yyi];
+					if (!((yyc >= 48 && yyc <= 57) || (yyc >= 65 && yyc <= 90) || (yyc >= 95 && yyc <= 95) || (yyc >= 97 && yyc <= 122))) { yysimd_ok = 0; break; }
+				}
+				if (!yysimd_ok) break;
+			}
+			#endif
+			YYCURSOR += 32;
+		}
+		#if defined(__AVX2__)
+		_mm256_zeroupper();
+		#endif
 	}
-	#if defined(__AVX2__)
-	_mm256_zeroupper();
-	#endif
-yy20:
+yy23:
 	yych = *YYCURSOR;
 	switch (yych) {
 		case '0':
@@ -285,8 +323,11 @@ yy20:
 		case 'y':
 		case 'z':
 			++YYCURSOR;
-			if (YYLIMIT <= YYCURSOR) fill(0);
-			goto yy20;
+			if (YYLIMIT <= YYCURSOR) {
+				fill(0);
+				goto yy22;
+			}
+			goto yy23;
 		default: goto yy8;
 	}
 yy8:

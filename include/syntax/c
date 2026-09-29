@@ -5,7 +5,7 @@ supported_api_styles = ["functions", "free-form"];
 supported_code_models = ["goto-label", "loop-switch", "recursive-functions"];
 supported_targets = ["code", "dot", "skeleton"];
 supported_features = ["nested-ifs", "bitmaps", "computed-gotos", "case-ranges",
-    "tags", "captures", "captvars", "vectorize-loops", "keywords"];
+    "tags", "captures", "captvars", "vectorize-loops", "keywords", "keywords-archtime"];
 
 
 // language-specific options ---------------------------------------------------
@@ -465,18 +465,28 @@ code:yybm_match = yybm "[" offset "+" yych "] & " mask;
 
 code:yytarget_filter = yych " & ~0xFF";
 
+// The range bounds and the zero vector are loop invariants: they are broadcast once before the
+// loop, in a block that scopes them to this state. Ranges are disjoint, so their bounds are
+// distinct and name the vectors uniquely.
 code:vector_loop =
     topindent "#if (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L) || (defined(__cplusplus) && __cplusplus >= 201103L)" nl
     topindent "static_assert(sizeof(*(" YYCURSOR ")) == 1, \"re2c: 8-bit character unit required for vector loop\");" nl
     topindent "#elif defined(__GNUC__) || defined(__clang__)" nl
     topindent "_Static_assert(sizeof(*(" YYCURSOR ")) == 1, \"re2c: 8-bit character unit required for vector loop\");" nl
     topindent "#endif" nl
+    topindent "{" nl
+    indent
+    topindent "#if defined(__AVX2__)" nl
+    [range{0:-1}: topindent "const __m256i yysimdlo" range_lo " = _mm256_set1_epi8(" range_lo ");" nl
+        topindent "const __m256i yysimdhi" range_hi " = _mm256_set1_epi8(" range_hi ");" nl]
+    topindent "const __m256i yysimdzero = _mm256_setzero_si256();" nl
+    topindent "#endif" nl
     topindent "while (!(" lessthan ")) {" nl
         indent
         topindent "#if defined(__AVX2__)" nl
         topindent "__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(" YYCURSOR "));" nl
-        [range{0}: topindent "__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_or_si256(_mm256_subs_epu8(yysimd0, _mm256_set1_epi8(" range_hi ")), _mm256_subs_epu8(_mm256_set1_epi8(" range_lo "), yysimd0)), _mm256_setzero_si256());" nl]
-        [range{1:-1}: topindent "yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_or_si256(_mm256_subs_epu8(yysimd0, _mm256_set1_epi8(" range_hi ")), _mm256_subs_epu8(_mm256_set1_epi8(" range_lo "), yysimd0)), _mm256_setzero_si256()));" nl]
+        [range{0}: topindent "__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_or_si256(_mm256_subs_epu8(yysimd0, yysimdhi" range_hi "), _mm256_subs_epu8(yysimdlo" range_lo ", yysimd0)), yysimdzero);" nl]
+        [range{1:-1}: topindent "yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_or_si256(_mm256_subs_epu8(yysimd0, yysimdhi" range_hi "), _mm256_subs_epu8(yysimdlo" range_lo ", yysimd0)), yysimdzero));" nl]
         topindent "if ((unsigned int)_mm256_movemask_epi8(yysimd1) != " mask ") {" nl
             indent topindent "break;" nl dedent
         topindent "}" nl
@@ -502,7 +512,9 @@ code:vector_loop =
     topindent "}" nl
     topindent "#if defined(__AVX2__)" nl
     topindent "_mm256_zeroupper();" nl
-    topindent "#endif" nl;
+    topindent "#endif" nl
+    dedent
+    topindent "}" nl;
 
 // multi-character primitives (linear vectorization) ---------------------------
 
@@ -518,6 +530,14 @@ code:yypeekn = (.api.generic
 
 // Without YYFILL nothing guarantees that `n` code units can be read at the cursor.
 code:yypeekn_guard = (.api.generic | .yyfill.enable ? "" : "(" YYLIMIT " - " YYCURSOR ") >= " n);
+
+// The number of low-order zero code units of `expr`, the nonzero XOR of the value read by
+// `code:yypeekn` and the literal (that is, the number of leading code units that still agree with
+// the literal). `(expr - 1) & ~expr` keeps the bits below the lowest set bit of `expr`; bit 7 of a
+// byte is set in it only if the whole byte is below that bit, and the multiplication adds these
+// bits up in the top byte. The code is branchless and portable; with GCC or Clang it may be
+// replaced by `__builtin_ctzll(expr) >> 3`.
+code:yypeekn_diverge = "((((((" expr " - 1) & ~" expr ") >> 7) & 0x0101010101010101ULL) * 0x0101010101010101ULL) >> 56)";
 
 code:yyskipn =
     topindent (.api.generic
@@ -568,6 +588,98 @@ code:keyword_table =
                 name "_entry[idx].w1 == w1) return " name "_entry[idx].id;" nl
         dedent topindent "}" nl
         topindent "return 0;" nl
+    dedent topindent "}" nl;
+
+// Flat composite table `c2_kw_table_t` (5464 bytes, the layout of c2simd `c2_kw_resolve.h`) with
+// `re2c:keywords:model = archtime`. The type is declared once per file, unless `c2_kw_resolve.h`
+// has been included before.
+code:keyword_table_archtime =
+    "#ifndef RE2C_C2_KW_TABLE_T" nl
+    "#define RE2C_C2_KW_TABLE_T" nl
+    "#ifndef C2_KW_RESOLVE_H" nl
+    "#include <stdint.h>" nl
+    topindent "typedef struct {" nl indent
+        topindent "uint64_t m1;" nl
+        topindent "uint64_t m2;" nl
+        topindent "uint16_t eh0[256];" nl
+        topindent "uint8_t disp[64];" nl
+        topindent "uint8_t key[4096];" nl
+        topindent "uint8_t len[256];" nl
+        topindent "uint16_t tok[256];" nl
+        topindent "uint8_t fold;" nl
+    dedent topindent "} c2_kw_table_t;" nl
+    "#endif" nl
+    topindent "typedef char re2c_c2_kw_table_size[sizeof(c2_kw_table_t) == 5464 ? 1 : -1];" nl
+    "#if defined(__GNUC__) || defined(__clang__)" nl
+    "#define RE2C_C2_KW_ALIGN __attribute__((aligned(64)))" nl
+    "#else" nl
+    "#define RE2C_C2_KW_ALIGN" nl
+    "#endif" nl
+    "#endif" nl
+    topindent "static const c2_kw_table_t " name "_table RE2C_C2_KW_ALIGN = {" nl indent
+        topindent mul0 "ull, /* m1 */" nl
+        topindent mul1 "ull, /* m2 */" nl
+        topindent "{ /* eh0 */" nl indent
+            [eh0: topindent [elem: elem ","] nl]
+        dedent topindent "}," nl
+        topindent "{ /* disp */" nl indent
+            [disp: topindent [elem: elem ","] nl]
+        dedent topindent "}," nl
+        topindent "{ /* key */" nl indent
+            [key: topindent [elem: elem ","] nl]
+        dedent topindent "}," nl
+        topindent "{ /* len */" nl indent
+            [keylen: topindent [elem: elem ","] nl]
+        dedent topindent "}," nl
+        topindent "{ /* tok */" nl indent
+            [tok: topindent [elem: elem ","] nl]
+        dedent topindent "}," nl
+        topindent fold " /* fold */" nl
+    dedent topindent "};" nl
+    topindent "/* " name " returns 1 + the index of the keyword in [s, e), or 0 if it is not a keyword. */" nl
+    topindent "static int " name "(const void* s, const void* e) {" nl indent
+        topindent "const unsigned char* t = (const unsigned char*)s;" nl
+        topindent "const long n = (long)((const unsigned char*)e - t);" nl
+        topindent "const c2_kw_table_t* kt = &" name "_table;" nl
+        topindent "const unsigned char* k;" nl
+        topindent "uint64_t w0, w1 = 0, k0 = 0, k1 = 0, lo, up, fm, w;" nl
+        topindent "uint32_t slot, eq, i;" nl
+        topindent "if (n <= 0 || n > 16) return 0;" nl
+        topindent "/* level 0: lengths of the keys starting with this byte */" nl
+        topindent "if (n < 16 && !((kt->eh0[t[0]] >> n) & 1u)) return 0;" nl
+        topindent "if (n > 8) {" nl indent
+            topindent "const unsigned char* b = t + n - 8;" nl
+            topindent "w0 = (uint64_t)t[0] | (uint64_t)t[1] << 8 | (uint64_t)t[2] << 16 | (uint64_t)t[3] << 24" nl
+            topindent "    | (uint64_t)t[4] << 32 | (uint64_t)t[5] << 40 | (uint64_t)t[6] << 48 | (uint64_t)t[7] << 56;" nl
+            topindent "w1 = ((uint64_t)b[0] | (uint64_t)b[1] << 8 | (uint64_t)b[2] << 16 | (uint64_t)b[3] << 24" nl
+            topindent "    | (uint64_t)b[4] << 32 | (uint64_t)b[5] << 40 | (uint64_t)b[6] << 48" nl
+            topindent "    | (uint64_t)b[7] << 56) >> (8 * (16 - n));" nl
+        dedent topindent "} else if (n >= 4) {" nl indent
+            topindent "const unsigned char* b = t + n - 4;" nl
+            topindent "w0 = ((uint64_t)t[0] | (uint64_t)t[1] << 8 | (uint64_t)t[2] << 16 | (uint64_t)t[3] << 24)" nl
+            topindent "    | ((uint64_t)b[0] | (uint64_t)b[1] << 8 | (uint64_t)b[2] << 16" nl
+            topindent "    | (uint64_t)b[3] << 24) << (8 * (n - 4));" nl
+        dedent topindent "} else {" nl indent
+            topindent "w0 = (uint64_t)t[0] | (uint64_t)t[n >> 1] << (8 * (n >> 1)) | (uint64_t)t[n - 1] << (8 * (n - 1));" nl
+        dedent topindent "}" nl
+        topindent "/* branchless ASCII case folding of 'A'..'Z' (no-op if fold is 0) */" nl
+        topindent "fm = 0x0101010101010101ull * kt->fold;" nl
+        topindent "lo = w0 & 0x7F7F7F7F7F7F7F7Full;" nl
+        topindent "up = (lo + 0x3F3F3F3F3F3F3F3Full) & ~(lo + 0x2525252525252525ull) & ~w0 & 0x8080808080808080ull;" nl
+        topindent "w0 |= (up >> 2) & fm;" nl
+        topindent "lo = w1 & 0x7F7F7F7F7F7F7F7Full;" nl
+        topindent "up = (lo + 0x3F3F3F3F3F3F3F3Full) & ~(lo + 0x2525252525252525ull) & ~w1 & 0x8080808080808080ull;" nl
+        topindent "w1 |= (up >> 2) & fm;" nl
+        topindent "/* two-level perfect hash and branchless key comparison */" nl
+        topindent "w = w0 ^ ((uint64_t)n << 56);" nl
+        topindent "slot = (uint32_t)(((w * kt->m2) >> 56) ^ kt->disp[(w * kt->m1) >> 58]) & 0xFFu;" nl
+        topindent "k = kt->key + 16 * slot;" nl
+        topindent "for (i = 0; i < 8; ++i) {" nl indent
+            topindent "k0 |= (uint64_t)k[i] << (8 * i);" nl
+            topindent "k1 |= (uint64_t)k[i + 8] << (8 * i);" nl
+        dedent topindent "}" nl
+        topindent "eq = (uint32_t)(((w0 ^ k0) | (w1 ^ k1)) == 0) & (uint32_t)(kt->len[slot] == n);" nl
+        topindent "return (int)(kt->tok[slot] & (0u - eq));" nl
     dedent topindent "}" nl;
 
 code:keyword_lookup = name "(" token ", " YYCURSOR ")";

@@ -78,6 +78,11 @@ struct State {
     // scalar byte. The label is marked used, and gets its index, when such a transition is generated.
     Label* simd_scalar;
 
+    // Local label placed before the vector loop of a SIMD state (null for other states). A reflexive
+    // transition that has to call YYFILL jumps here after the refill, so that the vector loop
+    // resumes on the refilled buffer instead of the scalar peek.
+    Label* simd_vector;
+
     // Multi-character (broadword) fast path added by Adfa::coalesce_multichar().
     // If `mchar_n` is nonzero, the state first reads `mchar_n` code units at once and, if they
     // match the packed literal, skips `mchar_n` (minus the already generated skip) and jumps to
@@ -200,6 +205,7 @@ inline State::State()
         , simd(false)
         , simd_body(nullptr)
         , simd_scalar(nullptr)
+        , simd_vector(nullptr)
         , mchar_n(0)
         , mchar_value(0)
         , mchar_to(nullptr)

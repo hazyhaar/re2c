@@ -232,6 +232,27 @@ class GenPeekN : public RenderCallback {
     FORBID_COPY(GenPeekN);
 };
 
+class GenPeekNDiverge : public RenderCallback {
+    std::ostream& os;
+    const std::string& expr;
+
+  public:
+    GenPeekNDiverge(std::ostream& os, const std::string& expr): os(os), expr(expr) {}
+
+    void render_var(StxVarId var) override {
+        switch (var) {
+        case StxVarId::EXPR:
+            os << expr;
+            break;
+        default:
+            UNREACHABLE();
+            break;
+        }
+    }
+
+    FORBID_COPY(GenPeekNDiverge);
+};
+
 class GenEnumElem : public RenderCallback {
     std::ostream& os;
     const std::string& type;
@@ -672,7 +693,8 @@ static void gen_fill(
         CodeList* tail,
         const Adfa& dfa,
         const State* from,
-        const CodeJump* jump) {
+        const CodeJump* jump,
+        CodeList* after_fill = nullptr) {
     const opt_t* opts = output.block().opts;
     const bool eof_rule = opts->fill_eof != NOEOF;
     const size_t need = eof_rule ? 1 : from->fill;
@@ -715,6 +737,9 @@ static void gen_fill(
     } else if (eof_rule && !opts->storable_state) {
         append(fill, gen_fill_falllback(output, dfa, from, jump));
     }
+    if (after_fill != nullptr && fill->head) {
+        append(fill, after_fill);
+    }
 
     if (opts->fill_check && fill->head) {
         GenLessThan callback(o.stream(), opts, need);
@@ -750,7 +775,8 @@ static void gen_fill_and_label(Output& output, CodeList* stmts, const Adfa& dfa,
 // A reflexive transition of a SIMD state may bypass the state head (skip, YYFILL check, vector loop)
 // and jump to a local label placed right before the scalar peek, provided that the head has no
 // other effect that the transition would have to repeat (backup, debug output, YYEND, YYFILL
-// label). The YYFILL check of the head is repeated on the transition, but not the vector loop.
+// label). The YYFILL check of the head is repeated on the transition; when it calls YYFILL, the
+// transition jumps back before the vector loop, which resumes on the refilled buffer.
 static bool simd_scalar_target(
         const opt_t* opts, const Adfa& dfa, const State* from, const CodeJump& jump) {
     if (from == nullptr || !jump.to->simd || jump.to->simd_body == nullptr) return false;
@@ -787,7 +813,15 @@ static void gen_goto(
         // The state head would perform the skip (unless it is already generated on transitions).
         if (!opts->eager_skip) append(transition, code_skip(alc));
         if (opts->fill_enable && !endstate(jump.to) && jump.to->fill > 0) {
-            gen_fill(output, transition, nullptr, dfa, jump.to, nullptr);
+            Label* v = jump.to->simd_vector;
+            if (!v->used) {
+                v->used = true;
+                v->index = output.label_counter++;
+            }
+            CodeList* resume = code_list(alc);
+            o.str(opts->label_prefix).label(*v);
+            append(resume, code_goto(alc, o.flush()));
+            gen_fill(output, transition, nullptr, dfa, jump.to, nullptr, resume);
         }
         Label* l = jump.to->simd_scalar;
         if (!l->used) {
@@ -1357,10 +1391,19 @@ static CodeList* gen_transitions(Output& output, const Adfa& dfa, const State* s
 // `diff = peek ^ literal`, `d` is the number of low-order zero bytes of `diff`; then the states
 // `mchar_path[0..d]` have already been traversed and the dispatch continues directly at
 // `mchar_path[d]` (`d == 0` is the ordinary dispatch of the head state), without reading the input
-// again. Without a count-trailing-zeros primitive in the syntax file, `d` is found by testing the
-// masks of the low 1, 2, ... bytes of `diff` in ascending order. Only the leading nonzero bytes of
-// the literal are considered: a generic read past the end of the input may yield zero bytes that
-// would otherwise look like a match. Returns null if the dispatch is not applicable.
+// again. If the syntax file defines `code:yypeekn_diverge`, `d` is computed once from `diff` and
+// selects the target in a switch:
+//
+//     switch (<yypeekn_diverge>) {
+//     case 1: <yyskipn> goto <mchar_path[1]>
+//     ...
+//     case dmax: <yyskipn> goto <mchar_path[dmax]>
+//     }
+//
+// Otherwise `d` is found by testing the masks of the low 1, 2, ... bytes of `diff` in ascending
+// order. Only the leading nonzero bytes of the literal are considered: a generic read past the end
+// of the input may yield zero bytes that would otherwise look like a match. Any other `d` falls
+// through to the ordinary dispatch. Returns null if the dispatch is not applicable.
 static CodeList* gen_mchar_diverge(
         Output& output, const Adfa& dfa, const State* s, const char* peek) {
     const opt_t* opts = output.block().opts;
@@ -1374,7 +1417,36 @@ static CodeList* gen_mchar_diverge(
     while (dmax < n - 1 && ((s->mchar_value >> (8 * dmax)) & 0xFF) != 0) ++dmax;
     if (dmax == 0) return nullptr;
 
+    // Transition to `mchar_path[d]`, the cursor pointing at the first character of the chain.
+    const auto gen_path = [&](uint32_t d) {
+        CodeList* to = code_list(alc);
+        const uint32_t nskip = opts->eager_skip ? d : d - 1;
+        if (nskip > 0) append(to, code_skipn(alc, static_cast<int32_t>(nskip)));
+        const CodeJump jump = {s->mchar_path[d], TCID0, false, false, false};
+        gen_goto(output, dfa, to, s, jump);
+        return to;
+    };
+
     const std::string peek_str(peek);
+    CodeList* outer = code_list(alc);
+
+    if (!is_undefined(opts->code_yypeekn_diverge)) {
+        buf.cstr("(").str(peek_str).cstr(" ^ 0x");
+        buf.stream() << std::hex << s->mchar_value << std::dec;
+        const std::string diff = buf.cstr(")").flush();
+        GenPeekNDiverge callback(buf.stream(), diff);
+        const char* index = opts->gen_code_yypeekn_diverge(buf, callback);
+
+        if (index != nullptr && *index != '\0') {
+            CodeCases* cases = code_cases(alc);
+            for (uint32_t d = 1; d <= dmax; ++d) {
+                append(cases, code_case_number(alc, gen_path(d), static_cast<int32_t>(d)));
+            }
+            append(outer, code_switch(alc, index, cases));
+            return outer;
+        }
+    }
+
     const auto diff_test = [&](uint32_t nbytes, OpKind op) {
         const uint64_t mask = nbytes >= 8 ? ~UINT64_C(0) : (UINT64_C(1) << (8 * nbytes)) - 1;
         buf.cstr("((").str(peek_str).cstr(" ^ 0x");
@@ -1386,18 +1458,11 @@ static CodeList* gen_mchar_diverge(
     // Innermost branch: the first `dmax` code units agree, so no test is needed beyond mismatch.
     CodeList* chain = nullptr;
     for (uint32_t d = dmax; d >= 1; --d) {
-        CodeList* to = code_list(alc);
-        const uint32_t nskip = opts->eager_skip ? d : d - 1;
-        if (nskip > 0) append(to, code_skipn(alc, static_cast<int32_t>(nskip)));
-        const CodeJump jump = {s->mchar_path[d], TCID0, false, false, false};
-        gen_goto(output, dfa, to, s, jump);
-
         CodeList* step = code_list(alc);
-        append(step, code_if_then_else(alc, diff_test(d + 1, OP_CMP_NE), to, chain));
+        append(step, code_if_then_else(alc, diff_test(d + 1, OP_CMP_NE), gen_path(d), chain));
         chain = step;
     }
 
-    CodeList* outer = code_list(alc);
     append(outer, code_if_then_else(alc, diff_test(1, OP_CMP_EQ), chain, nullptr));
     return outer;
 }
@@ -1511,6 +1576,7 @@ static void emit_state(
         gen_fill_and_label(output, tail, dfa, s);
         // Vectorized fast-forward runs after YYFILL (so that the input window is refilled) and
         // before the scalar peek.
+        if (s->simd_vector != nullptr) append(tail, code_nlabel(alc, s->simd_vector));
         gen_vector_loop(output, s, tail);
         if (s->simd_scalar != nullptr) append(tail, code_nlabel(alc, s->simd_scalar));
         gen_peek(alc, s, tail);

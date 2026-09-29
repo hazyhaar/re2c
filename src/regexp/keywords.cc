@@ -46,6 +46,27 @@ namespace re2c {
 // set of reachable positions in k (a bitmask, as |k| <= 16), with character classes evaluated by
 // the same range operations as in the conversion of AST to regexp.
 
+// note [archtime keyword tables]
+//
+// With `re2c:keywords:model = archtime` the table has the flat composite layout `c2_kw_table_t`
+// shared with c2simd (`sources/c2archtsim/c2_kw_resolve.h`, schema `sgoiter/spec/keyword.cue`):
+// a 16-bit mask of key lengths per leading byte (level 0, a one-load rejection of most
+// identifiers), a two-level perfect hash (bucket `(w * m1) >> 58`, slot `((w * m2) >> 56) ^
+// disp[bucket]`) over 256 slots of 16-byte zero-padded keys, where the hash word `w` is the first
+// min(n, 8) bytes of the key XOR `n << 56`. The search of multipliers and displacements follows
+// c2simd `cmd/c2kwgen`. The model has three extra constraints: at most 256 keys, pairwise distinct
+// hash words (a key whose hash word is already taken stays in the DFA), and a single case mode.
+//
+// The table may fold input bytes 'A'..'Z' to lower case (field `fold`). Folding is only sound if
+// every keyword K in the table is case-insensitive: then K matches every case variant v of k, and
+// the conditions of note [keyword tables] must hold for all variants at once. The matcher decides
+// this on sets of code units per position: a rule matches *some* variant if a path accepts at each
+// position one of the two cases (exact, as a path consumes every position once), and a rule matches
+// *every* variant if a path accepts both cases at each position (a sufficient condition). K goes to
+// the table of W iff no other rule than W after K and no rule before K matches some variant, and W
+// matches every variant. Case-sensitive keywords with letters cannot share a folded table, so the
+// case mode of the larger group wins and the other group stays in the DFA.
+
 namespace {
 
 constexpr uint32_t MAX_KEYWORD_LENGTH = 16;
@@ -54,6 +75,18 @@ constexpr uint32_t MAX_TRIES = 4096;
 
 using posset_t = uint32_t; // bit `i` set if position `i` in the keyword is reachable
 
+// Code units accepted at one position of a keyword: `lo == up` for a case-sensitive position,
+// otherwise the lower and upper case of an ASCII letter in a case-insensitive keyword.
+struct KeyChar {
+    uint32_t lo;
+    uint32_t up;
+};
+using keystr_t = std::vector<KeyChar>;
+
+// Whether a rule must match some or every case variant of a keyword, see note [archtime keyword
+// tables]. Both are the same for a case-sensitive keyword.
+enum class Quant { ANY, ALL };
+
 class Matcher {
     const opt_t* opts;
     const Enc& enc;
@@ -61,19 +94,22 @@ class Matcher {
     RangeMgr rm;
     std::map<const AstNode*, const Range*> charsets;
 
-    const std::vector<uint32_t>* str; // keyword code units
+    const keystr_t* str; // keyword code units
+    Quant quant;
     bool unsupported;
 
   public:
     explicit Matcher(const opt_t* opts)
         : opts(opts), enc(opts->encoding), alc(), rm(alc), charsets(), str(nullptr)
-        , unsupported(false) {}
+        , quant(Quant::ANY), unsupported(false) {}
 
     bool failed() const { return unsupported; }
 
-    // Returns true if the whole string `s` is in the language of `ast`.
-    bool match(const AstNode* ast, const std::vector<uint32_t>& s) {
+    // Returns true if some (Quant::ANY) or every (Quant::ALL) case variant of the whole string `s`
+    // is in the language of `ast`.
+    bool match(const AstNode* ast, const keystr_t& s, Quant q) {
         str = &s;
+        quant = q;
         return (ends(ast, 1u) >> s.size()) & 1u;
     }
 
@@ -136,6 +172,11 @@ class Matcher {
         return false;
     }
 
+    // Combine the test of both cases at a keyword position according to the quantifier.
+    bool accepts(bool lo, bool up) const {
+        return quant == Quant::ANY ? lo || up : lo && up;
+    }
+
     // Positions reachable after one code unit that is in the given class. An empty class behaves
     // according to the `re2c:empty-class` policy, see `re_class` in ast_to_re.cc.
     posset_t step_class(const Range* r, posset_t from) {
@@ -144,7 +185,10 @@ class Matcher {
         }
         posset_t to = 0;
         for (size_t p = 0; p < str->size(); ++p) {
-            if (((from >> p) & 1u) && contains(r, (*str)[p])) to |= 1u << (p + 1);
+            const KeyChar& k = (*str)[p];
+            if (((from >> p) & 1u) && accepts(contains(r, k.lo), contains(r, k.up))) {
+                to |= 1u << (p + 1);
+            }
         }
         return to;
     }
@@ -178,8 +222,13 @@ class Matcher {
                 if (((from >> p) & 1u) == 0) continue;
                 bool ok = true;
                 for (size_t j = 0; ok && j < n; ++j) {
-                    uint32_t c = ast->str.chars[j].chr, d = (*str)[p + j];
-                    ok = icase ? (d == enc.to_lower(c) || d == enc.to_upper(c) || d == c) : d == c;
+                    const uint32_t c = ast->str.chars[j].chr;
+                    const KeyChar& k = (*str)[p + j];
+                    auto eq = [&](uint32_t d) {
+                        return icase ? (d == enc.to_lower(c) || d == enc.to_upper(c) || d == c)
+                                     : d == c;
+                    };
+                    ok = accepts(eq(k.lo), eq(k.up));
                 }
                 if (ok) to |= 1u << (p + n);
             }
@@ -239,9 +288,11 @@ bool has_tags(const AstNode* ast) {
 }
 
 // Return the keyword string if the rule is a plain case-sensitive literal (possibly wrapped in the
-// implicit group that the parser adds around every rule), otherwise an empty vector.
-std::vector<uint32_t> literal(const opt_t* opts, const AstNode* ast) {
-    std::vector<uint32_t> s;
+// implicit group that the parser adds around every rule), otherwise an empty vector. If
+// `allow_icase` is set, a case-insensitive literal is accepted as well provided that its only cased
+// code units are ASCII letters (see note [archtime keyword tables]).
+keystr_t literal(const opt_t* opts, const AstNode* ast, bool allow_icase) {
+    keystr_t s;
     while (ast->kind == AstKind::CAP) ast = ast->cap.ast;
     if (ast->kind != AstKind::STR) return s;
 
@@ -250,12 +301,42 @@ std::vector<uint32_t> literal(const opt_t* opts, const AstNode* ast) {
     const uint32_t maxchr = enc.type() == Enc::Type::UTF8 ? 0x80 : 0x100;
     for (const AstChar& c : ast->str.chars) {
         if (c.chr >= maxchr) return {};
-        if (icase && (enc.to_lower(c.chr) != c.chr || enc.to_upper(c.chr) != c.chr)) return {};
-        s.push_back(c.chr);
+        const uint32_t lo = enc.to_lower(c.chr), up = enc.to_upper(c.chr);
+        if (!icase || (lo == c.chr && up == c.chr)) {
+            s.push_back({c.chr, c.chr});
+        } else if (allow_icase && lo >= 'a' && lo <= 'z' && up == lo - 0x20) {
+            s.push_back({lo, up});
+        } else {
+            return {};
+        }
     }
     if (s.size() > MAX_KEYWORD_LENGTH) return {};
     return s;
 }
+
+bool is_ascii_letter(uint32_t c) {
+    return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
+}
+
+// Case mode of a keyword with respect to a folded archtime table.
+enum class CaseMode {
+    NEUTRAL,   // no letters: the same with or without folding
+    SENSITIVE, // case-sensitive letters: requires a table without folding
+    FOLDED     // case-insensitive letters: requires a folded table
+};
+
+CaseMode case_mode(const keystr_t& s) {
+    CaseMode m = CaseMode::NEUTRAL;
+    for (const KeyChar& k : s) {
+        // A literal is either case-sensitive or case-insensitive as a whole.
+        if (k.lo != k.up) return CaseMode::FOLDED;
+        if (is_ascii_letter(k.lo)) m = CaseMode::SENSITIVE;
+    }
+    return m;
+}
+
+// The code unit stored in the table for a keyword position (lower case for a folded one).
+inline uint32_t key_unit(const KeyChar& k) { return k.lo; }
 
 uint64_t splitmix64(uint64_t& x) {
     uint64_t z = (x += 0x9E3779B97F4A7C15ull);
@@ -299,6 +380,100 @@ bool find_perfect_hash(KeywordTable& t) {
     return false;
 }
 
+// Deterministic generator of candidate multipliers, the same as in c2simd `cmd/c2kwgen`.
+struct Lcg64 {
+    uint64_t state;
+    uint64_t next() {
+        state = state * 6364136223846793005ull + 1442695040888963407ull;
+        return state;
+    }
+};
+
+inline uint64_t archtime_hash_word(const Keyword& k) {
+    return k.word0 ^ (static_cast<uint64_t>(k.length) << 56);
+}
+
+// Search for multipliers and bucket displacements of a collision-free two-level hash, see note
+// [archtime keyword tables]. The hash words of the keys must be pairwise distinct.
+bool find_archtime_hash(const std::vector<Keyword>& keys, uint8_t fold, ArchtimeTable& t) {
+    constexpr uint32_t MAX_ATTEMPTS = 100000;
+    const size_t n = keys.size();
+    if (n > ArchtimeTable::SLOTS) return false;
+
+    std::vector<uint64_t> words(n);
+    for (size_t i = 0; i < n; ++i) words[i] = archtime_hash_word(keys[i]);
+
+    Lcg64 rng = {0x9E3779B97F4A7C15ull};
+    std::vector<std::vector<size_t>> buckets(ArchtimeTable::BUCKETS);
+    std::vector<size_t> order(ArchtimeTable::BUCKETS);
+    std::vector<uint32_t> slots(n), tmp;
+    for (uint32_t attempt = 0; attempt < MAX_ATTEMPTS; ++attempt) {
+        const uint64_t m1 = rng.next() | 1u, m2 = rng.next() | 1u;
+
+        for (std::vector<size_t>& b : buckets) b.clear();
+        for (size_t i = 0; i < n; ++i) buckets[(words[i] * m1) >> 58].push_back(i);
+
+        // Place the largest buckets first (ties in bucket order, so the search is deterministic).
+        for (size_t b = 0; b < order.size(); ++b) order[b] = b;
+        std::stable_sort(order.begin(), order.end(), [&](size_t x, size_t y) {
+            return buckets[x].size() > buckets[y].size();
+        });
+
+        std::vector<uint8_t> disp(ArchtimeTable::BUCKETS, 0);
+        std::vector<bool> occupied(ArchtimeTable::SLOTS, false);
+        bool ok = true;
+        for (size_t b : order) {
+            if (buckets[b].empty()) continue;
+            bool found = false;
+            for (uint32_t d = 0; !found && d < 256; ++d) {
+                tmp.clear();
+                bool conflict = false;
+                for (size_t i : buckets[b]) {
+                    const uint32_t s = (static_cast<uint32_t>((words[i] * m2) >> 56) ^ d) & 0xFF;
+                    if (occupied[s] || std::find(tmp.begin(), tmp.end(), s) != tmp.end()) {
+                        conflict = true;
+                        break;
+                    }
+                    tmp.push_back(s);
+                }
+                if (conflict) continue;
+                disp[b] = static_cast<uint8_t>(d);
+                for (size_t j = 0; j < tmp.size(); ++j) {
+                    occupied[tmp[j]] = true;
+                    slots[buckets[b][j]] = tmp[j];
+                }
+                found = true;
+            }
+            if (!found) { ok = false; break; }
+        }
+        if (!ok) continue;
+
+        t.m1 = m1;
+        t.m2 = m2;
+        t.disp.swap(disp);
+        t.fold = fold;
+        for (size_t i = 0; i < n; ++i) {
+            const Keyword& k = keys[i];
+            const uint32_t s = slots[i];
+            for (uint32_t j = 0; j < k.length; ++j) {
+                const uint64_t w = j < 8 ? k.word0 : k.word1;
+                t.key[s * ArchtimeTable::KEYSIZE + j] = static_cast<uint8_t>(w >> (8 * (j % 8)));
+            }
+            t.len[s] = static_cast<uint8_t>(k.length);
+            t.tok[s] = static_cast<uint16_t>(i + 1);
+            // Level 0: the leading byte is tested before folding, so both cases open the length.
+            if (k.length < 16) {
+                const uint8_t c = static_cast<uint8_t>(k.word0);
+                const uint16_t bit = static_cast<uint16_t>(1u << k.length);
+                t.eh0[c] |= bit;
+                if (fold && c >= 'a' && c <= 'z') t.eh0[c - 0x20] |= bit;
+            }
+        }
+        return true;
+    }
+    return false;
+}
+
 } // anonymous namespace
 
 void find_keywords(const opt_t* opts,
@@ -333,23 +508,29 @@ void find_keywords(const opt_t* opts,
         tagged[i] = has_tags(a);
     }
 
+    const bool archtime = opts->keywords_model == KeywordsModel::ARCHTIME;
+
     // For every candidate literal find its host rule (if any).
     Matcher matcher(opts);
     std::vector<size_t> host(nrules, Rule::NONE);
-    std::vector<std::vector<uint32_t>> strings(nrules);
+    std::vector<keystr_t> strings(nrules);
     for (size_t k = 0; k < nrules; ++k) {
         if (is_special[k]) continue;
-        std::vector<uint32_t> s = literal(opts, ast[k].ast);
+        keystr_t s = literal(opts, ast[k].ast, archtime);
         if (s.empty()) continue;
 
-        // The literal must be the first rule matching its string, and the host is the next one.
+        // The literal must be the first rule matching its string, and the host is the next one;
+        // for a case-insensitive literal the host must also match every case variant.
         size_t w = Rule::NONE;
         bool shadowed = false;
         for (size_t i = 0; i < nrules; ++i) {
-            if (i == k || !matcher.match(ast[i].ast, s)) continue;
+            if (i == k || !matcher.match(ast[i].ast, s, Quant::ANY)) continue;
             if (i < k) { shadowed = true; break; }
             w = i;
             break;
+        }
+        if (w != Rule::NONE && !shadowed && !matcher.match(ast[w].ast, s, Quant::ALL)) {
+            w = Rule::NONE;
         }
         if (matcher.failed()) {
             msg.warn.keyword_table(loc, gram.name, "unsupported regular expression construct");
@@ -379,6 +560,42 @@ void find_keywords(const opt_t* opts,
         return;
     }
 
+    // An archtime table has a single case mode, at most 256 keys and distinct hash words; the
+    // keywords that do not fit stay in the DFA (see note [archtime keyword tables]).
+    uint8_t fold = 0;
+    if (archtime) {
+        size_t nfolded = 0, nsensitive = 0;
+        for (size_t k = 0; k < nrules; ++k) {
+            if (host[k] != best) continue;
+            const CaseMode m = case_mode(strings[k]);
+            if (m == CaseMode::FOLDED) ++nfolded;
+            if (m == CaseMode::SENSITIVE) ++nsensitive;
+        }
+        const CaseMode excluded = nfolded > nsensitive ? CaseMode::SENSITIVE : CaseMode::FOLDED;
+        if (nfolded > nsensitive) fold = ArchtimeTable::FOLD_ASCII;
+
+        std::vector<uint64_t> seen;
+        for (size_t k = 0; k < nrules; ++k) {
+            if (host[k] != best) continue;
+            uint64_t w0 = 0;
+            for (size_t j = 0; j < strings[k].size() && j < 8; ++j) {
+                w0 |= static_cast<uint64_t>(key_unit(strings[k][j])) << (8 * j);
+            }
+            const uint64_t w = w0 ^ (static_cast<uint64_t>(strings[k].size()) << 56);
+            if (case_mode(strings[k]) == CaseMode::FOLDED && excluded == CaseMode::FOLDED) {
+                host[k] = Rule::NONE;
+            } else if (case_mode(strings[k]) == CaseMode::SENSITIVE
+                    && excluded == CaseMode::SENSITIVE) {
+                host[k] = Rule::NONE;
+            } else if (seen.size() >= ArchtimeTable::SLOTS
+                    || std::find(seen.begin(), seen.end(), w) != seen.end()) {
+                host[k] = Rule::NONE;
+            } else {
+                seen.push_back(w);
+            }
+        }
+    }
+
     std::unique_ptr<KeywordTable> t(new KeywordTable());
     std::vector<AstRule> reduced;
     size_t removed = 0;
@@ -390,12 +607,18 @@ void find_keywords(const opt_t* opts,
         Keyword kw = {0, 0, static_cast<uint32_t>(strings[i].size()), ast[i].semact};
         for (size_t j = 0; j < strings[i].size(); ++j) {
             uint64_t& w = j < 8 ? kw.word0 : kw.word1;
-            w |= static_cast<uint64_t>(strings[i][j]) << (8 * (j % 8));
+            w |= static_cast<uint64_t>(key_unit(strings[i][j])) << (8 * (j % 8));
         }
         t->keys.push_back(kw);
         ++removed;
     }
-    if (!find_perfect_hash(*t)) {
+    if (archtime) {
+        t->archtime.reset(new ArchtimeTable());
+        if (!find_archtime_hash(t->keys, fold, *t->archtime)) {
+            msg.warn.keyword_table(loc, gram.name, "no perfect hash function found");
+            return;
+        }
+    } else if (!find_perfect_hash(*t)) {
         msg.warn.keyword_table(loc, gram.name, "no perfect hash function found");
         return;
     }

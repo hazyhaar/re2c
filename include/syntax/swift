@@ -430,6 +430,7 @@ code:vector_loop = <undefined>;
 code:yypeekn = "YYPEEKN(" YYCURSOR ", " n ")";
 
 code:yypeekn_guard = <undefined>;
+code:yypeekn_diverge = <undefined>;
 
 code:yyskipn = topindent (.api.generic
     ? "YYSKIPN(" YYCURSOR ", " n ")"
@@ -439,5 +440,7 @@ code:yyskipn = topindent (.api.generic
 // keyword tables (see `re2c:keywords`) ----------------------------------------
 
 code:keyword_table = <undefined>;
+
+code:keyword_table_archtime = <undefined>;
 
 code:keyword_lookup = <undefined>;

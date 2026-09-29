@@ -1445,6 +1445,109 @@ class RenderKeywordTable : public RenderCallback {
     FORBID_COPY(RenderKeywordTable);
 };
 
+// Static flat table `c2_kw_table_t` and lookup function of an archtime keyword table, see note
+// [archtime keyword tables]. Every array is rendered as rows of 16 elements (one row per key slot
+// for the key array).
+class RenderArchtimeKeywordTable : public RenderCallback {
+    static constexpr size_t NCOLS = 16;
+
+    RenderContext& rctx;
+    const KeywordTable* table;
+    const ArchtimeTable* at;
+    StxVarId curr_array;
+    size_t curr_row;
+    size_t last_row;
+    size_t curr_col;
+    size_t last_col;
+
+    size_t array_size(StxVarId var) const {
+        switch (var) {
+        case StxVarId::KWEH0: return at->eh0.size();
+        case StxVarId::KWDISP: return at->disp.size();
+        case StxVarId::KWKEY: return at->key.size();
+        case StxVarId::KWLEN: return at->len.size();
+        case StxVarId::KWTOK: return at->tok.size();
+        default: UNREACHABLE(); return 0;
+        }
+    }
+
+    void render_hex(uint64_t x, int width) {
+        rctx.os << "0x" << std::hex << std::uppercase << std::setw(width) << std::setfill('0') << x
+            << std::dec << std::nouppercase << std::setfill(' ');
+    }
+
+  public:
+    RenderArchtimeKeywordTable(RenderContext& rctx, const KeywordTable* table)
+            : rctx(rctx)
+            , table(table)
+            , at(table->archtime.get())
+            , curr_array(StxVarId::KWEH0)
+            , curr_row(0)
+            , last_row(0)
+            , curr_col(0)
+            , last_col(0) {}
+
+    void render_var(StxVarId var) override {
+        const size_t i = curr_row * NCOLS + curr_col;
+        switch (var) {
+        case StxVarId::NAME: rctx.os << table->name; break;
+        case StxVarId::MUL0: render_hex(at->m1, 16); break;
+        case StxVarId::MUL1: render_hex(at->m2, 16); break;
+        case StxVarId::KWFOLD: render_hex(at->fold, 2); break;
+        case StxVarId::KWEH0:
+        case StxVarId::KWDISP:
+        case StxVarId::KWKEY:
+        case StxVarId::KWLEN:
+        case StxVarId::KWTOK:
+            break;
+        case StxVarId::ELEM:
+            switch (curr_array) {
+            case StxVarId::KWEH0: render_hex(at->eh0[i], 4); break;
+            case StxVarId::KWDISP: render_hex(at->disp[i], 2); break;
+            case StxVarId::KWKEY: render_hex(at->key[i], 2); break;
+            case StxVarId::KWLEN: rctx.os << static_cast<uint32_t>(at->len[i]); break;
+            case StxVarId::KWTOK: rctx.os << at->tok[i]; break;
+            default: UNREACHABLE(); break;
+            }
+            break;
+        default: render_global_var(rctx, var); break;
+        }
+    }
+
+    size_t get_list_size(StxVarId var) const override {
+        switch (var) {
+            case StxVarId::ELEM: return NCOLS;
+            default: return array_size(var) / NCOLS;
+        }
+    }
+
+    void start_list(StxVarId var, size_t lbound, size_t rbound) override {
+        if (var == StxVarId::ELEM) {
+            curr_col = lbound;
+            last_col = rbound;
+        } else {
+            CHECK(array_size(var) % NCOLS == 0);
+            curr_array = var;
+            curr_row = lbound;
+            last_row = rbound;
+        }
+    }
+
+    bool next_in_list(StxVarId var) override {
+        switch (var) {
+            case StxVarId::ELEM: return ++curr_col <= last_col;
+            default: return ++curr_row <= last_row;
+        }
+    }
+
+    bool eval_cond(StxLOpt) override {
+        UNREACHABLE();
+        return false;
+    }
+
+    FORBID_COPY(RenderArchtimeKeywordTable);
+};
+
 class RenderEnum : public RenderCallback {
     RenderContext& rctx;
     const CodeEnum* code;
@@ -1952,8 +2055,13 @@ static void render(RenderContext& rctx, const Code* code) {
         break;
     }
     case CodeKind::KWTABLE: {
-        RenderKeywordTable callback(rctx, code->kwtable);
-        rctx.opts->render_code_keyword_table(rctx.os, callback);
+        if (code->kwtable->archtime) {
+            RenderArchtimeKeywordTable callback(rctx, code->kwtable);
+            rctx.opts->render_code_keyword_table_archtime(rctx.os, callback);
+        } else {
+            RenderKeywordTable callback(rctx, code->kwtable);
+            rctx.opts->render_code_keyword_table(rctx.os, callback);
+        }
         break;
     }
     case CodeKind::KEYWORDS:

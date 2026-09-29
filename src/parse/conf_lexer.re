@@ -284,6 +284,7 @@ Ret Input::lex_conf(Opt& opts) {
     "vectorize:linear" | "flags:"? "vectorize-linear" { RET_CONF_BOOL(vectorize_linear); }
     "keywords"                                { RET_CONF_FEAT(keywords, "keywords"); }
     "keywords:token"                          { RET_CONF_STR(keywords_token); }
+    "keywords:model"                          { goto keywords_model; }
 
     "encoding:ebcdic" | "flags:ecb"        | "flags:e" { RET_CONF_ENC(Enc::Type::EBCDIC); }
     "encoding:utf32"  | "flags:unicode"    | "flags:u" { RET_CONF_ENC(Enc::Type::UTF32); }
@@ -362,6 +363,16 @@ api_style:
     }
     "functions" { SETOPT(api_style, ApiStyle::FUNCTIONS); goto end; }
     "free-form" { SETOPT(api_style, ApiStyle::FREEFORM);  goto end; }
+*/
+
+keywords_model:
+    CHECK_RET(lex_conf_assign());
+/*!local:re2c
+    * {
+        RET_FAIL(error_at_cur("bad configuration value (expected: 'default', 'archtime')"));
+    }
+    "default"  | "\"default\""  { SETOPT(keywords_model, KeywordsModel::DEFAULT);  goto end; }
+    "archtime" | "\"archtime\"" { SETOPT(keywords_model, KeywordsModel::ARCHTIME); goto end; }
 */
 
 encoding_policy:
@@ -636,6 +647,7 @@ start:
     "code:yypeek"                 { RET_CODE(code_yypeek); }
     "code:yypeekn"                { RET_CODE(code_yypeekn); }
     "code:yypeekn_guard"          { RET_CODE(code_yypeekn_guard); }
+    "code:yypeekn_diverge"        { RET_CODE(code_yypeekn_diverge); }
     "code:yyskip"                 { RET_CODE(code_yyskip); }
     "code:yyskipn"                { RET_CODE(code_yyskipn); }
     "code:yybackup"               { RET_CODE(code_yybackup); }
@@ -672,6 +684,7 @@ start:
     "code:yytarget_filter"        { RET_CODE(code_yytarget_filter); }
     "code:vector_loop"            { RET_CODE(code_vector_loop); }
     "code:keyword_table"          { RET_CODE(code_keyword_table); }
+    "code:keyword_table_archtime" { RET_CODE(code_keyword_table_archtime); }
     "code:keyword_lookup"         { RET_CODE(code_keyword_lookup); }
 
     "code:" [a-z0-9_]+ {
@@ -697,6 +710,12 @@ start:
     "fndef"        { RET_VAR(StxVarId::FNDEF); }
     "index"        { RET_VAR(StxVarId::INDEX); }
     "init"         { RET_VAR(StxVarId::INIT); }
+    "disp"         { RET_VAR(StxVarId::KWDISP); }
+    "eh0"          { RET_VAR(StxVarId::KWEH0); }
+    "fold"         { RET_VAR(StxVarId::KWFOLD); }
+    "key"          { RET_VAR(StxVarId::KWKEY); }
+    "keylen"       { RET_VAR(StxVarId::KWLEN); }
+    "tok"          { RET_VAR(StxVarId::KWTOK); }
     "label"        { RET_VAR(StxVarId::LABEL); }
     "lessthan"     { RET_VAR(StxVarId::LESSTHAN_EXPR); }
     "lhs"          { RET_VAR(StxVarId::LHS); }

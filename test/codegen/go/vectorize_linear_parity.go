@@ -1150,40 +1150,27 @@ yy119:
 			yycursor += 7
 			goto yy174
 		} else {
-			if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x636e452d74706563) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x636e452d74706563) & 0xffff) != 0) {
-					goto yy125
-				} else {
-					if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x636e452d74706563) & 0xffffff) != 0) {
-						yycursor += 1
-						goto yy131
-					} else {
-						if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x636e452d74706563) & 0xffffffff) != 0) {
-							yycursor += 2
-							goto yy138
-						} else {
-							if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x636e452d74706563) & 0xffffffffff) != 0) {
-								yycursor += 3
-								goto yy145
-							} else {
-								if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x636e452d74706563) & 0xffffffffffff) != 0) {
-									yycursor += 4
-									goto yy152
-								} else {
-									if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x636e452d74706563) & 0xffffffffffffff) != 0) {
-										yycursor += 5
-										goto yy159
-									} else {
-										if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x636e452d74706563) & 0xffffffffffffffff) != 0) {
-											yycursor += 6
-											goto yy166
-										}
-									}
-								}
-							}
-						}
-					}
-				}
+			switch (((((((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x636e452d74706563) - 1) &^ (uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x636e452d74706563)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy125
+			case 2:
+				yycursor += 1
+				goto yy131
+			case 3:
+				yycursor += 2
+				goto yy138
+			case 4:
+				yycursor += 3
+				goto yy145
+			case 5:
+				yycursor += 4
+				goto yy152
+			case 6:
+				yycursor += 5
+				goto yy159
+			case 7:
+				yycursor += 6
+				goto yy166
 			}
 		}
 	}
@@ -1201,40 +1188,27 @@ yy120:
 			yycursor += 7
 			goto yy175
 		} else {
-			if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x74617a69726f6874) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x74617a69726f6874) & 0xffff) != 0) {
-					goto yy126
-				} else {
-					if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x74617a69726f6874) & 0xffffff) != 0) {
-						yycursor += 1
-						goto yy132
-					} else {
-						if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x74617a69726f6874) & 0xffffffff) != 0) {
-							yycursor += 2
-							goto yy139
-						} else {
-							if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x74617a69726f6874) & 0xffffffffff) != 0) {
-								yycursor += 3
-								goto yy146
-							} else {
-								if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x74617a69726f6874) & 0xffffffffffff) != 0) {
-									yycursor += 4
-									goto yy153
-								} else {
-									if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x74617a69726f6874) & 0xffffffffffffff) != 0) {
-										yycursor += 5
-										goto yy160
-									} else {
-										if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x74617a69726f6874) & 0xffffffffffffffff) != 0) {
-											yycursor += 6
-											goto yy167
-										}
-									}
-								}
-							}
-						}
-					}
-				}
+			switch (((((((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x74617a69726f6874) - 1) &^ (uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x74617a69726f6874)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy126
+			case 2:
+				yycursor += 1
+				goto yy132
+			case 3:
+				yycursor += 2
+				goto yy139
+			case 4:
+				yycursor += 3
+				goto yy146
+			case 5:
+				yycursor += 4
+				goto yy153
+			case 6:
+				yycursor += 5
+				goto yy160
+			case 7:
+				yycursor += 6
+				goto yy167
 			}
 		}
 	}
@@ -1252,40 +1226,27 @@ yy121:
 			yycursor += 7
 			goto yy176
 		} else {
-			if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6f432d656863) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6f432d656863) & 0xffff) != 0) {
-					goto yy127
-				} else {
-					if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6f432d656863) & 0xffffff) != 0) {
-						yycursor += 1
-						goto yy133
-					} else {
-						if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6f432d656863) & 0xffffffff) != 0) {
-							yycursor += 2
-							goto yy140
-						} else {
-							if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6f432d656863) & 0xffffffffff) != 0) {
-								yycursor += 3
-								goto yy147
-							} else {
-								if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6f432d656863) & 0xffffffffffff) != 0) {
-									yycursor += 4
-									goto yy154
-								} else {
-									if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6f432d656863) & 0xffffffffffffff) != 0) {
-										yycursor += 5
-										goto yy161
-									} else {
-										if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6f432d656863) & 0xffffffffffffffff) != 0) {
-											yycursor += 6
-											goto yy168
-										}
-									}
-								}
-							}
-						}
-					}
-				}
+			switch (((((((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6f432d656863) - 1) &^ (uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6f432d656863)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy127
+			case 2:
+				yycursor += 1
+				goto yy133
+			case 3:
+				yycursor += 2
+				goto yy140
+			case 4:
+				yycursor += 3
+				goto yy147
+			case 5:
+				yycursor += 4
+				goto yy154
+			case 6:
+				yycursor += 5
+				goto yy161
+			case 7:
+				yycursor += 6
+				goto yy168
 			}
 		}
 	}
@@ -1312,40 +1273,27 @@ yy123:
 			yycursor += 7
 			goto yy180
 		} else {
-			if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x452d726566736e61) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x452d726566736e61) & 0xffff) != 0) {
-					goto yy129
-				} else {
-					if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x452d726566736e61) & 0xffffff) != 0) {
-						yycursor += 1
-						goto yy136
-					} else {
-						if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x452d726566736e61) & 0xffffffff) != 0) {
-							yycursor += 2
-							goto yy143
-						} else {
-							if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x452d726566736e61) & 0xffffffffff) != 0) {
-								yycursor += 3
-								goto yy150
-							} else {
-								if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x452d726566736e61) & 0xffffffffffff) != 0) {
-									yycursor += 4
-									goto yy157
-								} else {
-									if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x452d726566736e61) & 0xffffffffffffff) != 0) {
-										yycursor += 5
-										goto yy164
-									} else {
-										if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x452d726566736e61) & 0xffffffffffffffff) != 0) {
-											yycursor += 6
-											goto yy172
-										}
-									}
-								}
-							}
-						}
-					}
-				}
+			switch (((((((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x452d726566736e61) - 1) &^ (uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x452d726566736e61)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy129
+			case 2:
+				yycursor += 1
+				goto yy136
+			case 3:
+				yycursor += 2
+				goto yy143
+			case 4:
+				yycursor += 3
+				goto yy150
+			case 5:
+				yycursor += 4
+				goto yy157
+			case 6:
+				yycursor += 5
+				goto yy164
+			case 7:
+				yycursor += 6
+				goto yy172
 			}
 		}
 	}
@@ -1363,40 +1311,27 @@ yy124:
 			yycursor += 7
 			goto yy181
 		} else {
-			if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6567412d7265) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6567412d7265) & 0xffff) != 0) {
-					goto yy130
-				} else {
-					if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6567412d7265) & 0xffffff) != 0) {
-						yycursor += 1
-						goto yy137
-					} else {
-						if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6567412d7265) & 0xffffffff) != 0) {
-							yycursor += 2
-							goto yy144
-						} else {
-							if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6567412d7265) & 0xffffffffff) != 0) {
-								yycursor += 3
-								goto yy151
-							} else {
-								if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6567412d7265) & 0xffffffffffff) != 0) {
-									yycursor += 4
-									goto yy158
-								} else {
-									if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6567412d7265) & 0xffffffffffffff) != 0) {
-										yycursor += 5
-										goto yy165
-									} else {
-										if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6567412d7265) & 0xffffffffffffffff) != 0) {
-											yycursor += 6
-											goto yy173
-										}
-									}
-								}
-							}
-						}
-					}
-				}
+			switch (((((((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6567412d7265) - 1) &^ (uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x746e6567412d7265)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy130
+			case 2:
+				yycursor += 1
+				goto yy137
+			case 3:
+				yycursor += 2
+				goto yy144
+			case 4:
+				yycursor += 3
+				goto yy151
+			case 5:
+				yycursor += 4
+				goto yy158
+			case 6:
+				yycursor += 5
+				goto yy165
+			case 7:
+				yycursor += 6
+				goto yy173
 			}
 		}
 	}
@@ -1497,20 +1432,15 @@ yy134:
 			yycursor += 3
 			goto yy162
 		} else {
-			if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x69746365) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x69746365) & 0xffff) != 0) {
-					goto yy141
-				} else {
-					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x69746365) & 0xffffff) != 0) {
-						yycursor += 1
-						goto yy148
-					} else {
-						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x69746365) & 0xffffffff) != 0) {
-							yycursor += 2
-							goto yy155
-						}
-					}
-				}
+			switch (((((((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x69746365) - 1) &^ (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x69746365)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy141
+			case 2:
+				yycursor += 1
+				goto yy148
+			case 3:
+				yycursor += 2
+				goto yy155
 			}
 		}
 	}
@@ -1528,20 +1458,15 @@ yy135:
 			yycursor += 3
 			goto yy163
 		} else {
-			if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x2d746e65) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x2d746e65) & 0xffff) != 0) {
-					goto yy142
-				} else {
-					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x2d746e65) & 0xffffff) != 0) {
-						yycursor += 1
-						goto yy149
-					} else {
-						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x2d746e65) & 0xffffffff) != 0) {
-							yycursor += 2
-							goto yy156
-						}
-					}
-				}
+			switch (((((((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x2d746e65) - 1) &^ (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x2d746e65)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy142
+			case 2:
+				yycursor += 1
+				goto yy149
+			case 3:
+				yycursor += 2
+				goto yy156
 			}
 		}
 	}
@@ -1793,10 +1718,9 @@ yy162:
 			yycursor += 1
 			goto yy177
 		} else {
-			if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x6e6f) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x6e6f) & 0xffff) != 0) {
-					goto yy169
-				}
+			switch (((((((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x6e6f) - 1) &^ (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x6e6f)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy169
 			}
 		}
 	}
@@ -1879,20 +1803,15 @@ yy170:
 			yycursor += 3
 			goto yy199
 		} else {
-			if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x74676e65) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x74676e65) & 0xffff) != 0) {
-					goto yy178
-				} else {
-					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x74676e65) & 0xffffff) != 0) {
-						yycursor += 1
-						goto yy186
-					} else {
-						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x74676e65) & 0xffffffff) != 0) {
-							yycursor += 2
-							goto yy193
-						}
-					}
-				}
+			switch (((((((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x74676e65) - 1) &^ (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x74676e65)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy178
+			case 2:
+				yycursor += 1
+				goto yy186
+			case 3:
+				yycursor += 2
+				goto yy193
 			}
 		}
 	}
@@ -1910,20 +1829,15 @@ yy171:
 			yycursor += 3
 			goto yy200
 		} else {
-			if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a657079) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a657079) & 0xffff) != 0) {
-					goto yy179
-				} else {
-					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a657079) & 0xffffff) != 0) {
-						yycursor += 1
-						goto yy187
-					} else {
-						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a657079) & 0xffffffff) != 0) {
-							yycursor += 2
-							goto yy194
-						}
-					}
-				}
+			switch (((((((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a657079) - 1) &^ (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a657079)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy179
+			case 2:
+				yycursor += 1
+				goto yy187
+			case 3:
+				yycursor += 2
+				goto yy194
 			}
 		}
 	}
@@ -1959,20 +1873,15 @@ yy174:
 			yycursor += 3
 			goto yy202
 		} else {
-			if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x6e69646f) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x6e69646f) & 0xffff) != 0) {
-					goto yy182
-				} else {
-					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x6e69646f) & 0xffffff) != 0) {
-						yycursor += 1
-						goto yy190
-					} else {
-						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x6e69646f) & 0xffffffff) != 0) {
-							yycursor += 2
-							goto yy196
-						}
-					}
-				}
+			switch (((((((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x6e69646f) - 1) &^ (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x6e69646f)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy182
+			case 2:
+				yycursor += 1
+				goto yy190
+			case 3:
+				yycursor += 2
+				goto yy196
 			}
 		}
 	}
@@ -1990,20 +1899,15 @@ yy175:
 			yycursor += 3
 			goto yy203
 		} else {
-			if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a6e6f69) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a6e6f69) & 0xffff) != 0) {
-					goto yy183
-				} else {
-					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a6e6f69) & 0xffffff) != 0) {
-						yycursor += 1
-						goto yy191
-					} else {
-						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a6e6f69) & 0xffffffff) != 0) {
-							yycursor += 2
-							goto yy197
-						}
-					}
-				}
+			switch (((((((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a6e6f69) - 1) &^ (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a6e6f69)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy183
+			case 2:
+				yycursor += 1
+				goto yy191
+			case 3:
+				yycursor += 2
+				goto yy197
 			}
 		}
 	}
@@ -2021,20 +1925,15 @@ yy176:
 			yycursor += 3
 			goto yy204
 		} else {
-			if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a6c6f72) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a6c6f72) & 0xffff) != 0) {
-					goto yy184
-				} else {
-					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a6c6f72) & 0xffffff) != 0) {
-						yycursor += 1
-						goto yy192
-					} else {
-						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a6c6f72) & 0xffffffff) != 0) {
-							yycursor += 2
-							goto yy198
-						}
-					}
-				}
+			switch (((((((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a6c6f72) - 1) &^ (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x3a6c6f72)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy184
+			case 2:
+				yycursor += 1
+				goto yy192
+			case 3:
+				yycursor += 2
+				goto yy198
 			}
 		}
 	}
@@ -2079,40 +1978,27 @@ yy180:
 			yycursor += 7
 			goto yy213
 		} else {
-			if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x3a676e69646f636e) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x3a676e69646f636e) & 0xffff) != 0) {
-					goto yy188
-				} else {
-					if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x3a676e69646f636e) & 0xffffff) != 0) {
-						yycursor += 1
-						goto yy195
-					} else {
-						if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x3a676e69646f636e) & 0xffffffff) != 0) {
-							yycursor += 2
-							goto yy201
-						} else {
-							if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x3a676e69646f636e) & 0xffffffffff) != 0) {
-								yycursor += 3
-								goto yy206
-							} else {
-								if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x3a676e69646f636e) & 0xffffffffffff) != 0) {
-									yycursor += 4
-									goto yy209
-								} else {
-									if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x3a676e69646f636e) & 0xffffffffffffff) != 0) {
-										yycursor += 5
-										goto yy211
-									} else {
-										if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x3a676e69646f636e) & 0xffffffffffffffff) != 0) {
-											yycursor += 6
-											goto yy212
-										}
-									}
-								}
-							}
-						}
-					}
-				}
+			switch (((((((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x3a676e69646f636e) - 1) &^ (uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x3a676e69646f636e)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy188
+			case 2:
+				yycursor += 1
+				goto yy195
+			case 3:
+				yycursor += 2
+				goto yy201
+			case 4:
+				yycursor += 3
+				goto yy206
+			case 5:
+				yycursor += 4
+				goto yy209
+			case 6:
+				yycursor += 5
+				goto yy211
+			case 7:
+				yycursor += 6
+				goto yy212
 			}
 		}
 	}
@@ -2280,10 +2166,9 @@ yy199:
 			yycursor += 1
 			goto yy208
 		} else {
-			if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x3a68) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x3a68) & 0xffff) != 0) {
-					goto yy205
-				}
+			switch (((((((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x3a68) - 1) &^ (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x3a68)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy205
 			}
 		}
 	}
@@ -2313,10 +2198,9 @@ yy202:
 			yycursor += 1
 			goto yy210
 		} else {
-			if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x3a67) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x3a67) & 0xffff) != 0) {
-					goto yy207
-				}
+			switch (((((((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x3a67) - 1) &^ (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x3a67)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy207
 			}
 		}
 	}
@@ -3967,20 +3851,15 @@ yy384:
 			yycursor += 3
 			goto yy404
 		} else {
-			if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x66656463) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x66656463) & 0xffff) != 0) {
-					goto yy389
-				} else {
-					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x66656463) & 0xffffff) != 0) {
-						yycursor += 1
-						goto yy394
-					} else {
-						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x66656463) & 0xffffffff) != 0) {
-							yycursor += 2
-							goto yy400
-						}
-					}
-				}
+			switch (((((((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x66656463) - 1) &^ (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x66656463)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy389
+			case 2:
+				yycursor += 1
+				goto yy394
+			case 3:
+				yycursor += 2
+				goto yy400
 			}
 		}
 	}
@@ -4011,40 +3890,27 @@ yy386:
 			yycursor += 7
 			goto yy418
 		} else {
-			if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x7a7a7978797a7a79) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x7a7a7978797a7a79) & 0xffff) != 0) {
-					goto yy392
-				} else {
-					if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x7a7a7978797a7a79) & 0xffffff) != 0) {
-						yycursor += 1
-						goto yy396
-					} else {
-						if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x7a7a7978797a7a79) & 0xffffffff) != 0) {
-							yycursor += 2
-							goto yy402
-						} else {
-							if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x7a7a7978797a7a79) & 0xffffffffff) != 0) {
-								yycursor += 3
-								goto yy406
-							} else {
-								if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x7a7a7978797a7a79) & 0xffffffffffff) != 0) {
-									yycursor += 4
-									goto yy409
-								} else {
-									if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x7a7a7978797a7a79) & 0xffffffffffffff) != 0) {
-										yycursor += 5
-										goto yy412
-									} else {
-										if (((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x7a7a7978797a7a79) & 0xffffffffffffffff) != 0) {
-											yycursor += 6
-											goto yy416
-										}
-									}
-								}
-							}
-						}
-					}
-				}
+			switch (((((((uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x7a7a7978797a7a79) - 1) &^ (uint64(yyinput[yycursor:][7])<<(8*7) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) | uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][4])<<(8*4) | uint64(yyinput[yycursor:][5])<<(8*5) | uint64(yyinput[yycursor:][6])<<(8*6) ^ 0x7a7a7978797a7a79)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy392
+			case 2:
+				yycursor += 1
+				goto yy396
+			case 3:
+				yycursor += 2
+				goto yy402
+			case 4:
+				yycursor += 3
+				goto yy406
+			case 5:
+				yycursor += 4
+				goto yy409
+			case 6:
+				yycursor += 5
+				goto yy412
+			case 7:
+				yycursor += 6
+				goto yy416
 			}
 		}
 	}
@@ -4136,10 +4002,9 @@ yy395:
 			yycursor += 1
 			goto yy405
 		} else {
-			if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x646e) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x646e) & 0xffff) != 0) {
-					goto yy401
-				}
+			switch (((((((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x646e) - 1) &^ (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x646e)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy401
 			}
 		}
 	}
@@ -4168,20 +4033,15 @@ yy397:
 			yycursor += 3
 			goto yy413
 		} else {
-			if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x68676665) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x68676665) & 0xffff) != 0) {
-					goto yy403
-				} else {
-					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x68676665) & 0xffffff) != 0) {
-						yycursor += 1
-						goto yy407
-					} else {
-						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x68676665) & 0xffffffff) != 0) {
-							yycursor += 2
-							goto yy410
-						}
-					}
-				}
+			switch (((((((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x68676665) - 1) &^ (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x68676665)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy403
+			case 2:
+				yycursor += 1
+				goto yy407
+			case 3:
+				yycursor += 2
+				goto yy410
 			}
 		}
 	}
@@ -4240,10 +4100,9 @@ yy404:
 			yycursor += 1
 			goto yy411
 		} else {
-			if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x6867) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x6867) & 0xffff) != 0) {
-					goto yy408
-				}
+			switch (((((((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x6867) - 1) &^ (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x6867)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy408
 			}
 		}
 	}
@@ -4329,10 +4188,9 @@ yy413:
 			yycursor += 1
 			goto yy419
 		} else {
-			if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x6a69) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x6a69) & 0xffff) != 0) {
-					goto yy417
-				}
+			switch (((((((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x6a69) - 1) &^ (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x6a69)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy417
 			}
 		}
 	}
@@ -4754,20 +4612,15 @@ yy461:
 			yycursor += 3
 			goto yy485
 		} else {
-			if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x2d464450) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x2d464450) & 0xffff) != 0) {
-					goto yy467
-				} else {
-					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x2d464450) & 0xffffff) != 0) {
-						yycursor += 1
-						goto yy474
-					} else {
-						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x2d464450) & 0xffffffff) != 0) {
-							yycursor += 2
-							goto yy480
-						}
-					}
-				}
+			switch (((((((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x2d464450) - 1) &^ (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x2d464450)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy467
+			case 2:
+				yycursor += 1
+				goto yy474
+			case 3:
+				yycursor += 2
+				goto yy480
 			}
 		}
 	}
@@ -4786,20 +4639,15 @@ yy462:
 			yycursor += 3
 			goto yy486
 		} else {
-			if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x39384649) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x39384649) & 0xffff) != 0) {
-					goto yy469
-				} else {
-					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x39384649) & 0xffffff) != 0) {
-						yycursor += 1
-						goto yy475
-					} else {
-						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x39384649) & 0xffffffff) != 0) {
-							yycursor += 2
-							goto yy481
-						}
-					}
-				}
+			switch (((((((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x39384649) - 1) &^ (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0x39384649)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy469
+			case 2:
+				yycursor += 1
+				goto yy475
+			case 3:
+				yycursor += 2
+				goto yy481
 			}
 		}
 	}
@@ -4818,10 +4666,9 @@ yy463:
 			yycursor += 1
 			goto yy476
 		} else {
-			if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x34b) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x34b) & 0xffff) != 0) {
-					goto yy470
-				}
+			switch (((((((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x34b) - 1) &^ (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x34b)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy470
 			}
 		}
 	}
@@ -4840,20 +4687,15 @@ yy464:
 			yycursor += 3
 			goto yy487
 		} else {
-			if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0xd474e50) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0xd474e50) & 0xffff) != 0) {
-					goto yy471
-				} else {
-					if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0xd474e50) & 0xffffff) != 0) {
-						yycursor += 1
-						goto yy477
-					} else {
-						if (((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0xd474e50) & 0xffffffff) != 0) {
-							yycursor += 2
-							goto yy483
-						}
-					}
-				}
+			switch (((((((uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0xd474e50) - 1) &^ (uint64(yyinput[yycursor:][3])<<(8*3) | uint64(yyinput[yycursor:][0]) | uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][2])<<(8*2) ^ 0xd474e50)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy471
+			case 2:
+				yycursor += 1
+				goto yy477
+			case 3:
+				yycursor += 2
+				goto yy483
 			}
 		}
 	}
@@ -4872,10 +4714,9 @@ yy465:
 			yycursor += 1
 			goto yy478
 		} else {
-			if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0xbfbb) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0xbfbb) & 0xffff) != 0) {
-					goto yy472
-				}
+			switch (((((((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0xbfbb) - 1) &^ (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0xbfbb)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy472
 			}
 		}
 	}
@@ -4894,10 +4735,9 @@ yy466:
 			yycursor += 1
 			goto yy479
 		} else {
-			if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0xffd8) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0xffd8) & 0xffff) != 0) {
-					goto yy473
-				}
+			switch (((((((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0xffd8) - 1) &^ (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0xffd8)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy473
 			}
 		}
 	}
@@ -5051,10 +4891,9 @@ yy485:
 			yycursor += 1
 			goto yy491
 		} else {
-			if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x2e31) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x2e31) & 0xffff) != 0) {
-					goto yy488
-				}
+			switch (((((((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x2e31) - 1) &^ (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x2e31)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy488
 			}
 		}
 	}
@@ -5081,10 +4920,9 @@ yy487:
 			yycursor += 1
 			goto yy492
 		} else {
-			if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x1a0a) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x1a0a) & 0xffff) != 0) {
-					goto yy490
-				}
+			switch (((((((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x1a0a) - 1) &^ (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x1a0a)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy490
 			}
 		}
 	}
@@ -5263,10 +5101,9 @@ func anchored_1(yyinput string) (int, int) {
 			yycursor += 1
 			goto yy516
 		} else {
-			if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x4947) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x4947) & 0xffff) != 0) {
-					goto yy512
-				}
+			switch (((((((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x4947) - 1) &^ (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x4947)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy512
 			}
 		}
 	}
@@ -5315,10 +5152,9 @@ yy516:
 			yycursor += 1
 			goto yy519
 		} else {
-			if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x3846) & 0xff) == 0) {
-				if (((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x3846) & 0xffff) != 0) {
-					goto yy517
-				}
+			switch (((((((uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x3846) - 1) &^ (uint64(yyinput[yycursor:][1])<<(8*1) | uint64(yyinput[yycursor:][0]) ^ 0x3846)) >> 7) & 0x0101010101010101) * 0x0101010101010101) >> 56) {
+			case 1:
+				goto yy517
 			}
 		}
 	}

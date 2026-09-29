@@ -65,6 +65,12 @@ enum class EmptyClass: uint32_t {
     ERROR        // compilation error
 };
 
+// Layout of keyword tables, see note [keyword tables].
+enum class KeywordsModel: uint32_t {
+    DEFAULT,  // multiply-shift perfect hash over a power-of-two slot array
+    ARCHTIME  // flat composite table `c2_kw_table_t` shared with c2simd
+};
+
 enum class Minimization: uint32_t {
     TABLE,
     MOORE

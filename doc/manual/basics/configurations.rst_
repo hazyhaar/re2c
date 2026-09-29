@@ -192,6 +192,19 @@ Here is a full list of configurations supported by |re2c|:
     index, depending on the backend) in the semantic actions. It is required
     with ``re2c:keywords``.
 
+``re2c:keywords:model``
+    Layout of keyword tables: ``default`` (a multiply-shift perfect hash over a
+    power-of-two slot array) or ``archtime`` (the flat composite table
+    ``c2_kw_table_t`` of 5464 bytes shared with c2simd: a mask of key lengths
+    per leading byte, a two-level perfect hash over 256 slots of 16-byte keys
+    and a branchless key comparison). With ``archtime`` case-insensitive
+    literals may also be moved to the table, which then folds ASCII letters of
+    the input to lower case; case-sensitive literals with letters stay in the
+    DFA in that case (and conversely, the larger group decides). A table holds
+    at most 256 keywords, and a keyword whose length and first 8 code units
+    coincide with those of an earlier one stays in the DFA. Only the backends
+    that list ``keywords-archtime`` in ``supported_features`` support it.
+
 ``re2c:monadic``
     If set to non-zero, the generated lexer will use monadic notation (this
     configuration is specific to Haskell).

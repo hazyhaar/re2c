@@ -33,6 +33,17 @@ the syntax file (see the section about syntax files):
     string if no check is needed. Supported variables: ``n``, ``YYINPUT``,
     ``YYCURSOR``, ``YYLIMIT``, ``yyrecord``.
 
+``code:yypeekn_diverge``
+    An expression that yields the number of low-order zero code units of the
+    variable ``expr``, which holds the nonzero XOR of ``code:yypeekn`` and the
+    literal. When the comparison fails, this number is the length of the prefix
+    of the chain that still matches the input: a switch on it jumps directly to
+    the corresponding state of the chain, skipping the code units that are
+    already known. If the template is undefined, the prefix is found by testing
+    the masks of the low 1, 2, ... code units in turn. The C and Go syntax
+    files define it with a portable branchless formula; with GCC or Clang it
+    may be redefined as ``__builtin_ctzll(expr) >> 3``.
+
 ``code:yyskipn``
     A statement that advances the cursor by ``n`` code units. Supported
     variables: ``n``, ``YYINPUT``, ``YYCURSOR``, ``yyrecord``.
@@ -48,7 +59,8 @@ uses the length of ``YYINPUT``. With the generic API the user defines
 past the end of input and must return zero if fewer than ``n`` code units are
 available (chains made only of zero code units are never coalesced). The syntax
 files of the other languages call a user-defined ``YYPEEKN(cursor, n)`` with
-every API, under the same contract, and leave ``code:yypeekn_guard`` undefined.
+every API, under the same contract, and leave ``code:yypeekn_guard`` and
+``code:yypeekn_diverge`` undefined.
 
 The optimization applies only to the ASCII encoding, where a code unit is one
 byte (``YYCTYPE`` must be one byte wide). It is disabled with the end-of-input

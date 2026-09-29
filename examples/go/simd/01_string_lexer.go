@@ -51,6 +51,7 @@ yy2:
 	if (yylimit <= yycursor) {
 		return -1
 	}
+yy12:
 	for !((yylimit - yycursor) < 33) {
 		yysimd0 := archsimd.LoadUint8x32(yyinput[yycursor:])
 		yysimd1 := yysimd0.GreaterEqual(archsimd.BroadcastUint8x32(1)).And(yysimd0.LessEqual(archsimd.BroadcastUint8x32(9)))
@@ -63,7 +64,7 @@ yy2:
 		}
 		yycursor += 32
 	}
-yy12:
+yy13:
 	yych = yyinput[yycursor]
 	switch (yych) {
 	case 0x00:
@@ -80,8 +81,9 @@ yy12:
 		yycursor += 1
 		if (yylimit <= yycursor) {
 			return -1
+			goto yy12
 		}
-		goto yy12
+		goto yy13
 	}
 yy3:
 	{ continue }

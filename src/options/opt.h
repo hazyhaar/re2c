@@ -66,7 +66,8 @@ using StxCodes = list_t<StxCode>;
             ({"code", "dot", "skeleton"})) \
     CHECKED_LIST(supported_features, \
             ({"nested-ifs", "bitmaps", "computed-gotos", "case-ranges", "unsafe", "monadic", \
-                "tags", "captures", "captvars", "computed-continue", "vectorize-loops", "keywords"}))
+                "tags", "captures", "captvars", "computed-continue", "vectorize-loops", "keywords", \
+                "keywords-archtime"}))
 
 #define RE2C_STX_OPTS \
     STX_OPT(bool, semicolons, false) \
@@ -225,6 +226,9 @@ using StxCodes = list_t<StxCode>;
         ({StxVarId::N, StxVarId::INPUT, StxVarId::CURSOR, StxVarId::LIMIT, StxVarId::RECORD}), \
         ({}), ({}) \
     ) \
+    CODE_TEMPLATE(yypeekn_diverge, \
+        ({StxVarId::EXPR}), ({}), ({}) \
+    ) \
     CODE_TEMPLATE(yyskipn, \
         ({StxVarId::N, StxVarId::INPUT, StxVarId::CURSOR, StxVarId::RECORD}), ({}), ({}) \
     ) \
@@ -343,6 +347,11 @@ using StxCodes = list_t<StxCode>;
             StxVarId::WORD0, StxVarId::WORD1, StxVarId::LENGTH, StxVarId::VAL}), \
         ({StxVarId::ROW, StxVarId::ELEM, StxVarId::ENTRY}), ({StxLOpt::WIDE}) \
     ) \
+    CODE_TEMPLATE(keyword_table_archtime, \
+        ({StxVarId::NAME, StxVarId::MUL0, StxVarId::MUL1, StxVarId::KWFOLD}), \
+        ({StxVarId::KWEH0, StxVarId::KWDISP, StxVarId::KWKEY, StxVarId::KWLEN, StxVarId::KWTOK, \
+            StxVarId::ELEM}), ({}) \
+    ) \
     CODE_TEMPLATE(keyword_lookup, \
         ({StxVarId::NAME, StxVarId::TOKEN, StxVarId::INPUT, StxVarId::CURSOR, \
             StxVarId::RECORD}), ({}), ({}) \
@@ -374,6 +383,12 @@ using StxCodes = list_t<StxCode>;
     STX_LOCAL_VAR(FNDEF, "fndef") \
     STX_LOCAL_VAR(INDEX, "index") \
     STX_LOCAL_VAR(INIT, "init") \
+    STX_LOCAL_VAR(KWDISP, "disp") \
+    STX_LOCAL_VAR(KWEH0, "eh0") \
+    STX_LOCAL_VAR(KWFOLD, "fold") \
+    STX_LOCAL_VAR(KWKEY, "key") \
+    STX_LOCAL_VAR(KWLEN, "keylen") \
+    STX_LOCAL_VAR(KWTOK, "tok") \
     STX_LOCAL_VAR(LABEL, "label") \
     STX_LOCAL_VAR(LESSTHAN_EXPR, "lessthan") \
     STX_LOCAL_VAR(LHS, "lhs") \
@@ -538,6 +553,7 @@ enum class StxVarId : uint32_t {
     MUTOPT(bool, vectorize_loops, false) \
     MUTOPT(bool, keywords, false) \
     MUTOPT(std::string, keywords_token, "") \
+    MUTOPT(KeywordsModel, keywords_model, KeywordsModel::DEFAULT) \
     /* YYFILL */ \
     MUTOPT(uint32_t, fill_eof, NOEOF) \
     MUTOPT(uint32_t, fill_sentinel, NOEOF) \

@@ -44,6 +44,7 @@
 <default syntax file>:1:0: warning: syntax configuration `code:yyskip` is not defined (set it to <undefined> explicitly to silence the warning) [-Wundefined-syntax-config]
 <default syntax file>:1:0: warning: syntax configuration `code:yypeekn` is not defined (set it to <undefined> explicitly to silence the warning) [-Wundefined-syntax-config]
 <default syntax file>:1:0: warning: syntax configuration `code:yypeekn_guard` is not defined (set it to <undefined> explicitly to silence the warning) [-Wundefined-syntax-config]
+<default syntax file>:1:0: warning: syntax configuration `code:yypeekn_diverge` is not defined (set it to <undefined> explicitly to silence the warning) [-Wundefined-syntax-config]
 <default syntax file>:1:0: warning: syntax configuration `code:yyskipn` is not defined (set it to <undefined> explicitly to silence the warning) [-Wundefined-syntax-config]
 <default syntax file>:1:0: warning: syntax configuration `code:yybackup` is not defined (set it to <undefined> explicitly to silence the warning) [-Wundefined-syntax-config]
 <default syntax file>:1:0: warning: syntax configuration `code:yybackupctx` is not defined (set it to <undefined> explicitly to silence the warning) [-Wundefined-syntax-config]
@@ -79,5 +80,6 @@
 <default syntax file>:1:0: warning: syntax configuration `code:yytarget_filter` is not defined (set it to <undefined> explicitly to silence the warning) [-Wundefined-syntax-config]
 <default syntax file>:1:0: warning: syntax configuration `code:vector_loop` is not defined (set it to <undefined> explicitly to silence the warning) [-Wundefined-syntax-config]
 <default syntax file>:1:0: warning: syntax configuration `code:keyword_table` is not defined (set it to <undefined> explicitly to silence the warning) [-Wundefined-syntax-config]
+<default syntax file>:1:0: warning: syntax configuration `code:keyword_table_archtime` is not defined (set it to <undefined> explicitly to silence the warning) [-Wundefined-syntax-config]
 <default syntax file>:1:0: warning: syntax configuration `code:keyword_lookup` is not defined (set it to <undefined> explicitly to silence the warning) [-Wundefined-syntax-config]
 re2c: error: code model is not supported for this backend

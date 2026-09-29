@@ -60,6 +60,7 @@ yy3:
 	if (limit <= cursor) {
 		fill(0)
 	}
+yy18:
 	for !((limit - cursor) < 33) {
 		yysimd0 := archsimd.LoadUint8x32(input[cursor:])
 		yysimd1 := yysimd0.GreaterEqual(archsimd.BroadcastUint8x32(9)).And(yysimd0.LessEqual(archsimd.BroadcastUint8x32(9)))
@@ -69,7 +70,7 @@ yy3:
 		}
 		cursor += 32
 	}
-yy18:
+yy19:
 	yych = input[cursor]
 	switch (yych) {
 	case '\t':
@@ -78,20 +79,22 @@ yy18:
 		cursor += 1
 		if (limit <= cursor) {
 			fill(0)
+			goto yy18
 		}
-		goto yy18
+		goto yy19
 	default:
 		goto yy4
 	}
 yy4:
 //line "codegen/go/004_simd.re":33
 	{ return 3 }
-//line "codegen/go/004_simd.go":90
+//line "codegen/go/004_simd.go":92
 yy5:
 	cursor += 1
 	if (limit <= cursor) {
 		fill(0)
 	}
+yy20:
 	for !((limit - cursor) < 33) {
 		yysimd0 := archsimd.LoadUint8x32(input[cursor:])
 		yysimd1 := yysimd0.GreaterEqual(archsimd.BroadcastUint8x32(48)).And(yysimd0.LessEqual(archsimd.BroadcastUint8x32(57)))
@@ -100,27 +103,29 @@ yy5:
 		}
 		cursor += 32
 	}
-yy19:
+yy21:
 	yych = input[cursor]
 	switch (yych) {
 	case '0','1','2','3','4','5','6','7','8','9':
 		cursor += 1
 		if (limit <= cursor) {
 			fill(0)
+			goto yy20
 		}
-		goto yy19
+		goto yy21
 	default:
 		goto yy6
 	}
 yy6:
 //line "codegen/go/004_simd.re":31
 	{ return 1 }
-//line "codegen/go/004_simd.go":119
+//line "codegen/go/004_simd.go":123
 yy7:
 	cursor += 1
 	if (limit <= cursor) {
 		fill(0)
 	}
+yy22:
 	for !((limit - cursor) < 33) {
 		yysimd0 := archsimd.LoadUint8x32(input[cursor:])
 		yysimd1 := yysimd0.GreaterEqual(archsimd.BroadcastUint8x32(48)).And(yysimd0.LessEqual(archsimd.BroadcastUint8x32(57)))
@@ -132,7 +137,7 @@ yy7:
 		}
 		cursor += 32
 	}
-yy20:
+yy23:
 	yych = input[cursor]
 	switch (yych) {
 	case '0','1','2','3','4','5','6','7','8','9':
@@ -145,15 +150,16 @@ yy20:
 		cursor += 1
 		if (limit <= cursor) {
 			fill(0)
+			goto yy22
 		}
-		goto yy20
+		goto yy23
 	default:
 		goto yy8
 	}
 yy8:
 //line "codegen/go/004_simd.re":32
 	{ return 2 }
-//line "codegen/go/004_simd.go":157
+//line "codegen/go/004_simd.go":163
 }
 //line "codegen/go/004_simd.re":36
 
@@ -161,7 +167,7 @@ yy8:
 
 func lexScalar() int {
 	
-//line "codegen/go/004_simd.go":165
+//line "codegen/go/004_simd.go":171
 {
 	var yych byte
 	if (limit <= cursor) {
@@ -190,12 +196,12 @@ yy10:
 	cursor += 1
 //line "codegen/go/004_simd.re":54
 	{ return 0 }
-//line "codegen/go/004_simd.go":194
+//line "codegen/go/004_simd.go":200
 yy11:
 	cursor += 1
 //line "codegen/go/004_simd.re":55
 	{ return -1 }
-//line "codegen/go/004_simd.go":199
+//line "codegen/go/004_simd.go":205
 yy12:
 	cursor += 1
 	if (limit <= cursor) {
@@ -213,7 +219,7 @@ yy12:
 yy13:
 //line "codegen/go/004_simd.re":53
 	{ return 3 }
-//line "codegen/go/004_simd.go":217
+//line "codegen/go/004_simd.go":223
 yy14:
 	cursor += 1
 	if (limit <= cursor) {
@@ -229,7 +235,7 @@ yy14:
 yy15:
 //line "codegen/go/004_simd.re":51
 	{ return 1 }
-//line "codegen/go/004_simd.go":233
+//line "codegen/go/004_simd.go":239
 yy16:
 	cursor += 1
 	if (limit <= cursor) {
@@ -251,7 +257,7 @@ yy16:
 yy17:
 //line "codegen/go/004_simd.re":52
 	{ return 2 }
-//line "codegen/go/004_simd.go":255
+//line "codegen/go/004_simd.go":261
 }
 //line "codegen/go/004_simd.re":56
 
