@@ -96,6 +96,8 @@ re2c:case-ranges = 1;
 re2c:unsafe = 1;
 re2c:monadic = 0;
 re2c:vectorize:loops = 0;
+re2c:keywords = 0;
+re2c:keywords:token = "";
 re2c:encoding:ebcdic = 0;
 re2c:encoding:utf32 = 0;
 re2c:encoding:ucs2 = 0;
@@ -431,3 +433,9 @@ code:yyskipn = topindent (.api.generic
     ? "YYSKIPN(" YYCURSOR ", " n ");"
     : YYCURSOR " += " n ";"
 ) nl;
+
+// keyword tables (see `re2c:keywords`) ----------------------------------------
+
+code:keyword_table = <undefined>;
+
+code:keyword_lookup = <undefined>;

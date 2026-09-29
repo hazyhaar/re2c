@@ -67,6 +67,7 @@ Adfa::Adfa(Tdfa&& dfa,
         , need_accept(false)
         , oldstyle_ctxmarker(false)
         , bitmap(nullptr)
+        , kwtable(nullptr)
         , entry_action(entry_action)
         , pre_rule_action(pre_rule_action)
         , post_rule_action(post_rule_action) {

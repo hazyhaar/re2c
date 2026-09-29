@@ -1,10 +1,12 @@
 #include <time.h>
+#include <iomanip>
 
 #include "config.h"
 #include "src/codegen/helpers.h"
 #include "src/codegen/output.h"
 #include "src/msg/msg.h"
 #include "src/options/opt.h"
+#include "src/regexp/keywords.h"
 #include "src/util/check.h"
 #include "src/util/file_utils.h"
 
@@ -1351,6 +1353,98 @@ class RenderArray : public RenderCallback {
     FORBID_COPY(RenderArray);
 };
 
+// Static tables and lookup function of a keyword table, see note [keyword tables].
+class RenderKeywordTable : public RenderCallback {
+    static constexpr size_t NCOLS = 16;
+
+    RenderContext& rctx;
+    const KeywordTable* table;
+    const size_t nrows;
+    size_t curr_row;
+    size_t last_row;
+    size_t curr_col;
+    size_t last_col;
+    size_t curr_entry;
+    size_t last_entry;
+
+    void render_hex(uint64_t x) {
+        rctx.os << "0x" << std::hex << std::setw(16) << std::setfill('0') << x
+            << std::dec << std::setfill(' ');
+    }
+
+  public:
+    RenderKeywordTable(RenderContext& rctx, const KeywordTable* table)
+            : rctx(rctx)
+            , table(table)
+            , nrows(table->slots.size() / NCOLS)
+            , curr_row(0)
+            , last_row(0)
+            , curr_col(0)
+            , last_col(0)
+            , curr_entry(0)
+            , last_entry(0) {
+        CHECK(nrows * NCOLS == table->slots.size());
+    }
+
+    void render_var(StxVarId var) override {
+        // Entry 0 is a sentinel that never matches (all real keywords have nonzero length).
+        const Keyword* k = curr_entry > 0 ? &table->keys[curr_entry - 1] : nullptr;
+        switch (var) {
+        case StxVarId::NAME: rctx.os << table->name; break;
+        case StxVarId::SIZE: rctx.os << table->slots.size(); break;
+        case StxVarId::SHIFTBITS: rctx.os << 64 - table->bits; break;
+        case StxVarId::MUL0: render_hex(table->mul0); break;
+        case StxVarId::MUL1: render_hex(table->mul1); break;
+        case StxVarId::ROW: break;
+        case StxVarId::ELEM: rctx.os << table->slots[curr_row * NCOLS + curr_col]; break;
+        case StxVarId::ENTRY: break;
+        case StxVarId::WORD0: render_hex(k ? k->word0 : 0); break;
+        case StxVarId::WORD1: render_hex(k ? k->word1 : 0); break;
+        case StxVarId::LENGTH: rctx.os << (k ? k->length : 0); break;
+        case StxVarId::VAL: rctx.os << curr_entry; break;
+        default: render_global_var(rctx, var); break;
+        }
+    }
+
+    size_t get_list_size(StxVarId var) const override {
+        switch (var) {
+            case StxVarId::ROW: return nrows;
+            case StxVarId::ELEM: return NCOLS;
+            case StxVarId::ENTRY: return table->keys.size() + 1;
+            default: UNREACHABLE(); return 0;
+        }
+    }
+
+    void start_list(StxVarId var, size_t lbound, size_t rbound) override {
+        switch (var) {
+        case StxVarId::ROW: curr_row = lbound; last_row = rbound; break;
+        case StxVarId::ELEM: curr_col = lbound; last_col = rbound; break;
+        case StxVarId::ENTRY: curr_entry = lbound; last_entry = rbound; break;
+        default: UNREACHABLE(); break;
+        }
+    }
+
+    bool next_in_list(StxVarId var) override {
+        switch (var) {
+            case StxVarId::ROW: return ++curr_row <= last_row;
+            case StxVarId::ELEM: return ++curr_col <= last_col;
+            case StxVarId::ENTRY: return ++curr_entry <= last_entry;
+            default: UNREACHABLE(); return false;
+        }
+    }
+
+    bool eval_cond(StxLOpt opt) override {
+        if (opt == StxLOpt::WIDE) {
+            // slot entries do not fit into 8 bits
+            return table->keys.size() >= 0xFF;
+        }
+        UNREACHABLE();
+        return false;
+    }
+
+    FORBID_COPY(RenderKeywordTable);
+};
+
 class RenderEnum : public RenderCallback {
     RenderContext& rctx;
     const CodeEnum* code;
@@ -1857,6 +1951,12 @@ static void render(RenderContext& rctx, const Code* code) {
         rctx.opts->render_code_vector_loop(rctx.os, callback);
         break;
     }
+    case CodeKind::KWTABLE: {
+        RenderKeywordTable callback(rctx, code->kwtable);
+        rctx.opts->render_code_keyword_table(rctx.os, callback);
+        break;
+    }
+    case CodeKind::KEYWORDS:
     case CodeKind::STAGS:
     case CodeKind::MTAGS:
     case CodeKind::SVARS:

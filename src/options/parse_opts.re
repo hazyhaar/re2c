@@ -85,6 +85,7 @@ opt_warn: /*!local:re2c
     "deprecated-eof-rule"    end { msg.warn.set(Warn::DEPRECATED_EOF_RULE,    option); goto opt; }
     "useless-escape"         end { msg.warn.set(Warn::USELESS_ESCAPE,         option); goto opt; }
     "sentinel-in-midrule"    end { msg.warn.set(Warn::SENTINEL_IN_MIDRULE,    option); goto opt; }
+    "keyword-table"          end { msg.warn.set(Warn::KEYWORD_TABLE,          option); goto opt; }
 */
 
 opt_short: /*!local:re2c

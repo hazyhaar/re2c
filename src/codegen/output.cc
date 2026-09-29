@@ -10,6 +10,7 @@
 #include "src/msg/msg.h"
 #include "src/msg/warn.h"
 #include "src/options/opt.h"
+#include "src/regexp/keywords.h"
 #include "src/skeleton/skeleton.h"
 #include "src/util/check.h"
 #include "src/util/string_utils.h"
@@ -30,6 +31,7 @@ OutputBlock::OutputBlock(InputBlock kind, const std::string& name, const loc_t& 
       mvars(),
       opts(nullptr),
       dfas(),
+      kwtables(),
       max_fill(1),
       max_nmatch(1),
       start_label(nullptr),
@@ -51,6 +53,7 @@ Output::Output(OutAllocator& alc, Msg& msg)
       tmpblocks(),
       label_counter(0),
       fill_label_counter(0),
+      kwtable_counter(0),
       state_goto(false),
       cond_enum_autogen(true),
       warn_condition_order(true),

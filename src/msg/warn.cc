@@ -101,6 +101,15 @@ void Warn::match_empty_string(const loc_t& loc, const std::string& cond) {
     }
 }
 
+void Warn::keyword_table(const loc_t& loc, const std::string& cond, const char* reason) {
+    if (mask[KEYWORD_TABLE] & WARNING) {
+        const bool e = mask[KEYWORD_TABLE] & ERROR;
+        error_accuml |= e;
+        msg.warning(names[KEYWORD_TABLE], loc, e, "keyword table %sis not used: %s",
+                incond(cond).c_str(), reason);
+    }
+}
+
 void Warn::nondeterministic_tags(
         const loc_t& loc, const std::string& cond, const char* tagname, size_t nver) {
     if (mask[NONDETERMINISTIC_TAGS] & WARNING) {

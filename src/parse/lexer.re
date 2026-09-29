@@ -209,6 +209,11 @@ loop:
         goto next;
     }
 
+    "/*!keywords:re2c" | "%{keywords" {
+        CHECK_RET(lex_special_block(out, CodeKind::KEYWORDS, 0));
+        goto next;
+    }
+
     "/*!conditions:re2c" | "/*!types:re2c" | "%{conditions" {
         out.cond_enum_autogen = false;
         out.warn_condition_order = false; // see note [condition order]

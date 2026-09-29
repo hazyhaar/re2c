@@ -4,7 +4,7 @@ supported_apis = ["simple", "generic", "record"];
 supported_api_styles = ["free-form", "functions"];
 supported_code_models = ["goto-label", "loop-switch", "recursive-functions"];
 supported_targets = ["code", "dot"];
-supported_features = ["nested-ifs", "bitmaps", "tags", "captures", "captvars", "vectorize-loops"];
+supported_features = ["nested-ifs", "bitmaps", "tags", "captures", "captvars", "vectorize-loops", "keywords"];
 
 
 // language-specific options ---------------------------------------------------
@@ -95,6 +95,8 @@ re2c:case-ranges = 0;
 re2c:unsafe = 0;
 re2c:monadic = 0;
 re2c:vectorize:loops = 0;
+re2c:keywords = 0;
+re2c:keywords:token = "";
 re2c:encoding:ebcdic = 0;
 re2c:encoding:utf32 = 0;
 re2c:encoding:ucs2 = 0;
@@ -449,3 +451,48 @@ code:yyskipn = topindent (.api.generic
     ? "YYSKIPN(" YYCURSOR ", " n ")"
     : YYCURSOR " += " n
 ) nl;
+
+// keyword tables (see `re2c:keywords`) ----------------------------------------
+
+code:keyword_table =
+    topindent "var " name "_slot = [" size "]" (.wide ? "uint16" : "uint8") "{" nl indent
+        [row: topindent [elem{0:-2}: elem ", "] [elem{-1}: elem ","] nl]
+    dedent topindent "}" nl
+    nl
+    topindent "var " name "_entry = [...]struct {" nl indent
+        topindent "w0, w1 uint64" nl
+        topindent "n, id  int32" nl
+    dedent topindent "}{" nl indent
+        [entry: topindent "{" word0 ", " word1 ", " length ", " val "}," nl]
+    dedent topindent "}" nl
+    nl
+    topindent "// " name " returns 1 + the index of the keyword equal to t, or 0 if t is not a keyword." nl
+    topindent "func " name "(t []byte) int {" nl indent
+        topindent "n := len(t)" nl
+        topindent "var w0, w1 uint64" nl
+        topindent "switch {" nl
+        topindent "case n > 16 || n == 0:" nl indent
+            topindent "return 0" nl
+        dedent topindent "case n > 8:" nl indent
+            topindent "a, b := t[:8], t[n-8:]" nl
+            topindent "_ = b[7]" nl
+            topindent "w0 = uint64(a[0]) | uint64(a[1])<<8 | uint64(a[2])<<16 | uint64(a[3])<<24 |" nl
+            indent topindent "uint64(a[4])<<32 | uint64(a[5])<<40 | uint64(a[6])<<48 | uint64(a[7])<<56" nl dedent
+            topindent "w1 = (uint64(b[0]) | uint64(b[1])<<8 | uint64(b[2])<<16 | uint64(b[3])<<24 |" nl
+            indent topindent "uint64(b[4])<<32 | uint64(b[5])<<40 | uint64(b[6])<<48 | uint64(b[7])<<56) >> (128 - 8*n)" nl dedent
+        dedent topindent "case n >= 4:" nl indent
+            topindent "a, b := t[:4], t[n-4:]" nl
+            topindent "_ = b[3]" nl
+            topindent "w0 = uint64(uint32(a[0])|uint32(a[1])<<8|uint32(a[2])<<16|uint32(a[3])<<24) |" nl
+            indent topindent "uint64(uint32(b[0])|uint32(b[1])<<8|uint32(b[2])<<16|uint32(b[3])<<24)<<(8*n-32)" nl dedent
+        dedent topindent "default:" nl indent
+            topindent "w0 = uint64(t[0]) | uint64(t[n>>1])<<(8*(n>>1)) | uint64(t[n-1])<<(8*(n-1))" nl
+        dedent topindent "}" nl
+        topindent "e := &" name "_entry[" name "_slot[(w0*" mul0 "+w1*" mul1 ")>>" shift "]]" nl
+        topindent "if int(e.n) == n && e.w0 == w0 && e.w1 == w1 {" nl indent
+            topindent "return int(e.id)" nl
+        dedent topindent "}" nl
+        topindent "return 0" nl
+    dedent topindent "}" nl;
+
+code:keyword_lookup = name "(" YYINPUT "[" token ":" YYCURSOR "])";

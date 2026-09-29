@@ -46,6 +46,12 @@
     Warn if a tag has ``n``-th degree of nondeterminism, where ``n`` is greater
     than 1.
 
+``-Wkeyword-table``
+    Warn if the ``re2c:keywords`` configuration is enabled, but no keyword
+    table can be used for a block or condition (no literal rule is subsumed by
+    a later rule, an unsupported encoding, or no perfect hash function found in
+    the bounded search). The generated lexer is then the plain DFA.
+
 ``-Wsentinel-in-midrule``
     Warn if the sentinel symbol occurs in the middle of a rule --- this may
     cause reads past the end of buffer, crashes or memory corruption in the

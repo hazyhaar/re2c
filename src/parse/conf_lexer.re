@@ -282,6 +282,8 @@ Ret Input::lex_conf(Opt& opts) {
     "flags:"? "monadic"                       { RET_CONF_BOOL(monadic); }
     "flags:"? "vectorize:loops"               { RET_CONF_FEAT(vectorize_loops, "vectorize-loops"); }
     "vectorize:linear" | "flags:"? "vectorize-linear" { RET_CONF_BOOL(vectorize_linear); }
+    "keywords"                                { RET_CONF_FEAT(keywords, "keywords"); }
+    "keywords:token"                          { RET_CONF_STR(keywords_token); }
 
     "encoding:ebcdic" | "flags:ecb"        | "flags:e" { RET_CONF_ENC(Enc::Type::EBCDIC); }
     "encoding:utf32"  | "flags:unicode"    | "flags:u" { RET_CONF_ENC(Enc::Type::UTF32); }
@@ -669,6 +671,8 @@ start:
     "code:yybm_match"             { RET_CODE(code_yybm_match); }
     "code:yytarget_filter"        { RET_CODE(code_yytarget_filter); }
     "code:vector_loop"            { RET_CODE(code_vector_loop); }
+    "code:keyword_table"          { RET_CODE(code_keyword_table); }
+    "code:keyword_lookup"         { RET_CODE(code_keyword_lookup); }
 
     "code:" [a-z0-9_]+ {
         RET_FAIL(error_at_tok("unknown code template: '%.*s'", int(cur - tok), tok));
@@ -685,6 +689,7 @@ start:
     "cond"         { RET_VAR(StxVarId::COND); }
     "date"         { RET_VAR(StxVarId::DATE); }
     "elem"         { RET_VAR(StxVarId::ELEM); }
+    "entry"        { RET_VAR(StxVarId::ENTRY); }
     "expr"         { RET_VAR(StxVarId::EXPR); }
     "fn"           { RET_VAR(StxVarId::FN); }
     "file"         { RET_VAR(StxVarId::FILE); }
@@ -695,8 +700,11 @@ start:
     "label"        { RET_VAR(StxVarId::LABEL); }
     "lessthan"     { RET_VAR(StxVarId::LESSTHAN_EXPR); }
     "lhs"          { RET_VAR(StxVarId::LHS); }
+    "length"       { RET_VAR(StxVarId::LENGTH); }
     "line"         { RET_VAR(StxVarId::LINE); }
     "mask"         { RET_VAR(StxVarId::MASK); }
+    "mul0"         { RET_VAR(StxVarId::MUL0); }
+    "mul1"         { RET_VAR(StxVarId::MUL1); }
     "n"            { RET_VAR(StxVarId::N); }
     "name"         { RET_VAR(StxVarId::NAME); }
     "neg"          { RET_VAR(StxVarId::NEG); }
@@ -708,16 +716,20 @@ start:
     "retval"       { RET_VAR(StxVarId::RETVAL); }
     "rhs"          { RET_VAR(StxVarId::RHS); }
     "row"          { RET_VAR(StxVarId::ROW); }
+    "shift"        { RET_VAR(StxVarId::SHIFTBITS); }
     "sigil"        { RET_VAR(StxVarId::SIGIL); }
     "size"         { RET_VAR(StxVarId::SIZE); }
     "state"        { RET_VAR(StxVarId::STATE); }
     "stmt"         { RET_VAR(StxVarId::STMT); }
     "tag"          { RET_VAR(StxVarId::TAG); }
     "throw"        { RET_VAR(StxVarId::THROW); }
+    "token"        { RET_VAR(StxVarId::TOKEN); }
     "type"         { RET_VAR(StxVarId::TYPE); }
     "val"          { RET_VAR(StxVarId::VAL); }
     "var"          { RET_VAR(StxVarId::VAR); }
     "version"      { RET_VAR(StxVarId::VER); }
+    "word0"        { RET_VAR(StxVarId::WORD0); }
+    "word1"        { RET_VAR(StxVarId::WORD1); }
     // local variables for API primitives
     "YYBACKUP"     { RET_VAR(StxVarId::BACKUP); }
     "YYBACKUPCTX"  { RET_VAR(StxVarId::BACKUPCTX); }
@@ -815,6 +827,7 @@ start:
     ".type"                { RET_LOPT(StxLOpt::TYPE); }
     ".many"                { RET_LOPT(StxLOpt::MANY); }
     ".nested"              { RET_LOPT(StxLOpt::NESTED); }
+    ".wide"                { RET_LOPT(StxLOpt::WIDE); }
 
     "." [a-z0-9_.]+ {
         RET_FAIL(error_at_tok("unknown conditional: '%.*s'", int(cur - tok), tok));

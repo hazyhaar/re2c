@@ -29,6 +29,7 @@ struct Skeleton;
     W(EMPTY_CHARACTER_CLASS, "empty-character-class", false) \
     W(MATCH_EMPTY_STRING, "match-empty-string", false) \
     W(NONDETERMINISTIC_TAGS, "nondeterministic-tags", false) \
+    W(KEYWORD_TABLE, "keyword-table", true) \
     /* end */
 
 class Warn {
@@ -71,6 +72,7 @@ class Warn {
     void condition_order(const loc_t& loc);
     void empty_class(const loc_t& loc);
     void match_empty_string(const loc_t& loc, const std::string& cond);
+    void keyword_table(const loc_t& loc, const std::string& cond, const char* reason);
     void nondeterministic_tags(
             const loc_t& loc, const std::string& cond, const char* tagname, size_t nver);
     void swapped_range(const loc_t& loc, uint32_t l, uint32_t u);
