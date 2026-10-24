@@ -206,8 +206,8 @@ yy3:
 yy4:
 	++in->cur;
 	if (in->lim <= in->cur) if (fill(in, 1) != 0) return ERR_FILL;
-	if (!((in->lim - in->cur) < 33) && (unsigned char)*(in->cur) > 8 && (unsigned char)(*(in->cur) - 10) > 31 - 10 && (unsigned char)*(in->cur) < 33) {
-		(void)sizeof(char[sizeof(*(in->cur)) == 1 ? 1 : -1]); /* code units must be one byte wide */
+	yych = *in->cur;
+	if (!((in->lim - in->cur) < 33) && (unsigned char)yych > 8 && (unsigned char)(yych - 10) > 31 - 10 && (unsigned char)yych < 33) {
 		volatile unsigned int yysimdz = 0;
 		const __m256i yysimdzero = _mm256_set1_epi8((char)yysimdz);
 		(void)yysimdzero;
@@ -230,8 +230,8 @@ yy4:
 		}
 		if (yysimdm != 0) in->cur += __builtin_ctz(yysimdm);
 		_mm256_zeroupper();
+		yych = *in->cur;
 	}
-	yych = *in->cur;
 	switch (yych) {
 		case '\t':
 		case ' ': goto yy4;
@@ -246,8 +246,8 @@ yy6:
 yy7:
 	++in->cur;
 	if (in->lim <= in->cur) if (fill(in, 1) != 0) return ERR_FILL;
-	if (!((in->lim - in->cur) < 33) && (unsigned char)*(in->cur) > 47 && (unsigned char)*(in->cur) < 58) {
-		(void)sizeof(char[sizeof(*(in->cur)) == 1 ? 1 : -1]); /* code units must be one byte wide */
+	yych = *in->cur;
+	if (!((in->lim - in->cur) < 33) && (unsigned char)yych > 47 && (unsigned char)yych < 58) {
 		volatile unsigned int yysimdz = 0;
 		const __m256i yysimdzero = _mm256_set1_epi8((char)yysimdz);
 		(void)yysimdzero;
@@ -267,8 +267,8 @@ yy7:
 		}
 		if (yysimdm != 0) in->cur += __builtin_ctz(yysimdm);
 		_mm256_zeroupper();
+		yych = *in->cur;
 	}
-	yych = *in->cur;
 	switch (yych) {
 		case '0':
 		case '1':
@@ -287,8 +287,8 @@ yy8:
 yy9:
 	++in->cur;
 	if (in->lim <= in->cur) if (fill(in, 1) != 0) return ERR_FILL;
-	if (!((in->lim - in->cur) < 33) && (unsigned char)*(in->cur) > 47 && (unsigned char)(*(in->cur) - 58) > 64 - 58 && (unsigned char)(*(in->cur) - 91) > 94 - 91 && (unsigned char)*(in->cur) != 96 && (unsigned char)*(in->cur) < 123) {
-		(void)sizeof(char[sizeof(*(in->cur)) == 1 ? 1 : -1]); /* code units must be one byte wide */
+	yych = *in->cur;
+	if (!((in->lim - in->cur) < 33) && (unsigned char)yych > 47 && (unsigned char)(yych - 58) > 64 - 58 && (unsigned char)(yych - 91) > 94 - 91 && (unsigned char)yych != 96 && (unsigned char)yych < 123) {
 		volatile unsigned int yysimdz = 0;
 		const __m256i yysimdzero = _mm256_set1_epi8((char)yysimdz);
 		(void)yysimdzero;
@@ -316,8 +316,8 @@ yy9:
 		}
 		if (yysimdm != 0) in->cur += __builtin_ctz(yysimdm);
 		_mm256_zeroupper();
+		yych = *in->cur;
 	}
-	yych = *in->cur;
 	switch (yych) {
 		case '0':
 		case '1':
@@ -389,8 +389,8 @@ yy10:
 yy11:
 	++in->cur;
 	if (in->lim <= in->cur) if (fill(in, 1) != 0) return ERR_FILL;
-	if (!((in->lim - in->cur) < 33) && (unsigned char)*(in->cur) != 0 && (unsigned char)*(in->cur) != 34 && (unsigned char)*(in->cur) != 92) {
-		(void)sizeof(char[sizeof(*(in->cur)) == 1 ? 1 : -1]); /* code units must be one byte wide */
+	yych = *in->cur;
+	if (!((in->lim - in->cur) < 33) && (unsigned char)yych != 0 && (unsigned char)yych != 34 && (unsigned char)yych != 92) {
 		volatile unsigned int yysimdz = 0;
 		const __m256i yysimdzero = _mm256_set1_epi8((char)yysimdz);
 		(void)yysimdzero;
@@ -410,8 +410,8 @@ yy11:
 		}
 		if (yysimdm != 0) in->cur += __builtin_ctz(yysimdm);
 		_mm256_zeroupper();
+		yych = *in->cur;
 	}
-	yych = *in->cur;
 yy12:
 	switch (yych) {
 		case 0x00: goto yy13;

@@ -61,7 +61,8 @@ yy3:
 	if (limit <= cursor) {
 		fill(0)
 	}
-	if !((limit - cursor) < 33) && uint8(input[cursor]) > 8 && uint8(input[cursor]) - 10 > 31 - 10 && uint8(input[cursor]) < 33 {
+	yych = input[cursor]
+	if !((limit - cursor) < 33) && uint8(yych) > 8 && uint8(yych) - 10 > 31 - 10 && uint8(yych) < 33 {
 		yyxl0 := archsimd.BroadcastUint8x32(0)
 		yyxs0 := archsimd.BroadcastUint8x32(8 - 0)
 		yyxl10 := archsimd.BroadcastUint8x32(10)
@@ -91,8 +92,8 @@ yy3:
 			}
 		}
 		archsimd.ClearAVXUpperBits()
+		yych = input[cursor]
 	}
-	yych = input[cursor]
 	switch (yych) {
 	case '\t':
 		fallthrough
@@ -104,13 +105,14 @@ yy3:
 yy4:
 //line "codegen/go/004_simd.re":34
 	{ return 3 }
-//line "codegen/go/004_simd.go":108
+//line "codegen/go/004_simd.go":109
 yy5:
 	cursor += 1
 	if (limit <= cursor) {
 		fill(0)
 	}
-	if !((limit - cursor) < 33) && uint8(input[cursor]) > 47 && uint8(input[cursor]) < 58 {
+	yych = input[cursor]
+	if !((limit - cursor) < 33) && uint8(yych) > 47 && uint8(yych) < 58 {
 		yyxl0 := archsimd.BroadcastUint8x32(0)
 		yyxs0 := archsimd.BroadcastUint8x32(47 - 0)
 		yyxl58 := archsimd.BroadcastUint8x32(58)
@@ -136,8 +138,8 @@ yy5:
 			}
 		}
 		archsimd.ClearAVXUpperBits()
+		yych = input[cursor]
 	}
-	yych = input[cursor]
 	switch (yych) {
 	case '0','1','2','3','4','5','6','7','8','9':
 		goto yy5
@@ -147,13 +149,14 @@ yy5:
 yy6:
 //line "codegen/go/004_simd.re":32
 	{ return 1 }
-//line "codegen/go/004_simd.go":151
+//line "codegen/go/004_simd.go":153
 yy7:
 	cursor += 1
 	if (limit <= cursor) {
 		fill(0)
 	}
-	if !((limit - cursor) < 33) && uint8(input[cursor]) > 47 && uint8(input[cursor]) - 58 > 64 - 58 && uint8(input[cursor]) - 91 > 94 - 91 && uint8(input[cursor]) != 96 && uint8(input[cursor]) < 123 {
+	yych = input[cursor]
+	if !((limit - cursor) < 33) && uint8(yych) > 47 && uint8(yych) - 58 > 64 - 58 && uint8(yych) - 91 > 94 - 91 && uint8(yych) != 96 && uint8(yych) < 123 {
 		yyxl0 := archsimd.BroadcastUint8x32(0)
 		yyxs0 := archsimd.BroadcastUint8x32(47 - 0)
 		yyxl58 := archsimd.BroadcastUint8x32(58)
@@ -189,8 +192,8 @@ yy7:
 			}
 		}
 		archsimd.ClearAVXUpperBits()
+		yych = input[cursor]
 	}
-	yych = input[cursor]
 	switch (yych) {
 	case '0','1','2','3','4','5','6','7','8','9':
 		fallthrough
@@ -206,7 +209,7 @@ yy7:
 yy8:
 //line "codegen/go/004_simd.re":33
 	{ return 2 }
-//line "codegen/go/004_simd.go":210
+//line "codegen/go/004_simd.go":213
 }
 //line "codegen/go/004_simd.re":37
 
@@ -214,7 +217,7 @@ yy8:
 
 func lexScalar() int {
 	
-//line "codegen/go/004_simd.go":218
+//line "codegen/go/004_simd.go":221
 {
 	var yych byte
 	if (limit <= cursor) {
@@ -243,12 +246,12 @@ yy10:
 	cursor += 1
 //line "codegen/go/004_simd.re":55
 	{ return 0 }
-//line "codegen/go/004_simd.go":247
+//line "codegen/go/004_simd.go":250
 yy11:
 	cursor += 1
 //line "codegen/go/004_simd.re":56
 	{ return -1 }
-//line "codegen/go/004_simd.go":252
+//line "codegen/go/004_simd.go":255
 yy12:
 	cursor += 1
 	if (limit <= cursor) {
@@ -266,7 +269,7 @@ yy12:
 yy13:
 //line "codegen/go/004_simd.re":54
 	{ return 3 }
-//line "codegen/go/004_simd.go":270
+//line "codegen/go/004_simd.go":273
 yy14:
 	cursor += 1
 	if (limit <= cursor) {
@@ -282,7 +285,7 @@ yy14:
 yy15:
 //line "codegen/go/004_simd.re":52
 	{ return 1 }
-//line "codegen/go/004_simd.go":286
+//line "codegen/go/004_simd.go":289
 yy16:
 	cursor += 1
 	if (limit <= cursor) {
@@ -304,7 +307,7 @@ yy16:
 yy17:
 //line "codegen/go/004_simd.re":53
 	{ return 2 }
-//line "codegen/go/004_simd.go":308
+//line "codegen/go/004_simd.go":311
 }
 //line "codegen/go/004_simd.re":57
 

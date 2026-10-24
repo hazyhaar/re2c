@@ -934,6 +934,7 @@ yy57:
 yy58:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
+	yych = *YYCURSOR;
 	if (!((YYLIMIT - YYCURSOR) < 33)) {
 		unsigned int yysimdz = 0;
 		__asm__ volatile ("" : "+r" (yysimdz));
@@ -950,8 +951,8 @@ yy58:
 			YYCURSOR += 32;
 		}
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case '\t':
 		case '\n':
@@ -985,6 +986,7 @@ yy62:
 yy63:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
+	yych = *YYCURSOR;
 	if (!((YYLIMIT - YYCURSOR) < 33)) {
 		unsigned int yysimdz = 0;
 		__asm__ volatile ("" : "+r" (yysimdz));
@@ -1003,8 +1005,8 @@ yy63:
 			YYCURSOR += 32;
 		}
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case '.':
 		case '0':
@@ -1077,6 +1079,7 @@ yy64:
 yy65:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
+	yych = *YYCURSOR;
 	if (!((YYLIMIT - YYCURSOR) < 33)) {
 		unsigned int yysimdz = 0;
 		__asm__ volatile ("" : "+r" (yysimdz));
@@ -1094,8 +1097,8 @@ yy65:
 			YYCURSOR += 32;
 		}
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case '0':
 		case '1':
@@ -1167,6 +1170,7 @@ yy66:
 yy67:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
+	yych = *YYCURSOR;
 	if (!((YYLIMIT - YYCURSOR) < 33)) {
 		unsigned int yysimdz = 0;
 		__asm__ volatile ("" : "+r" (yysimdz));
@@ -1184,8 +1188,8 @@ yy67:
 			YYCURSOR += 32;
 		}
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 yy68:
 	switch (yych) {
 		case 0x00:
@@ -1212,6 +1216,7 @@ yy71:
 yy72:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
+	yych = *YYCURSOR;
 	if (!((YYLIMIT - YYCURSOR) < 33)) {
 		unsigned int yysimdz = 0;
 		__asm__ volatile ("" : "+r" (yysimdz));
@@ -1229,8 +1234,8 @@ yy72:
 			YYCURSOR += 32;
 		}
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 yy73:
 	switch (yych) {
 		case 0x00:
@@ -1254,6 +1259,7 @@ yy75:
 yy76:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
+	yych = *YYCURSOR;
 	if (!((YYLIMIT - YYCURSOR) < 33)) {
 		unsigned int yysimdz = 0;
 		__asm__ volatile ("" : "+r" (yysimdz));
@@ -1269,8 +1275,8 @@ yy76:
 			YYCURSOR += 32;
 		}
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 0x00: goto yy69;
 		case '*': goto yy79;
@@ -1279,6 +1285,7 @@ yy76:
 yy77:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
+	yych = *YYCURSOR;
 	if (!((YYLIMIT - YYCURSOR) < 33)) {
 		unsigned int yysimdz = 0;
 		__asm__ volatile ("" : "+r" (yysimdz));
@@ -1294,8 +1301,8 @@ yy77:
 			YYCURSOR += 32;
 		}
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 0x00:
 		case '\n': goto yy78;
@@ -1306,6 +1313,7 @@ yy78:
 yy79:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
+	yych = *YYCURSOR;
 	if (!((YYLIMIT - YYCURSOR) < 33)) {
 		unsigned int yysimdz = 0;
 		__asm__ volatile ("" : "+r" (yysimdz));
@@ -1320,8 +1328,8 @@ yy79:
 			YYCURSOR += 32;
 		}
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 0x00: goto yy69;
 		case '*': goto yy79;
@@ -1796,6 +1804,7 @@ yy111:
 yy112:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
+	yych = *YYCURSOR;
 	if (!((YYLIMIT - YYCURSOR) < 33)) {
 		unsigned int yysimdz = 0;
 		__asm__ volatile ("" : "+r" (yysimdz));
@@ -1812,8 +1821,8 @@ yy112:
 			YYCURSOR += 32;
 		}
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case '\t':
 		case '\n':
@@ -1847,6 +1856,7 @@ yy116:
 yy117:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
+	yych = *YYCURSOR;
 	if (!((YYLIMIT - YYCURSOR) < 33)) {
 		unsigned int yysimdz = 0;
 		__asm__ volatile ("" : "+r" (yysimdz));
@@ -1865,8 +1875,8 @@ yy117:
 			YYCURSOR += 32;
 		}
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case '.':
 		case '0':
@@ -1939,6 +1949,7 @@ yy118:
 yy119:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
+	yych = *YYCURSOR;
 	if (!((YYLIMIT - YYCURSOR) < 33)) {
 		unsigned int yysimdz = 0;
 		__asm__ volatile ("" : "+r" (yysimdz));
@@ -1956,8 +1967,8 @@ yy119:
 			YYCURSOR += 32;
 		}
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case '0':
 		case '1':
@@ -2029,6 +2040,7 @@ yy120:
 yy121:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
+	yych = *YYCURSOR;
 	if (!((YYLIMIT - YYCURSOR) < 33)) {
 		unsigned int yysimdz = 0;
 		__asm__ volatile ("" : "+r" (yysimdz));
@@ -2046,8 +2058,8 @@ yy121:
 			YYCURSOR += 32;
 		}
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 yy122:
 	switch (yych) {
 		case 0x00:
@@ -2074,6 +2086,7 @@ yy125:
 yy126:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
+	yych = *YYCURSOR;
 	if (!((YYLIMIT - YYCURSOR) < 33)) {
 		unsigned int yysimdz = 0;
 		__asm__ volatile ("" : "+r" (yysimdz));
@@ -2091,8 +2104,8 @@ yy126:
 			YYCURSOR += 32;
 		}
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 yy127:
 	switch (yych) {
 		case 0x00:
@@ -2116,6 +2129,7 @@ yy129:
 yy130:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
+	yych = *YYCURSOR;
 	if (!((YYLIMIT - YYCURSOR) < 33)) {
 		unsigned int yysimdz = 0;
 		__asm__ volatile ("" : "+r" (yysimdz));
@@ -2131,8 +2145,8 @@ yy130:
 			YYCURSOR += 32;
 		}
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 0x00: goto yy123;
 		case '*': goto yy133;
@@ -2141,6 +2155,7 @@ yy130:
 yy131:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
+	yych = *YYCURSOR;
 	if (!((YYLIMIT - YYCURSOR) < 33)) {
 		unsigned int yysimdz = 0;
 		__asm__ volatile ("" : "+r" (yysimdz));
@@ -2156,8 +2171,8 @@ yy131:
 			YYCURSOR += 32;
 		}
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 0x00:
 		case '\n': goto yy132;
@@ -2168,6 +2183,7 @@ yy132:
 yy133:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
+	yych = *YYCURSOR;
 	if (!((YYLIMIT - YYCURSOR) < 33)) {
 		unsigned int yysimdz = 0;
 		__asm__ volatile ("" : "+r" (yysimdz));
@@ -2182,8 +2198,8 @@ yy133:
 			YYCURSOR += 32;
 		}
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 0x00: goto yy123;
 		case '*': goto yy133;

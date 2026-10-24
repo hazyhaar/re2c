@@ -56,6 +56,26 @@ int lex_all(Input *in) {
         [^]+ { return 0; }
     */
 }
+
+int lex_generic(Input *in) {
+    /*!re2c
+        re2c:api = generic;
+        re2c:api:style = free-form;
+        re2c:api:sigil = "@@";
+        re2c:YYCTYPE = "unsigned char";
+        re2c:YYCURSOR = in->cur;
+        re2c:YYPEEK = "*in->cur";
+        re2c:YYSKIP = "++in->cur;";
+        re2c:YYBACKUP = "in->mar = in->cur;";
+        re2c:YYRESTORE = "in->cur = in->mar;";
+        re2c:YYSHIFT = "in->cur += @@;";
+        re2c:YYLESSTHAN = "(size_t)(in->lim - in->cur) < (size_t)(@@)";
+        re2c:YYFILL = "if (fill(in, @@)) return -1;";
+        re2c:vectorize:loops = 1;
+        [a-zA-Z_][a-zA-Z0-9_]* { return 1; }
+        * { return 0; }
+    */
+}
 '''
 
 
@@ -94,6 +114,10 @@ def check_flow(assembly, name, go=False):
     table_targets = {labels[label] for line in assembly.splitlines()
                      if re.match(r'\s*\.(?:long|quad)\s', line)
                      for label in re.findall(r'\.L[\w.]+', line) if label in labels}
+    if go:
+        table_targets |= {labels[off] for off in re.findall(
+            r'\brel\s+\d+\+\d+\s+t=R_ADDR\s+' + re.escape(name) + r'\+(\d+)\b', assembly)
+            if off in labels}
     if not instructions:
         raise RuntimeError('empty function ' + name)
     pending = [(labels.get(name, 0), False)]
@@ -104,6 +128,8 @@ def check_flow(assembly, name, go=False):
             continue
         visited.add((index, dirty))
         instruction = instructions[index]
+        if instruction.startswith('notrack '):
+            instruction = instruction[len('notrack '):].lstrip()
         parts = instruction.split(None, 1)
         op = parts[0]
         target = parts[1] if len(parts) > 1 else ''
@@ -113,7 +139,7 @@ def check_flow(assembly, name, go=False):
             dirty = True
 
         jump = op.startswith('j')
-        indirect = jump and (target.startswith('*') or (go and re.fullmatch(r'[A-Z]+', target)))
+        indirect = jump and (target.startswith('*') or (go and (re.fullmatch(r'[A-Z]+', target) or target.startswith('('))))
         tail = jump and target not in labels and not indirect
         # These paths cannot return to user code; malformed-buffer panics are
         # outside the cleanup guarantee, as is the stack-growth restart path.
@@ -188,13 +214,20 @@ def replaces_vector_loop(path):
 
 
 def generate_go(command, source, generated, options):
-    subprocess.run(command + options + ['--lang', 'go', '--vectorize-loops', str(source),
+    header = source.open().readline()
+    extra = [flag for flag in ('--loop-switch', '--recursive-functions', '-f', '--storable-state', '--eager-skip')
+             if flag in header.split()]
+    subprocess.run(command + extra + options + ['--lang', 'go', '--vectorize-loops', str(source),
                    '-o', str(generated)], check=True)
 
 
 def compile_go(go, env, generated, binary):
+    gomod = generated.parent / 'go.mod'
+    if not gomod.exists():
+        gomod.write_text('module avxprobe\n\ngo 1.27\n')
+        (generated.parent / 'go.work').write_text('go 1.27\n\nuse .\n')
     result = subprocess.run([go, 'build', '-gcflags=-S', '-o', str(binary), str(generated)],
-                            env=env, text=True, capture_output=True)
+                            cwd=generated.parent, env=env, text=True, capture_output=True)
     binary.with_suffix('.s').write_text(result.stderr)
     result.check_returncode()
     return result.stderr
@@ -328,18 +361,28 @@ def main():
             for variant, syntax in [('default', args.syntax),
                                     ('fixed', root / 'benchmarks/c/src/re2c/vec_fixed.syntax')]:
                 options = [] if syntax is None else ['--syntax', syntax.name, '-I', str(syntax.resolve().parent)]
-                generated = directory / (variant + '.c')
-                subprocess.run(command + options + [str(source), '-o', str(generated)], check=True)
-                for number, compiler in enumerate(args.cc or ['gcc', 'clang']):
-                    for level in ['O0', 'O1', 'O2', 'Os']:
-                        output = directory / f'{variant}-compiler{number}-{level}.s'
-                        subprocess.run([compiler, '-' + level, '-mavx2',
-                                        '-S', str(generated), '-o', str(output)], check=True)
-                        assembly = output.read_text()
-                        for name in ['lex_tokens', 'lex_all']:
-                            failed |= report(assembly, name, f'{variant} {compiler} -{level}')
+                for model_tag, model_flags in [('', []), ('-loop-switch', ['--loop-switch']), ('-eager-skip', ['--eager-skip'])]:
+                    vname = variant + model_tag
+                    generated = directory / (vname + '.c')
+                    subprocess.run(command + model_flags + options + [str(source), '-o', str(generated)], check=True)
+                    gen_text = generated.read_text()
+                    parts = gen_text.split('_mm256_zeroupper();\n')
+                    if len(parts) < 2 or any(
+                        not tail.lstrip().startswith(('yych = *', 'yych = (', 'yych = YYPEEK'))
+                        for tail in parts[1:]
+                    ):
+                        raise RuntimeError('missing yych reload immediately after _mm256_zeroupper in ' + vname)
+                    for number, compiler in enumerate(args.cc or ['gcc', 'clang']):
+                        for level in ['O0', 'O1', 'O2', 'Os']:
+                            output = directory / f'{vname}-compiler{number}-{level}.s'
+                            subprocess.run([compiler, '-' + level, '-mavx2',
+                                            '-S', str(generated), '-o', str(output)], check=True)
+                            assembly = output.read_text()
+                            for name in ['lex_tokens', 'lex_all', 'lex_generic']:
+                                failed |= report(assembly, name, f'{vname} {compiler} -{level}')
         if args.language in ('all', 'go'):
-            env = dict(os.environ, GOEXPERIMENT='simd', GOARCH='amd64', GOOS='linux', GOWORK='off')
+            env = dict(os.environ, GOEXPERIMENT='simd', GOARCH='amd64', GOOS='linux')
+            env.pop('GOWORK', None)
             probes = sorted((root / 'test/codegen/go').glob('004_simd*.re'))
             if not probes:
                 raise RuntimeError('no Go vector probes')

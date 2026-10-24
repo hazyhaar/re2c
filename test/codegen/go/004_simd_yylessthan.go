@@ -59,7 +59,8 @@ yy3:
 	if (lessThan(1)) {
 		return -2
 	}
-	if !(lessThan(33)) && uint8(input[cursor]) > 96 && uint8(input[cursor]) < 123 {
+	yych = input[cursor]
+	if !(lessThan(33)) && uint8(yych) > 96 && uint8(yych) < 123 {
 		yyxl0 := archsimd.BroadcastUint8x32(0)
 		yyxs0 := archsimd.BroadcastUint8x32(96 - 0)
 		yyxl123 := archsimd.BroadcastUint8x32(123)
@@ -85,8 +86,8 @@ yy3:
 			}
 		}
 		archsimd.ClearAVXUpperBits()
+		yych = input[cursor]
 	}
-	yych = input[cursor]
 	switch (yych) {
 	case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
 		goto yy3
@@ -96,7 +97,7 @@ yy3:
 yy4:
 //line "codegen/go/004_simd_yylessthan.re":39
 	{ return 1 }
-//line "codegen/go/004_simd_yylessthan.go":100
+//line "codegen/go/004_simd_yylessthan.go":101
 }
 //line "codegen/go/004_simd_yylessthan.re":42
 
@@ -104,7 +105,7 @@ yy4:
 
 func lexScalar() int {
 	
-//line "codegen/go/004_simd_yylessthan.go":108
+//line "codegen/go/004_simd_yylessthan.go":109
 {
 	var yych byte
 	if (lessThan(1)) {
@@ -123,12 +124,12 @@ yy6:
 	cursor += 1
 //line "codegen/go/004_simd_yylessthan.re":57
 	{ return 0 }
-//line "codegen/go/004_simd_yylessthan.go":127
+//line "codegen/go/004_simd_yylessthan.go":128
 yy7:
 	cursor += 1
 //line "codegen/go/004_simd_yylessthan.re":58
 	{ return -1 }
-//line "codegen/go/004_simd_yylessthan.go":132
+//line "codegen/go/004_simd_yylessthan.go":133
 yy8:
 	cursor += 1
 	if (lessThan(1)) {
@@ -144,7 +145,7 @@ yy8:
 yy9:
 //line "codegen/go/004_simd_yylessthan.re":56
 	{ return 1 }
-//line "codegen/go/004_simd_yylessthan.go":148
+//line "codegen/go/004_simd_yylessthan.go":149
 }
 //line "codegen/go/004_simd_yylessthan.re":59
 

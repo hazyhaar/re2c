@@ -48,6 +48,7 @@ yy2:
 	if (limit <= cursor) {
 		return -2
 	}
+	yych = input[cursor]
 	if cursor + 33 <= limit {
 		// class: [1, 9] [11, 33] [35, 91] [93, 255]
 		yyxe0 := archsimd.BroadcastUint8x32(0)
@@ -71,8 +72,8 @@ yy2:
 			}
 		}
 		archsimd.ClearAVXUpperBits()
+		yych = input[cursor]
 	}
-	yych = input[cursor]
 	switch (yych) {
 	case 0x00:
 		fallthrough
@@ -88,7 +89,7 @@ yy2:
 yy3:
 //line "codegen/go/004_simd_xrange.re":28
 	{ return 1 }
-//line "codegen/go/004_simd_xrange.go":92
+//line "codegen/go/004_simd_xrange.go":93
 }
 //line "codegen/go/004_simd_xrange.re":30
 
@@ -97,7 +98,7 @@ yy3:
 // Identifier tail: the complement mixes ranges and a single code unit ('`').
 func lexIdent() int {
 	
-//line "codegen/go/004_simd_xrange.go":101
+//line "codegen/go/004_simd_xrange.go":102
 {
 	var yych byte
 	if (limit <= cursor) {
@@ -118,12 +119,13 @@ yy5:
 	cursor += 1
 //line "codegen/go/004_simd_xrange.re":45
 	{ return -1 }
-//line "codegen/go/004_simd_xrange.go":122
+//line "codegen/go/004_simd_xrange.go":123
 yy6:
 	cursor += 1
 	if (limit <= cursor) {
 		return -2
 	}
+	yych = input[cursor]
 	if cursor + 33 <= limit {
 		// class: [48, 57] [65, 90] [95, 95] [97, 122]
 		yyxl0 := archsimd.BroadcastUint8x32(0)
@@ -157,8 +159,8 @@ yy6:
 			}
 		}
 		archsimd.ClearAVXUpperBits()
+		yych = input[cursor]
 	}
-	yych = input[cursor]
 	switch (yych) {
 	case '0','1','2','3','4','5','6','7','8','9':
 		fallthrough
@@ -174,7 +176,7 @@ yy6:
 yy7:
 //line "codegen/go/004_simd_xrange.re":44
 	{ return 2 }
-//line "codegen/go/004_simd_xrange.go":178
+//line "codegen/go/004_simd_xrange.go":180
 }
 //line "codegen/go/004_simd_xrange.re":46
 
@@ -185,7 +187,7 @@ yy7:
 // leading "a" makes the lexer read the current code unit, so that `yych` is used.
 func lexAny() int {
 	
-//line "codegen/go/004_simd_xrange.go":189
+//line "codegen/go/004_simd_xrange.go":191
 {
 	var yych byte
 	if (limit <= cursor) {
@@ -202,12 +204,13 @@ yy9:
 	cursor += 1
 //line "codegen/go/004_simd_xrange.re":63
 	{ return -1 }
-//line "codegen/go/004_simd_xrange.go":206
+//line "codegen/go/004_simd_xrange.go":208
 yy10:
 	cursor += 1
 	if (limit <= cursor) {
 		return -2
 	}
+	yych = input[cursor]
 	if cursor + 33 <= limit {
 		// class: [0, 255]
 		for {
@@ -216,8 +219,8 @@ yy10:
 				break
 			}
 		}
+		yych = input[cursor]
 	}
-	yych = input[cursor]
 	goto yy10
 }
 //line "codegen/go/004_simd_xrange.re":64

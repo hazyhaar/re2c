@@ -39,7 +39,8 @@ yy2:
 	if (yylimit <= yycursor) {
 		return -2, yycursor
 	}
-	if !((yylimit - yycursor) < 33) && uint8(input[yycursor]) > 96 && uint8(input[yycursor]) < 123 {
+	yych = input[yycursor]
+	if !((yylimit - yycursor) < 33) && uint8(yych) > 96 && uint8(yych) < 123 {
 		yyxl0 := archsimd.BroadcastUint8x32(0)
 		yyxs0 := archsimd.BroadcastUint8x32(96 - 0)
 		yyxl123 := archsimd.BroadcastUint8x32(123)
@@ -65,8 +66,8 @@ yy2:
 			}
 		}
 		archsimd.ClearAVXUpperBits()
+		yych = input[yycursor]
 	}
-	yych = input[yycursor]
 	switch (yych) {
 	case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
 		goto yy2
@@ -76,7 +77,7 @@ yy2:
 yy3:
 //line "codegen/go/004_simd_string.re":23
 	{ return 1, yycursor }
-//line "codegen/go/004_simd_string.go":80
+//line "codegen/go/004_simd_string.go":81
 }
 //line "codegen/go/004_simd_string.re":25
 
@@ -86,7 +87,7 @@ func lexSimdUint(yyinput string, yycursor uint) (int, uint) {
 	input := unsafe.Slice(unsafe.StringData(yyinput), len(yyinput))
 	yylimit := uint(len(yyinput))
 	
-//line "codegen/go/004_simd_string.go":90
+//line "codegen/go/004_simd_string.go":91
 {
 	var yych byte
 	if (yylimit <= yycursor) {
@@ -103,13 +104,14 @@ yy5:
 	yycursor += 1
 //line "codegen/go/004_simd_string.re":39
 	{ return -1, yycursor }
-//line "codegen/go/004_simd_string.go":107
+//line "codegen/go/004_simd_string.go":108
 yy6:
 	yycursor += 1
 	if (yylimit <= yycursor) {
 		return -2, yycursor
 	}
-	if !((yylimit - yycursor) < 33) && uint8(input[yycursor]) > 96 && uint8(input[yycursor]) < 123 {
+	yych = input[yycursor]
+	if !((yylimit - yycursor) < 33) && uint8(yych) > 96 && uint8(yych) < 123 {
 		yyxl0 := archsimd.BroadcastUint8x32(0)
 		yyxs0 := archsimd.BroadcastUint8x32(96 - 0)
 		yyxl123 := archsimd.BroadcastUint8x32(123)
@@ -135,8 +137,8 @@ yy6:
 			}
 		}
 		archsimd.ClearAVXUpperBits()
+		yych = input[yycursor]
 	}
-	yych = input[yycursor]
 	switch (yych) {
 	case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
 		goto yy6
@@ -146,7 +148,7 @@ yy6:
 yy7:
 //line "codegen/go/004_simd_string.re":38
 	{ return 1, yycursor }
-//line "codegen/go/004_simd_string.go":150
+//line "codegen/go/004_simd_string.go":152
 }
 //line "codegen/go/004_simd_string.re":40
 
@@ -155,7 +157,7 @@ yy7:
 func lexScalar(yyinput string, yycursor int) (int, int) {
 	yylimit := len(yyinput)
 	
-//line "codegen/go/004_simd_string.go":159
+//line "codegen/go/004_simd_string.go":161
 {
 	var yych byte
 	if (yylimit <= yycursor) {
@@ -172,7 +174,7 @@ yy9:
 	yycursor += 1
 //line "codegen/go/004_simd_string.re":53
 	{ return -1, yycursor }
-//line "codegen/go/004_simd_string.go":176
+//line "codegen/go/004_simd_string.go":178
 yy10:
 	yycursor += 1
 	if (yylimit <= yycursor) {
@@ -188,7 +190,7 @@ yy10:
 yy11:
 //line "codegen/go/004_simd_string.re":52
 	{ return 1, yycursor }
-//line "codegen/go/004_simd_string.go":192
+//line "codegen/go/004_simd_string.go":194
 }
 //line "codegen/go/004_simd_string.re":54
 

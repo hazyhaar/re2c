@@ -1264,10 +1264,10 @@ static void emit_state(
         // All code from YYFILL up to transitions belongs to the ELSE branch of YYEND.
         CodeList* tail = code_list(alc);
         gen_fill_and_label(output, tail, dfa, s);
-        // Vectorized fast-forward runs after YYFILL (so that the input window is refilled) and
-        // before the scalar peek.
-        gen_vector_loop(output, s, tail);
         gen_peek(alc, s, tail);
+        // Vectorized fast-forward runs after YYFILL and YYPEEK: its scalar entry guard reuses
+        // `yych`, and the template reloads `yych` after advancing the cursor.
+        gen_vector_loop(output, s, tail);
         if (is_start && dfa.custom_start_label && opts->debug) {
             append(tail, code_debug(alc, dfa.custom_start_label->index));
         }

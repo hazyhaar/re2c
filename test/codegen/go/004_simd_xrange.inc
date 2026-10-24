@@ -28,5 +28,9 @@ code:vector_loop =
         dedent
     topindent "}" nl
     [xrange{0}: topindent "archsimd.ClearAVXUpperBits()" nl]
+    topindent yych " = " (.api.generic
+        ? YYPEEK (.api_style.functions ? "()")
+        : (.cast ? YYCTYPE "(") YYINPUT "[" YYCURSOR "]" (.cast ? ")")
+    ) nl
     dedent
     topindent "}" nl;

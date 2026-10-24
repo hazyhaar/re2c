@@ -159,15 +159,17 @@
     ``GOEXPERIMENT=simd`` and ``math/bits``, C with AVX2 intrinsics and
     ``__builtin_ctz``), and then falls back to the scalar dispatcher. The default
     templates require AVX2 at run time; generated lexers do not check CPU support.
-    Vectorization requires the goto/label code model, the simple or record API,
-    enabled ``YYFILL`` and bounds checks, single-byte code units, no end-of-input
-    rule, and no ``--eager-skip`` or storable state; any other combination is an
-    error, as is a backend that does not support the feature. Eligible loops have
-    up to 8 disjoint character ranges, do not record backtracking positions and
-    carry no tags on the loop state and its body. Ineligible states retain scalar
-    code without a diagnostic. The vector block pays off only for runs longer
-    than a break-even length (near 9 code units with the default C template on
-    x86-64), so enable it for blocks whose hot loops are long. Off by default.
+    Vectorization works with all code models (``--goto-label``, ``--loop-switch``
+    and ``--recursive-functions``), all APIs (``simple``, ``record`` and
+    ``generic``), ``--eager-skip`` and ``--storable-state``, and requires enabled
+    ``YYFILL`` and bounds checks, single-byte code units, no end-of-input rule
+    and no ``--skeleton``; any unsupported combination is an error, as is a
+    backend that does not support the feature. Eligible loops have up to 8
+    disjoint character ranges, do not record backtracking positions and carry no
+    tags on the loop state and its body. Ineligible states retain scalar code
+    without a diagnostic. The vector block pays off only for runs longer than a
+    break-even length (near 9 code units with the default C template on x86-64),
+    so enable it for blocks whose hot loops are long. Off by default.
 
 ``--no-debug-info -i``
     Do not output line directives. This may be useful when the generated code is

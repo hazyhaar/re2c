@@ -1381,15 +1381,17 @@ the class using declarative syntax templates (Go 1.27 \fBsimd/archsimd\fP with
 \fBGOEXPERIMENT=simd\fP and \fBmath/bits\fP, C with AVX2 intrinsics and
 \fB__builtin_ctz\fP), and then falls back to the scalar dispatcher. The default
 templates require AVX2 at run time; generated lexers do not check CPU support.
-Vectorization requires the goto/label code model, the simple or record API,
-enabled \fBYYFILL\fP and bounds checks, single\-byte code units, no end\-of\-input
-rule, and no \fB\-\-eager\-skip\fP or storable state; any other combination is an
-error, as is a backend that does not support the feature. Eligible loops have
-up to 8 disjoint character ranges, do not record backtracking positions and
-carry no tags on the loop state and its body. Ineligible states retain scalar
-code without a diagnostic. The vector block pays off only for runs longer
-than a break\-even length (near 9 code units with the default C template on
-x86\-64), so enable it for blocks whose hot loops are long. Off by default.
+Vectorization works with all code models (\fB\-\-goto\-label\fP, \fB\-\-loop\-switch\fP
+and \fB\-\-recursive\-functions\fP), all APIs (\fBsimple\fP, \fBrecord\fP and
+\fBgeneric\fP), \fB\-\-eager\-skip\fP and \fB\-\-storable\-state\fP, and requires enabled
+\fBYYFILL\fP and bounds checks, single\-byte code units, no end\-of\-input rule
+and no \fB\-\-skeleton\fP; any unsupported combination is an error, as is a
+backend that does not support the feature. Eligible loops have up to 8
+disjoint character ranges, do not record backtracking positions and carry no
+tags on the loop state and its body. Ineligible states retain scalar code
+without a diagnostic. The vector block pays off only for runs longer than a
+break\-even length (near 9 code units with the default C template on x86\-64),
+so enable it for blocks whose hot loops are long. Off by default.
 .TP
 .B \fB\-\-no\-debug\-info \-i\fP
 Do not output line directives. This may be useful when the generated code is
@@ -2006,8 +2008,10 @@ Supported variables: \fBsize\fP (vector width in code units, currently 32),
 \fBneed\fP (\fBsize\fP plus the following scalar dispatcher\(aqs lookahead,
 at least one extra code unit), \fBlessthan\fP (the expression rendered by
 \fBcode:yylessthan\fP for \fBneed\fP, true if insufficient input remains),
-and \fBYYINPUT\fP, \fBYYCURSOR\fP, \fBYYLIMIT\fP (the
-corresponding API expressions).
+and \fBYYINPUT\fP, \fBYYCURSOR\fP, \fBYYLIMIT\fP, \fBYYCTYPE\fP, \fBYYPEEK\fP,
+\fBYYSHIFT\fP, \fByyrecord\fP, \fByych\fP (the corresponding API expressions;
+for \fBYYSHIFT\fP in free\-form generic API, the sigil is replaced with
+\fBsize\fP outside \fBxrange\fP and with \fByyn\fP inside \fBxrange\fP).
 .sp
 The list \fBrange\fP expands over inclusive ranges inside the class, with
 element variables \fBrange_lo\fP and \fBrange_hi\fP\&. The list \fBxrange\fP
@@ -2017,7 +2021,8 @@ variables is valid only inside its corresponding list. An empty
 complement produces no \fBxrange\fP iterations, including bounded list
 expressions such as \fB[xrange{0}: ...]\fP\&.
 .sp
-Conditionals: \fB\&.many\fP is true if the class contains more than one
+Conditionals: \fB\&.cast\fP is true if \fBre2c:yych:conversion\fP is set to
+non\-zero. \fB\&.many\fP is true if the class contains more than one
 \fBrange\fP element. It is a property of the whole class, valid throughout
 the template, and does not depend on the current list element.
 \fB\&.range.many\fP and \fB\&.xrange.many\fP are true if the current inclusive
@@ -4403,27 +4408,31 @@ blocks of 32 bytes simultaneously using parallel range checks and bitmask extrac
 When enabled with \fB\-\-vectorize\-loops\fP or \fBre2c:vectorize:loops = 1;\fP:
 .INDENT 0.0
 .IP \(bu 2
-Vectorization requires the goto/label code model, the simple or record API,
-single\-byte code units, \fBYYFILL\fP with bounds checking, and no \fB\-\-eager\-skip\fP,
-storable state or end\-of\-input rule (\fBre2c:eof\fP). Any other combination is a
-configuration error, not a silent fallback. With \fB\-\-skeleton\fP and
-\fB\-\-emit\-dot\fP the option is reset, as storable state is for these targets.
+Vectorization supports all code models (\fB\-\-goto\-label\fP, \fB\-\-loop\-switch\fP and
+\fB\-\-recursive\-functions\fP), all APIs (\fBsimple\fP, \fBrecord\fP and \fBgeneric\fP),
+\fB\-\-eager\-skip\fP and \fB\-\-storable\-state\fP (\fB\-f\fP). It requires single\-byte code
+units (as elsewhere in re2swift for single\-byte encodings, \fBYYCTYPE\fP must be a
+1\-byte code unit type because the vector block loads and counts bytes),
+\fBYYFILL\fP with bounds checking, and no end\-of\-input rule (\fBre2c:eof\fP)
+or \fB\-\-skeleton\fP\&. Any unsupported combination is a configuration error, not a
+silent fallback. With \fB\-\-emit\-dot\fP the option is reset.
 .IP \(bu 2
 The compiler selects base states with a nonzero refill requirement and a
 reflexive character class of at most 8 disjoint ranges. The loop must not record
-backtracking positions, perform tag actions or have hoisted cursor increments
-or end\-of\-input transitions, and neither the loop state nor its body may carry
-final, fallback or end\-of\-input tags. Tags elsewhere in the DFA do not block
-the loop: they are set and read by scalar code at positions the loop never
-skips.
+backtracking positions, perform tag actions or have end\-of\-input transitions,
+the loop entry state must not have a hoisted cursor increment, and neither the
+loop state nor its body may carry final, fallback or end\-of\-input tags. Tags
+elsewhere in the DFA do not block the loop: they are set and read by scalar code
+at positions the loop never skips.
 .IP \(bu 2
 Both \fBre2c:yyfill:enable\fP and \fBre2c:yyfill:check\fP must be enabled to ensure
 the vector loop stops before the end\-of\-buffer boundary. It reserves enough
 lookahead for the scalar dispatcher and does not increase \fBYYMAXFILL\fP\&.
 .IP \(bu 2
-The generic API is not supported, because the vector loop reads input directly
-through \fBYYCURSOR\fP rather than via \fBYYPEEK\fP and \fBYYSKIP\fP; use the simple or
-record API.
+With the generic API, the default templates still load 32\-byte blocks from
+\fBYYCURSOR\fP (or \fBYYINPUT[YYCURSOR:]\fP in Go), which therefore must remain a
+contiguous byte pointer or slice index, while cursor advancement and reloading
+\fByych\fP use \fBYYSHIFT\fP and \fBYYPEEK\fP\&.
 .IP \(bu 2
 States that do not meet these per\-state requirements retain scalar code
 without a diagnostic. Enabling the option for a backend without the
@@ -4454,15 +4463,17 @@ does not detect CPU capabilities or select a scalar implementation on CPUs
 without AVX2; applications that need this must check support before calling
 the vectorized lexer. Go requires \fBGOEXPERIMENT=simd\fP when building.
 .IP \(bu 2
-The default C and Go templates enter the vector block only if the current code unit is in the
-class (a scalar test against the complement, placed after the length guard). Runs that end right
-away, such as one\-character identifiers or empty string literals, are thus left to the scalar
-dispatcher and do not pay for the vector block. The test only selects the path: the vector
-block itself finds the exact exit position, so the result does not depend on it. Each range of
-the complement is tested in its simplest form (\fB> hi\fP for a range starting at code unit 0,
-\fB< lo\fP for a range ending at the largest code unit, \fB!=\fP for a single code unit, an unsigned
-wrap\-around check otherwise). Neither form guarantees a speedup for short runs or near the end
-of the buffer; see the next section.
+The default C and Go templates enter the vector block only if \fByych\fP (loaded before the
+vector loop) is in the class, using a scalar test against the complement placed after the
+length guard, and reload \fByych\fP at the end of the vector block after clearing the upper
+AVX register bits. Runs that end right away, such as one\-character identifiers or empty
+string literals, are thus left to the scalar dispatcher and do not pay for the vector block.
+The test only selects the path: the vector block itself finds the exact exit position, so
+the result does not depend on it. Each range of the complement is tested in its simplest
+form (\fB> hi\fP for a range starting at code unit 0, \fB< lo\fP for a range ending at the
+largest code unit, \fB!=\fP for a single code unit, an unsigned wrap\-around check otherwise).
+Neither form guarantees a speedup for short runs or near the end of the buffer; see the
+next section.
 .IP \(bu 2
 The default C template explicitly calls \fB_mm256_zeroupper()\fP after the vector
 loop, and the Go template calls \fBarchsimd.ClearAVXUpperBits()\fP\&. These clear
@@ -4479,9 +4490,9 @@ or a custom guard violate this contract, a panic may bypass
 \fBClearAVXUpperBits\fP; AVX cleanup during panic unwinding is not guaranteed.
 .IP \(bu 2
 Both default templates write the length guard with \fBlessthan\fP, which is rendered from
-\fBcode:yylessthan\fP for the simple or record API, so a custom syntax definition
-of the length check applies to the vector loop as well as to the scalar states.
-This does not enable vectorization with the generic API.
+\fBcode:yylessthan\fP for all APIs (including \fBYYLESSTHAN\fP with the generic API), so a
+custom syntax definition of the length check applies to the vector loop as well as to the
+scalar states.
 .UNINDENT
 .sp
 The \fBcode:vector_loop\fP template interface is documented in the syntax files

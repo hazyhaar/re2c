@@ -29,5 +29,9 @@ code:vector_loop =
         dedent
     topindent "}" nl
     topindent "_mm256_zeroupper();" nl
+    topindent yych " = " (.api.generic
+        ? YYPEEK (.api_style.functions ? "()")
+        : (.cast ? "(" YYCTYPE ")") "*" YYCURSOR
+    ) ";" nl
     dedent
     topindent "}" nl;

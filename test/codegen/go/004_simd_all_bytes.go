@@ -48,6 +48,7 @@ yy2:
 	if (limit <= cursor) {
 		return 1
 	}
+	yych = input[cursor]
 	if !((limit - cursor) < 33) {
 		for {
 			cursor += 32
@@ -56,8 +57,8 @@ yy2:
 			}
 		}
 		archsimd.ClearAVXUpperBits()
+		yych = input[cursor]
 	}
-	yych = input[cursor]
 	goto yy2
 }
 //line "codegen/go/004_simd_all_bytes.re":37
@@ -66,7 +67,7 @@ yy2:
 
 func lexScalar() int {
 	
-//line "codegen/go/004_simd_all_bytes.go":70
+//line "codegen/go/004_simd_all_bytes.go":71
 {
 	var yych byte
 	if (limit <= cursor) {
@@ -83,7 +84,7 @@ yy4:
 	cursor += 1
 //line "codegen/go/004_simd_all_bytes.re":52
 	{ return -1 }
-//line "codegen/go/004_simd_all_bytes.go":87
+//line "codegen/go/004_simd_all_bytes.go":88
 yy5:
 	cursor += 1
 	if (limit <= cursor) {

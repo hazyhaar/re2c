@@ -334,16 +334,12 @@ static State* simd_reflexive_body(State* s) {
 // save- and tag-free: the rule action runs on the transition that leaves the class, which the
 // scalar dispatcher still processes. Tags are checked on the loop state and its body only: tags
 // elsewhere in the DFA are set and read by scalar code at positions the loop never skips.
-// Option combinations that the loop does not support (code model, generic API, eager skip,
-// storable state, YYFILL and bounds checking, EOF rule, code unit size) are rejected as errors
-// when options are fixed (see `opt.cc`), so they are only asserted here.
+// Option combinations that the loop does not support (skeleton target, YYFILL and bounds
+// checking, EOF rule, code unit size) are rejected as errors when options are fixed (see `opt.cc`),
+// so they are only asserted here.
 static bool simd_is_eligible(State* s, const opt_t* opts, State** pbody) {
     if (!opts->vectorize_loops) return false;
     DCHECK(opts->target == Target::CODE);
-    DCHECK(opts->code_model == CodeModel::GOTO_LABEL);
-    // The generic API is reported as an error by `calc_stats`, which runs after `prepare`.
-    if (opts->api == Api::GENERIC) return false;
-    DCHECK(!opts->eager_skip && !opts->storable_state);
     DCHECK(opts->fill_enable && opts->fill_check && opts->fill_eof == NOEOF);
     DCHECK(opts->encoding.cunit_size() == 1);
     if (!s->is_base || s->fill == 0) return false;
@@ -356,7 +352,7 @@ static bool simd_is_eligible(State* s, const opt_t* opts, State** pbody) {
     if (s->rule_tags != TCID0 || body->rule_tags != TCID0) return false;
     if (s->fall_tags != TCID0 || body->fall_tags != TCID0) return false;
     if (s->eof_tags != TCID0 || body->eof_tags != TCID0) return false;
-    if (s->go.skip || body->go.skip) return false;
+    DCHECK(!s->go.skip);
     if (s->eof_state != nullptr || body->eof_state != nullptr) return false;
 
     uint32_t nclass = 0;
@@ -529,24 +525,19 @@ void Adfa::prepare(const opt_t* opts) {
     // find ``base'' state, if possible
     find_base_state(opts);
 
-    // find base states that can start with a SIMD fast-forward loop over their reflexive class
-    find_simd_states(head, opts);
-
     // see note [tag hoisting, skip hoisting and tunneling]
     if (opts->eager_skip) {
         hoist_tags_and_skip(opts);
+    }
+
+    // find base states that can start with a SIMD fast-forward loop over their reflexive class
+    if (opts->vectorize_loops) {
+        find_simd_states(head, opts);
     }
 }
 
 Ret Adfa::calc_stats(OutputBlock& out) {
     const opt_t* opts = out.opts;
-
-    // The vector loop reads input through the cursor and cannot use the generic API. This is
-    // checked here rather than with the other option combinations in `opt.cc`, because the
-    // backend default API may be generic (Go) while the block overrides it.
-    if (opts->vectorize_loops && opts->api == Api::GENERIC) {
-        RET_FAIL(error("`vectorize:loops` is not supported with the generic API"));
-    }
 
     // calculate `YYMAXFILL`
     max_fill = 0;

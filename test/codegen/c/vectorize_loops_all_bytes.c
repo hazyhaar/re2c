@@ -30,15 +30,15 @@ yy1:
 yy2:
 	++cur;
 	if (lim <= cur) { ret = 1; goto done; }
+	yych = *cur;
 	if (!((lim - cur) < 33)) {
-		(void)sizeof(char[sizeof(*(cur)) == 1 ? 1 : -1]); /* code units must be one byte wide */
 		for (;;) {
 			cur += 32;
 			if ((lim - cur) < 33) break;
 		}
 		_mm256_zeroupper();
+		yych = *cur;
 	}
-	yych = *cur;
 	goto yy2;
 }
 

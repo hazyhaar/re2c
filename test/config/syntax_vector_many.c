@@ -41,6 +41,7 @@ yy1:
 yy2:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) YYFILL(1);
+	yych = *YYCURSOR;
 	one range
 	97-122 interval (one)
 	0-96 interval in interval
@@ -49,7 +50,6 @@ yy2:
 	0-96 interval (one)
 	123-255 interval (one)
 	one range again
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'a':
 		case 'b':
@@ -101,6 +101,7 @@ yy5:
 yy6:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) YYFILL(1);
+	yych = *YYCURSOR;
 	many ranges
 	97-97 singleton (many)
 	0-96 interval in singleton
@@ -116,7 +117,6 @@ yy6:
 	98-98 singleton (many)
 	102-255 interval (many)
 	many ranges again
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 'a':
 		case 'c':
@@ -136,11 +136,11 @@ yy9:
 	++YYCURSOR;
 yy8:
 	if (YYLIMIT <= YYCURSOR) YYFILL(1);
+	yych = *YYCURSOR;
 	one range
 	0-255 interval (one)
 	interval again
 	one range again
-	yych = *YYCURSOR;
 	goto yy9;
 }
 

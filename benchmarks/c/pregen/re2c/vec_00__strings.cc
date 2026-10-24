@@ -935,9 +935,11 @@ yy57:
 yy58:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
-	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)(*(YYCURSOR) - 0) > 8 - 0 && (unsigned char)(*(YYCURSOR) - 11) > 12 - 11 && (unsigned char)(*(YYCURSOR) - 14) > 31 - 14 && (unsigned char)(*(YYCURSOR) - 33) > 255 - 33) {
-		unsigned int yysimdz = 0;
-		__asm__ volatile ("" : "+r" (yysimdz));
+	yych = *YYCURSOR;
+	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)yych > 8 && (unsigned char)(yych - 11) > 12 - 11 && (unsigned char)(yych - 14) > 31 - 14 && (unsigned char)yych < 33) {
+		volatile unsigned int yysimdz = 0;
+		const __m256i yysimdzero = _mm256_set1_epi8((char)yysimdz);
+		(void)yysimdzero;
 		const __m256i yyxl0 = _mm256_set1_epi8((char)(yysimdz + 0));
 		const __m256i yyxs0 = _mm256_set1_epi8((char)(yysimdz + 8 - 0));
 		const __m256i yyxl11 = _mm256_set1_epi8((char)(yysimdz + 11));
@@ -949,10 +951,10 @@ yy58:
 		unsigned int yysimdm = 0;
 		for (;;) {
 			const __m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-			__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl0), yyxs0), _mm256_setzero_si256());
-			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl11), yyxs11), _mm256_setzero_si256()));
-			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl14), yyxs14), _mm256_setzero_si256()));
-			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl33), yyxs33), _mm256_setzero_si256()));
+			__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl0), yyxs0), yysimdzero);
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl11), yyxs11), yysimdzero));
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl14), yyxs14), yysimdzero));
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl33), yyxs33), yysimdzero));
 			yysimdm = (unsigned int)_mm256_movemask_epi8(yysimd1);
 			if (yysimdm != 0) break;
 			YYCURSOR += 32;
@@ -960,8 +962,8 @@ yy58:
 		}
 		if (yysimdm != 0) YYCURSOR += __builtin_ctz(yysimdm);
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case '\t':
 		case '\n':
@@ -995,9 +997,11 @@ yy62:
 yy63:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
-	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)(*(YYCURSOR) - 0) > 45 - 0 && (unsigned char)*(YYCURSOR) != 47 && (unsigned char)(*(YYCURSOR) - 58) > 64 - 58 && (unsigned char)(*(YYCURSOR) - 91) > 94 - 91 && (unsigned char)*(YYCURSOR) != 96 && (unsigned char)(*(YYCURSOR) - 123) > 255 - 123) {
-		unsigned int yysimdz = 0;
-		__asm__ volatile ("" : "+r" (yysimdz));
+	yych = *YYCURSOR;
+	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)yych > 45 && (unsigned char)yych != 47 && (unsigned char)(yych - 58) > 64 - 58 && (unsigned char)(yych - 91) > 94 - 91 && (unsigned char)yych != 96 && (unsigned char)yych < 123) {
+		volatile unsigned int yysimdz = 0;
+		const __m256i yysimdzero = _mm256_set1_epi8((char)yysimdz);
+		(void)yysimdzero;
 		const __m256i yyxl0 = _mm256_set1_epi8((char)(yysimdz + 0));
 		const __m256i yyxs0 = _mm256_set1_epi8((char)(yysimdz + 45 - 0));
 		const __m256i yyxe47 = _mm256_set1_epi8((char)(yysimdz + 47));
@@ -1011,12 +1015,12 @@ yy63:
 		unsigned int yysimdm = 0;
 		for (;;) {
 			const __m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-			__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl0), yyxs0), _mm256_setzero_si256());
+			__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl0), yyxs0), yysimdzero);
 			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yyxe47));
-			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl58), yyxs58), _mm256_setzero_si256()));
-			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl91), yyxs91), _mm256_setzero_si256()));
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl58), yyxs58), yysimdzero));
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl91), yyxs91), yysimdzero));
 			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yyxe96));
-			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl123), yyxs123), _mm256_setzero_si256()));
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl123), yyxs123), yysimdzero));
 			yysimdm = (unsigned int)_mm256_movemask_epi8(yysimd1);
 			if (yysimdm != 0) break;
 			YYCURSOR += 32;
@@ -1024,8 +1028,8 @@ yy63:
 		}
 		if (yysimdm != 0) YYCURSOR += __builtin_ctz(yysimdm);
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case '.':
 		case '0':
@@ -1098,9 +1102,11 @@ yy64:
 yy65:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
-	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)(*(YYCURSOR) - 0) > 47 - 0 && (unsigned char)(*(YYCURSOR) - 58) > 64 - 58 && (unsigned char)(*(YYCURSOR) - 91) > 94 - 91 && (unsigned char)*(YYCURSOR) != 96 && (unsigned char)(*(YYCURSOR) - 123) > 255 - 123) {
-		unsigned int yysimdz = 0;
-		__asm__ volatile ("" : "+r" (yysimdz));
+	yych = *YYCURSOR;
+	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)yych > 47 && (unsigned char)(yych - 58) > 64 - 58 && (unsigned char)(yych - 91) > 94 - 91 && (unsigned char)yych != 96 && (unsigned char)yych < 123) {
+		volatile unsigned int yysimdz = 0;
+		const __m256i yysimdzero = _mm256_set1_epi8((char)yysimdz);
+		(void)yysimdzero;
 		const __m256i yyxl0 = _mm256_set1_epi8((char)(yysimdz + 0));
 		const __m256i yyxs0 = _mm256_set1_epi8((char)(yysimdz + 47 - 0));
 		const __m256i yyxl58 = _mm256_set1_epi8((char)(yysimdz + 58));
@@ -1113,11 +1119,11 @@ yy65:
 		unsigned int yysimdm = 0;
 		for (;;) {
 			const __m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-			__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl0), yyxs0), _mm256_setzero_si256());
-			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl58), yyxs58), _mm256_setzero_si256()));
-			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl91), yyxs91), _mm256_setzero_si256()));
+			__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl0), yyxs0), yysimdzero);
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl58), yyxs58), yysimdzero));
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl91), yyxs91), yysimdzero));
 			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yyxe96));
-			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl123), yyxs123), _mm256_setzero_si256()));
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl123), yyxs123), yysimdzero));
 			yysimdm = (unsigned int)_mm256_movemask_epi8(yysimd1);
 			if (yysimdm != 0) break;
 			YYCURSOR += 32;
@@ -1125,8 +1131,8 @@ yy65:
 		}
 		if (yysimdm != 0) YYCURSOR += __builtin_ctz(yysimdm);
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case '0':
 		case '1':
@@ -1198,9 +1204,11 @@ yy66:
 yy67:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
-	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)*(YYCURSOR) != 0 && (unsigned char)*(YYCURSOR) != 10 && (unsigned char)*(YYCURSOR) != 34 && (unsigned char)*(YYCURSOR) != 92) {
-		unsigned int yysimdz = 0;
-		__asm__ volatile ("" : "+r" (yysimdz));
+	yych = *YYCURSOR;
+	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)yych != 0 && (unsigned char)yych != 10 && (unsigned char)yych != 34 && (unsigned char)yych != 92) {
+		volatile unsigned int yysimdz = 0;
+		const __m256i yysimdzero = _mm256_set1_epi8((char)yysimdz);
+		(void)yysimdzero;
 		const __m256i yyxe0 = _mm256_set1_epi8((char)(yysimdz + 0));
 		const __m256i yyxe10 = _mm256_set1_epi8((char)(yysimdz + 10));
 		const __m256i yyxe34 = _mm256_set1_epi8((char)(yysimdz + 34));
@@ -1219,8 +1227,8 @@ yy67:
 		}
 		if (yysimdm != 0) YYCURSOR += __builtin_ctz(yysimdm);
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 yy68:
 	switch (yych) {
 		case 0x00:
@@ -1247,9 +1255,11 @@ yy71:
 yy72:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
-	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)*(YYCURSOR) != 0 && (unsigned char)*(YYCURSOR) != 10 && (unsigned char)*(YYCURSOR) != 39 && (unsigned char)*(YYCURSOR) != 92) {
-		unsigned int yysimdz = 0;
-		__asm__ volatile ("" : "+r" (yysimdz));
+	yych = *YYCURSOR;
+	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)yych != 0 && (unsigned char)yych != 10 && (unsigned char)yych != 39 && (unsigned char)yych != 92) {
+		volatile unsigned int yysimdz = 0;
+		const __m256i yysimdzero = _mm256_set1_epi8((char)yysimdz);
+		(void)yysimdzero;
 		const __m256i yyxe0 = _mm256_set1_epi8((char)(yysimdz + 0));
 		const __m256i yyxe10 = _mm256_set1_epi8((char)(yysimdz + 10));
 		const __m256i yyxe39 = _mm256_set1_epi8((char)(yysimdz + 39));
@@ -1268,8 +1278,8 @@ yy72:
 		}
 		if (yysimdm != 0) YYCURSOR += __builtin_ctz(yysimdm);
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 yy73:
 	switch (yych) {
 		case 0x00:
@@ -1293,9 +1303,11 @@ yy75:
 yy76:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
-	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)*(YYCURSOR) != 0 && (unsigned char)*(YYCURSOR) != 42) {
-		unsigned int yysimdz = 0;
-		__asm__ volatile ("" : "+r" (yysimdz));
+	yych = *YYCURSOR;
+	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)yych != 0 && (unsigned char)yych != 42) {
+		volatile unsigned int yysimdz = 0;
+		const __m256i yysimdzero = _mm256_set1_epi8((char)yysimdz);
+		(void)yysimdzero;
 		const __m256i yyxe0 = _mm256_set1_epi8((char)(yysimdz + 0));
 		const __m256i yyxe42 = _mm256_set1_epi8((char)(yysimdz + 42));
 		unsigned int yysimdm = 0;
@@ -1310,8 +1322,8 @@ yy76:
 		}
 		if (yysimdm != 0) YYCURSOR += __builtin_ctz(yysimdm);
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 0x00: goto yy69;
 		case '*': goto yy79;
@@ -1320,9 +1332,11 @@ yy76:
 yy77:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
-	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)*(YYCURSOR) != 0 && (unsigned char)*(YYCURSOR) != 10) {
-		unsigned int yysimdz = 0;
-		__asm__ volatile ("" : "+r" (yysimdz));
+	yych = *YYCURSOR;
+	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)yych != 0 && (unsigned char)yych != 10) {
+		volatile unsigned int yysimdz = 0;
+		const __m256i yysimdzero = _mm256_set1_epi8((char)yysimdz);
+		(void)yysimdzero;
 		const __m256i yyxe0 = _mm256_set1_epi8((char)(yysimdz + 0));
 		const __m256i yyxe10 = _mm256_set1_epi8((char)(yysimdz + 10));
 		unsigned int yysimdm = 0;
@@ -1337,8 +1351,8 @@ yy77:
 		}
 		if (yysimdm != 0) YYCURSOR += __builtin_ctz(yysimdm);
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 0x00:
 		case '\n': goto yy78;
@@ -1349,9 +1363,11 @@ yy78:
 yy79:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
-	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)(*(YYCURSOR) - 0) > 41 - 0 && (unsigned char)(*(YYCURSOR) - 43) > 255 - 43) {
-		unsigned int yysimdz = 0;
-		__asm__ volatile ("" : "+r" (yysimdz));
+	yych = *YYCURSOR;
+	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)yych > 41 && (unsigned char)yych < 43) {
+		volatile unsigned int yysimdz = 0;
+		const __m256i yysimdzero = _mm256_set1_epi8((char)yysimdz);
+		(void)yysimdzero;
 		const __m256i yyxl0 = _mm256_set1_epi8((char)(yysimdz + 0));
 		const __m256i yyxs0 = _mm256_set1_epi8((char)(yysimdz + 41 - 0));
 		const __m256i yyxl43 = _mm256_set1_epi8((char)(yysimdz + 43));
@@ -1359,8 +1375,8 @@ yy79:
 		unsigned int yysimdm = 0;
 		for (;;) {
 			const __m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-			__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl0), yyxs0), _mm256_setzero_si256());
-			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl43), yyxs43), _mm256_setzero_si256()));
+			__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl0), yyxs0), yysimdzero);
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl43), yyxs43), yysimdzero));
 			yysimdm = (unsigned int)_mm256_movemask_epi8(yysimd1);
 			if (yysimdm != 0) break;
 			YYCURSOR += 32;
@@ -1368,8 +1384,8 @@ yy79:
 		}
 		if (yysimdm != 0) YYCURSOR += __builtin_ctz(yysimdm);
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 0x00: goto yy69;
 		case '*': goto yy79;
@@ -1844,9 +1860,11 @@ yy111:
 yy112:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
-	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)(*(YYCURSOR) - 0) > 8 - 0 && (unsigned char)(*(YYCURSOR) - 11) > 12 - 11 && (unsigned char)(*(YYCURSOR) - 14) > 31 - 14 && (unsigned char)(*(YYCURSOR) - 33) > 255 - 33) {
-		unsigned int yysimdz = 0;
-		__asm__ volatile ("" : "+r" (yysimdz));
+	yych = *YYCURSOR;
+	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)yych > 8 && (unsigned char)(yych - 11) > 12 - 11 && (unsigned char)(yych - 14) > 31 - 14 && (unsigned char)yych < 33) {
+		volatile unsigned int yysimdz = 0;
+		const __m256i yysimdzero = _mm256_set1_epi8((char)yysimdz);
+		(void)yysimdzero;
 		const __m256i yyxl0 = _mm256_set1_epi8((char)(yysimdz + 0));
 		const __m256i yyxs0 = _mm256_set1_epi8((char)(yysimdz + 8 - 0));
 		const __m256i yyxl11 = _mm256_set1_epi8((char)(yysimdz + 11));
@@ -1858,10 +1876,10 @@ yy112:
 		unsigned int yysimdm = 0;
 		for (;;) {
 			const __m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-			__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl0), yyxs0), _mm256_setzero_si256());
-			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl11), yyxs11), _mm256_setzero_si256()));
-			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl14), yyxs14), _mm256_setzero_si256()));
-			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl33), yyxs33), _mm256_setzero_si256()));
+			__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl0), yyxs0), yysimdzero);
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl11), yyxs11), yysimdzero));
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl14), yyxs14), yysimdzero));
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl33), yyxs33), yysimdzero));
 			yysimdm = (unsigned int)_mm256_movemask_epi8(yysimd1);
 			if (yysimdm != 0) break;
 			YYCURSOR += 32;
@@ -1869,8 +1887,8 @@ yy112:
 		}
 		if (yysimdm != 0) YYCURSOR += __builtin_ctz(yysimdm);
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case '\t':
 		case '\n':
@@ -1904,9 +1922,11 @@ yy116:
 yy117:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
-	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)(*(YYCURSOR) - 0) > 45 - 0 && (unsigned char)*(YYCURSOR) != 47 && (unsigned char)(*(YYCURSOR) - 58) > 64 - 58 && (unsigned char)(*(YYCURSOR) - 91) > 94 - 91 && (unsigned char)*(YYCURSOR) != 96 && (unsigned char)(*(YYCURSOR) - 123) > 255 - 123) {
-		unsigned int yysimdz = 0;
-		__asm__ volatile ("" : "+r" (yysimdz));
+	yych = *YYCURSOR;
+	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)yych > 45 && (unsigned char)yych != 47 && (unsigned char)(yych - 58) > 64 - 58 && (unsigned char)(yych - 91) > 94 - 91 && (unsigned char)yych != 96 && (unsigned char)yych < 123) {
+		volatile unsigned int yysimdz = 0;
+		const __m256i yysimdzero = _mm256_set1_epi8((char)yysimdz);
+		(void)yysimdzero;
 		const __m256i yyxl0 = _mm256_set1_epi8((char)(yysimdz + 0));
 		const __m256i yyxs0 = _mm256_set1_epi8((char)(yysimdz + 45 - 0));
 		const __m256i yyxe47 = _mm256_set1_epi8((char)(yysimdz + 47));
@@ -1920,12 +1940,12 @@ yy117:
 		unsigned int yysimdm = 0;
 		for (;;) {
 			const __m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-			__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl0), yyxs0), _mm256_setzero_si256());
+			__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl0), yyxs0), yysimdzero);
 			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yyxe47));
-			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl58), yyxs58), _mm256_setzero_si256()));
-			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl91), yyxs91), _mm256_setzero_si256()));
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl58), yyxs58), yysimdzero));
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl91), yyxs91), yysimdzero));
 			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yyxe96));
-			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl123), yyxs123), _mm256_setzero_si256()));
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl123), yyxs123), yysimdzero));
 			yysimdm = (unsigned int)_mm256_movemask_epi8(yysimd1);
 			if (yysimdm != 0) break;
 			YYCURSOR += 32;
@@ -1933,8 +1953,8 @@ yy117:
 		}
 		if (yysimdm != 0) YYCURSOR += __builtin_ctz(yysimdm);
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case '.':
 		case '0':
@@ -2007,9 +2027,11 @@ yy118:
 yy119:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
-	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)(*(YYCURSOR) - 0) > 47 - 0 && (unsigned char)(*(YYCURSOR) - 58) > 64 - 58 && (unsigned char)(*(YYCURSOR) - 91) > 94 - 91 && (unsigned char)*(YYCURSOR) != 96 && (unsigned char)(*(YYCURSOR) - 123) > 255 - 123) {
-		unsigned int yysimdz = 0;
-		__asm__ volatile ("" : "+r" (yysimdz));
+	yych = *YYCURSOR;
+	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)yych > 47 && (unsigned char)(yych - 58) > 64 - 58 && (unsigned char)(yych - 91) > 94 - 91 && (unsigned char)yych != 96 && (unsigned char)yych < 123) {
+		volatile unsigned int yysimdz = 0;
+		const __m256i yysimdzero = _mm256_set1_epi8((char)yysimdz);
+		(void)yysimdzero;
 		const __m256i yyxl0 = _mm256_set1_epi8((char)(yysimdz + 0));
 		const __m256i yyxs0 = _mm256_set1_epi8((char)(yysimdz + 47 - 0));
 		const __m256i yyxl58 = _mm256_set1_epi8((char)(yysimdz + 58));
@@ -2022,11 +2044,11 @@ yy119:
 		unsigned int yysimdm = 0;
 		for (;;) {
 			const __m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-			__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl0), yyxs0), _mm256_setzero_si256());
-			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl58), yyxs58), _mm256_setzero_si256()));
-			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl91), yyxs91), _mm256_setzero_si256()));
+			__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl0), yyxs0), yysimdzero);
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl58), yyxs58), yysimdzero));
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl91), yyxs91), yysimdzero));
 			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yyxe96));
-			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl123), yyxs123), _mm256_setzero_si256()));
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl123), yyxs123), yysimdzero));
 			yysimdm = (unsigned int)_mm256_movemask_epi8(yysimd1);
 			if (yysimdm != 0) break;
 			YYCURSOR += 32;
@@ -2034,8 +2056,8 @@ yy119:
 		}
 		if (yysimdm != 0) YYCURSOR += __builtin_ctz(yysimdm);
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case '0':
 		case '1':
@@ -2107,9 +2129,11 @@ yy120:
 yy121:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
-	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)*(YYCURSOR) != 0 && (unsigned char)*(YYCURSOR) != 10 && (unsigned char)*(YYCURSOR) != 34 && (unsigned char)*(YYCURSOR) != 92) {
-		unsigned int yysimdz = 0;
-		__asm__ volatile ("" : "+r" (yysimdz));
+	yych = *YYCURSOR;
+	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)yych != 0 && (unsigned char)yych != 10 && (unsigned char)yych != 34 && (unsigned char)yych != 92) {
+		volatile unsigned int yysimdz = 0;
+		const __m256i yysimdzero = _mm256_set1_epi8((char)yysimdz);
+		(void)yysimdzero;
 		const __m256i yyxe0 = _mm256_set1_epi8((char)(yysimdz + 0));
 		const __m256i yyxe10 = _mm256_set1_epi8((char)(yysimdz + 10));
 		const __m256i yyxe34 = _mm256_set1_epi8((char)(yysimdz + 34));
@@ -2128,8 +2152,8 @@ yy121:
 		}
 		if (yysimdm != 0) YYCURSOR += __builtin_ctz(yysimdm);
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 yy122:
 	switch (yych) {
 		case 0x00:
@@ -2156,9 +2180,11 @@ yy125:
 yy126:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
-	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)*(YYCURSOR) != 0 && (unsigned char)*(YYCURSOR) != 10 && (unsigned char)*(YYCURSOR) != 39 && (unsigned char)*(YYCURSOR) != 92) {
-		unsigned int yysimdz = 0;
-		__asm__ volatile ("" : "+r" (yysimdz));
+	yych = *YYCURSOR;
+	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)yych != 0 && (unsigned char)yych != 10 && (unsigned char)yych != 39 && (unsigned char)yych != 92) {
+		volatile unsigned int yysimdz = 0;
+		const __m256i yysimdzero = _mm256_set1_epi8((char)yysimdz);
+		(void)yysimdzero;
 		const __m256i yyxe0 = _mm256_set1_epi8((char)(yysimdz + 0));
 		const __m256i yyxe10 = _mm256_set1_epi8((char)(yysimdz + 10));
 		const __m256i yyxe39 = _mm256_set1_epi8((char)(yysimdz + 39));
@@ -2177,8 +2203,8 @@ yy126:
 		}
 		if (yysimdm != 0) YYCURSOR += __builtin_ctz(yysimdm);
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 yy127:
 	switch (yych) {
 		case 0x00:
@@ -2202,9 +2228,11 @@ yy129:
 yy130:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
-	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)*(YYCURSOR) != 0 && (unsigned char)*(YYCURSOR) != 42) {
-		unsigned int yysimdz = 0;
-		__asm__ volatile ("" : "+r" (yysimdz));
+	yych = *YYCURSOR;
+	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)yych != 0 && (unsigned char)yych != 42) {
+		volatile unsigned int yysimdz = 0;
+		const __m256i yysimdzero = _mm256_set1_epi8((char)yysimdz);
+		(void)yysimdzero;
 		const __m256i yyxe0 = _mm256_set1_epi8((char)(yysimdz + 0));
 		const __m256i yyxe42 = _mm256_set1_epi8((char)(yysimdz + 42));
 		unsigned int yysimdm = 0;
@@ -2219,8 +2247,8 @@ yy130:
 		}
 		if (yysimdm != 0) YYCURSOR += __builtin_ctz(yysimdm);
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 0x00: goto yy123;
 		case '*': goto yy133;
@@ -2229,9 +2257,11 @@ yy130:
 yy131:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
-	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)*(YYCURSOR) != 0 && (unsigned char)*(YYCURSOR) != 10) {
-		unsigned int yysimdz = 0;
-		__asm__ volatile ("" : "+r" (yysimdz));
+	yych = *YYCURSOR;
+	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)yych != 0 && (unsigned char)yych != 10) {
+		volatile unsigned int yysimdz = 0;
+		const __m256i yysimdzero = _mm256_set1_epi8((char)yysimdz);
+		(void)yysimdzero;
 		const __m256i yyxe0 = _mm256_set1_epi8((char)(yysimdz + 0));
 		const __m256i yyxe10 = _mm256_set1_epi8((char)(yysimdz + 10));
 		unsigned int yysimdm = 0;
@@ -2246,8 +2276,8 @@ yy131:
 		}
 		if (yysimdm != 0) YYCURSOR += __builtin_ctz(yysimdm);
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 0x00:
 		case '\n': goto yy132;
@@ -2258,9 +2288,11 @@ yy132:
 yy133:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
-	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)(*(YYCURSOR) - 0) > 41 - 0 && (unsigned char)(*(YYCURSOR) - 43) > 255 - 43) {
-		unsigned int yysimdz = 0;
-		__asm__ volatile ("" : "+r" (yysimdz));
+	yych = *YYCURSOR;
+	if (!((YYLIMIT - YYCURSOR) < 33) && (unsigned char)yych > 41 && (unsigned char)yych < 43) {
+		volatile unsigned int yysimdz = 0;
+		const __m256i yysimdzero = _mm256_set1_epi8((char)yysimdz);
+		(void)yysimdzero;
 		const __m256i yyxl0 = _mm256_set1_epi8((char)(yysimdz + 0));
 		const __m256i yyxs0 = _mm256_set1_epi8((char)(yysimdz + 41 - 0));
 		const __m256i yyxl43 = _mm256_set1_epi8((char)(yysimdz + 43));
@@ -2268,8 +2300,8 @@ yy133:
 		unsigned int yysimdm = 0;
 		for (;;) {
 			const __m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-			__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl0), yyxs0), _mm256_setzero_si256());
-			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl43), yyxs43), _mm256_setzero_si256()));
+			__m256i yysimd1 = _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl0), yyxs0), yysimdzero);
+			yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(_mm256_subs_epu8(_mm256_sub_epi8(yysimd0, yyxl43), yyxs43), yysimdzero));
 			yysimdm = (unsigned int)_mm256_movemask_epi8(yysimd1);
 			if (yysimdm != 0) break;
 			YYCURSOR += 32;
@@ -2277,8 +2309,8 @@ yy133:
 		}
 		if (yysimdm != 0) YYCURSOR += __builtin_ctz(yysimdm);
 		_mm256_zeroupper();
+		yych = *YYCURSOR;
 	}
-	yych = *YYCURSOR;
 	switch (yych) {
 		case 0x00: goto yy123;
 		case '*': goto yy133;

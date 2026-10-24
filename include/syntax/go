@@ -437,18 +437,20 @@ code:yytarget_filter = <undefined>;
 // As in the C template, the vector block is entered only if the current code unit is in the
 // class, so that a run that ends right away (e.g. a one-byte identifier) is left to the scalar
 // dispatcher. The scalar test follows the length guard, which proves that the index is valid.
-// It uses the simplest form for each range of the complement (see the C syntax file): `> hi`
-// for a range starting at 0, `< lo` for a range ending at the largest code unit, `!=` for a
-// single code unit, and an unsigned wrap-around check otherwise.
+// It uses `yych` (already loaded by `code:yypeek` before the vector block) in the simplest form
+// for each range of the complement (see the C syntax file): `> hi` for a range starting at 0,
+// `< lo` for a range ending at the largest code unit, `!=` for a single code unit, and an
+// unsigned wrap-around check otherwise. After the vector loop advances the cursor, `yych` is
+// reloaded for the scalar dispatcher that follows.
 code:vector_loop =
     topindent "if !(" lessthan ")"
     [xrange{0:-1}: " && " (.xrange.first
-        ? "uint8(" YYINPUT "[" YYCURSOR "]) > " xrange_hi
+        ? "uint8(" yych ") > " xrange_hi
         : (.xrange.last
-        ? "uint8(" YYINPUT "[" YYCURSOR "]) < " xrange_lo
+        ? "uint8(" yych ") < " xrange_lo
         : (.xrange.many
-        ? "uint8(" YYINPUT "[" YYCURSOR "]) - " xrange_lo " > " xrange_hi " - " xrange_lo
-        : "uint8(" YYINPUT "[" YYCURSOR "]) != " xrange_lo)))]
+        ? "uint8(" yych ") - " xrange_lo " > " xrange_hi " - " xrange_lo
+        : "uint8(" yych ") != " xrange_lo)))]
     " {" nl
     indent
     [xrange{0:-1}: (.xrange.many
@@ -469,19 +471,27 @@ code:vector_loop =
         [xrange{0}: topindent "if yym := yysimd1.ToBits(); yym != 0 {" nl
             indent
             topindent "yyn := bits.TrailingZeros32(yym)" nl
-            topindent "if yyn & 16 != 0 { " YYCURSOR " += 16 }" nl
-            topindent "if yyn & 8 != 0 { " YYCURSOR " += 8 }" nl
-            topindent "if yyn & 4 != 0 { " YYCURSOR " += 4 }" nl
-            topindent "if yyn & 2 != 0 { " YYCURSOR " += 2 }" nl
-            topindent "if yyn & 1 != 0 { " YYCURSOR " += 1 }" nl
+            (.api.generic
+                ? topindent YYSHIFT (.api_style.functions ? "(yyn)") nl
+                : topindent "if yyn & 16 != 0 { " YYCURSOR " += 16 }" nl
+                  topindent "if yyn & 8 != 0 { " YYCURSOR " += 8 }" nl
+                  topindent "if yyn & 4 != 0 { " YYCURSOR " += 4 }" nl
+                  topindent "if yyn & 2 != 0 { " YYCURSOR " += 2 }" nl
+                  topindent "if yyn & 1 != 0 { " YYCURSOR " += 1 }" nl)
             topindent "break" nl dedent
         topindent "}" nl]
-        topindent YYCURSOR " += " size nl
+        topindent (.api.generic
+            ? YYSHIFT (.api_style.functions ? "(" size ")")
+            : YYCURSOR " += " size) nl
         topindent "if " lessthan " {" nl
             indent topindent "break" nl dedent
         topindent "}" nl
         dedent
     topindent "}" nl
     topindent "archsimd.ClearAVXUpperBits()" nl
+    topindent yych " = " (.api.generic
+        ? YYPEEK (.api_style.functions ? "()")
+        : (.cast ? YYCTYPE "(") YYINPUT "[" YYCURSOR "]" (.cast ? ")")
+    ) nl
     dedent
     topindent "}" nl;

@@ -289,8 +289,10 @@ language configurations, inplace configurations and code templates.
       ``need`` (``size`` plus the following scalar dispatcher's lookahead,
       at least one extra code unit), ``lessthan`` (the expression rendered by
       ``code:yylessthan`` for ``need``, true if insufficient input remains),
-      and ``YYINPUT``, ``YYCURSOR``, ``YYLIMIT`` (the
-      corresponding API expressions).
+      and ``YYINPUT``, ``YYCURSOR``, ``YYLIMIT``, ``YYCTYPE``, ``YYPEEK``,
+      ``YYSHIFT``, ``yyrecord``, ``yych`` (the corresponding API expressions;
+      for ``YYSHIFT`` in free-form generic API, the sigil is replaced with
+      ``size`` outside ``xrange`` and with ``yyn`` inside ``xrange``).
 
       The list ``range`` expands over inclusive ranges inside the class, with
       element variables ``range_lo`` and ``range_hi``. The list ``xrange``
@@ -300,7 +302,8 @@ language configurations, inplace configurations and code templates.
       complement produces no ``xrange`` iterations, including bounded list
       expressions such as ``[xrange{0}: ...]``.
 
-      Conditionals: ``.many`` is true if the class contains more than one
+      Conditionals: ``.cast`` is true if ``re2c:yych:conversion`` is set to
+      non-zero. ``.many`` is true if the class contains more than one
       ``range`` element. It is a property of the whole class, valid throughout
       the template, and does not depend on the current list element.
       ``.range.many`` and ``.xrange.many`` are true if the current inclusive

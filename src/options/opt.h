@@ -323,11 +323,13 @@ using StxCodes = list_t<StxCode>;
         ({StxVarId::CHAR}), ({}), ({}) \
     ) \
     CODE_TEMPLATE(vector_loop, \
-        ({StxVarId::SIZE, StxVarId::NEED, StxVarId::LESSTHAN_EXPR, \
-            StxVarId::INPUT, StxVarId::CURSOR, StxVarId::LIMIT}), \
+        ({StxVarId::SIZE, StxVarId::NEED, StxVarId::LESSTHAN_EXPR, StxVarId::CHAR, \
+            StxVarId::CTYPE, StxVarId::PEEK, StxVarId::SHIFT, StxVarId::INPUT, StxVarId::CURSOR, \
+            StxVarId::LIMIT, StxVarId::RECORD}), \
         ({StxVarId::RANGE, StxVarId::XRANGE}), \
-        ({StxLOpt::MANY, StxLOpt::RANGE_MANY, StxLOpt::XRANGE_MANY, StxLOpt::RANGE_FIRST, \
-          StxLOpt::RANGE_LAST, StxLOpt::XRANGE_FIRST, StxLOpt::XRANGE_LAST}) \
+        ({StxLOpt::CAST, StxLOpt::MANY, StxLOpt::RANGE_MANY, StxLOpt::XRANGE_MANY, \
+          StxLOpt::RANGE_FIRST, StxLOpt::RANGE_LAST, StxLOpt::XRANGE_FIRST, \
+          StxLOpt::XRANGE_LAST}) \
     )
 
 #define RE2C_ONELINE_CODES \

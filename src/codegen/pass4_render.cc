@@ -691,6 +691,26 @@ class RenderVectorLoop : public RenderCallback {
         case StxVarId::LESSTHAN_EXPR:
             rctx.os << code->lessthan;
             break;
+        case StxVarId::CHAR:
+            rctx.os << rctx.opts->var_char;
+            break;
+        case StxVarId::CTYPE:
+            rctx.os << rctx.opts->api_char_type;
+            break;
+        case StxVarId::PEEK:
+            rctx.os << rctx.opts->api_peek;
+            break;
+        case StxVarId::RECORD:
+            rctx.os << rctx.opts->var_record;
+            break;
+        case StxVarId::SHIFT:
+            if (curr_xrange != nullptr) {
+                argsubst(rctx.os, rctx.opts->api_shift, rctx.opts->api_sigil, "shift", true, "yyn");
+            } else {
+                argsubst(rctx.os, rctx.opts->api_shift, rctx.opts->api_sigil, "shift", true,
+                         code->size);
+            }
+            break;
         case StxVarId::INPUT:
             rctx.os << rctx.opts->api_input;
             break;
@@ -756,10 +776,14 @@ class RenderVectorLoop : public RenderCallback {
         switch (var) {
         case StxVarId::RANGE:
             curr_range = curr_range->next;
-            return curr_range != last_range;
+            if (curr_range != last_range) return true;
+            curr_range = nullptr;
+            return false;
         case StxVarId::XRANGE:
             curr_xrange = curr_xrange->next;
-            return curr_xrange != last_xrange;
+            if (curr_xrange != last_xrange) return true;
+            curr_xrange = nullptr;
+            return false;
         default:
             UNREACHABLE();
             return false;
@@ -768,6 +792,8 @@ class RenderVectorLoop : public RenderCallback {
 
     bool eval_cond(StxLOpt opt) override {
         switch (opt) {
+        case StxLOpt::CAST:
+            return rctx.opts->char_conv;
         case StxLOpt::MANY:
             return nranges > 1;
         case StxLOpt::RANGE_MANY:

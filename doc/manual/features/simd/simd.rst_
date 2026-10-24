@@ -12,24 +12,28 @@ blocks of 32 bytes simultaneously using parallel range checks and bitmask extrac
 
 When enabled with ``--vectorize-loops`` or ``re2c:vectorize:loops = 1;``:
 
-- Vectorization requires the goto/label code model, the simple or record API,
-  single-byte code units, ``YYFILL`` with bounds checking, and no ``--eager-skip``,
-  storable state or end-of-input rule (``re2c:eof``). Any other combination is a
-  configuration error, not a silent fallback. With ``--skeleton`` and
-  ``--emit-dot`` the option is reset, as storable state is for these targets.
+- Vectorization supports all code models (``--goto-label``, ``--loop-switch`` and
+  ``--recursive-functions``), all APIs (``simple``, ``record`` and ``generic``),
+  ``--eager-skip`` and ``--storable-state`` (``-f``). It requires single-byte code
+  units (as elsewhere in |re2c| for single-byte encodings, ``YYCTYPE`` must be a
+  1-byte code unit type because the vector block loads and counts bytes),
+  ``YYFILL`` with bounds checking, and no end-of-input rule (``re2c:eof``)
+  or ``--skeleton``. Any unsupported combination is a configuration error, not a
+  silent fallback. With ``--emit-dot`` the option is reset.
 - The compiler selects base states with a nonzero refill requirement and a
   reflexive character class of at most 8 disjoint ranges. The loop must not record
-  backtracking positions, perform tag actions or have hoisted cursor increments
-  or end-of-input transitions, and neither the loop state nor its body may carry
-  final, fallback or end-of-input tags. Tags elsewhere in the DFA do not block
-  the loop: they are set and read by scalar code at positions the loop never
-  skips.
+  backtracking positions, perform tag actions or have end-of-input transitions,
+  the loop entry state must not have a hoisted cursor increment, and neither the
+  loop state nor its body may carry final, fallback or end-of-input tags. Tags
+  elsewhere in the DFA do not block the loop: they are set and read by scalar code
+  at positions the loop never skips.
 - Both ``re2c:yyfill:enable`` and ``re2c:yyfill:check`` must be enabled to ensure
   the vector loop stops before the end-of-buffer boundary. It reserves enough
   lookahead for the scalar dispatcher and does not increase ``YYMAXFILL``.
-- The generic API is not supported, because the vector loop reads input directly
-  through ``YYCURSOR`` rather than via ``YYPEEK`` and ``YYSKIP``; use the simple or
-  record API.
+- With the generic API, the default templates still load 32-byte blocks from
+  ``YYCURSOR`` (or ``YYINPUT[YYCURSOR:]`` in Go), which therefore must remain a
+  contiguous byte pointer or slice index, while cursor advancement and reloading
+  ``yych`` use ``YYSHIFT`` and ``YYPEEK``.
 - States that do not meet these per-state requirements retain scalar code
   without a diagnostic. Enabling the option for a backend without the
   ``vectorize-loops`` feature is an error.
@@ -53,15 +57,17 @@ When enabled with ``--vectorize-loops`` or ``re2c:vectorize:loops = 1;``:
   does not detect CPU capabilities or select a scalar implementation on CPUs
   without AVX2; applications that need this must check support before calling
   the vectorized lexer. Go requires ``GOEXPERIMENT=simd`` when building.
-- The default C and Go templates enter the vector block only if the current code unit is in the
-  class (a scalar test against the complement, placed after the length guard). Runs that end right
-  away, such as one-character identifiers or empty string literals, are thus left to the scalar
-  dispatcher and do not pay for the vector block. The test only selects the path: the vector
-  block itself finds the exact exit position, so the result does not depend on it. Each range of
-  the complement is tested in its simplest form (``> hi`` for a range starting at code unit 0,
-  ``< lo`` for a range ending at the largest code unit, ``!=`` for a single code unit, an unsigned
-  wrap-around check otherwise). Neither form guarantees a speedup for short runs or near the end
-  of the buffer; see the next section.
+- The default C and Go templates enter the vector block only if ``yych`` (loaded before the
+  vector loop) is in the class, using a scalar test against the complement placed after the
+  length guard, and reload ``yych`` at the end of the vector block after clearing the upper
+  AVX register bits. Runs that end right away, such as one-character identifiers or empty
+  string literals, are thus left to the scalar dispatcher and do not pay for the vector block.
+  The test only selects the path: the vector block itself finds the exact exit position, so
+  the result does not depend on it. Each range of the complement is tested in its simplest
+  form (``> hi`` for a range starting at code unit 0, ``< lo`` for a range ending at the
+  largest code unit, ``!=`` for a single code unit, an unsigned wrap-around check otherwise).
+  Neither form guarantees a speedup for short runs or near the end of the buffer; see the
+  next section.
 - The default C template explicitly calls ``_mm256_zeroupper()`` after the vector
   loop, and the Go template calls ``archsimd.ClearAVXUpperBits()``. These clear
   the upper AVX register bits before returning to scalar code, avoiding penalties
@@ -75,9 +81,9 @@ When enabled with ``--vectorize-loops`` or ``re2c:vectorize:loops = 1;``:
   or a custom guard violate this contract, a panic may bypass
   ``ClearAVXUpperBits``; AVX cleanup during panic unwinding is not guaranteed.
 - Both default templates write the length guard with ``lessthan``, which is rendered from
-  ``code:yylessthan`` for the simple or record API, so a custom syntax definition
-  of the length check applies to the vector loop as well as to the scalar states.
-  This does not enable vectorization with the generic API.
+  ``code:yylessthan`` for all APIs (including ``YYLESSTHAN`` with the generic API), so a
+  custom syntax definition of the length check applies to the vector loop as well as to the
+  scalar states.
 
 
 The ``code:vector_loop`` template interface is documented in the syntax files

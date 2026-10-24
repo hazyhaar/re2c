@@ -61,7 +61,8 @@ yy2:
 	if (yylimit <= yycursor) {
 		return -1
 	}
-	if !((yylimit - yycursor) < 33) && uint8(yyinput[yycursor]) != 0 && uint8(yyinput[yycursor]) != 10 && uint8(yyinput[yycursor]) != 13 && uint8(yyinput[yycursor]) != 34 && uint8(yyinput[yycursor]) != 92 {
+	yych = yyinput[yycursor]
+	if !((yylimit - yycursor) < 33) && uint8(yych) != 0 && uint8(yych) != 10 && uint8(yych) != 13 && uint8(yych) != 34 && uint8(yych) != 92 {
 		yyxe0 := archsimd.BroadcastUint8x32(0)
 		yyxe10 := archsimd.BroadcastUint8x32(10)
 		yyxe13 := archsimd.BroadcastUint8x32(13)
@@ -89,8 +90,8 @@ yy2:
 			}
 		}
 		archsimd.ClearAVXUpperBits()
+		yych = yyinput[yycursor]
 	}
-	yych = yyinput[yycursor]
 	switch (yych) {
 	case 0x00:
 		fallthrough

@@ -259,8 +259,8 @@ yy1:
 yy2:
 	++cur;
 	if (lim <= cur) { ret = E_FILL; goto done; }
-	if (!((lim - cur) < 33) && (unsigned char)*(cur) != 0 && (unsigned char)*(cur) != 34 && (unsigned char)(*(cur) - 127) > 159 - 127 && (unsigned char)*(cur) != 255) {
-		(void)sizeof(char[sizeof(*(cur)) == 1 ? 1 : -1]); /* code units must be one byte wide */
+	yych = *cur;
+	if (!((lim - cur) < 33) && (unsigned char)yych != 0 && (unsigned char)yych != 34 && (unsigned char)(yych - 127) > 159 - 127 && (unsigned char)yych != 255) {
 		volatile unsigned int yysimdz = 0;
 		const __m256i yysimdzero = _mm256_set1_epi8((char)yysimdz);
 		(void)yysimdzero;
@@ -283,8 +283,8 @@ yy2:
 		}
 		if (yysimdm != 0) cur += __builtin_ctz(yysimdm);
 		_mm256_zeroupper();
+		yych = *cur;
 	}
-	yych = *cur;
 	switch (yych) {
 		case 0x01:
 		case 0x02:
@@ -1241,8 +1241,8 @@ yy12:
 	YYDEBUG(12, yych);
 	++cur;
 	if (lim <= cur) { ret = E_FILL; goto done; }
-	if (!((lim - cur) < 33) && (unsigned char)*(cur) != 0 && (unsigned char)*(cur) != 34 && (unsigned char)(*(cur) - 127) > 159 - 127 && (unsigned char)*(cur) != 255) {
-		(void)sizeof(char[sizeof(*(cur)) == 1 ? 1 : -1]); /* code units must be one byte wide */
+	yych = *cur;
+	if (!((lim - cur) < 33) && (unsigned char)yych != 0 && (unsigned char)yych != 34 && (unsigned char)(yych - 127) > 159 - 127 && (unsigned char)yych != 255) {
 		volatile unsigned int yysimdz = 0;
 		const __m256i yysimdzero = _mm256_set1_epi8((char)yysimdz);
 		(void)yysimdzero;
@@ -1265,8 +1265,8 @@ yy12:
 		}
 		if (yysimdm != 0) cur += __builtin_ctz(yysimdm);
 		_mm256_zeroupper();
+		yych = *cur;
 	}
-	yych = *cur;
 	switch (yych) {
 		case 0x01:
 		case 0x02:

@@ -57,7 +57,8 @@ yy3:
 	if (limit <= cursor) {
 		fill(0)
 	}
-	if !((limit - cursor) < 33) && uint8(input[cursor]) > 8 && uint8(input[cursor]) - 10 > 31 - 10 && uint8(input[cursor]) < 33 {
+	yych = input[cursor]
+	if !((limit - cursor) < 33) && uint8(yych) > 8 && uint8(yych) - 10 > 31 - 10 && uint8(yych) < 33 {
 		yyxl0 := archsimd.BroadcastUint8x32(0)
 		yyxs0 := archsimd.BroadcastUint8x32(8 - 0)
 		yyxl10 := archsimd.BroadcastUint8x32(10)
@@ -87,8 +88,8 @@ yy3:
 			}
 		}
 		archsimd.ClearAVXUpperBits()
+		yych = input[cursor]
 	}
-	yych = input[cursor]
 	switch (yych) {
 	case '\t':
 		fallthrough
@@ -104,7 +105,8 @@ yy5:
 	if (limit <= cursor) {
 		fill(0)
 	}
-	if !((limit - cursor) < 33) && uint8(input[cursor]) > 47 && uint8(input[cursor]) < 58 {
+	yych = input[cursor]
+	if !((limit - cursor) < 33) && uint8(yych) > 47 && uint8(yych) < 58 {
 		yyxl0 := archsimd.BroadcastUint8x32(0)
 		yyxs0 := archsimd.BroadcastUint8x32(47 - 0)
 		yyxl58 := archsimd.BroadcastUint8x32(58)
@@ -130,8 +132,8 @@ yy5:
 			}
 		}
 		archsimd.ClearAVXUpperBits()
+		yych = input[cursor]
 	}
-	yych = input[cursor]
 	switch (yych) {
 	case '0','1','2','3','4','5','6','7','8','9':
 		goto yy5
@@ -145,7 +147,8 @@ yy7:
 	if (limit <= cursor) {
 		fill(0)
 	}
-	if !((limit - cursor) < 33) && uint8(input[cursor]) > 47 && uint8(input[cursor]) - 58 > 64 - 58 && uint8(input[cursor]) - 91 > 94 - 91 && uint8(input[cursor]) != 96 && uint8(input[cursor]) < 123 {
+	yych = input[cursor]
+	if !((limit - cursor) < 33) && uint8(yych) > 47 && uint8(yych) - 58 > 64 - 58 && uint8(yych) - 91 > 94 - 91 && uint8(yych) != 96 && uint8(yych) < 123 {
 		yyxl0 := archsimd.BroadcastUint8x32(0)
 		yyxs0 := archsimd.BroadcastUint8x32(47 - 0)
 		yyxl58 := archsimd.BroadcastUint8x32(58)
@@ -181,8 +184,8 @@ yy7:
 			}
 		}
 		archsimd.ClearAVXUpperBits()
+		yych = input[cursor]
 	}
-	yych = input[cursor]
 	switch (yych) {
 	case '0','1','2','3','4','5','6','7','8','9':
 		fallthrough
