@@ -769,6 +769,12 @@ vtests: all $(re2c_TESTSUITE)
 .PHONY: wtests
 wtests: all $(re2c_TESTSUITE)
 	$(PYTHON) $(top_builddir)/$(re2c_TESTSUITE) --wine -j1
+.PHONY: check_vectorize_avx
+check_vectorize_avx: all
+	$(PYTHON) $(top_srcdir)/test/codegen/c/check_vectorize_avx.py $(top_builddir)/re2c
+.PHONY: check_vectorize_loops
+check_vectorize_loops: all
+	$(PYTHON) $(top_srcdir)/test/codegen/c/check_vectorize_loops.py --cc "$(CC)" $(top_builddir)/re2c
 
 re2c_test_list_SOURCES = \
 	src/test/list/test.cc

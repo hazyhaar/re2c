@@ -153,6 +153,15 @@ if(RE2C_BUILD_TESTS)
         USES_TERMINAL
         VERBATIM
     )
+    add_custom_target(check_vectorize_loops
+        COMMAND "${Python3_EXECUTABLE}"
+            "${CMAKE_CURRENT_SOURCE_DIR}/test/codegen/c/check_vectorize_loops.py"
+            "--cc" "${CMAKE_C_COMPILER}"
+            "$<TARGET_FILE:re2c>"
+        DEPENDS re2c
+        USES_TERMINAL
+        VERBATIM
+    )
     set(RE2C_RUN_TESTS "${CMAKE_CURRENT_BINARY_DIR}/run_tests.py")
     if(CMAKE_HOST_UNIX)
         execute_process(COMMAND chmod +x "${RE2C_RUN_TESTS}")
