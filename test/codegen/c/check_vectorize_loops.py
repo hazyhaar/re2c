@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Differential parity oracle for --vectorize-loops (C and Go).
+"""Differential parity oracle for --vectorize-loops (C and Go, widths 16 and 32).
 
 Usage: python3 test/codegen/c/check_vectorize_loops.py /path/to/re2c
 Like re2c, this test is in the public domain.
@@ -8,6 +8,7 @@ Like re2c, this test is in the public domain.
 import argparse
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import tempfile
@@ -26,12 +27,21 @@ COMMON_HDR = r'''#ifndef VEC_LOOPS_COMMON_H
 
 extern size_t g_vec_loads;
 
+#if defined(__GNUC__) || defined(__clang__)
+__attribute__((target("avx")))
+#endif
 static inline __m256i re2c_counted_loadu_si256(const void *p) {
     ++g_vec_loads;
     return _mm256_loadu_si256((const __m256i *)p);
 }
+static inline __m128i re2c_counted_loadu_si128(const void *p) {
+    ++g_vec_loads;
+    return _mm_loadu_si128((const __m128i *)p);
+}
 #undef _mm256_loadu_si256
 #define _mm256_loadu_si256(p) re2c_counted_loadu_si256(p)
+#undef _mm_loadu_si128
+#define _mm_loadu_si128(p) re2c_counted_loadu_si128(p)
 
 #define MAX_PAD 64
 
@@ -262,6 +272,8 @@ def gen_generic_fn_variant(suffix):
         out.append(f'''
 int lex_{gname}_{suffix}(Rec *r) {{
 #define YYPEEK()      (*r->cur)
+#define YYPEEK16()    _mm_loadu_si128((const __m128i *)r->cur)
+#define YYPEEK32()    _mm256_loadu_si256((const __m256i *)r->cur)
 #define YYSKIP()      (++r->cur)
 #define YYBACKUP()    (r->mar = r->cur)
 #define YYRESTORE()   (r->cur = r->mar)
@@ -273,11 +285,12 @@ int lex_{gname}_{suffix}(Rec *r) {{
         re2c:api = generic;
         re2c:api:style = functions;
         re2c:YYCTYPE = "unsigned char";
-        re2c:YYCURSOR = r->cur;
         re2c:YYFILL:naked = 0;
         {body}
     */
 #undef YYPEEK
+#undef YYPEEK16
+#undef YYPEEK32
 #undef YYSKIP
 #undef YYBACKUP
 #undef YYRESTORE
@@ -297,6 +310,8 @@ void lex_uri_{suffix}(Rec *r, UriResult *out) {{
     memset(out, 0, sizeof(*out));
     for (int i = 0; i < 20; ++i) out->tags[i] = -1;
 #define YYPEEK()           (*r->cur)
+#define YYPEEK16()         _mm_loadu_si128((const __m128i *)r->cur)
+#define YYPEEK32()         _mm256_loadu_si256((const __m256i *)r->cur)
 #define YYSKIP()           (++r->cur)
 #define YYBACKUP()         (r->mar = r->cur)
 #define YYRESTORE()        (r->cur = r->mar)
@@ -313,12 +328,13 @@ void lex_uri_{suffix}(Rec *r, UriResult *out) {{
         re2c:api:style = functions;
         re2c:tags:negative = "NULL";
         re2c:YYCTYPE = "unsigned char";
-        re2c:YYCURSOR = r->cur;
         re2c:YYFILL:naked = 0;
         re2c:flags:tags = 1;
         {URI_GRAMMAR_BODY}
     */
 #undef YYPEEK
+#undef YYPEEK16
+#undef YYPEEK32
 #undef YYSKIP
 #undef YYBACKUP
 #undef YYRESTORE
@@ -346,8 +362,9 @@ int lex_{gname}_{suffix}(Rec *r) {{
         re2c:api:style = free-form;
         re2c:api:sigil = "@@";
         re2c:YYCTYPE = "unsigned char";
-        re2c:YYCURSOR = "r->cur";
         re2c:YYPEEK = "*r->cur";
+        re2c:YYPEEK16 = "_mm_loadu_si128((const __m128i *)r->cur)";
+        re2c:YYPEEK32 = "_mm256_loadu_si256((const __m256i *)r->cur)";
         re2c:YYSKIP = "++r->cur;";
         re2c:YYBACKUP = "r->mar = r->cur;";
         re2c:YYRESTORE = "r->cur = r->mar;";
@@ -375,8 +392,9 @@ void lex_uri_{suffix}(Rec *r, UriResult *out) {{
         re2c:api:style = free-form;
         re2c:api:sigil = "@@";
         re2c:YYCTYPE = "unsigned char";
-        re2c:YYCURSOR = "r->cur";
         re2c:YYPEEK = "*r->cur";
+        re2c:YYPEEK16 = "_mm_loadu_si128((const __m128i *)r->cur)";
+        re2c:YYPEEK32 = "_mm256_loadu_si256((const __m256i *)r->cur)";
         re2c:YYSKIP = "++r->cur;";
         re2c:YYBACKUP = "r->mar = r->cur;";
         re2c:YYRESTORE = "r->cur = r->mar;";
@@ -775,42 +793,41 @@ int main(void) {
         }
     }
 
-    // 2. Boundary lengths 0..200 and every exit position 0..31 in 32-byte blocks
+    // 2. Boundary lengths 0..200 and every exit position in 16-byte and 32-byte blocks
     const unsigned char classes[5] = {'a', '7', ' ', '\t', 0x90};
-    const size_t chunks[6] = {17, 31, 32, 33, 64, 128};
+    const size_t chunks[7] = {15, 16, 17, 31, 32, 33, 64};
     for (int c = 0; c < 5; ++c) {
         for (size_t n = 0; n <= 200; ++n) {
             memset(data, classes[c], n);
             data[n] = '!';
             data[n + 1] = 0;
-            check_all_grammars(data, n + 1, buf1, buf2, chunks[n % 6]);
+            check_all_grammars(data, n + 1, buf1, buf2, chunks[n % 7]);
             ++total_inputs;
         }
     }
-    // Quoted strings and comments of boundary lengths 0..200
     for (size_t n = 0; n <= 200; ++n) {
         data[0] = '"';
         memset(data + 1, 'x', n);
         data[n + 1] = '"';
         data[n + 2] = 0;
-        check_all_grammars(data, n + 2, buf1, buf2, chunks[n % 6]);
+        check_all_grammars(data, n + 2, buf1, buf2, chunks[n % 7]);
 
         data[0] = '/';
         data[1] = '/';
         memset(data + 2, 'c', n);
         data[n + 2] = '\n';
         data[n + 3] = 0;
-        check_all_grammars(data, n + 3, buf1, buf2, chunks[(n + 1) % 6]);
+        check_all_grammars(data, n + 3, buf1, buf2, chunks[(n + 1) % 7]);
         total_inputs += 2;
     }
 
-    // 3. 20,000 deterministic PRNG inputs (lengths 0..500)
+    // 3. 10,000 deterministic PRNG inputs (lengths 0..500) per width
     const char alphabet[] =
         "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         "_ \t\r\n\"\\/:@.-~%!$&'()*+,;=?#[]";
     const size_t alpha_len = sizeof(alphabet) - 1;
 
-    for (size_t iter = 0; iter < 20000; ++iter) {
+    for (size_t iter = 0; iter < 10000; ++iter) {
         size_t len = xorshift32() % 501;
         size_t pos = 0;
         while (pos < len) {
@@ -845,13 +862,12 @@ int main(void) {
             }
         }
         data[len] = 0;
-        // Periodically exercise chunked storable-state on PRNG inputs too
         size_t chunk = (iter % 10 == 0) ? (15 + (iter % 53)) : 0;
         check_all_grammars(data, len, buf1, buf2, chunk);
         ++total_inputs;
     }
 
-    // 4. URI RFC 3986 grammar parity with tags (boundary run lengths + PRNG URIs)
+    // 4. URI RFC 3986 grammar parity with tags
     const char *schemes[3] = {"http", "https", "custom+scheme.v1-test"};
     for (size_t n = 1; n <= 160; ++n) {
         const char *sc = schemes[n % 3];
@@ -936,48 +952,95 @@ func main() {
 '''
 
 
-def run_c_suite(re2c_bin: Path, directory: Path, compilers: list[str]):
-    (directory / 'common.h').write_text(COMMON_HDR)
-    (directory / 'harness.c').write_text(HARNESS_C)
+def verify_generated_c_invariants(gen_code: str, name: str, vec_size: int, is_generic: bool):
+    load_fn = '_mm256_loadu_si256' if vec_size == 32 else '_mm_loadu_si128'
+    cmpgt_fn = '_mm256_cmpgt_epi8' if vec_size == 32 else '_mm_cmpgt_epi8'
+    peek_macro = 'YYPEEK32' if vec_size == 32 else 'YYPEEK16'
 
+    for forbidden in ('_mm256_zeroupper', 'volatile', 'yysimdzero', '_mm256_subs_epu8', '_mm_subs_epu8'):
+        if forbidden in gen_code:
+            raise RuntimeError(f'forbidden token `{forbidden}` in generated {name}.c')
+
+    if cmpgt_fn not in gen_code:
+        raise RuntimeError(f'missing `{cmpgt_fn}` in generated {name}.c')
+
+    if 'switch (' not in gen_code:
+        raise RuntimeError(f'missing scalar `switch` pre-test in generated {name}.c')
+
+    if is_generic:
+        if re.search(r'\bYYCURSOR\b', gen_code):
+            raise RuntimeError(f'YYCURSOR leaked in --api generic output {name}.c')
+        if peek_macro not in gen_code and load_fn not in gen_code:
+            raise RuntimeError(f'missing {peek_macro} / {load_fn} in generic output {name}.c')
+    else:
+        if load_fn not in gen_code:
+            raise RuntimeError(f'missing {load_fn} in generated {name}.c')
+
+
+def run_c_suite_for_width(re2c_bin: Path, directory: Path, compilers: list[str], vec_size: int):
+    wdir = directory / f'c_w{vec_size}'
+    wdir.mkdir(parents=True, exist_ok=True)
+    (wdir / 'common.h').write_text(COMMON_HDR)
+    (wdir / 'harness.c').write_text(HARNESS_C)
+
+    vec_flags = ['--arch', 'x86', '--vectorize-size', str(vec_size), '--vectorize-loops']
     specs = [
-        ('scalar', [], gen_simple_variant('scalar', 0)),
-        ('goto_simple', ['--vectorize-loops'], gen_simple_variant('goto_simple', 1)),
-        ('goto_record', ['--vectorize-loops'], gen_record_variant('goto_record')),
-        ('goto_generic_fn', ['--vectorize-loops', '--api', 'generic'], gen_generic_fn_variant('goto_generic_fn')),
-        ('goto_generic_free', ['--vectorize-loops', '--api', 'generic'], gen_generic_free_variant('goto_generic_free')),
-        ('loop_switch', ['--vectorize-loops', '--loop-switch'], gen_simple_variant('loop_switch', 1)),
-        ('rec_func', ['--vectorize-loops', '--recursive-functions'], gen_rec_func_variant('rec_func')),
-        ('eager_skip', ['--vectorize-loops', '--eager-skip'], gen_simple_variant('eager_skip', 1)),
-        ('storable_goto', ['--vectorize-loops', '-f'], gen_storable_variant('storable_goto', use_getstate=True)),
-        ('storable_loop_switch', ['--vectorize-loops', '--loop-switch', '-f'], gen_storable_variant('storable_loop_switch', use_getstate=False)),
+        ('scalar', [], False, gen_simple_variant('scalar', 0)),
+        ('goto_simple', vec_flags, False, gen_simple_variant('goto_simple', 1)),
+        ('goto_record', vec_flags, False, gen_record_variant('goto_record')),
+        ('goto_generic_fn', vec_flags + ['--api', 'generic'], True, gen_generic_fn_variant('goto_generic_fn')),
+        ('goto_generic_free', vec_flags + ['--api', 'generic'], True, gen_generic_free_variant('goto_generic_free')),
+        ('loop_switch', vec_flags + ['--loop-switch'], False, gen_simple_variant('loop_switch', 1)),
+        ('rec_func', vec_flags + ['--recursive-functions'], False, gen_rec_func_variant('rec_func')),
+        ('eager_skip', vec_flags + ['--eager-skip'], False, gen_simple_variant('eager_skip', 1)),
+        ('storable_goto', vec_flags + ['-f'], False, gen_storable_variant('storable_goto', use_getstate=True)),
+        ('storable_loop_switch', vec_flags + ['--loop-switch', '-f'], False, gen_storable_variant('storable_loop_switch', use_getstate=False)),
     ]
 
-    c_files = [str(directory / 'harness.c')]
+    c_files = [str(wdir / 'harness.c')]
     base_cmd = [str(re2c_bin.resolve()), '--no-generation-date', '-i']
 
-    for name, flags, content in specs:
-        re_path = directory / f'{name}.re'
-        c_path = directory / f'{name}.c'
+    for name, flags, is_generic, content in specs:
+        re_path = wdir / f'{name}.re'
+        c_path = wdir / f'{name}.c'
         re_path.write_text(content)
         subprocess.run(base_cmd + flags + [str(re_path), '-o', str(c_path)], check=True)
         if name != 'scalar':
-            gen_code = c_path.read_text()
-            if '_mm256_loadu_si256' not in gen_code:
-                raise RuntimeError(f'missing _mm256_loadu_si256 in generated {name}.c')
+            verify_generated_c_invariants(c_path.read_text(), f'w{vec_size}/{name}', vec_size, is_generic)
         c_files.append(str(c_path))
 
-    root = Path(__file__).resolve().parents[3]
+    isa_flag = '-mavx2' if vec_size == 32 else '-msse2'
+    for idx, cc in enumerate(compilers):
+        cc_name = os.path.basename(cc)
+        for mode_name, mode_flags in [
+            ('O2', ['-O2', isa_flag]),
+            ('asan-ubsan', ['-O1', isa_flag, '-fsanitize=address,undefined', '-fno-sanitize-recover=all']),
+        ]:
+            bin_path = wdir / f'parity-w{vec_size}-{idx}-{cc_name}-{mode_name}'
+            compile_cmd = [cc, '-std=c11', '-Wall', '-Wextra', '-Wno-unused-label',
+                           '-Wno-unused-parameter', '-I', str(wdir)] + mode_flags + c_files + ['-o', str(bin_path)]
+            print(f'[C w={vec_size}] compiling with {cc} ({mode_name})...', flush=True)
+            subprocess.run(compile_cmd, check=True)
+            res = subprocess.run([str(bin_path)], check=True, text=True, capture_output=True)
+            print(f'[C w={vec_size}] {cc} ({mode_name}): {res.stdout.strip()}', flush=True)
+
+
+def run_c_standalone(re2c_bin: Path, directory: Path, compilers: list[str], root: Path):
+    base_cmd = [str(re2c_bin.resolve()), '--no-generation-date', '-i']
     standalone_specs = [
-        ('vectorize_loops_generic_api', ['--api', 'generic', '--vectorize-loops']),
-        ('vectorize_loops_code_models', ['--loop-switch', '--eager-skip', '-f', '--vectorize-loops']),
-        ('vectorize_loops_recursive_functions', ['--recursive-functions', '--vectorize-loops']),
+        ('vectorize_loops_generic_api', ['--arch', 'x86', '--api', 'generic', '--vectorize-loops'], True),
+        ('vectorize_loops_ranges_16_32', ['--arch', 'x86', '--vectorize-loops'], False),
+        ('vectorize_loops_code_models', ['--arch', 'x86', '--loop-switch', '--eager-skip', '-f', '--vectorize-loops'], False),
+        ('vectorize_loops_recursive_functions', ['--arch', 'x86', '--recursive-functions', '--vectorize-loops'], False),
     ]
     standalone_c_files = []
-    for st_stem, st_flags in standalone_specs:
+    for st_stem, st_flags, check_no_yycursor in standalone_specs:
         st_re = root / 'test/codegen/c' / f'{st_stem}.re'
         st_c = directory / f'{st_stem}.c'
         subprocess.run(base_cmd + st_flags + [str(st_re), '-o', str(st_c)], check=True)
+        txt = st_c.read_text()
+        if check_no_yycursor and re.search(r'\bYYCURSOR\b', txt):
+            raise RuntimeError(f'YYCURSOR leaked in {st_stem}.c')
         standalone_c_files.append((st_stem, st_c))
 
     for idx, cc in enumerate(compilers):
@@ -986,15 +1049,6 @@ def run_c_suite(re2c_bin: Path, directory: Path, compilers: list[str]):
             ('O2', ['-O2', '-mavx2']),
             ('asan-ubsan', ['-O1', '-mavx2', '-fsanitize=address,undefined', '-fno-sanitize-recover=all']),
         ]:
-            bin_path = directory / f'parity-{idx}-{cc_name}-{mode_name}'
-            compile_cmd = [cc, '-std=c11', '-Wall', '-Wextra', '-Wno-unused-label',
-                           '-Wno-unused-parameter', '-I', str(directory)] + mode_flags + c_files + ['-o', str(bin_path)]
-            print(f'[C] compiling with {cc} ({mode_name})...', flush=True)
-            subprocess.run(compile_cmd, check=True)
-            res = subprocess.run([str(bin_path)], check=True, text=True, capture_output=True)
-            print(f'[C] {cc} ({mode_name}): {res.stdout.strip()}', flush=True)
-
-            # Compile and execute the regenerated standalone vectorize_loops_*.re fixtures
             for st_stem, st_c in standalone_c_files:
                 st_bin = directory / f'{st_stem}-{idx}-{cc_name}-{mode_name}.out'
                 subprocess.run([cc, '-std=c11', '-Wall', '-Wextra', '-Wno-unused-parameter'] + mode_flags + [str(st_c), '-o', str(st_bin)], check=True)
@@ -1008,29 +1062,43 @@ def run_go_suite(re2c_bin: Path, directory: Path, go_bin: str, root: Path):
     (directory / 'go.mod').write_text('module vecparity\n\ngo 1.27\n')
     (directory / 'go.work').write_text('go 1.27\n\nuse .\n')
 
-    base_cmd = [str(re2c_bin.resolve()), '--no-generation-date', '-i', '--lang', 'go', '--vectorize-loops']
+    base_cmd = [str(re2c_bin.resolve()), '--no-generation-date', '-i', '--lang', 'go', '--arch', 'x86', '--vectorize-loops']
 
-    # 1. Run test/codegen/go/004_simd_models.re (--loop-switch -f + record + generic API)
-    models_re = root / 'test/codegen/go/004_simd_models.re'
-    models_go = directory / '004_simd_models.go'
-    subprocess.run(base_cmd + ['--loop-switch', '-f', str(models_re), '-o', str(models_go)], check=True)
-    res1 = subprocess.run([go_bin, 'run', str(models_go)], cwd=directory, env=env, check=True, text=True, capture_output=True)
-    print(f'[Go] 004_simd_models: {res1.stdout.strip()}', flush=True)
+    for vec_size in (16, 32):
+        size_flags = ['--vectorize-size', str(vec_size)]
+        # 1. Run test/codegen/go/004_simd_models.re (--loop-switch -f + record + generic API)
+        models_re = root / 'test/codegen/go/004_simd_models.re'
+        models_go = directory / f'004_simd_models_w{vec_size}.go'
+        subprocess.run(base_cmd + size_flags + ['--loop-switch', '-f', str(models_re), '-o', str(models_go)], check=True)
+        mtxt = models_go.read_text()
+        if vec_size == 16 and 'ClearAVXUpperBits' in mtxt:
+            raise RuntimeError('ClearAVXUpperBits must not be emitted for Go vector width 16')
+        if vec_size == 32 and 'ClearAVXUpperBits' not in mtxt:
+            raise RuntimeError('ClearAVXUpperBits missing for Go vector width 32')
+        res1 = subprocess.run([go_bin, 'run', str(models_go)], cwd=directory, env=env, check=True, text=True, capture_output=True)
+        print(f'[Go w={vec_size}] 004_simd_models: {res1.stdout.strip()}', flush=True)
 
-    # 2. Run recursive-functions Go probe
-    rec_re = directory / 'go_rec.re'
-    rec_go = directory / 'go_rec.go'
-    rec_re.write_text(GO_REC_PROBE)
-    subprocess.run(base_cmd + ['--recursive-functions', str(rec_re), '-o', str(rec_go)], check=True)
-    res2 = subprocess.run([go_bin, 'run', str(rec_go)], cwd=directory, env=env, check=True, text=True, capture_output=True)
-    print(f'[Go] recursive-functions: {res2.stdout.strip()}', flush=True)
+        # 2. Run recursive-functions Go probe
+        rec_re = directory / f'go_rec_w{vec_size}.re'
+        rec_go = directory / f'go_rec_w{vec_size}.go'
+        rec_re.write_text(GO_REC_PROBE)
+        subprocess.run(base_cmd + size_flags + ['--recursive-functions', str(rec_re), '-o', str(rec_go)], check=True)
+        res2 = subprocess.run([go_bin, 'run', str(rec_go)], cwd=directory, env=env, check=True, text=True, capture_output=True)
+        print(f'[Go w={vec_size}] recursive-functions: {res2.stdout.strip()}', flush=True)
 
-    # 3. Run 004_simd.re differential test in Go
-    simd_re = root / 'test/codegen/go/004_simd.re'
-    simd_go = directory / '004_simd.go'
-    subprocess.run(base_cmd + [str(simd_re), '-o', str(simd_go)], check=True)
-    res3 = subprocess.run([go_bin, 'run', str(simd_go)], cwd=directory, env=env, check=True, text=True, capture_output=True)
-    print(f'[Go] 004_simd: {res3.stdout.strip()}', flush=True)
+        # 3. Run 004_simd.re differential test in Go
+        simd_re = root / 'test/codegen/go/004_simd.re'
+        simd_go = directory / f'004_simd_w{vec_size}.go'
+        subprocess.run(base_cmd + size_flags + [str(simd_re), '-o', str(simd_go)], check=True)
+        res3 = subprocess.run([go_bin, 'run', str(simd_go)], cwd=directory, env=env, check=True, text=True, capture_output=True)
+        print(f'[Go w={vec_size}] 004_simd: {res3.stdout.strip()}', flush=True)
+
+    # 4. Run 004_simd_ranges_16_32.re (256-byte signed-bias ranges & opaque generic API)
+    ranges_re = root / 'test/codegen/go/004_simd_ranges_16_32.re'
+    ranges_go = directory / '004_simd_ranges_16_32.go'
+    subprocess.run(base_cmd + [str(ranges_re), '-o', str(ranges_go)], check=True)
+    res4 = subprocess.run([go_bin, 'run', str(ranges_go)], cwd=directory, env=env, check=True, text=True, capture_output=True)
+    print(f'[Go] 004_simd_ranges_16_32: {res4.stdout.strip()}', flush=True)
 
 
 def main():
@@ -1059,7 +1127,9 @@ def main():
                         compilers.append(c)
             if not compilers:
                 raise RuntimeError('no C compiler found')
-            run_c_suite(args.re2c, directory, compilers)
+            for vec_size in (16, 32):
+                run_c_suite_for_width(args.re2c, directory, compilers, vec_size)
+            run_c_standalone(args.re2c, directory, compilers, root)
         if args.language in ('all', 'go'):
             run_go_suite(args.re2c, directory, args.go, root)
     return 0
