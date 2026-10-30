@@ -39,6 +39,7 @@ class Msg;
 class Warn;
 class RenderCallback;
 class Scratchbuf;
+struct loc_t;
 struct StxCode;
 using StxCodes = list_t<StxCode>;
 
@@ -68,7 +69,8 @@ using StxCodes = list_t<StxCode>;
             ({"x86"})) \
     CHECKED_LIST(supported_features, \
             ({"nested-ifs", "bitmaps", "computed-gotos", "case-ranges", "unsafe", "monadic", \
-                "tags", "captures", "captvars", "computed-continue", "vectorize-loops"}))
+                "tags", "captures", "captvars", "computed-continue", "vectorize-loops", \
+                "vectorize-linear"}))
 
 #define RE2C_STX_OPTS \
     STX_OPT(bool, semicolons, false) \
@@ -338,6 +340,15 @@ using StxCodes = list_t<StxCode>;
     CODE_TEMPLATE(yytarget_filter, \
         ({StxVarId::CHAR}), ({}), ({}) \
     ) \
+    CODE_TEMPLATE(yypeek2, \
+        ({StxVarId::PEEK2, StxVarId::INPUT, StxVarId::CURSOR, StxVarId::RECORD}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(yypeek4, \
+        ({StxVarId::PEEK4, StxVarId::INPUT, StxVarId::CURSOR, StxVarId::RECORD}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(yypeek8, \
+        ({StxVarId::PEEK8, StxVarId::INPUT, StxVarId::CURSOR, StxVarId::RECORD}), ({}), ({}) \
+    ) \
     CODE_TEMPLATE(yypeek16, \
         ({StxVarId::PEEK16, StxVarId::INPUT, StxVarId::CURSOR, StxVarId::RECORD}), ({}), ({}) \
     ) \
@@ -461,6 +472,9 @@ using StxCodes = list_t<StxCode>;
     STX_LOCAL_VAR(MTAGN, "YYMTAGN") \
     STX_LOCAL_VAR(MTAGP, "YYMTAGP") \
     STX_LOCAL_VAR(PEEK, "YYPEEK") \
+    STX_LOCAL_VAR(PEEK2, "YYPEEK2") \
+    STX_LOCAL_VAR(PEEK4, "YYPEEK4") \
+    STX_LOCAL_VAR(PEEK8, "YYPEEK8") \
     STX_LOCAL_VAR(PEEK16, "YYPEEK16") \
     STX_LOCAL_VAR(PEEK32, "YYPEEK32") \
     STX_LOCAL_VAR(RECORD, "yyrecord") \
@@ -570,6 +584,7 @@ enum class StxVarId : uint32_t {
     MUTOPT(bool, monadic, false) \
     MUTOPT(Arch, arch, Arch::NONE) \
     MUTOPT(bool, vectorize_loops, false) \
+    MUTOPT(bool, vectorize_linear, false) \
     MUTOPT(uint32_t, vectorize_size, 32) \
     /* YYFILL */ \
     MUTOPT(uint32_t, fill_eof, NOEOF) \
@@ -640,6 +655,9 @@ enum class StxVarId : uint32_t {
     MUTCODE(api_maxfill) \
     MUTCODE(api_maxnmatch) \
     MUTCODE(api_peek) \
+    MUTCODE(api_peek2) \
+    MUTCODE(api_peek4) \
+    MUTCODE(api_peek8) \
     MUTCODE(api_peek16) \
     MUTCODE(api_peek32) \
     MUTCODE(api_skip) \
@@ -864,9 +882,11 @@ struct opt_t {
 #define MUTCODE(name) bool is_default_##name;
     RE2C_MUTCODES
 #undef MUTCODE
+    const bool user_vectorize_linear;
     symtab_t symtab;
 
-    opt_t(const conopt_t& con, const mutopt_t& mut, const mutdef_t& def, const symtab_t& symtab)
+    opt_t(const conopt_t& con, const mutopt_t& mut, const mutdef_t& def,
+          bool user_vectorize_linear, const symtab_t& symtab)
         : stack_code(),
 #define CONSTOPT(type, name, value) name(con.name),
     RE2C_CONSTOPTS
@@ -892,6 +912,7 @@ struct opt_t {
 #define MUTCODE(name) is_default_##name(def.name),
     RE2C_MUTCODES
 #undef MUTCODE
+    user_vectorize_linear(user_vectorize_linear),
     symtab(symtab) {}
 
 #define CODE_TEMPLATE(name, vars, list_vars, conds) \
@@ -920,6 +941,7 @@ struct opt_t {
             && !is_undefined(code_yyskip_yybackup_yypeek)
             && !is_undefined(code_yybackup_yypeek_yyskip);
     }
+    const char* vectorize_linear_disabled_reason() const;
 
   private:
     void eval_code_conf(StxCodeId id, const char* name, const StxCodes* code,

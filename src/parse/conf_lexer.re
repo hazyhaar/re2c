@@ -215,6 +215,9 @@ Ret Input::lex_conf(Opt& opts) {
     "define:"? "YYMTAGN"                     { RET_CONF_CODE(api_mtag_neg); }
     "define:"? "YYMTAGP"                     { RET_CONF_CODE(api_mtag_pos); }
     "define:"? "YYPEEK"                      { RET_CONF_CODE(api_peek); }
+    "define:"? "YYPEEK2"                     { RET_CONF_CODE(api_peek2); }
+    "define:"? "YYPEEK4"                     { RET_CONF_CODE(api_peek4); }
+    "define:"? "YYPEEK8"                     { RET_CONF_CODE(api_peek8); }
     "define:"? "YYPEEK16"                    { RET_CONF_CODE(api_peek16); }
     "define:"? "YYPEEK32"                    { RET_CONF_CODE(api_peek32); }
     "define:"? "YYRESTORE"                   { RET_CONF_CODE(api_restore); }
@@ -284,6 +287,9 @@ Ret Input::lex_conf(Opt& opts) {
     "flags:"? "monadic"                       { RET_CONF_BOOL(monadic); }
     "flags:"? "arch"                          { goto arch; }
     "flags:"? "vectorize:loops"               { RET_CONF_FEAT(vectorize_loops, "vectorize-loops"); }
+    "flags:"? "vectorize:linear" | "flags:vectorize-linear" {
+        RET_CONF_FEAT(vectorize_linear, "vectorize-linear");
+    }
     "flags:"? "vectorize:size"                { RET_CONF_NUM_NONNEG(vectorize_size); }
 
     "encoding:ebcdic" | "flags:ecb"        | "flags:e" { RET_CONF_ENC(Enc::Type::EBCDIC); }
@@ -688,6 +694,9 @@ start:
     "code:yybm_filter"            { RET_CODE(code_yybm_filter); }
     "code:yybm_match"             { RET_CODE(code_yybm_match); }
     "code:yytarget_filter"        { RET_CODE(code_yytarget_filter); }
+    "code:yypeek2"                { RET_CODE(code_yypeek2); }
+    "code:yypeek4"                { RET_CODE(code_yypeek4); }
+    "code:yypeek8"                { RET_CODE(code_yypeek8); }
     "code:yypeek16"               { RET_CODE(code_yypeek16); }
     "code:yypeek32"               { RET_CODE(code_yypeek32); }
     "code:vec16_splat"            { RET_CODE(code_vec16_splat); }
@@ -772,6 +781,9 @@ start:
     "YYMTAGN"      { RET_VAR(StxVarId::MTAGN); }
     "YYMTAGP"      { RET_VAR(StxVarId::MTAGP); }
     "YYPEEK"       { RET_VAR(StxVarId::PEEK); }
+    "YYPEEK2"      { RET_VAR(StxVarId::PEEK2); }
+    "YYPEEK4"      { RET_VAR(StxVarId::PEEK4); }
+    "YYPEEK8"      { RET_VAR(StxVarId::PEEK8); }
     "YYPEEK16"     { RET_VAR(StxVarId::PEEK16); }
     "YYPEEK32"     { RET_VAR(StxVarId::PEEK32); }
     "yyrecord"     { RET_VAR(StxVarId::RECORD); }

@@ -277,6 +277,15 @@ class GenVecPeek : public RenderCallback {
 
     void render_var(StxVarId var) override {
         switch (var) {
+        case StxVarId::PEEK2:
+            os << opts->api_peek2;
+            break;
+        case StxVarId::PEEK4:
+            os << opts->api_peek4;
+            break;
+        case StxVarId::PEEK8:
+            os << opts->api_peek8;
+            break;
         case StxVarId::PEEK16:
             os << opts->api_peek16;
             break;
@@ -1478,12 +1487,9 @@ static void gen_vector_loop(Output& output, const State* s, CodeList* stmts) {
     append(stmts, code_if_then_else(alc, not_less_than, guard_body, nullptr));
 }
 
-static void emit_state(
-        Output& output, const Adfa& dfa, const State* s, CodeList* stmts, CodeList* continuation) {
+static CodeList* gen_transitions(Output& output, const Adfa& dfa, const State* s) {
     const opt_t* opts = output.block().opts;
     OutAllocator& alc = output.allocator;
-    Scratchbuf& buf = output.scratchbuf;
-
     const CodeGo& go = s->go;
     CodeList* transitions = code_list(alc);
     DCHECK(consume(s) || go.tags == TCID0);
@@ -1511,6 +1517,94 @@ static void emit_state(
         break;
     case CodeGo::Kind::EMPTY:
         break;
+    }
+    return transitions;
+}
+
+// Generate the multi-character (broadword) fast path of state `s` (see `Adfa::coalesce_multichar`).
+// When the next `mchar_n` code units are available (`!(code:yylessthan)`) and equal the packed
+// literal `mchar_value`, advance the cursor via `code:yyshift` and jump to `mchar_to`; otherwise
+// execute the ordinary single-character dispatch.
+//
+// In goto/label mode (including loop/switch) this code is emitted before `gen_peek`, so that no
+// scalar byte load precedes the multi-byte expression and the compiler fuses the byte loads into
+// one word load. In recursive-functions mode every branch of the state function must end with a
+// tailcall, so the ordinary dispatch is placed in the `else` branches (after `gen_peek`).
+static CodeList* gen_mchar_fast_path(Output& output, const Adfa& dfa, const State* s) {
+    const opt_t* opts = output.block().opts;
+    OutAllocator& alc = output.allocator;
+    Scratchbuf& buf = output.scratchbuf;
+    const uint32_t n = s->mchar_n;
+    DCHECK(n == 2 || n == 4 || n == 8);
+
+    // In the default (lazy-skip) mode the first character of the chain will be skipped on entry
+    // to `mchar_to` by its ordinary `code_skip`, so only `n - 1` characters are skipped here;
+    // with `--eager-skip` `mchar_to` has no entry skip and all `n` characters are skipped here.
+    CodeList* fast = code_list(alc);
+    const uint32_t nskip = opts->eager_skip ? n : n - 1;
+    if (nskip > 0) {
+        append(fast, code_shift(alc, -static_cast<int32_t>(nskip)));
+    }
+    const CodeJump jump = {s->mchar_to, TCID0, false, false, false};
+    gen_goto(output, dfa, fast, s, jump);
+
+    GenVecPeek peek_cb(buf.stream(), opts);
+    const char* peek = nullptr;
+    switch (n) {
+    case 2: peek = opts->gen_code_yypeek2(buf, peek_cb); break;
+    case 4: peek = opts->gen_code_yypeek4(buf, peek_cb); break;
+    case 8: peek = opts->gen_code_yypeek8(buf, peek_cb); break;
+    default: UNREACHABLE(); break;
+    }
+
+    buf.cstr(peek).cstr(" ").cstr(output.block().binops[OP_CMP_EQ]).cstr(" 0x");
+    buf.stream() << std::hex << s->mchar_value << std::dec;
+    if (!opts->untyped_shift_const) {
+        buf.cstr(n == 8 ? "ull" : "u");
+    }
+    const char* match = buf.flush();
+
+    GenLessThan lt_cb(buf.stream(), opts, n);
+    const char* less_than = opts->gen_code_yylessthan(buf, lt_cb);
+    const char* guard = buf.cstr("!(").cstr(less_than).cstr(")").flush();
+
+    CodeList* stmts = code_list(alc);
+    if (opts->code_model == CodeModel::REC_FUNC) {
+        CodeList* inner = code_list(alc);
+        append(inner, code_if_then_else(alc, match, fast, gen_transitions(output, dfa, s)));
+        append(stmts, code_if_then_else(alc, guard, inner, gen_transitions(output, dfa, s)));
+    } else {
+        CodeList* inner = code_list(alc);
+        append(inner, code_if_then_else(alc, match, fast, nullptr));
+        append(stmts, code_if_then_else(alc, guard, inner, nullptr));
+    }
+    return stmts;
+}
+
+// In rec/func mode the fast path and the ordinary dispatch are one nested IF statement; in
+// goto/label mode the fast path is emitted earlier (before the peek, so that the compiler can fuse
+// the byte loads) and the dispatch alone here. With debug output the fast path stays after the
+// peek so that the entry YYDEBUG statement of the head state runs before the fast path.
+static bool mchar_before_peek(const opt_t* opts, const State* s) {
+    return s->mchar_n > 0 && opts->code_model != CodeModel::REC_FUNC && !opts->debug;
+}
+
+static void emit_state(
+        Output& output, const Adfa& dfa, const State* s, CodeList* stmts, CodeList* continuation) {
+    const opt_t* opts = output.block().opts;
+    OutAllocator& alc = output.allocator;
+    Scratchbuf& buf = output.scratchbuf;
+
+    CodeList* transitions;
+    if (s->mchar_n > 0 && !mchar_before_peek(opts, s)) {
+        transitions = gen_mchar_fast_path(output, dfa, s);
+        // In rec/func mode the ordinary dispatch is nested in the fast path (see
+        // `gen_mchar_fast_path`); in goto/label mode it follows the fast path.
+        if (opts->code_model != CodeModel::REC_FUNC) {
+            append(transitions, gen_transitions(output, dfa, s));
+        }
+    } else {
+        transitions = gen_transitions(output, dfa, s);
     }
     append(transitions, continuation);
 
@@ -1541,6 +1635,10 @@ static void emit_state(
         // All code from YYFILL up to transitions belongs to the ELSE branch of YYEND.
         CodeList* tail = code_list(alc);
         gen_fill_and_label(output, tail, dfa, s);
+        // The multi-character fast path runs before the peek, see `gen_mchar_fast_path`.
+        if (mchar_before_peek(opts, s)) {
+            append(tail, gen_mchar_fast_path(output, dfa, s));
+        }
         gen_peek(alc, s, tail);
         // Vectorized fast-forward runs after YYFILL and YYPEEK: its scalar entry guard reuses
         // `yych`, and the template reloads `yych` after advancing the cursor.
