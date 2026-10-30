@@ -4,6 +4,7 @@ supported_apis = ["simple", "generic", "record"];
 supported_api_styles = ["free-form", "functions"];
 supported_code_models = ["goto-label", "loop-switch", "recursive-functions"];
 supported_targets = ["code", "dot"];
+supported_archs = ["x86"];
 supported_features = ["nested-ifs", "bitmaps", "tags", "captures", "captvars", "vectorize-loops"];
 
 
@@ -14,6 +15,7 @@ backtick_quoted_strings = 1;
 single_quoted_strings = 0;
 indentation_sensitive = 0;
 wrap_blocks_in_braces = 1;
+untyped_shift_const = 1;
 special_escapes = "\a\b\f\n\r\t\v\\'\"";
 
 
@@ -94,7 +96,9 @@ re2c:case-inverted = 0;
 re2c:case-ranges = 0;
 re2c:unsafe = 0;
 re2c:monadic = 0;
+re2c:arch = none;
 re2c:vectorize:loops = 0;
+re2c:vectorize:size = 32;
 re2c:encoding:ebcdic = 0;
 re2c:encoding:utf32 = 0;
 re2c:encoding:ucs2 = 0;
@@ -136,6 +140,8 @@ re2c:YYMAXNMATCH = "YYMAXNMATCH";
 re2c:YYMTAGN = "YYMTAGN";
 re2c:YYMTAGP = "YYMTAGP";
 re2c:YYPEEK = "YYPEEK";
+re2c:YYPEEK16 = "YYPEEK16";
+re2c:YYPEEK32 = "YYPEEK32";
 re2c:YYRESTORE = "YYRESTORE";
 re2c:YYRESTORECTX = "YYRESTORECTX";
 re2c:YYRESTORETAG = "YYRESTORETAG";
@@ -186,6 +192,10 @@ code:assign = topindent lhs " = " rhs nl;
 
 code:type_int = "int";
 code:type_uint = "uint";
+code:type_vec16 = "archsimd.Int8x16";
+code:type_vec32 = "archsimd.Int8x32";
+code:type_vec16_mask = "uint16";
+code:type_vec32_mask = "uint32";
 code:type_yybm = "byte";
 code:type_yytarget = <undefined>;
 code:type_yyctable = <undefined>;
@@ -321,8 +331,8 @@ code:yyrestoretag =
 
 code:yyshift =
     topindent (.api.generic
-        ? YYSHIFT (.api_style.functions ? "(-" offset ")")
-        : YYCURSOR " -= " offset
+        ? YYSHIFT (.api_style.functions ? "(" (.backward ? "-" offset : offset) ")")
+        : YYCURSOR (.backward ? " -= " : " += ") offset
     ) nl;
 
 code:yyshiftstag =
@@ -418,80 +428,31 @@ code:yybm_match = "(" yybm "[" offset "+" yych "] & " mask ") != 0";
 
 code:yytarget_filter = <undefined>;
 
-// The vector loop tests the complement of the loop class (the `xrange` list): a single exit
-// code unit is found with one equality comparison, a range of exit code units with an unsigned
-// range check (subtract the lower bound, then compare with the minimum of the result and the
-// range width). The cursor is advanced to the first exit code unit in the block, so the generated
-// code must import "math/bits" as well as "simd/archsimd". If the complement is empty (the class
-// contains all code units), the loop only skips whole blocks while the length guard holds.
-// After the loop, `archsimd.ClearAVXUpperBits()` (VZEROUPPER) avoids the AVX-SSE transition
-// penalty in legacy SSE code that runs later (e.g. the hash functions of the Go runtime).
-// The length guard is `lessthan` (see `code:yylessthan`), as in the C template, so that a user
-// definition of `code:yylessthan` is honored. The Go compiler
-// does not prove the bounds of the block slice with either form of the guard, so writing it as
-// `YYCURSOR + need <= YYLIMIT` would not remove a bounds check.
-// YYINPUT must be a byte slice. For string input, configure YYINPUT to name a read-only
-// unsafe.Slice(unsafe.StringData(input), len(input)) view created before entering the lexer.
-// Do not convert each block to []byte: that copies string data and may call the runtime
-// with dirty AVX state. Advance with untyped constants to support signed and unsigned cursors.
-// As in the C template, the vector block is entered only if the current code unit is in the
-// class, so that a run that ends right away (e.g. a one-byte identifier) is left to the scalar
-// dispatcher. The scalar test follows the length guard, which proves that the index is valid.
-// It uses `yych` (already loaded by `code:yypeek` before the vector block) in the simplest form
-// for each range of the complement (see the C syntax file): `> hi` for a range starting at 0,
-// `< lo` for a range ending at the largest code unit, `!=` for a single code unit, and an
-// unsigned wrap-around check otherwise. After the vector loop advances the cursor, `yych` is
-// reloaded for the scalar dispatcher that follows.
-code:vector_loop =
-    topindent "if !(" lessthan ")"
-    [xrange{0:-1}: " && " (.xrange.first
-        ? "uint8(" yych ") > " xrange_hi
-        : (.xrange.last
-        ? "uint8(" yych ") < " xrange_lo
-        : (.xrange.many
-        ? "uint8(" yych ") - " xrange_lo " > " xrange_hi " - " xrange_lo
-        : "uint8(" yych ") != " xrange_lo)))]
-    " {" nl
-    indent
-    [xrange{0:-1}: (.xrange.many
-        ? topindent "yyxl" xrange_lo " := archsimd.BroadcastUint8x" size "(" xrange_lo ")" nl
-          topindent "yyxs" xrange_lo " := archsimd.BroadcastUint8x" size "(" xrange_hi " - " xrange_lo ")" nl
-        : topindent "yyxe" xrange_lo " := archsimd.BroadcastUint8x" size "(" xrange_lo ")" nl)]
-    topindent "for {" nl
-        indent
-        [xrange{0}: topindent "yysimd0 := archsimd.LoadUint8x" size "(" YYINPUT "[" YYCURSOR ":" YYCURSOR " + " size "])" nl
-            (.xrange.many
-            ? topindent "yyt" xrange_lo " := yysimd0.Sub(yyxl" xrange_lo ")" nl
-              topindent "yysimd1 := yyt" xrange_lo ".Min(yyxs" xrange_lo ").Equal(yyt" xrange_lo ")" nl
-            : topindent "yysimd1 := yysimd0.Equal(yyxe" xrange_lo ")" nl)]
-        [xrange{1:-1}: (.xrange.many
-            ? topindent "yyt" xrange_lo " := yysimd0.Sub(yyxl" xrange_lo ")" nl
-              topindent "yysimd1 = yysimd1.Or(yyt" xrange_lo ".Min(yyxs" xrange_lo ").Equal(yyt" xrange_lo "))" nl
-            : topindent "yysimd1 = yysimd1.Or(yysimd0.Equal(yyxe" xrange_lo "))" nl)]
-        [xrange{0}: topindent "if yym := yysimd1.ToBits(); yym != 0 {" nl
-            indent
-            topindent "yyn := bits.TrailingZeros32(yym)" nl
-            (.api.generic
-                ? topindent YYSHIFT (.api_style.functions ? "(yyn)") nl
-                : topindent "if yyn & 16 != 0 { " YYCURSOR " += 16 }" nl
-                  topindent "if yyn & 8 != 0 { " YYCURSOR " += 8 }" nl
-                  topindent "if yyn & 4 != 0 { " YYCURSOR " += 4 }" nl
-                  topindent "if yyn & 2 != 0 { " YYCURSOR " += 2 }" nl
-                  topindent "if yyn & 1 != 0 { " YYCURSOR " += 1 }" nl)
-            topindent "break" nl dedent
-        topindent "}" nl]
-        topindent (.api.generic
-            ? YYSHIFT (.api_style.functions ? "(" size ")")
-            : YYCURSOR " += " size) nl
-        topindent "if " lessthan " {" nl
-            indent topindent "break" nl dedent
-        topindent "}" nl
-        dedent
-    topindent "}" nl
-    topindent "archsimd.ClearAVXUpperBits()" nl
-    topindent yych " = " (.api.generic
-        ? YYPEEK (.api_style.functions ? "()")
-        : (.cast ? YYCTYPE "(") YYINPUT "[" YYCURSOR "]" (.cast ? ")")
-    ) nl
-    dedent
-    topindent "}" nl;
+// Atomic x86 vector primitives for Go `simd/archsimd` (16-byte XMM and 32-byte YMM).
+// Control flow (`if`, `switch`, `for`, cursor advance, `yypeek`) is emitted by the
+// standard IR passes. `YYINPUT` must be a byte slice when not using `--api generic`
+// (for string input, create a read-only `unsafe.Slice(unsafe.StringData(s), len(s))`
+// view before entering the lexer). `ClearAVXUpperBits()` is emitted only for 32-byte
+// YMM loops to avoid AVX-SSE transition penalties in legacy SSE runtime code.
+code:yypeek16 = (.api.generic
+    ? YYPEEK16 (.api_style.functions ? "()")
+    : "archsimd.LoadUint8x16(" YYINPUT "[" YYCURSOR ":" YYCURSOR " + 16]).BitsToInt8()");
+code:yypeek32 = (.api.generic
+    ? YYPEEK32 (.api_style.functions ? "()")
+    : "archsimd.LoadUint8x32(" YYINPUT "[" YYCURSOR ":" YYCURSOR " + 32]).BitsToInt8()");
+code:vec16_splat = "archsimd.BroadcastInt8x16(" val ")";
+code:vec32_splat = "archsimd.BroadcastInt8x32(" val ")";
+code:vec16_sub = lhs ".Sub(" rhs ")";
+code:vec32_sub = lhs ".Sub(" rhs ")";
+code:vec16_cmpeq = lhs ".Equal(" rhs ")";
+code:vec32_cmpeq = lhs ".Equal(" rhs ")";
+code:vec16_cmpgt = lhs ".Greater(" rhs ")";
+code:vec32_cmpgt = lhs ".Greater(" rhs ")";
+code:vec16_or = lhs ".Or(" rhs ")";
+code:vec32_or = lhs ".Or(" rhs ")";
+code:vec16_movemask = lhs ".ToBits()";
+code:vec32_movemask = lhs ".ToBits()";
+code:vec16_ctz = "bits.TrailingZeros16(" lhs ")";
+code:vec32_ctz = "bits.TrailingZeros32(" lhs ")";
+code:vec16_cleanup = "";
+code:vec32_cleanup = "archsimd.ClearAVXUpperBits()";

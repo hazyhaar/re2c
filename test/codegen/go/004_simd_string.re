@@ -1,4 +1,4 @@
-//go:generate re2go --vectorize-loops $INPUT -o $OUTPUT
+//go:generate re2go --arch x86 --vectorize-loops $INPUT -o $OUTPUT
 package main
 
 import (

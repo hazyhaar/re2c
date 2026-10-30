@@ -1,4 +1,4 @@
-// re2c $INPUT -o $OUTPUT -i --vectorize-loops -u
+// re2c $INPUT -o $OUTPUT -i --arch x86 --vectorize-loops -u
 // Encodings with code units wider than one byte are rejected as an error: the vector
 // block compares bytes.
 /*!re2c

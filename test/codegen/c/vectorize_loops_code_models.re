@@ -1,4 +1,4 @@
-// re2c $INPUT -o $OUTPUT -i --loop-switch --eager-skip -f --vectorize-loops
+// re2c $INPUT -o $OUTPUT -i --loop-switch --eager-skip -f --arch x86 --vectorize-loops
 #include <assert.h>
 #include <immintrin.h>
 #include <stddef.h>

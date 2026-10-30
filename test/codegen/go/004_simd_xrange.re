@@ -1,4 +1,4 @@
-//go:generate re2go --vectorize-loops -Wno-unreachable-rules --syntax 004_simd_xrange.inc $INPUT -o $OUTPUT
+//go:generate re2go --arch x86 --vectorize-loops -Wno-unreachable-rules $INPUT -o $OUTPUT
 package main
 
 import (

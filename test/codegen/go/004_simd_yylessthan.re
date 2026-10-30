@@ -1,4 +1,4 @@
-//go:generate re2go --vectorize-loops --syntax 004_simd_yylessthan.inc $INPUT -o $OUTPUT
+//go:generate re2go --arch x86 --vectorize-loops --syntax 004_simd_yylessthan.inc $INPUT -o $OUTPUT
 package main
 
 import (

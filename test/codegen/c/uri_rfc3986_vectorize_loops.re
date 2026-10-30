@@ -1,4 +1,4 @@
-// re2c $INPUT -o $OUTPUT -i --vectorize-loops
+// re2c $INPUT -o $OUTPUT -i --arch x86 --vectorize-loops
 #include <immintrin.h>
 #include <stddef.h>
 #include <stdlib.h>

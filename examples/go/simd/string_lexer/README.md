@@ -12,19 +12,19 @@ with JSON-like escapes and instantiates it twice:
 re2go binary built from this tree (the flags are the ones used by the test
 suite, see the first line of `string_lexer.re`):
 
-    re2go -W string_lexer.re -o string_lexer.go -i --api simple --vectorize-loops \
-        --no-version --no-generation-date
+    re2go -W string_lexer.re -o string_lexer.go -i --api simple --arch x86 \
+        --vectorize-loops --no-version --no-generation-date
 
 ## Requirements
 
 - Go 1.27 with `GOEXPERIMENT=simd` (the `simd/archsimd` package is
   experimental; without the experiment all files are excluded by their build
   constraint and `go test` fails with "build constraints exclude all Go files").
-- amd64 with AVX2 (the generated code uses 32-byte vectors, which
-  `simd/archsimd` only provides on amd64; tests and benchmarks are skipped at
-  run time if AVX2 is missing).
+- amd64 with AVX2 (by default `--arch x86 --vectorize-loops` uses 32-byte
+  vectors, which `simd/archsimd` only provides on amd64; tests and benchmarks
+  are skipped at run time if AVX2 is missing).
 - The file that contains the lexer must import both `simd/archsimd` and
-  `math/bits`: the default `code:vector_loop` template uses
+  `math/bits`: the default `code:vec32_ctz` primitive uses
   `bits.TrailingZeros32` to advance the cursor to the first byte that leaves
   the loop.
 

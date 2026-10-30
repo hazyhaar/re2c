@@ -1,4 +1,4 @@
-//go:generate re2go $INPUT -o $OUTPUT -i --api simple --vectorize-loops
+//go:generate re2go $INPUT -o $OUTPUT -i --api simple --arch x86 --vectorize-loops
 //go:build goexperiment.simd && amd64
 
 package main

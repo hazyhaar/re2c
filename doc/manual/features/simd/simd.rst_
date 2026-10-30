@@ -1,25 +1,33 @@
 |re2c| can accelerate hot greedy loops in regular expressions using SIMD
-hardware vectorization via declarative syntax templates (Go 1.27 ``simd/archsimd``
-and C AVX2 intrinsics).
+hardware vectorization in C (SSE2 / AVX2 intrinsics) and Go 1.27+
+(``simd/archsimd``).
 
 In lexical analysis, a significant percentage of CPU cycles is spent
 consuming long homogeneous byte sequences (such as string literals,
-identifiers, or whitespace).
+identifiers, URL fields, or whitespace).
 
 Instead of processing these loops byte-by-byte with scalar branch dispatches,
-the vectorization engine emits a fast-forward loop that loads and evaluates
-blocks of 32 bytes simultaneously using parallel range checks and bitmask extraction.
+the vectorization pass emits a fast-forward loop that loads and evaluates
+blocks of 16 or 32 bytes simultaneously using parallel range checks and bitmask
+extraction, then hands off the first byte outside the class to the ordinary
+scalar DFA dispatcher.
 
-When enabled with ``--vectorize-loops`` or ``re2c:vectorize:loops = 1;``:
+When enabled with ``--arch x86 --vectorize-loops`` (or ``re2c:arch = x86;
+re2c:vectorize:loops = 1;``):
 
+- Vectorization requires selecting a supported target architecture with
+  ``--arch <arch>`` / ``re2c:arch = <arch>`` (currently ``x86`` for the C and
+  Go backends). The vector width in bytes is controlled by
+  ``--vectorize-size <16 | 32>`` / ``re2c:vectorize:size`` (``32`` by default:
+  AVX2 ``__m256i`` / ``archsimd.Int8x32``; ``16`` selects SSE2 ``__m128i`` /
+  ``archsimd.Int8x16``).
 - Vectorization supports all code models (``--goto-label``, ``--loop-switch`` and
   ``--recursive-functions``), all APIs (``simple``, ``record`` and ``generic``),
   ``--eager-skip`` and ``--storable-state`` (``-f``). It requires single-byte code
-  units (as elsewhere in |re2c| for single-byte encodings, ``YYCTYPE`` must be a
-  1-byte code unit type because the vector block loads and counts bytes),
-  ``YYFILL`` with bounds checking, and no end-of-input rule (``re2c:eof``)
-  or ``--skeleton``. Any unsupported combination is a configuration error, not a
-  silent fallback. With ``--emit-dot`` the option is reset.
+  units (``YYCTYPE`` must be an unsigned 1-byte code unit type), ``YYFILL`` with
+  bounds checking, and no end-of-input rule (``re2c:eof``) or ``--skeleton``. Any
+  unsupported combination is a configuration error, not a silent fallback. With
+  ``--emit-dot`` the option is reset.
 - The compiler selects base states with a nonzero refill requirement and a
   reflexive character class of at most 8 disjoint ranges. The loop must not record
   backtracking positions, perform tag actions or have end-of-input transitions,
@@ -29,100 +37,61 @@ When enabled with ``--vectorize-loops`` or ``re2c:vectorize:loops = 1;``:
   at positions the loop never skips.
 - Both ``re2c:yyfill:enable`` and ``re2c:yyfill:check`` must be enabled to ensure
   the vector loop stops before the end-of-buffer boundary. It reserves enough
-  lookahead for the scalar dispatcher and does not increase ``YYMAXFILL``.
-- With the generic API, the default templates still load 32-byte blocks from
-  ``YYCURSOR`` (or ``YYINPUT[YYCURSOR:]`` in Go), which therefore must remain a
-  contiguous byte pointer or slice index, while cursor advancement and reloading
-  ``yych`` use ``YYSHIFT`` and ``YYPEEK``.
-- States that do not meet these per-state requirements retain scalar code
-  without a diagnostic. Enabling the option for a backend without the
-  ``vectorize-loops`` feature is an error.
-- Loop code is emitted through the declarative language syntax template ``code:vector_loop``,
-  supporting Go 1.27 (``simd/archsimd``) and C (AVX2), while remaining extensible to other
-  targets without compiler modification.
-- Once a delimiter byte outside the reflexive class is detected or buffer bounds are approached,
-  execution falls back seamlessly to the scalar DFA dispatcher.
-- The default templates test the complement of the class: every code unit that leaves the
-  loop is compared for equality (or checked with an unsigned range test for a range of such
-  code units), and the cursor is advanced to the first of them before the scalar dispatcher
-  takes over. In Go the generated code uses ``bits.TrailingZeros32``, so the file must import
-  ``math/bits`` in addition to ``simd/archsimd``. In C the generated code uses AVX2 intrinsics
-  from ``<immintrin.h>`` (the file must include it and be compiled with AVX2 enabled, e.g.
-  ``-mavx2``) and ``__builtin_ctz``, which requires GCC or Clang; for other compilers
-  ``code:vector_loop`` can be redefined in a custom syntax file.
-- The default C vector template requires C99 or later (or C++): it mixes
-  declarations and statements inside a block. Unlike scalar output, this
-  template is not compatible with C89.
-- Both default templates require AVX2 support at run time. The generated lexer
-  does not detect CPU capabilities or select a scalar implementation on CPUs
-  without AVX2; applications that need this must check support before calling
-  the vectorized lexer. Go requires ``GOEXPERIMENT=simd`` when building.
-- The default C and Go templates enter the vector block only if ``yych`` (loaded before the
-  vector loop) is in the class, using a scalar test against the complement placed after the
-  length guard, and reload ``yych`` at the end of the vector block after clearing the upper
-  AVX register bits. Runs that end right away, such as one-character identifiers or empty
-  string literals, are thus left to the scalar dispatcher and do not pay for the vector block.
-  The test only selects the path: the vector block itself finds the exact exit position, so
-  the result does not depend on it. Each range of the complement is tested in its simplest
-  form (``> hi`` for a range starting at code unit 0, ``< lo`` for a range ending at the
-  largest code unit, ``!=`` for a single code unit, an unsigned wrap-around check otherwise).
-  Neither form guarantees a speedup for short runs or near the end of the buffer; see the
-  next section.
-- The default C template explicitly calls ``_mm256_zeroupper()`` after the vector
-  loop, and the Go template calls ``archsimd.ClearAVXUpperBits()``. These clear
-  the upper AVX register bits before returning to scalar code, avoiding penalties
-  when subsequent code uses legacy SSE instructions. C compiler insertion of
-  ``vzeroupper`` is not reliable at all optimization levels, so the C template
-  does not rely on it.
-- The Go cleanup covers normal exits from the vector loop, not compiler-inserted
-  ``runtime.panicBounds`` paths for invalid input bounds. The caller must maintain
-  ``0 <= YYCURSOR <= YYLIMIT <= len(YYINPUT)`` and a correct length guard. Under
-  these conditions the vector load's bounds checks cannot fail. If the bounds
-  or a custom guard violate this contract, a panic may bypass
-  ``ClearAVXUpperBits``; AVX cleanup during panic unwinding is not guaranteed.
-- Both default templates write the length guard with ``lessthan``, which is rendered from
-  ``code:yylessthan`` for all APIs (including ``YYLESSTHAN`` with the generic API), so a
-  custom syntax definition of the length check applies to the vector loop as well as to the
-  scalar states.
-
-
-The ``code:vector_loop`` template interface is documented in the syntax files
-section. It provides both the character class and its complement as lists of
-inclusive ranges. Testing the complement can be cheaper for classes such as
-string bodies, where a few exit code units are compared for equality and the
-first match gives the exact exit position.
+  lookahead for the scalar dispatcher via ``code:yylessthan`` and does not
+  increase ``YYMAXFILL``.
+- With ``--api generic``, vector loads use the width-specific primitives
+  ``re2c:YYPEEK16`` (for width 16) and ``re2c:YYPEEK32`` (for width 32), cursor
+  advancement uses ``YYSHIFT``, bounds checks use ``YYLESSTHAN``, and reloading
+  ``yych`` uses ``YYPEEK``. No ``YYCURSOR``, ``YYLIMIT`` or ``YYINPUT`` identifier
+  is emitted in generic API output.
+- Control flow is emitted entirely through |re2c|'s existing IR constructs
+  (``code:if_then_else``, ``code:switch`` on ``yych`` for the scalar entry check,
+  ``code:loop``, ``code:var_local``, ``code:yyshift`` and ``code:yypeek``),
+  combined with atomic target expression templates (``code:type_vec{16,32}``,
+  ``code:type_vec{16,32}_mask``, ``code:yypeek{16,32}``, ``code:vec{16,32}_splat``,
+  ``code:vec{16,32}_{sub,cmpeq,cmpgt,or}``, ``code:vec{16,32}_{movemask,ctz}``
+  and ``code:vec{16,32}_cleanup``).
+- Exit ranges in the complement of the reflexive class are tested with equality
+  (``cmpeq``) for singletons and signed greater-than (``cmpgt``) with a
+  precomputed ``+128`` wrapping bias for byte intervals (a single ``cmpgt``
+  without ``sub`` when an exit range ends at ``0x7F`` or starts at ``0x80``),
+  avoiding the extra zero register required by saturating-subtraction range
+  tests.
+- In C, the generated code uses ``<immintrin.h>`` (compile with ``-mavx2`` for
+  width 32 or ``-msse2`` for width 16) and ``__builtin_ctz`` (GCC / Clang). No
+  explicit ``_mm256_zeroupper()`` is emitted in C: GCC at ``-O2`` and above and
+  Clang insert ``vzeroupper`` automatically; when compiling 32-byte AVX2 lexers
+  with GCC below ``-O2`` (e.g. ``-O0``, ``-O1`` or ``-Os``) alongside legacy
+  non-VEX SSE code, pass ``-mvzeroupper`` explicitly.
+- In Go, the generated code requires Go 1.27+ with ``GOEXPERIMENT=simd`` and
+  imports ``math/bits`` and ``simd/archsimd``. For width 32 (YMM), the Go
+  template emits ``archsimd.ClearAVXUpperBits()`` on normal loop exit; for
+  width 16 (XMM), no cleanup call is emitted. The caller must maintain
+  ``0 <= YYCURSOR <= YYLIMIT <= len(YYINPUT)`` and a sound length guard.
+- The default C vector output mixes declarations and statements inside blocks and
+  therefore requires C99 or later (or C++). Generated lexers do not check CPU
+  capabilities at run time.
 
 When vectorization pays off
 ---------------------------
 
 The vector block has a fixed entry cost, paid once per run of the class that
 is at least two code units long, and a per-block cost that is small compared
-to one scalar step per code unit. The scalar dispatcher has a small fixed
-cost per run and a cost per code unit. Vectorization therefore wins only when
-runs are longer than a break-even length, and loses below it. Measured on one
-x86-64 machine with the default C template, GCC and an identifier class, the
-break-even is near 9 code units: runs of 2 to 8 code units cost more than
-scalar code, runs of a few hundred code units are an order of magnitude
-cheaper. On corpora where most runs are short (identifiers, numbers, short
+to one scalar step per code unit. Vectorization therefore wins only when runs
+are longer than a break-even length (near 9 code units on x86-64 C), and loses
+below it. On corpora where most runs are short (identifiers, numbers, short
 words), the vectorized lexer is slower than the scalar one; on corpora with
 long runs (string bodies, whitespace, comments, URL and log fields) it is
-faster.
-
-The generator cannot know the run lengths of the input, so the option is off
-by default and applies per block. Enable it for blocks whose hot loops are
-long, and decide from a measurement on the target corpus rather than from the
-class alone; the generated code is larger with the option, which also costs
-on the scalar paths of the same lexer.
+faster. Enable it per block for grammars whose hot loops scan long runs, and
+verify on representative input.
 
 Go string input
 ---------------
 
-The default Go vector template requires ``YYINPUT`` to be a byte slice:
-``archsimd.LoadUint8x32`` does not accept a ``string``. For string input, use
-the existing ``re2c:YYINPUT`` configuration to name a read-only byte view.
-Construct this view once, before entering the generated lexer, using the
-documented ``unsafe.StringData`` and ``unsafe.Slice`` functions, and import
-``unsafe`` in addition to ``math/bits`` and ``simd/archsimd``. For example:
+In Go ``simple`` and ``record`` APIs, ``archsimd.LoadUint8x16`` /
+``LoadUint8x32`` require ``YYINPUT`` to be a byte slice rather than a
+``string``. For string input, construct a read-only byte view once before
+entering the lexer via ``unsafe.StringData`` and ``unsafe.Slice``:
 
 .. code-block:: go
 
@@ -130,36 +99,20 @@ documented ``unsafe.StringData`` and ``unsafe.Slice`` functions, and import
         input := unsafe.Slice(unsafe.StringData(text), len(text))
         yycursor, yylimit := 0, len(input)
         /*!re2c
+            re2c:arch = x86;
+            re2c:vectorize:loops = 1;
             re2c:api = simple;
             re2c:YYCTYPE = byte;
             re2c:YYINPUT = input;
             re2c:YYFILL = "return -2";
             re2c:YYFILL:naked = 1;
-            re2c:vectorize:loops = 1;
             [a-z]+ { return yycursor }
             *      { return -1 }
         */
     }
 
-The view aliases the string's storage without copying it. Neither generated
-code nor user actions or refill code may modify its bytes. The slice retains
-a pointer to the underlying storage, keeping it live while the lexer reads
-it; no conversion through ``uintptr`` or separate ``runtime.KeepAlive`` call
-is needed. Its length must not exceed ``len(text)``. For an empty string,
-``StringData`` may return nil, and ``Slice`` with length zero is valid; the
-normal length guard prevents any load. If refill code replaces the string,
-it must rebuild the view and update the cursor and limit consistently before
-resuming the lexer. The usual input bounds contract still applies.
-
-Do not put ``[]byte(text[...])`` in the vector loop: Go may copy every block
-and call the runtime with dirty AVX registers. Converting all inputs through
-``unsafe.StringData(string(input))`` is not an equivalent general solution:
-for byte slices the conversion to string may itself copy and call the runtime.
-Byte-slice lexers should continue to use their original input directly.
-
-The Go template retains five conditional cursor increments with untyped
-constants to support both ``int`` and ``uint`` cursors. Their cost relative
-to a single typed addition depends on the distribution of exit positions;
-neither form is uniformly faster. No replacement has
-been validated by a controlled performance comparison, so no performance
-improvement is claimed for cursor advancement.
+Do not put ``[]byte(text[...])`` inside the lexer: Go may copy every block and
+call into the runtime with dirty YMM registers. In non-generic Go APIs, cursor
+advancement by ``yyn`` uses powers-of-two ``code:yyshift`` steps with untyped
+integer constants so that both ``int`` and ``uint`` cursor variables are
+supported without casts.

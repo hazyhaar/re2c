@@ -64,6 +64,8 @@ using StxCodes = list_t<StxCode>;
             ({"goto-label", "loop-switch", "recursive-functions"})) \
     CHECKED_LIST(supported_targets, \
             ({"code", "dot", "skeleton"})) \
+    CHECKED_LIST(supported_archs, \
+            ({"x86"})) \
     CHECKED_LIST(supported_features, \
             ({"nested-ifs", "bitmaps", "computed-gotos", "case-ranges", "unsafe", "monadic", \
                 "tags", "captures", "captvars", "computed-continue", "vectorize-loops"}))
@@ -74,6 +76,7 @@ using StxCodes = list_t<StxCode>;
     STX_OPT(bool, single_quoted_strings, false) \
     STX_OPT(bool, indentation_sensitive, false) \
     STX_OPT(bool, wrap_blocks_in_braces, false) \
+    STX_OPT(bool, untyped_shift_const, false) \
     STX_OPT(std::string, special_escapes, "")
 
 #define RE2C_CODE_TEMPLATES \
@@ -113,6 +116,18 @@ using StxCodes = list_t<StxCode>;
         ({}), ({}), ({}) \
     ) \
     CODE_TEMPLATE(type_uint, \
+        ({}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(type_vec16, \
+        ({}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(type_vec32, \
+        ({}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(type_vec16_mask, \
+        ({}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(type_vec32_mask, \
         ({}), ({}), ({}) \
     ) \
     CODE_TEMPLATE(type_yybm, \
@@ -261,7 +276,8 @@ using StxCodes = list_t<StxCode>;
         ({StxVarId::RESTORETAG, StxVarId::CURSOR, StxVarId::TAG, StxVarId::RECORD}), ({}), ({}) \
     ) \
     CODE_TEMPLATE(yyshift, \
-        ({StxVarId::SHIFT, StxVarId::CURSOR, StxVarId::OFFSET, StxVarId::RECORD}), ({}), ({}) \
+        ({StxVarId::SHIFT, StxVarId::CURSOR, StxVarId::OFFSET, StxVarId::RECORD}), ({}), \
+        ({StxLOpt::BACKWARD}) \
     ) \
     CODE_TEMPLATE(yyshiftstag, \
         ({StxVarId::SHIFTSTAG, StxVarId::TAG, StxVarId::NEG, StxVarId::OFFSET, StxVarId::RECORD}), \
@@ -322,14 +338,59 @@ using StxCodes = list_t<StxCode>;
     CODE_TEMPLATE(yytarget_filter, \
         ({StxVarId::CHAR}), ({}), ({}) \
     ) \
-    CODE_TEMPLATE(vector_loop, \
-        ({StxVarId::SIZE, StxVarId::NEED, StxVarId::LESSTHAN_EXPR, StxVarId::CHAR, \
-            StxVarId::CTYPE, StxVarId::PEEK, StxVarId::SHIFT, StxVarId::INPUT, StxVarId::CURSOR, \
-            StxVarId::LIMIT, StxVarId::RECORD}), \
-        ({StxVarId::RANGE, StxVarId::XRANGE}), \
-        ({StxLOpt::CAST, StxLOpt::MANY, StxLOpt::RANGE_MANY, StxLOpt::XRANGE_MANY, \
-          StxLOpt::RANGE_FIRST, StxLOpt::RANGE_LAST, StxLOpt::XRANGE_FIRST, \
-          StxLOpt::XRANGE_LAST}) \
+    CODE_TEMPLATE(yypeek16, \
+        ({StxVarId::PEEK16, StxVarId::INPUT, StxVarId::CURSOR, StxVarId::RECORD}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(yypeek32, \
+        ({StxVarId::PEEK32, StxVarId::INPUT, StxVarId::CURSOR, StxVarId::RECORD}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(vec16_splat, \
+        ({StxVarId::VAL}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(vec32_splat, \
+        ({StxVarId::VAL}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(vec16_sub, \
+        ({StxVarId::LHS, StxVarId::RHS}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(vec32_sub, \
+        ({StxVarId::LHS, StxVarId::RHS}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(vec16_cmpeq, \
+        ({StxVarId::LHS, StxVarId::RHS}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(vec32_cmpeq, \
+        ({StxVarId::LHS, StxVarId::RHS}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(vec16_cmpgt, \
+        ({StxVarId::LHS, StxVarId::RHS}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(vec32_cmpgt, \
+        ({StxVarId::LHS, StxVarId::RHS}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(vec16_or, \
+        ({StxVarId::LHS, StxVarId::RHS}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(vec32_or, \
+        ({StxVarId::LHS, StxVarId::RHS}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(vec16_movemask, \
+        ({StxVarId::LHS}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(vec32_movemask, \
+        ({StxVarId::LHS}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(vec16_ctz, \
+        ({StxVarId::LHS}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(vec32_ctz, \
+        ({StxVarId::LHS}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(vec16_cleanup, \
+        ({}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(vec32_cleanup, \
+        ({}), ({}), ({}) \
     )
 
 #define RE2C_ONELINE_CODES \
@@ -358,7 +419,6 @@ using StxCodes = list_t<StxCode>;
     STX_LOCAL_VAR(INDEX, "index") \
     STX_LOCAL_VAR(INIT, "init") \
     STX_LOCAL_VAR(LABEL, "label") \
-    STX_LOCAL_VAR(LESSTHAN_EXPR, "lessthan") \
     STX_LOCAL_VAR(LHS, "lhs") \
     STX_LOCAL_VAR(LINE, "line") \
     STX_LOCAL_VAR(MASK, "mask") \
@@ -366,9 +426,6 @@ using StxCodes = list_t<StxCode>;
     STX_LOCAL_VAR(NEED, "need") \
     STX_LOCAL_VAR(NEG, "neg") \
     STX_LOCAL_VAR(OFFSET, "offset") \
-    STX_LOCAL_VAR(RANGE, "range") \
-    STX_LOCAL_VAR(RANGE_HI, "range_hi") \
-    STX_LOCAL_VAR(RANGE_LO, "range_lo") \
     STX_LOCAL_VAR(RETVAL, "retval") \
     STX_LOCAL_VAR(RHS, "rhs") \
     STX_LOCAL_VAR(ROW, "row") \
@@ -382,9 +439,6 @@ using StxCodes = list_t<StxCode>;
     STX_LOCAL_VAR(VAL, "val") \
     STX_LOCAL_VAR(VAR, "var") \
     STX_LOCAL_VAR(VER, "version") \
-    STX_LOCAL_VAR(XRANGE, "xrange") \
-    STX_LOCAL_VAR(XRANGE_HI, "xrange_hi") \
-    STX_LOCAL_VAR(XRANGE_LO, "xrange_lo") \
     /* vars for API primitives */ \
     STX_LOCAL_VAR(BACKUP, "YYBACKUP") \
     STX_LOCAL_VAR(BACKUPCTX, "YYBACKUPCTX") \
@@ -407,6 +461,8 @@ using StxCodes = list_t<StxCode>;
     STX_LOCAL_VAR(MTAGN, "YYMTAGN") \
     STX_LOCAL_VAR(MTAGP, "YYMTAGP") \
     STX_LOCAL_VAR(PEEK, "YYPEEK") \
+    STX_LOCAL_VAR(PEEK16, "YYPEEK16") \
+    STX_LOCAL_VAR(PEEK32, "YYPEEK32") \
     STX_LOCAL_VAR(RECORD, "yyrecord") \
     STX_LOCAL_VAR(RESTORE, "YYRESTORE") \
     STX_LOCAL_VAR(RESTORECTX, "YYRESTORECTX") \
@@ -512,7 +568,9 @@ enum class StxVarId : uint32_t {
     MUTOPT(bool, nested_ifs, false) \
     MUTOPT(bool, unsafe, true) \
     MUTOPT(bool, monadic, false) \
+    MUTOPT(Arch, arch, Arch::NONE) \
     MUTOPT(bool, vectorize_loops, false) \
+    MUTOPT(uint32_t, vectorize_size, 32) \
     /* YYFILL */ \
     MUTOPT(uint32_t, fill_eof, NOEOF) \
     MUTOPT(uint32_t, fill_sentinel, NOEOF) \
@@ -582,6 +640,8 @@ enum class StxVarId : uint32_t {
     MUTCODE(api_maxfill) \
     MUTCODE(api_maxnmatch) \
     MUTCODE(api_peek) \
+    MUTCODE(api_peek16) \
+    MUTCODE(api_peek32) \
     MUTCODE(api_skip) \
     MUTCODE(api_backup) \
     MUTCODE(api_backup_ctx) \

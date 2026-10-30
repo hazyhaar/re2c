@@ -1,4 +1,4 @@
-// re2c $INPUT -o $OUTPUT -i --vectorize-loops
+// re2c $INPUT -o $OUTPUT -i --arch x86 --vectorize-loops
 // Check that lexers with vectorized loops produce the expected tokens when the
 // input is read in chunks into a small buffer with YYFILL, so that buffer
 // refills land inside tokens at every position relative to a vector block.

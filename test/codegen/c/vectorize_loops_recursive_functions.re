@@ -1,4 +1,4 @@
-// re2c $INPUT -o $OUTPUT -i --recursive-functions --vectorize-loops
+// re2c $INPUT -o $OUTPUT -i --recursive-functions --arch x86 --vectorize-loops
 #include <assert.h>
 #include <immintrin.h>
 #include <stddef.h>

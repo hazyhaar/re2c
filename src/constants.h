@@ -28,6 +28,11 @@ enum class Lang: uint32_t {
     NONE // no language (no default syntax config will be loaded)
 };
 
+enum class Arch: uint32_t {
+    NONE,
+    X86
+};
+
 enum class Api: uint32_t {
     SIMPLE,
     GENERIC,
@@ -148,15 +153,18 @@ enum class CodeKind: uint32_t {
     ABORT,
     DEBUG,
     REC_FUNCS,
-    ASSIGN,
-    VECTOR_LOOP
+    ASSIGN
 };
 
 // Types of variables in codegen (independent of the language language).
 enum class VarType: uint32_t {
     INT,
     UINT,
-    YYCTYPE
+    YYCTYPE,
+    VEC16,
+    VEC32,
+    VEC16_MASK,
+    VEC32_MASK
 };
 
 // Bit flags for configurations used in re2c blocks.
@@ -221,12 +229,7 @@ enum class StxLOpt {
     TYPE,
     RETVAL,
     MANY,
-    RANGE_MANY,
-    XRANGE_MANY,
-    RANGE_FIRST,
-    RANGE_LAST,
-    XRANGE_FIRST,
-    XRANGE_LAST,
+    BACKWARD,
     NESTED
 };
 

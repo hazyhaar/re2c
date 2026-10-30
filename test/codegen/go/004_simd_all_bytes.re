@@ -1,14 +1,9 @@
-//go:generate re2go --vectorize-loops -Wno-unreachable-rules $INPUT -o $OUTPUT
+//go:generate re2go --arch x86 --vectorize-loops -Wno-unreachable-rules $INPUT -o $OUTPUT
 package main
 
 import (
 	"fmt"
-	"math/bits"
-	"simd/archsimd"
 )
-
-// The vector loop below does not use math/bits, as its class has no exits.
-var _ = bits.TrailingZeros32
 
 var (
 	input  []byte

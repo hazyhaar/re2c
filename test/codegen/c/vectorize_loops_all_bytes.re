@@ -1,5 +1,5 @@
-// re2c $INPUT -o $OUTPUT -i --vectorize-loops -Wno-unreachable-rules
-// The loop class contains all code units, so its complement (the `xrange` list)
+// re2c $INPUT -o $OUTPUT -i --arch x86 --vectorize-loops -Wno-unreachable-rules
+// The loop class contains all code units, so its complement
 // is empty and the vector loop has no exit comparisons: it skips whole vectors
 // while the length guard holds, and the scalar code handles the rest.
 // The loop only ends at the end of input (YYFILL returns 1), so the action of

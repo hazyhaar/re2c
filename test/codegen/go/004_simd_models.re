@@ -1,4 +1,4 @@
-//go:generate re2go --vectorize-loops --loop-switch -f $INPUT -o $OUTPUT
+//go:generate re2go --arch x86 --vectorize-loops --loop-switch -f $INPUT -o $OUTPUT
 package main
 
 import (
@@ -37,9 +37,9 @@ func lexGeneric(st *State) int {
 	re2c:api:style = free-form;
 	re2c:api:sigil = "@@";
 	re2c:YYCTYPE = byte;
-	re2c:YYINPUT = "st.yyinput";
-	re2c:YYCURSOR = "st.yycursor";
 	re2c:YYPEEK = "st.yyinput[st.yycursor]";
+	re2c:YYPEEK32 = "archsimd.LoadUint8x32(st.yyinput[st.yycursor : st.yycursor+32]).AsInt8x32()";
+	re2c:YYPEEK16 = "archsimd.LoadUint8x16(st.yyinput[st.yycursor : st.yycursor+16]).AsInt8x16()";
 	re2c:YYSKIP = "st.yycursor++";
 	re2c:YYBACKUP = "st.yymarker = st.yycursor";
 	re2c:YYRESTORE = "st.yycursor = st.yymarker";

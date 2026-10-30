@@ -1,7 +1,6 @@
-// re2c $INPUT -o $OUTPUT -i --vectorize-loops
-// The vector block of the default `code:vector_loop` is entered only if the
-// current code unit is in the loop class, so that runs that end right away are
-// left to the scalar dispatcher. The scalar test uses the class complement,
+// re2c $INPUT -o $OUTPUT -i --arch x86 --vectorize-loops
+// The generated vector block is entered only if the current code unit is in the
+// loop class, so that runs that end right away are left to the scalar dispatcher. The scalar test uses the class complement,
 // which here contains single code units (0x00, '"', 0xFF) and a range that
 // crosses 0x80 (0x7F-0x9F). The program checks that the vector and the scalar
 // lexers produce the expected tokens for runs of every length up to 100 that

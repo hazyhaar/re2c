@@ -34,6 +34,9 @@ language configurations, inplace configurations and code templates.
       A list of supported codegen targets with possible elements ``code``,
       ``dot``, ``skeleton``.
 
+  ``supported_archs``
+      A list of supported target architectures with possible element ``x86``.
+
   ``supported_features``
       A list of supported features with possible elements ``nested-ifs``,
       ``bitmaps``, ``computed-gotos``, ``case-ranges``, ``monadic``, ``unsafe``,
@@ -59,6 +62,12 @@ language configurations, inplace configurations and code templates.
 
   ``wrap_blocks_in_braces``
       Non-zero if compound statements must be wrapped in curly braces.
+
+  ``untyped_shift_const``
+      Non-zero if variable forward cursor shifts in non-generic APIs should be
+      decomposed into powers-of-two ``code:yyshift`` steps with untyped
+      integer constants (used by Go to support both ``int`` and ``uint``
+      cursors).
 
 **Inplace configurations**
 
@@ -205,6 +214,12 @@ language configurations, inplace configurations and code templates.
   ``code:type_uint``
       Unsigned integer type.
 
+  ``code:type_vec16``, ``code:type_vec32``
+      16-byte and 32-byte SIMD byte-vector types used with ``--vectorize-loops``.
+
+  ``code:type_vec16_mask``, ``code:type_vec32_mask``
+      Scalar bitmask types returned by ``code:vec16_movemask`` and ``code:vec32_movemask``.
+
   ``code:type_yybm``
       Type of elements in the ``yybm`` table.
 
@@ -279,44 +294,6 @@ language configurations, inplace configurations and code templates.
       ``var`` (state variable), ``state`` (a list variable that expands to all
       state names) and ``stmt`` (a list variable that expands to all statements
       in the loop body or the current state).
-
-  ``code:vector_loop``
-      A vectorized fast-forward loop for a reflexive character class, emitted
-      with ``--vectorize-loops``. It advances ``YYCURSOR`` over code units in
-      the class and falls through to the scalar dispatcher at the first code
-      unit outside the class or when too little input remains.
-      Supported variables: ``size`` (vector width in code units, currently 32),
-      ``need`` (``size`` plus the following scalar dispatcher's lookahead,
-      at least one extra code unit), ``lessthan`` (the expression rendered by
-      ``code:yylessthan`` for ``need``, true if insufficient input remains),
-      and ``YYINPUT``, ``YYCURSOR``, ``YYLIMIT``, ``YYCTYPE``, ``YYPEEK``,
-      ``YYSHIFT``, ``yyrecord``, ``yych`` (the corresponding API expressions;
-      for ``YYSHIFT`` in free-form generic API, the sigil is replaced with
-      ``size`` outside ``xrange`` and with ``yyn`` inside ``xrange``).
-
-      The list ``range`` expands over inclusive ranges inside the class, with
-      element variables ``range_lo`` and ``range_hi``. The list ``xrange``
-      expands over inclusive ranges outside the class (its complement), with
-      element variables ``xrange_lo`` and ``xrange_hi``. Each pair of element
-      variables is valid only inside its corresponding list. An empty
-      complement produces no ``xrange`` iterations, including bounded list
-      expressions such as ``[xrange{0}: ...]``.
-
-      Conditionals: ``.cast`` is true if ``re2c:yych:conversion`` is set to
-      non-zero. ``.many`` is true if the class contains more than one
-      ``range`` element. It is a property of the whole class, valid throughout
-      the template, and does not depend on the current list element.
-      ``.range.many`` and ``.xrange.many`` are true if the current inclusive
-      range contains more than one code unit (its upper bound exceeds its
-      lower bound). They are valid only inside ``range`` and ``xrange`` lists,
-      respectively, and can select a range test instead of an equality test.
-      ``.range.first`` and ``.xrange.first`` are true if the current range
-      contains more than one code unit and starts at code unit 0, so that a
-      single comparison with the upper bound tests it. ``.range.last`` and
-      ``.xrange.last`` are true if the current range contains more than one
-      code unit, ends at the largest code unit of the encoding and does not
-      start at 0, so that a single comparison with the lower bound tests it.
-      The four are valid only inside their lists.
 
   ``code:continue``
       Continue statement. Supported variables: ``label`` (label from which to
@@ -398,6 +375,29 @@ language configurations, inplace configurations and code templates.
       configurations). Conditionals: ``.cast`` (true if
       ``re2c:yych:conversion`` is set to non-zero).
 
+  ``code:yypeek16``, ``code:yypeek32``
+      16-byte and 32-byte SIMD vector load expressions at the current input
+      position, possibly specialized for different APIs. Supported variables:
+      ``YYPEEK16`` (or ``YYPEEK32``), ``YYINPUT``, ``YYCURSOR``, ``yyrecord``.
+
+  ``code:vec16_splat``, ``code:vec32_splat``
+      Broadcast a signed 8-bit constant ``val`` across all lanes of a 16-byte
+      or 32-byte vector. Supported variable: ``val``.
+
+  ``code:vec16_sub``, ``code:vec32_sub``, ``code:vec16_cmpeq``, ``code:vec32_cmpeq``, ``code:vec16_cmpgt``, ``code:vec32_cmpgt``, ``code:vec16_or``, ``code:vec32_or``
+      Lane-wise 8-bit wrapping subtraction, equality comparison, signed
+      greater-than comparison, and bitwise OR on 16-byte or 32-byte vectors.
+      Supported variables: ``lhs`` and ``rhs``.
+
+  ``code:vec16_movemask``, ``code:vec32_movemask``, ``code:vec16_ctz``, ``code:vec32_ctz``
+      Extract an unsigned integer bitmask from the high bit of each lane of a
+      vector mask, and count trailing zero bits of a non-zero bitmask.
+      Supported variable: ``lhs``.
+
+  ``code:vec16_cleanup``, ``code:vec32_cleanup``
+      Optional target cleanup expression emitted as a statement before leaving
+      a non-empty vector loop (empty string if none is needed).
+
   ``code:yyskip``
       ``YYSKIP`` statement, possibly specialized for different APIs.
       Supported variables: ``YYSKIP``, ``YYCURSOR``, ``yyrecord`` (map to the
@@ -463,7 +463,8 @@ language configurations, inplace configurations and code templates.
       ``YYSHIFT`` statement, possibly specialized for different APIs.
       Supported variables: ``YYSHIFT``, ``YYCURSOR``, ``yyrecord`` (map to the
       corresponding ``re2c:`` configurations), ``offset`` (the number of code
-      units to shift the current position).
+      units to shift the current position). Conditional: ``.backward`` (true
+      when shifting backward, false when advancing forward).
 
   ``code:yyshiftstag``
       ``YYSHIFTSTAG`` statement, possibly specialized for different APIs.
