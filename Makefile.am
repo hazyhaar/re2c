@@ -777,6 +777,9 @@ check_vectorize_avx: all
 .PHONY: check_vectorize_loops
 check_vectorize_loops: all
 	$(PYTHON) $(top_srcdir)/test/codegen/c/check_vectorize_loops.py --cc "$(CC)" $(top_builddir)/re2c
+.PHONY: check_vectorize_linear
+check_vectorize_linear: all
+	$(PYTHON) $(top_srcdir)/test/codegen/c/check_vectorize_linear.py --cc "$(CC)" $(top_builddir)/re2c
 
 re2c_test_list_SOURCES = \
 	src/test/list/test.cc
