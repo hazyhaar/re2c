@@ -119,10 +119,16 @@ namespace re2c_##name { \
     struct bench_bounded_scalar { \
         void operator()(benchmark::State &state, const char* input, long expected) const; \
     }; \
+    struct bench_bounded_vector_sse2 { \
+        void operator()(benchmark::State &state, const char* input, long expected) const; \
+    }; \
     struct bench_bounded_vector { \
         void operator()(benchmark::State &state, const char* input, long expected) const; \
     }; \
     struct bench_buffered_scalar { \
+        void operator()(benchmark::State &state, const char* input, long expected) const; \
+    }; \
+    struct bench_buffered_vector_sse2 { \
         void operator()(benchmark::State &state, const char* input, long expected) const; \
     }; \
     struct bench_buffered_vector { \
@@ -132,7 +138,8 @@ namespace re2c_##name { \
 }
 
 BENCH_VEC(vec_00__strings)
-BENCH_VEC(vec_01__strings_fixed)
+BENCH_VEC(vec_01__uri_rfc3986)
+BENCH_VEC(vec_02__uri_simple)
 
 namespace re2c_vec_00__strings {
     void register_regimes();

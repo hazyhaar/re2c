@@ -1,5 +1,5 @@
-// Lexer rules shared by vec_00__strings.re and vec_01__strings_fixed.re (and mirrored by the
-// hand-written reference lexers in ../ref/vec_strings_ref.cc).
+// Lexer rules used by vec_00__strings.re (and mirrored by the hand-written reference lexers in
+// ../ref/vec_strings_ref.cc).
 //
 // A lexer for string literals and other C-like tokens. The hot loops are the reflexive loops
 // inside string literals, comments, whitespace, identifiers and numbers: these are the loops that

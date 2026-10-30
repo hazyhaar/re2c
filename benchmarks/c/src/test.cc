@@ -35,21 +35,27 @@ bool verbose = false;
     if (!quick) ok &= ragel_##name::test_##suffix("data/" #data "/big", count2); \
 } while (0)
 
-// Check that scalar and vectorized lexers (generated with the default and the fixed syntax file)
-// and the hand-written reference lexers produce identical tokens (see re2c/vec_base.re and
-// ref/vec_strings_ref.cc).
+// Check that scalar and vectorized (16-byte SSE2 and 32-byte AVX2) lexers and the hand-written
+// reference lexers produce identical tokens (see re2c/vec_base.re and ref/vec_strings_ref.cc).
 #define TEST_VEC(name, data, count1, count2) do { \
     fprintf(stderr, "checking %s on %s...\n", #name, #data); \
     long d1 = 0, d2 = 0; \
     ok &= re2c_##name::test("data/" #data "/small", count1, &d1); \
-    ok &= re2c_vec_01__strings_fixed::test("data/" #data "/small", count1, &d1); \
     ok &= ref_vec_strings::test("data/" #data "/small", count1, &d1); \
     if (!quick) { \
         ok &= re2c_##name::test("data/" #data "/big", count2, &d2); \
-        ok &= re2c_vec_01__strings_fixed::test("data/" #data "/big", count2, &d2); \
         ok &= ref_vec_strings::test("data/" #data "/big", count2, &d2); \
     } \
     TEST_VEC_HYPERSCAN(data); \
+} while (0)
+
+#define TEST_VEC_ONLY(name, data, count1, count2) do { \
+    fprintf(stderr, "checking %s on %s...\n", #name, #data); \
+    long d1 = 0, d2 = 0; \
+    ok &= re2c_##name::test("data/" #data "/small", count1, &d1); \
+    if (!quick) { \
+        ok &= re2c_##name::test("data/" #data "/big", count2, &d2); \
+    } \
 } while (0)
 
 #ifdef RE2C_BENCH_HYPERSCAN
@@ -128,6 +134,8 @@ int main(int argc, char** argv) {
         TEST_VEC(vec_00__strings, strescape, 69709, 17845504);
         TEST_VEC(vec_00__strings, json, 136981, 35067136);
         TEST_VEC(vec_00__strings, csource, 314902, 89747070);
+        TEST_VEC_ONLY(vec_01__uri_rfc3986, uri, 1929, 16037706);
+        TEST_VEC_ONLY(vec_02__uri_simple, uri, 1929, 16037706);
 #ifdef RE2C_BENCH_SIMDJSON
         fprintf(stderr, "checking simdjson on json...\n");
         ok &= ref_simdjson::test("data/json/small", 1);

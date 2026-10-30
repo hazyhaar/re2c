@@ -49,16 +49,15 @@ set(BENCHMARKS
 )
 
 # Benchmarks for `--vectorize-loops`: each one is a single .re file that generates scalar and
-# vectorized lexers side by side (see src/re2c/vec_base.re). The generated code uses AVX2
-# intrinsics, so these benchmarks are built only on x86 and compiled with -mavx2 (only them, so
-# that other benchmarks are not affected); the benchmark and test binaries skip them at run time
-# if the CPU does not support AVX2.
+# vectorized (16-byte SSE2 and 32-byte AVX2) lexers side by side (see src/re2c/vec_base.re). The
+# translation units are compiled with -msse2 so that 16-byte SSE2 lexers emit genuine non-VEX SSE2
+# instructions, while 32-byte AVX2 lexers carry per-function target("avx2") attributes; the
+# benchmark and test binaries skip them at run time if the CPU does not support AVX2.
 set(VEC_BENCHMARKS
     "vec_00__strings"
-    "vec_01__strings_fixed"
+    "vec_01__uri_rfc3986"
+    "vec_02__uri_simple"
 )
-# Per-benchmark syntax files (re2c --syntax), relative to src/re2c.
-set(VEC_SYNTAX_vec_01__strings_fixed "vec_fixed.syntax")
 # Optional third-party references for the vec_* benchmarks (off by default, found with pkg-config;
 # they must be installed separately, see README).
 option(RE2C_BENCH_SIMDJSON "Add simdjson reference benchmarks on the json data set" OFF)
@@ -71,7 +70,7 @@ else()
     set(VEC_BENCHMARKS "")
     set(VEC_INPUTS "")
 endif()
-set(VEC_CXX_FLAGS "-mavx2")
+set(VEC_CXX_FLAGS "-msse2")
 
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
 set(ENG_DIR "${CMAKE_CURRENT_BINARY_DIR}/engines")
@@ -139,21 +138,12 @@ foreach(bench ${VEC_BENCHMARKS})
     set(pregen_file "${PREGEN_DIR}/re2c/${bench}.cc")
     file(RELATIVE_PATH rel_src_file "${CMAKE_CURRENT_BINARY_DIR}" "${src_file}")
     file(RELATIVE_PATH rel_gen_file "${CMAKE_CURRENT_BINARY_DIR}" "${gen_file}")
-    set(syntax_flags "")
-    set(syntax_deps "")
-    if(DEFINED VEC_SYNTAX_${bench})
-        # re2c resolves the syntax file like an include, so pass a relative path.
-        set(syntax_file "${SRC_DIR}/re2c/${VEC_SYNTAX_${bench}}")
-        file(RELATIVE_PATH rel_syntax_file "${CMAKE_CURRENT_BINARY_DIR}" "${syntax_file}")
-        set(syntax_flags "--syntax" "${rel_syntax_file}")
-        set(syntax_deps "${syntax_file}")
-    endif()
     add_custom_command(
         OUTPUT "${gen_file}"
-        COMMAND "${RE2C}" ${RE2C_FLAGS} ${syntax_flags} "${rel_src_file}" -o "${rel_gen_file}"
+        COMMAND "${RE2C}" ${RE2C_FLAGS} "${rel_src_file}" -o "${rel_gen_file}"
         COMMAND "${CMAKE_COMMAND}" -E copy_if_different "${gen_file}" "${pregen_file}"
         DEPENDS "${src_file}" "${SRC_DIR}/re2c/vec_base.re" "${SRC_DIR}/re2c/vec_strings_rules.re"
-            ${syntax_deps} "${RE2C}"
+            "${RE2C}"
     )
     list(APPEND GEN "${gen_file}")
     list(APPEND VEC_GEN "${gen_file}")

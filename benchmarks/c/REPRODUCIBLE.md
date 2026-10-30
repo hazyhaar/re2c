@@ -6,9 +6,10 @@ a performance improvement on any particular compiler or machine.
 
 ## Data and Scope
 
-The C prefix `vec-regime-` selects 23 regimes, each with `bounded-scalar` and
-`bounded-vector` variants. The Go `BenchmarkLexString` benchmark has 29 regimes,
-including the 21 synthetic regimes below, with `scalar` and `simd` variants.
+The C prefix `vec-regime-` selects 23 regimes, each with `bounded-scalar`,
+`bounded-vector-sse2` (16-byte SSE2) and `bounded-vector` (32-byte AVX2)
+variants. The Go `BenchmarkLexString` benchmark has 29 regimes, including the
+21 synthetic regimes below, with `scalar` and `simd` variants.
 
 | Regime | Definition |
 |---|---|
@@ -95,11 +96,11 @@ Run the two C commands sequentially.
 ```
 
 google/benchmark can report a failed case without returning a nonzero exit
-status. These checks require all 46 cases and no reported errors:
+status. These checks require all 69 cases and no reported errors:
 
 ```sh
-python3 -c 'import json, sys; runs = json.load(open(sys.argv[1]))["benchmarks"]; assert len(runs) == 46 and all(not r.get("error_occurred", False) for r in runs)' .build-repro/gcc-smoke.json
-python3 -c 'import json, sys; runs = json.load(open(sys.argv[1]))["benchmarks"]; assert len(runs) == 46 and all(not r.get("error_occurred", False) for r in runs)' .build-repro/clang-smoke.json
+python3 -c 'import json, sys; runs = json.load(open(sys.argv[1]))["benchmarks"]; assert len(runs) == 69 and all(not r.get("error_occurred", False) for r in runs)' .build-repro/gcc-smoke.json
+python3 -c 'import json, sys; runs = json.load(open(sys.argv[1]))["benchmarks"]; assert len(runs) == 69 and all(not r.get("error_occurred", False) for r in runs)' .build-repro/clang-smoke.json
 ```
 
 For Go, run the following from the example module. These commands require
@@ -127,8 +128,8 @@ whole vector available in the buffer says nothing about the length of the
 next escape-free segment. Raising the length guard alone therefore does not
 adapt the lexer to short segments.
 
-The Go vector loop honors custom `code:yylessthan` definitions for the simple
-and record APIs; the generic API is not vectorized. Depending on the Go
+The Go vector loop honors custom `code:yylessthan` definitions across the
+simple, record and generic APIs. Depending on the Go
 compiler's output, the vector length guard and setup can add overhead even
 when the buffer boundary prevents vector processing. Comparisons should cover
 short strings, end-of-buffer inputs, frequent escapes and long strings while

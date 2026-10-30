@@ -1,26 +1,34 @@
 // Common driver for benchmarks of `--vectorize-loops` (`re2c:vectorize:loops` configuration).
 //
 // It is included by vec_*.re files, which define the lexer rules in a `rules:re2c:main` block. All
-// lexers are generated from the same rules and differ only in the input model and in the value
-// of `re2c:vectorize:loops`:
+// lexers are generated from the same rules and differ only in the input model, in the value of
+// `re2c:vectorize:loops`, and in `re2c:vectorize:size` (16-byte SSE2 vs 32-byte AVX2):
 //
 //   - `sentinel`: the whole file is in memory, the end of input is a NUL sentinel and there are
 //     no bounds checks (YYFILL is disabled). This is the fastest scalar lexer and a baseline for
 //     the others; it cannot be vectorized, as vectorization needs bounds checks.
-//   - `bounded-{scalar,vector}`: the whole file is in memory, padded with YYMAXFILL zero bytes,
-//     with bounds checks (YYFILL returns an error, it is never called on valid input).
-//   - `buffered-{scalar,vector}`: the input is read in chunks into a fixed-size buffer with
-//     YYFILL (padding with YYMAXFILL zero bytes at the end, as in base.re `buffered_scc`).
+//   - `bounded-{scalar,vector-sse2,vector}`: the whole file is in memory, padded with YYMAXFILL
+//     zero bytes, with bounds checks (YYFILL returns an error, it is never called on valid input).
+//   - `buffered-{scalar,vector-sse2,vector}`: the input is read in chunks into a fixed-size buffer
+//     with YYFILL (padding with YYMAXFILL zero bytes at the end, as in base.re `buffered_scc`).
 //
-// The generated code uses AVX2 intrinsics (see `code:vector_loop` in include/syntax/c), so the
-// file must be compiled with `-mavx2`, and the benchmark must not be run on a CPU without AVX2.
+// The translation unit is compiled with `-msse2` so that 16-byte SSE2 lexers emit legacy non-VEX
+// SSE2 instructions, while 32-byte AVX2 lexers carry `target("avx2")` attributes; the benchmark
+// must not be run on a CPU without AVX2.
 //
-// Semantic actions use the TOKEN(k) macro, where `k` is the rule identifier. Lexers are templates
-// parameterized with a token sink: benchmarks use a cheap counter (sum of token lengths
-// multiplied by `k`), the test uses an order-sensitive digest of all (length, rule) pairs, which
-// determines the tokenization completely.
+// Semantic actions use the TOKEN(k) or SUBMATCH(k, p1, p2) macros, where `k` is the rule or field
+// identifier. Lexers are templates parameterized with a token sink: benchmarks use a cheap counter
+// (sum of token lengths multiplied by `k` for TOKEN, or sum of captured submatch lengths for
+// SUBMATCH), while the test uses an order-sensitive digest of all (length, k) pairs, which
+// determines the tokenization or submatch extraction completely.
 
 #include <immintrin.h>
+
+#if defined(__GNUC__) || defined(__clang__)
+#define RE2C_BENCH_TARGET_AVX2 __attribute__((target("avx2")))
+#else
+#define RE2C_BENCH_TARGET_AVX2
+#endif
 
 /*!rules:re2c:vecbase
     re2c:api:style = free-form;
@@ -36,6 +44,7 @@ struct input_t {
     char *cur;
     char *mar;
     char *tok;
+    /*!stags:re2c format = "char *@@;\n"; */
     size_t len; // file length (in-memory models only)
     int eof;
 };
@@ -43,6 +52,7 @@ struct input_t {
 struct count_sink_t {
     long n = 0;
     inline void token(long k, const char* tok, const char* cur) { n += (cur - tok) * k; }
+    inline void submatch(long, const char* p1, const char* p2) { n += (p2 - p1); }
     long value() const { return n; }
 };
 
@@ -50,6 +60,9 @@ struct digest_sink_t {
     uint64_t h = 14695981039346656037ull;
     inline void token(long k, const char* tok, const char* cur) {
         h = (h ^ ((uint64_t)(cur - tok) << 8 | (uint64_t)k)) * 1099511628211ull;
+    }
+    inline void submatch(long k, const char* p1, const char* p2) {
+        h = (h ^ ((uint64_t)(p2 - p1) << 8 | (uint64_t)k)) * 1099511628211ull;
     }
     long value() const { return (long)h; }
 };
@@ -72,9 +85,10 @@ static inline int fill_buffered(input_t *in, size_t need) {
     memmove(in->buf, in->tok, in->lim - in->tok);
     in->lim -= free;
     in->cur -= free;
-    // The marker is rebased only if it points into the kept part of the buffer (it may be left
-    // over from a previous token, and moving it before the buffer would be undefined behavior).
+    // The marker and any active tags are rebased only if they point into the kept part of the
+    // buffer (moving a pointer before `in->buf` would be undefined behavior).
     if (in->mar >= in->tok) in->mar -= free;
+    /*!stags:re2c format = "if (in->@@) { if (in->@@ >= in->tok) in->@@ -= free; else in->@@ = nullptr; }\n"; */
     in->tok -= free;
 
     in->lim += fread(in->lim, 1, free, in->file);
@@ -100,6 +114,7 @@ static inline void init_input_memory(input_t *in, const char* fname) {
     in->buf = (char*) malloc(flen + YYMAXFILL);
     in->lim = in->buf + flen + YYMAXFILL;
     in->cur = in->mar = in->tok = in->buf;
+    /*!stags:re2c format = "in->@@ = nullptr;\n"; */
     in->len = flen;
     in->eof = 0; // unused
 
@@ -116,13 +131,15 @@ static inline void init_input_buffered(input_t *in, const char* fname) {
     in->cur = in->lim;
     in->mar = in->lim;
     in->tok = in->lim;
+    /*!stags:re2c format = "in->@@ = nullptr;\n"; */
     in->len = 0; // unused
     in->eof = 0;
 }
 
 #define TOKEN(k) do { sink.token(k, YYTOKEN, YYCURSOR); goto loop; } while (0)
+#define SUBMATCH(k, p1, p2) do { sink.submatch(k, p1, p2); } while (0)
 
-// In-memory lexers: local variables for the cursor, marker and limit.
+// In-memory lexers: local variables for the cursor, marker, limit and tags.
 #define YYCURSOR cur
 #define YYMARKER mar
 #define YYLIMIT lim
@@ -132,6 +149,9 @@ template<typename sink_t>
 int lex_sentinel(const input_t *in, sink_t &sink) {
     const char *cur = in->buf, *mar, *tok;
     (void) mar; // maybe unused
+    (void) tok; // maybe unused
+    /*!stags:re2c format = "const char *@@ = nullptr;\n"; */
+    /*!svars:re2c format = "const char *@@ = nullptr;\n"; */
 loop:
     tok = cur;
     /*!local:re2c
@@ -149,6 +169,9 @@ template<typename sink_t>
 int lex_bounded_scalar(const input_t *in, sink_t &sink) {
     const char *cur = in->buf, *lim = in->lim, *mar, *tok;
     (void) mar; // maybe unused
+    (void) tok; // maybe unused
+    /*!stags:re2c format = "const char *@@ = nullptr;\n"; */
+    /*!svars:re2c format = "const char *@@ = nullptr;\n"; */
 loop:
     tok = cur;
     /*!local:re2c
@@ -163,14 +186,42 @@ loop:
 }
 
 template<typename sink_t>
-int lex_bounded_vector(const input_t *in, sink_t &sink) {
+int lex_bounded_vector_sse2(const input_t *in, sink_t &sink) {
     const char *cur = in->buf, *lim = in->lim, *mar, *tok;
     (void) mar; // maybe unused
+    (void) tok; // maybe unused
+    /*!stags:re2c format = "const char *@@ = nullptr;\n"; */
+    /*!svars:re2c format = "const char *@@ = nullptr;\n"; */
 loop:
     tok = cur;
     /*!local:re2c
         re2c:YYFILL = "return -2;";
+        re2c:arch = x86;
         re2c:vectorize:loops = 1;
+        re2c:vectorize:size = 16;
+
+        "\x00" { return cur - 1 == in->buf + in->len ? 0 : -1; }
+
+        !use:vecbase;
+        !use:main;
+    */
+}
+
+template<typename sink_t>
+RE2C_BENCH_TARGET_AVX2
+int lex_bounded_vector(const input_t *in, sink_t &sink) {
+    const char *cur = in->buf, *lim = in->lim, *mar, *tok;
+    (void) mar; // maybe unused
+    (void) tok; // maybe unused
+    /*!stags:re2c format = "const char *@@ = nullptr;\n"; */
+    /*!svars:re2c format = "const char *@@ = nullptr;\n"; */
+loop:
+    tok = cur;
+    /*!local:re2c
+        re2c:YYFILL = "return -2;";
+        re2c:arch = x86;
+        re2c:vectorize:loops = 1;
+        re2c:vectorize:size = 32;
 
         "\x00" { return cur - 1 == in->buf + in->len ? 0 : -1; }
 
@@ -184,7 +235,7 @@ loop:
 #undef YYLIMIT
 #undef YYTOKEN
 
-// Buffered lexers: the cursor, marker and limit are stored in the input structure.
+// Buffered lexers: the cursor, marker, limit and tags are stored in the input structure.
 #define YYCURSOR in->cur
 #define YYMARKER in->mar
 #define YYLIMIT in->lim
@@ -192,10 +243,12 @@ loop:
 
 template<typename sink_t>
 int lex_buffered_scalar(input_t *in, sink_t &sink) {
+    /*!svars:re2c format = "const char *@@ = nullptr;\n"; */
 loop:
     in->tok = in->cur;
     /*!local:re2c
         re2c:YYFILL = "if (fill_buffered(in, @@) != 0) return -2;";
+        re2c:tags:expression = "in->@@";
         re2c:vectorize:loops = 0;
 
         "\x00" { return 0; }
@@ -206,12 +259,36 @@ loop:
 }
 
 template<typename sink_t>
-int lex_buffered_vector(input_t *in, sink_t &sink) {
+int lex_buffered_vector_sse2(input_t *in, sink_t &sink) {
+    /*!svars:re2c format = "const char *@@ = nullptr;\n"; */
 loop:
     in->tok = in->cur;
     /*!local:re2c
         re2c:YYFILL = "if (fill_buffered(in, @@) != 0) return -2;";
+        re2c:tags:expression = "in->@@";
+        re2c:arch = x86;
         re2c:vectorize:loops = 1;
+        re2c:vectorize:size = 16;
+
+        "\x00" { return 0; }
+
+        !use:vecbase;
+        !use:main;
+    */
+}
+
+template<typename sink_t>
+RE2C_BENCH_TARGET_AVX2
+int lex_buffered_vector(input_t *in, sink_t &sink) {
+    /*!svars:re2c format = "const char *@@ = nullptr;\n"; */
+loop:
+    in->tok = in->cur;
+    /*!local:re2c
+        re2c:YYFILL = "if (fill_buffered(in, @@) != 0) return -2;";
+        re2c:tags:expression = "in->@@";
+        re2c:arch = x86;
+        re2c:vectorize:loops = 1;
+        re2c:vectorize:size = 32;
 
         "\x00" { return 0; }
 
@@ -225,6 +302,7 @@ loop:
 #undef YYLIMIT
 #undef YYTOKEN
 #undef TOKEN
+#undef SUBMATCH
 
 // In-memory benchmarks exclude reading the file from the measurement (it is read once before the
 // benchmark loop), so that they measure only the lexer. Buffered benchmarks include reading the
@@ -248,6 +326,7 @@ void bench_##suffix::operator()( \
 }
 FN_BENCH_MEMORY(sentinel)
 FN_BENCH_MEMORY(bounded_scalar)
+FN_BENCH_MEMORY(bounded_vector_sse2)
 FN_BENCH_MEMORY(bounded_vector)
 #undef FN_BENCH_MEMORY
 
@@ -271,6 +350,7 @@ void bench_##suffix::operator()( \
     if (status != 0 || count != expected) state.SkipWithError("re2c: error"); \
 }
 FN_BENCH_BUFFERED(buffered_scalar)
+FN_BENCH_BUFFERED(buffered_vector_sse2)
 FN_BENCH_BUFFERED(buffered_vector)
 #undef FN_BENCH_BUFFERED
 
@@ -281,10 +361,16 @@ FN_BENCH_BUFFERED(buffered_vector)
 // is set to the digest of the sentinel lexer.
 bool test(const char* input, long expected, long *ref) {
     static const char* names[] = {
-        "sentinel", "bounded-scalar", "bounded-vector", "buffered-scalar", "buffered-vector"
+        "sentinel",
+        "bounded-scalar",
+        "bounded-vector-sse2",
+        "bounded-vector",
+        "buffered-scalar",
+        "buffered-vector-sse2",
+        "buffered-vector"
     };
-    int status[5];
-    long digest[5], count[5];
+    int status[7];
+    long digest[7], count[7];
     input_t in;
 
     init_input_memory(&in, input);
@@ -300,33 +386,47 @@ bool test(const char* input, long expected, long *ref) {
     }
     {
         digest_sink_t d; count_sink_t c;
-        status[2] = lex_bounded_vector(&in, d); digest[2] = d.value();
-        lex_bounded_vector(&in, c); count[2] = c.value();
+        status[2] = lex_bounded_vector_sse2(&in, d); digest[2] = d.value();
+        lex_bounded_vector_sse2(&in, c); count[2] = c.value();
+    }
+    {
+        digest_sink_t d; count_sink_t c;
+        status[3] = lex_bounded_vector(&in, d); digest[3] = d.value();
+        lex_bounded_vector(&in, c); count[3] = c.value();
     }
     free_input(&in);
 
     {
         digest_sink_t d; count_sink_t c;
         init_input_buffered(&in, input);
-        status[3] = lex_buffered_scalar(&in, d); digest[3] = d.value();
+        status[4] = lex_buffered_scalar(&in, d); digest[4] = d.value();
         free_input(&in);
         init_input_buffered(&in, input);
-        lex_buffered_scalar(&in, c); count[3] = c.value();
+        lex_buffered_scalar(&in, c); count[4] = c.value();
         free_input(&in);
     }
     {
         digest_sink_t d; count_sink_t c;
         init_input_buffered(&in, input);
-        status[4] = lex_buffered_vector(&in, d); digest[4] = d.value();
+        status[5] = lex_buffered_vector_sse2(&in, d); digest[5] = d.value();
         free_input(&in);
         init_input_buffered(&in, input);
-        lex_buffered_vector(&in, c); count[4] = c.value();
+        lex_buffered_vector_sse2(&in, c); count[5] = c.value();
+        free_input(&in);
+    }
+    {
+        digest_sink_t d; count_sink_t c;
+        init_input_buffered(&in, input);
+        status[6] = lex_buffered_vector(&in, d); digest[6] = d.value();
+        free_input(&in);
+        init_input_buffered(&in, input);
+        lex_buffered_vector(&in, c); count[6] = c.value();
         free_input(&in);
     }
 
     bool ok = true;
     if (*ref == 0) *ref = digest[0];
-    for (int i = 0; i < 5; ++i) {
+    for (int i = 0; i < 7; ++i) {
         if (status[i] != 0) {
             fprintf(stderr, "re2c %s: %s error on %s\n", names[i],
                 status[i] == -2 ? "yyfill" : "syntax", input);

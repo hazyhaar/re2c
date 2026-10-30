@@ -27,8 +27,8 @@ enum { C_ID = 1, C_NUM = 2, C_WS = 4 };
 // Character classes: C_ID for [a-zA-Z0-9_], C_NUM for [0-9a-zA-Z_.], C_WS for [ \t\r\n].
 //
 // The table is constant-initialized (a constexpr function expanded for all 256 code units) rather
-// than filled by a constructor: this file is compiled with -mavx2, and a dynamic initializer would
-// run before main checks that the CPU supports AVX2 (the compiler vectorizes it with AVX2).
+// than filled by a constructor: if a wider ISA flag were passed, a dynamic initializer could run
+// before main checks CPU support.
 static constexpr unsigned char cls_of(int c) {
     return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '_')
         ? C_ID | C_NUM

@@ -18,26 +18,26 @@
     benchmark::RegisterBenchmark(name "-" CXX "_ragel-buffered", \
         ragel_##qual::bench_buffered(), "data/" #data "/big", count2);
 
-// Benchmarks for `--vectorize-loops`: scalar and vectorized lexers generated from the same rules.
+// Benchmarks for `--vectorize-loops`: scalar and vectorized (16-byte SSE2 and 32-byte AVX2) lexers
+// generated from the same rules.
 #define GROUP_VEC(qual, name, data, count1, count2) \
     benchmark::RegisterBenchmark(name "-" CXX "_re2c-sentinel", \
         re2c_##qual::bench_sentinel(), "data/" #data "/big", count2); \
     benchmark::RegisterBenchmark(name "-" CXX "_re2c-bounded-scalar", \
         re2c_##qual::bench_bounded_scalar(), "data/" #data "/big", count2); \
+    benchmark::RegisterBenchmark(name "-" CXX "_re2c-bounded-vector-sse2", \
+        re2c_##qual::bench_bounded_vector_sse2(), "data/" #data "/big", count2); \
     benchmark::RegisterBenchmark(name "-" CXX "_re2c-bounded-vector", \
         re2c_##qual::bench_bounded_vector(), "data/" #data "/big", count2); \
     benchmark::RegisterBenchmark(name "-" CXX "_re2c-buffered-scalar", \
         re2c_##qual::bench_buffered_scalar(), "data/" #data "/big", count2); \
+    benchmark::RegisterBenchmark(name "-" CXX "_re2c-buffered-vector-sse2", \
+        re2c_##qual::bench_buffered_vector_sse2(), "data/" #data "/big", count2); \
     benchmark::RegisterBenchmark(name "-" CXX "_re2c-buffered-vector", \
         re2c_##qual::bench_buffered_vector(), "data/" #data "/big", count2);
 
-// Vectorized lexers generated with the fixed `code:vector_loop` (see re2c/vec_fixed.syntax), and
-// hand-written reference lexers that produce the same token stream (see ref/vec_strings_ref.cc).
+// Hand-written reference lexers that produce the same token stream (see ref/vec_strings_ref.cc).
 #define GROUP_VEC_REF(name, data, count1, count2) \
-    benchmark::RegisterBenchmark(name "-" CXX "_re2c-bounded-vector-fixed", \
-        re2c_vec_01__strings_fixed::bench_bounded_vector(), "data/" #data "/big", count2); \
-    benchmark::RegisterBenchmark(name "-" CXX "_re2c-buffered-vector-fixed", \
-        re2c_vec_01__strings_fixed::bench_buffered_vector(), "data/" #data "/big", count2); \
     benchmark::RegisterBenchmark(name "-" CXX "_ref-libc", \
         ref_vec_strings::bench_libc(), "data/" #data "/big", count2); \
     benchmark::RegisterBenchmark(name "-" CXX "_ref-switch", \
@@ -112,6 +112,8 @@ int main(int argc, char** argv) {
         GROUP_VEC(vec_00__strings, "vec-strescape", strescape, 69709, 17845504);
         GROUP_VEC(vec_00__strings, "vec-json", json, 136981, 35067136);
         GROUP_VEC(vec_00__strings, "vec-csource", csource, 314902, 89747070);
+        GROUP_VEC(vec_01__uri_rfc3986, "vec-uri-rfc3986", uri, 1929, 16037706);
+        GROUP_VEC(vec_02__uri_simple, "vec-uri-simple", uri, 1929, 16037706);
         GROUP_VEC_REF("vec-strshort", strshort, 110687, 28335872);
         GROUP_VEC_REF("vec-strmedium", strmedium, 73941, 18928896);
         GROUP_VEC_REF("vec-strlong", strlong, 67135, 16918020);

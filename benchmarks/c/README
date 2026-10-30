@@ -14,24 +14,17 @@ repository-source regimes, their oracle checks, and short reproduction commands
 for both google/benchmark and Go testing.B.
 
 The vec_* benchmarks compare scalar and vectorized lexers generated from the
-same rules (src/re2c/vec_strings_rules.re, included by vec_00__strings.re;
-driver in src/re2c/vec_base.re). The variants differ only in the input model
-and in re2c:vectorize:loops:
+same rules (src/re2c/vec_strings_rules.re, included by vec_00__strings.re, plus
+vec_01__uri_rfc3986.re and vec_02__uri_simple.re; driver in
+src/re2c/vec_base.re). The variants differ only in the input model, in
+re2c:vectorize:loops, and in re2c:vectorize:size:
 
 - sentinel: whole file in memory, NUL sentinel, no bounds checks (fastest
   scalar lexer; it cannot be vectorized, as vectorization needs bounds checks)
-- bounded-scalar / bounded-vector: whole file in memory with bounds checks
-- buffered-scalar / buffered-vector: fixed-size buffer refilled with YYFILL
-
-- bounded-vector-fixed / buffered-vector-fixed: the same as bounded-vector /
-  buffered-vector, but generated from vec_01__strings_fixed.re with
-  `re2c --syntax src/re2c/vec_fixed.syntax`, which overrides code:vector_loop
-  with a vector loop that tests the class itself (one range check per range of
-  the class, `range` list) and moves the cursor to the first byte that leaves
-  the loop by counting the trailing zeros of the inverted mask. The default
-  template tests the complement of the class instead (one equality comparison
-  per byte that leaves the loop, `xrange` list); both advance the cursor to the
-  exit byte
+- bounded-scalar / bounded-vector-sse2 / bounded-vector: whole file in memory
+  with bounds checks (scalar vs 16-byte SSE2 vs 32-byte AVX2)
+- buffered-scalar / buffered-vector-sse2 / buffered-vector: fixed-size buffer
+  refilled with YYFILL (scalar vs 16-byte SSE2 vs 32-byte AVX2)
 
 Reference implementations that do not come from re2c (src/ref/):
 
@@ -87,8 +80,9 @@ literals of 0-24 bytes (below the 33-byte guard of the vector loop), 32-128
 bytes, 256-4096 bytes, 32-256 bytes with ~15% escape sequences, pretty-printed
 JSON-like records, and C++ source code from re2c 4.6.
 
-The generated code uses AVX2 intrinsics, so vec_* objects (and only them) are
-compiled with -mavx2. They are built only on x86; the benchmark and test
+The vec_* objects are compiled with -msse2 so that 16-byte SSE2 lexers emit
+legacy non-VEX SSE2 instructions, while 32-byte AVX2 lexers carry per-function
+target("avx2") attributes. They are built only on x86; the benchmark and test
 binaries skip them at run time if the CPU does not support AVX2.
 
 To reproduce (google/benchmark installed in $GBENCH_PREFIX; drop the two
@@ -112,7 +106,7 @@ of iterations and divide the difference of cycles by the difference of bytes
 
     for n in 20 220; do
         taskset -c 8 perf stat -x, -e cycles:u,instructions:u ./bench-gcc \
-            --benchmark_filter='^vec-json-gcc_re2c-bounded-vector-fixed$' \
+            --benchmark_filter='^vec-json-gcc_re2c-bounded-vector$' \
             --benchmark_min_time=${n}x 2>&1 >/dev/null | grep cycles
     done
     # cycles/byte = (cycles(220) - cycles(20)) / (200 * size of data/json/big)
