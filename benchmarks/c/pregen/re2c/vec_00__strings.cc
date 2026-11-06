@@ -883,9 +883,9 @@ loop:
 		case '\n':
 		case '\r':
 		case ' ': goto yy58;
-		case '"': goto yy60;
-		case '\'': goto yy61;
-		case '/': goto yy62;
+		case '"': goto yy61;
+		case '\'': goto yy62;
+		case '/': goto yy63;
 		case '0':
 		case '1':
 		case '2':
@@ -895,7 +895,7 @@ loop:
 		case '6':
 		case '7':
 		case '8':
-		case '9': goto yy63;
+		case '9': goto yy64;
 		case 'A':
 		case 'B':
 		case 'C':
@@ -948,7 +948,7 @@ loop:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy65;
+		case 'z': goto yy67;
 		default: goto yy56;
 	}
 yy55:
@@ -962,166 +962,70 @@ yy58:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 17)) {
-		switch (yych) {
-			case '\t':
-			case '\n':
-			case '\r':
-			case ' ':
-				{
-					__m128i yyb0 = _mm_set1_epi8((char)-128);
-					__m128i yyu0 = _mm_set1_epi8((char)-119);
-					__m128i yyb1 = _mm_set1_epi8((char)-117);
-					__m128i yyu1 = _mm_set1_epi8((char)-126);
-					__m128i yyb2 = _mm_set1_epi8((char)-114);
-					__m128i yyu2 = _mm_set1_epi8((char)-110);
-					__m128i yyb3 = _mm_set1_epi8((char)-95);
-					__m128i yyu3 = _mm_set1_epi8((char)95);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_or_si128(_mm_or_si128(_mm_or_si128(_mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0)), _mm_cmpgt_epi8(yyu1, _mm_sub_epi8(yysimd0, yyb1))), _mm_cmpgt_epi8(yyu2, _mm_sub_epi8(yysimd0, yyb2))), _mm_cmpgt_epi8(yyu3, _mm_sub_epi8(yysimd0, yyb3))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 16;
-						if ((YYLIMIT - YYCURSOR) < 17) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-			default: break;
-		}
-	}
+yy59:
 	switch (yych) {
 		case '\t':
 		case '\n':
 		case '\r':
-		case ' ': goto yy58;
-		default: goto yy59;
+		case ' ':
+			if (!((YYLIMIT - YYCURSOR) < 17)) {
+				const __m128i yyb0 = _mm_set1_epi8((char)-128);
+				const __m128i yyu0 = _mm_set1_epi8((char)-119);
+				const __m128i yyb1 = _mm_set1_epi8((char)-117);
+				const __m128i yyu1 = _mm_set1_epi8((char)-126);
+				const __m128i yyb2 = _mm_set1_epi8((char)-114);
+				const __m128i yyu2 = _mm_set1_epi8((char)-110);
+				const __m128i yyb3 = _mm_set1_epi8((char)-95);
+				const __m128i yyu3 = _mm_set1_epi8((char)95);
+				for (;;) {
+					__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
+					__m128i yysimd1 = _mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu1, _mm_sub_epi8(yysimd0, yyb1)));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu2, _mm_sub_epi8(yysimd0, yyb2)));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu3, _mm_sub_epi8(yysimd0, yyb3)));
+					unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 16;
+					if ((YYLIMIT - YYCURSOR) < 17) break;
+				}
+				yych = *YYCURSOR;
+				goto yy59;
+			}
+			goto yy58;
+		default: goto yy60;
 	}
-yy59:
-	{ TOKEN(5); }
 yy60:
-	yych = *(YYMARKER = ++YYCURSOR);
-	switch (yych) {
-		case 0x00:
-		case '\n': goto yy57;
-		default: goto yy68;
-	}
+	{ TOKEN(5); }
 yy61:
 	yych = *(YYMARKER = ++YYCURSOR);
 	switch (yych) {
 		case 0x00:
 		case '\n': goto yy57;
-		default: goto yy73;
+		default: goto yy71;
 	}
 yy62:
 	yych = *(YYMARKER = ++YYCURSOR);
 	switch (yych) {
-		case '*': goto yy76;
-		case '/': goto yy77;
-		default: goto yy57;
+		case 0x00:
+		case '\n': goto yy57;
+		default: goto yy76;
 	}
 yy63:
+	yych = *(YYMARKER = ++YYCURSOR);
+	switch (yych) {
+		case '*': goto yy79;
+		case '/': goto yy81;
+		default: goto yy57;
+	}
+yy64:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 17)) {
-		switch (yych) {
-			case '.':
-			case '0':
-			case '1':
-			case '2':
-			case '3':
-			case '4':
-			case '5':
-			case '6':
-			case '7':
-			case '8':
-			case '9':
-			case 'A':
-			case 'B':
-			case 'C':
-			case 'D':
-			case 'E':
-			case 'F':
-			case 'G':
-			case 'H':
-			case 'I':
-			case 'J':
-			case 'K':
-			case 'L':
-			case 'M':
-			case 'N':
-			case 'O':
-			case 'P':
-			case 'Q':
-			case 'R':
-			case 'S':
-			case 'T':
-			case 'U':
-			case 'V':
-			case 'W':
-			case 'X':
-			case 'Y':
-			case 'Z':
-			case '_':
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z':
-				{
-					__m128i yyb0 = _mm_set1_epi8((char)-128);
-					__m128i yyu0 = _mm_set1_epi8((char)-82);
-					__m128i yys1 = _mm_set1_epi8((char)47);
-					__m128i yyb2 = _mm_set1_epi8((char)-70);
-					__m128i yyu2 = _mm_set1_epi8((char)-121);
-					__m128i yyb3 = _mm_set1_epi8((char)-37);
-					__m128i yyu3 = _mm_set1_epi8((char)-124);
-					__m128i yys4 = _mm_set1_epi8((char)96);
-					__m128i yyb5 = _mm_set1_epi8((char)-5);
-					__m128i yyu5 = _mm_set1_epi8((char)5);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_or_si128(_mm_or_si128(_mm_or_si128(_mm_or_si128(_mm_or_si128(_mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0)), _mm_cmpeq_epi8(yysimd0, yys1)), _mm_cmpgt_epi8(yyu2, _mm_sub_epi8(yysimd0, yyb2))), _mm_cmpgt_epi8(yyu3, _mm_sub_epi8(yysimd0, yyb3))), _mm_cmpeq_epi8(yysimd0, yys4)), _mm_cmpgt_epi8(yyu5, _mm_sub_epi8(yysimd0, yyb5))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 16;
-						if ((YYLIMIT - YYCURSOR) < 17) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-			default: break;
-		}
-	}
+yy65:
 	switch (yych) {
 		case '.':
 		case '0':
@@ -1186,107 +1090,48 @@ yy63:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy63;
-		default: goto yy64;
+		case 'z':
+			if (!((YYLIMIT - YYCURSOR) < 17)) {
+				const __m128i yyb0 = _mm_set1_epi8((char)-128);
+				const __m128i yyu0 = _mm_set1_epi8((char)-82);
+				const __m128i yys1 = _mm_set1_epi8((char)47);
+				const __m128i yyb2 = _mm_set1_epi8((char)-70);
+				const __m128i yyu2 = _mm_set1_epi8((char)-121);
+				const __m128i yyb3 = _mm_set1_epi8((char)-37);
+				const __m128i yyu3 = _mm_set1_epi8((char)-124);
+				const __m128i yys4 = _mm_set1_epi8((char)96);
+				const __m128i yyb5 = _mm_set1_epi8((char)-5);
+				const __m128i yyu5 = _mm_set1_epi8((char)5);
+				for (;;) {
+					__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
+					__m128i yysimd1 = _mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys1));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu2, _mm_sub_epi8(yysimd0, yyb2)));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu3, _mm_sub_epi8(yysimd0, yyb3)));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys4));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu5, _mm_sub_epi8(yysimd0, yyb5)));
+					unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 16;
+					if ((YYLIMIT - YYCURSOR) < 17) break;
+				}
+				yych = *YYCURSOR;
+				goto yy65;
+			}
+			goto yy64;
+		default: goto yy66;
 	}
-yy64:
+yy66:
 	{ TOKEN(7); }
-yy65:
+yy67:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 17)) {
-		switch (yych) {
-			case '0':
-			case '1':
-			case '2':
-			case '3':
-			case '4':
-			case '5':
-			case '6':
-			case '7':
-			case '8':
-			case '9':
-			case 'A':
-			case 'B':
-			case 'C':
-			case 'D':
-			case 'E':
-			case 'F':
-			case 'G':
-			case 'H':
-			case 'I':
-			case 'J':
-			case 'K':
-			case 'L':
-			case 'M':
-			case 'N':
-			case 'O':
-			case 'P':
-			case 'Q':
-			case 'R':
-			case 'S':
-			case 'T':
-			case 'U':
-			case 'V':
-			case 'W':
-			case 'X':
-			case 'Y':
-			case 'Z':
-			case '_':
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z':
-				{
-					__m128i yyb0 = _mm_set1_epi8((char)-128);
-					__m128i yyu0 = _mm_set1_epi8((char)-80);
-					__m128i yyb1 = _mm_set1_epi8((char)-70);
-					__m128i yyu1 = _mm_set1_epi8((char)-121);
-					__m128i yyb2 = _mm_set1_epi8((char)-37);
-					__m128i yyu2 = _mm_set1_epi8((char)-124);
-					__m128i yys3 = _mm_set1_epi8((char)96);
-					__m128i yyb4 = _mm_set1_epi8((char)-5);
-					__m128i yyu4 = _mm_set1_epi8((char)5);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_or_si128(_mm_or_si128(_mm_or_si128(_mm_or_si128(_mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0)), _mm_cmpgt_epi8(yyu1, _mm_sub_epi8(yysimd0, yyb1))), _mm_cmpgt_epi8(yyu2, _mm_sub_epi8(yysimd0, yyb2))), _mm_cmpeq_epi8(yysimd0, yys3)), _mm_cmpgt_epi8(yyu4, _mm_sub_epi8(yysimd0, yyb4))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 16;
-						if ((YYLIMIT - YYCURSOR) < 17) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-			default: break;
-		}
-	}
+yy68:
 	switch (yych) {
 		case '0':
 		case '1':
@@ -1350,222 +1195,236 @@ yy65:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy65;
-		default: goto yy66;
-	}
-yy66:
-	{ TOKEN(6); }
-yy67:
-	++YYCURSOR;
-	if (YYLIMIT <= YYCURSOR) return -2;
-	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 17)) {
-		switch (yych) {
-			case 0x00:
-			case '\n':
-			case '"':
-			case '\\': break;
-			default:
-				{
-					__m128i yys0 = _mm_set1_epi8((char)0);
-					__m128i yys1 = _mm_set1_epi8((char)10);
-					__m128i yys2 = _mm_set1_epi8((char)34);
-					__m128i yys3 = _mm_set1_epi8((char)92);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_or_si128(_mm_or_si128(_mm_or_si128(_mm_cmpeq_epi8(yysimd0, yys0), _mm_cmpeq_epi8(yysimd0, yys1)), _mm_cmpeq_epi8(yysimd0, yys2)), _mm_cmpeq_epi8(yysimd0, yys3)));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 16;
-						if ((YYLIMIT - YYCURSOR) < 17) break;
+		case 'z':
+			if (!((YYLIMIT - YYCURSOR) < 17)) {
+				const __m128i yyb0 = _mm_set1_epi8((char)-128);
+				const __m128i yyu0 = _mm_set1_epi8((char)-80);
+				const __m128i yyb1 = _mm_set1_epi8((char)-70);
+				const __m128i yyu1 = _mm_set1_epi8((char)-121);
+				const __m128i yyb2 = _mm_set1_epi8((char)-37);
+				const __m128i yyu2 = _mm_set1_epi8((char)-124);
+				const __m128i yys3 = _mm_set1_epi8((char)96);
+				const __m128i yyb4 = _mm_set1_epi8((char)-5);
+				const __m128i yyu4 = _mm_set1_epi8((char)5);
+				for (;;) {
+					__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
+					__m128i yysimd1 = _mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu1, _mm_sub_epi8(yysimd0, yyb1)));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu2, _mm_sub_epi8(yysimd0, yyb2)));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys3));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu4, _mm_sub_epi8(yysimd0, yyb4)));
+					unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
 					}
-					yych = *YYCURSOR;
+					YYCURSOR += 16;
+					if ((YYLIMIT - YYCURSOR) < 17) break;
 				}
-				break;
-		}
-	}
-yy68:
-	switch (yych) {
-		case 0x00:
-		case '\n': goto yy69;
-		case '"': goto yy70;
-		case '\\': goto yy71;
-		default: goto yy67;
+				yych = *YYCURSOR;
+				goto yy68;
+			}
+			goto yy67;
+		default: goto yy69;
 	}
 yy69:
-	YYCURSOR = YYMARKER;
-	goto yy57;
+	{ TOKEN(6); }
 yy70:
 	++YYCURSOR;
-	{ TOKEN(1); }
-yy71:
-	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
+yy71:
 	switch (yych) {
 		case 0x00:
-		case '\n': goto yy69;
-		default: goto yy67;
+		case '\n': goto yy72;
+		case '"': goto yy73;
+		case '\\': goto yy74;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 17)) {
+				const __m128i yys0 = _mm_set1_epi8((char)0);
+				const __m128i yys1 = _mm_set1_epi8((char)10);
+				const __m128i yys2 = _mm_set1_epi8((char)34);
+				const __m128i yys3 = _mm_set1_epi8((char)92);
+				for (;;) {
+					__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
+					__m128i yysimd1 = _mm_cmpeq_epi8(yysimd0, yys0);
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys1));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys2));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys3));
+					unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 16;
+					if ((YYLIMIT - YYCURSOR) < 17) break;
+				}
+				yych = *YYCURSOR;
+				goto yy71;
+			}
+			goto yy70;
 	}
 yy72:
+	YYCURSOR = YYMARKER;
+	goto yy57;
+yy73:
+	++YYCURSOR;
+	{ TOKEN(1); }
+yy74:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 17)) {
-		switch (yych) {
-			case 0x00:
-			case '\n':
-			case '\'':
-			case '\\': break;
-			default:
-				{
-					__m128i yys0 = _mm_set1_epi8((char)0);
-					__m128i yys1 = _mm_set1_epi8((char)10);
-					__m128i yys2 = _mm_set1_epi8((char)39);
-					__m128i yys3 = _mm_set1_epi8((char)92);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_or_si128(_mm_or_si128(_mm_or_si128(_mm_cmpeq_epi8(yysimd0, yys0), _mm_cmpeq_epi8(yysimd0, yys1)), _mm_cmpeq_epi8(yysimd0, yys2)), _mm_cmpeq_epi8(yysimd0, yys3)));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 16;
-						if ((YYLIMIT - YYCURSOR) < 17) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-		}
-	}
-yy73:
 	switch (yych) {
 		case 0x00:
-		case '\n': goto yy69;
-		case '\'': goto yy74;
-		case '\\': goto yy75;
-		default: goto yy72;
+		case '\n': goto yy72;
+		default: goto yy70;
 	}
-yy74:
-	++YYCURSOR;
-	{ TOKEN(2); }
 yy75:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
+yy76:
 	switch (yych) {
 		case 0x00:
-		case '\n': goto yy69;
-		default: goto yy72;
-	}
-yy76:
-	++YYCURSOR;
-	if (YYLIMIT <= YYCURSOR) return -2;
-	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 17)) {
-		switch (yych) {
-			case 0x00:
-			case '*': break;
-			default:
-				{
-					__m128i yys0 = _mm_set1_epi8((char)0);
-					__m128i yys1 = _mm_set1_epi8((char)42);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_or_si128(_mm_cmpeq_epi8(yysimd0, yys0), _mm_cmpeq_epi8(yysimd0, yys1)));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 16;
-						if ((YYLIMIT - YYCURSOR) < 17) break;
+		case '\n': goto yy72;
+		case '\'': goto yy77;
+		case '\\': goto yy78;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 17)) {
+				const __m128i yys0 = _mm_set1_epi8((char)0);
+				const __m128i yys1 = _mm_set1_epi8((char)10);
+				const __m128i yys2 = _mm_set1_epi8((char)39);
+				const __m128i yys3 = _mm_set1_epi8((char)92);
+				for (;;) {
+					__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
+					__m128i yysimd1 = _mm_cmpeq_epi8(yysimd0, yys0);
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys1));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys2));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys3));
+					unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
 					}
-					yych = *YYCURSOR;
+					YYCURSOR += 16;
+					if ((YYLIMIT - YYCURSOR) < 17) break;
 				}
-				break;
-		}
-	}
-	switch (yych) {
-		case 0x00: goto yy69;
-		case '*': goto yy79;
-		default: goto yy76;
+				yych = *YYCURSOR;
+				goto yy76;
+			}
+			goto yy75;
 	}
 yy77:
 	++YYCURSOR;
+	{ TOKEN(2); }
+yy78:
+	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 17)) {
-		switch (yych) {
-			case 0x00:
-			case '\n': break;
-			default:
-				{
-					__m128i yys0 = _mm_set1_epi8((char)0);
-					__m128i yys1 = _mm_set1_epi8((char)10);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_or_si128(_mm_cmpeq_epi8(yysimd0, yys0), _mm_cmpeq_epi8(yysimd0, yys1)));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 16;
-						if ((YYLIMIT - YYCURSOR) < 17) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-		}
-	}
 	switch (yych) {
 		case 0x00:
-		case '\n': goto yy78;
-		default: goto yy77;
+		case '\n': goto yy72;
+		default: goto yy75;
 	}
-yy78:
-	{ TOKEN(3); }
 yy79:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 17)) {
-		switch (yych) {
-			case '*':
-				{
-					__m128i yyb0 = _mm_set1_epi8((char)-128);
-					__m128i yyu0 = _mm_set1_epi8((char)-86);
-					__m128i yyb1 = _mm_set1_epi8((char)-85);
-					__m128i yyu1 = _mm_set1_epi8((char)85);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_or_si128(_mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0)), _mm_cmpgt_epi8(yyu1, _mm_sub_epi8(yysimd0, yyb1))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 16;
-						if ((YYLIMIT - YYCURSOR) < 17) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-			default: break;
-		}
-	}
-	switch (yych) {
-		case 0x00: goto yy69;
-		case '*': goto yy79;
-		case '/': goto yy80;
-		default: goto yy76;
-	}
 yy80:
+	switch (yych) {
+		case 0x00: goto yy72;
+		case '*': goto yy84;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 17)) {
+				const __m128i yys0 = _mm_set1_epi8((char)0);
+				const __m128i yys1 = _mm_set1_epi8((char)42);
+				for (;;) {
+					__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
+					__m128i yysimd1 = _mm_cmpeq_epi8(yysimd0, yys0);
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys1));
+					unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 16;
+					if ((YYLIMIT - YYCURSOR) < 17) break;
+				}
+				yych = *YYCURSOR;
+				goto yy80;
+			}
+			goto yy79;
+	}
+yy81:
+	++YYCURSOR;
+	if (YYLIMIT <= YYCURSOR) return -2;
+	yych = *YYCURSOR;
+yy82:
+	switch (yych) {
+		case 0x00:
+		case '\n': goto yy83;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 17)) {
+				const __m128i yys0 = _mm_set1_epi8((char)0);
+				const __m128i yys1 = _mm_set1_epi8((char)10);
+				for (;;) {
+					__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
+					__m128i yysimd1 = _mm_cmpeq_epi8(yysimd0, yys0);
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys1));
+					unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 16;
+					if ((YYLIMIT - YYCURSOR) < 17) break;
+				}
+				yych = *YYCURSOR;
+				goto yy82;
+			}
+			goto yy81;
+	}
+yy83:
+	{ TOKEN(3); }
+yy84:
+	++YYCURSOR;
+	if (YYLIMIT <= YYCURSOR) return -2;
+	yych = *YYCURSOR;
+yy85:
+	switch (yych) {
+		case 0x00: goto yy72;
+		case '*':
+			if (!((YYLIMIT - YYCURSOR) < 17)) {
+				const __m128i yyb0 = _mm_set1_epi8((char)-128);
+				const __m128i yyu0 = _mm_set1_epi8((char)-86);
+				const __m128i yyb1 = _mm_set1_epi8((char)-85);
+				const __m128i yyu1 = _mm_set1_epi8((char)85);
+				for (;;) {
+					__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
+					__m128i yysimd1 = _mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu1, _mm_sub_epi8(yysimd0, yyb1)));
+					unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 16;
+					if ((YYLIMIT - YYCURSOR) < 17) break;
+				}
+				yych = *YYCURSOR;
+				goto yy85;
+			}
+			goto yy84;
+		case '/': goto yy86;
+		default: goto yy79;
+	}
+yy86:
 	++YYCURSOR;
 	{ TOKEN(4); }
 }
@@ -1588,14 +1447,14 @@ loop:
 	if ((YYLIMIT - YYCURSOR) < 2) return -2;
 	yych = *YYCURSOR;
 	switch (yych) {
-		case 0x00: goto yy82;
+		case 0x00: goto yy88;
 		case '\t':
 		case '\n':
 		case '\r':
-		case ' ': goto yy85;
-		case '"': goto yy87;
-		case '\'': goto yy88;
-		case '/': goto yy89;
+		case ' ': goto yy91;
+		case '"': goto yy94;
+		case '\'': goto yy95;
+		case '/': goto yy96;
 		case '0':
 		case '1':
 		case '2':
@@ -1605,7 +1464,7 @@ loop:
 		case '6':
 		case '7':
 		case '8':
-		case '9': goto yy90;
+		case '9': goto yy97;
 		case 'A':
 		case 'B':
 		case 'C':
@@ -1658,180 +1517,84 @@ loop:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy92;
-		default: goto yy83;
+		case 'z': goto yy100;
+		default: goto yy89;
 	}
-yy82:
+yy88:
 	++YYCURSOR;
 	{ return cur - 1 == in->buf + in->len ? 0 : -1; }
-yy83:
+yy89:
 	++YYCURSOR;
-yy84:
+yy90:
 	{ TOKEN(8); }
-yy85:
+yy91:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 33)) {
-		switch (yych) {
-			case '\t':
-			case '\n':
-			case '\r':
-			case ' ':
-				{
-					__m256i yyb0 = _mm256_set1_epi8((char)-128);
-					__m256i yyu0 = _mm256_set1_epi8((char)-119);
-					__m256i yyb1 = _mm256_set1_epi8((char)-117);
-					__m256i yyu1 = _mm256_set1_epi8((char)-126);
-					__m256i yyb2 = _mm256_set1_epi8((char)-114);
-					__m256i yyu2 = _mm256_set1_epi8((char)-110);
-					__m256i yyb3 = _mm256_set1_epi8((char)-95);
-					__m256i yyu3 = _mm256_set1_epi8((char)95);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0)), _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1))), _mm256_cmpgt_epi8(yyu2, _mm256_sub_epi8(yysimd0, yyb2))), _mm256_cmpgt_epi8(yyu3, _mm256_sub_epi8(yysimd0, yyb3))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 32;
-						if ((YYLIMIT - YYCURSOR) < 33) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-			default: break;
-		}
-	}
+yy92:
 	switch (yych) {
 		case '\t':
 		case '\n':
 		case '\r':
-		case ' ': goto yy85;
-		default: goto yy86;
+		case ' ':
+			if (!((YYLIMIT - YYCURSOR) < 33)) {
+				const __m256i yyb0 = _mm256_set1_epi8((char)-128);
+				const __m256i yyu0 = _mm256_set1_epi8((char)-119);
+				const __m256i yyb1 = _mm256_set1_epi8((char)-117);
+				const __m256i yyu1 = _mm256_set1_epi8((char)-126);
+				const __m256i yyb2 = _mm256_set1_epi8((char)-114);
+				const __m256i yyu2 = _mm256_set1_epi8((char)-110);
+				const __m256i yyb3 = _mm256_set1_epi8((char)-95);
+				const __m256i yyu3 = _mm256_set1_epi8((char)95);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+					__m256i yysimd1 = _mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1)));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu2, _mm256_sub_epi8(yysimd0, yyb2)));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu3, _mm256_sub_epi8(yysimd0, yyb3)));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 32;
+					if ((YYLIMIT - YYCURSOR) < 33) break;
+				}
+				yych = *YYCURSOR;
+				goto yy92;
+			}
+			goto yy91;
+		default: goto yy93;
 	}
-yy86:
+yy93:
 	{ TOKEN(5); }
-yy87:
+yy94:
 	yych = *(YYMARKER = ++YYCURSOR);
 	switch (yych) {
 		case 0x00:
-		case '\n': goto yy84;
-		default: goto yy95;
+		case '\n': goto yy90;
+		default: goto yy104;
 	}
-yy88:
+yy95:
 	yych = *(YYMARKER = ++YYCURSOR);
 	switch (yych) {
 		case 0x00:
-		case '\n': goto yy84;
-		default: goto yy100;
+		case '\n': goto yy90;
+		default: goto yy109;
 	}
-yy89:
+yy96:
 	yych = *(YYMARKER = ++YYCURSOR);
 	switch (yych) {
-		case '*': goto yy103;
-		case '/': goto yy104;
-		default: goto yy84;
+		case '*': goto yy112;
+		case '/': goto yy114;
+		default: goto yy90;
 	}
-yy90:
+yy97:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 33)) {
-		switch (yych) {
-			case '.':
-			case '0':
-			case '1':
-			case '2':
-			case '3':
-			case '4':
-			case '5':
-			case '6':
-			case '7':
-			case '8':
-			case '9':
-			case 'A':
-			case 'B':
-			case 'C':
-			case 'D':
-			case 'E':
-			case 'F':
-			case 'G':
-			case 'H':
-			case 'I':
-			case 'J':
-			case 'K':
-			case 'L':
-			case 'M':
-			case 'N':
-			case 'O':
-			case 'P':
-			case 'Q':
-			case 'R':
-			case 'S':
-			case 'T':
-			case 'U':
-			case 'V':
-			case 'W':
-			case 'X':
-			case 'Y':
-			case 'Z':
-			case '_':
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z':
-				{
-					__m256i yyb0 = _mm256_set1_epi8((char)-128);
-					__m256i yyu0 = _mm256_set1_epi8((char)-82);
-					__m256i yys1 = _mm256_set1_epi8((char)47);
-					__m256i yyb2 = _mm256_set1_epi8((char)-70);
-					__m256i yyu2 = _mm256_set1_epi8((char)-121);
-					__m256i yyb3 = _mm256_set1_epi8((char)-37);
-					__m256i yyu3 = _mm256_set1_epi8((char)-124);
-					__m256i yys4 = _mm256_set1_epi8((char)96);
-					__m256i yyb5 = _mm256_set1_epi8((char)-5);
-					__m256i yyu5 = _mm256_set1_epi8((char)5);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0)), _mm256_cmpeq_epi8(yysimd0, yys1)), _mm256_cmpgt_epi8(yyu2, _mm256_sub_epi8(yysimd0, yyb2))), _mm256_cmpgt_epi8(yyu3, _mm256_sub_epi8(yysimd0, yyb3))), _mm256_cmpeq_epi8(yysimd0, yys4)), _mm256_cmpgt_epi8(yyu5, _mm256_sub_epi8(yysimd0, yyb5))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 32;
-						if ((YYLIMIT - YYCURSOR) < 33) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-			default: break;
-		}
-	}
+yy98:
 	switch (yych) {
 		case '.':
 		case '0':
@@ -1896,107 +1659,48 @@ yy90:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy90;
-		default: goto yy91;
+		case 'z':
+			if (!((YYLIMIT - YYCURSOR) < 33)) {
+				const __m256i yyb0 = _mm256_set1_epi8((char)-128);
+				const __m256i yyu0 = _mm256_set1_epi8((char)-82);
+				const __m256i yys1 = _mm256_set1_epi8((char)47);
+				const __m256i yyb2 = _mm256_set1_epi8((char)-70);
+				const __m256i yyu2 = _mm256_set1_epi8((char)-121);
+				const __m256i yyb3 = _mm256_set1_epi8((char)-37);
+				const __m256i yyu3 = _mm256_set1_epi8((char)-124);
+				const __m256i yys4 = _mm256_set1_epi8((char)96);
+				const __m256i yyb5 = _mm256_set1_epi8((char)-5);
+				const __m256i yyu5 = _mm256_set1_epi8((char)5);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+					__m256i yysimd1 = _mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys1));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu2, _mm256_sub_epi8(yysimd0, yyb2)));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu3, _mm256_sub_epi8(yysimd0, yyb3)));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys4));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu5, _mm256_sub_epi8(yysimd0, yyb5)));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 32;
+					if ((YYLIMIT - YYCURSOR) < 33) break;
+				}
+				yych = *YYCURSOR;
+				goto yy98;
+			}
+			goto yy97;
+		default: goto yy99;
 	}
-yy91:
+yy99:
 	{ TOKEN(7); }
-yy92:
+yy100:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 33)) {
-		switch (yych) {
-			case '0':
-			case '1':
-			case '2':
-			case '3':
-			case '4':
-			case '5':
-			case '6':
-			case '7':
-			case '8':
-			case '9':
-			case 'A':
-			case 'B':
-			case 'C':
-			case 'D':
-			case 'E':
-			case 'F':
-			case 'G':
-			case 'H':
-			case 'I':
-			case 'J':
-			case 'K':
-			case 'L':
-			case 'M':
-			case 'N':
-			case 'O':
-			case 'P':
-			case 'Q':
-			case 'R':
-			case 'S':
-			case 'T':
-			case 'U':
-			case 'V':
-			case 'W':
-			case 'X':
-			case 'Y':
-			case 'Z':
-			case '_':
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z':
-				{
-					__m256i yyb0 = _mm256_set1_epi8((char)-128);
-					__m256i yyu0 = _mm256_set1_epi8((char)-80);
-					__m256i yyb1 = _mm256_set1_epi8((char)-70);
-					__m256i yyu1 = _mm256_set1_epi8((char)-121);
-					__m256i yyb2 = _mm256_set1_epi8((char)-37);
-					__m256i yyu2 = _mm256_set1_epi8((char)-124);
-					__m256i yys3 = _mm256_set1_epi8((char)96);
-					__m256i yyb4 = _mm256_set1_epi8((char)-5);
-					__m256i yyu4 = _mm256_set1_epi8((char)5);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0)), _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1))), _mm256_cmpgt_epi8(yyu2, _mm256_sub_epi8(yysimd0, yyb2))), _mm256_cmpeq_epi8(yysimd0, yys3)), _mm256_cmpgt_epi8(yyu4, _mm256_sub_epi8(yysimd0, yyb4))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 32;
-						if ((YYLIMIT - YYCURSOR) < 33) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-			default: break;
-		}
-	}
+yy101:
 	switch (yych) {
 		case '0':
 		case '1':
@@ -2060,222 +1764,236 @@ yy92:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy92;
-		default: goto yy93;
-	}
-yy93:
-	{ TOKEN(6); }
-yy94:
-	++YYCURSOR;
-	if (YYLIMIT <= YYCURSOR) return -2;
-	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 33)) {
-		switch (yych) {
-			case 0x00:
-			case '\n':
-			case '"':
-			case '\\': break;
-			default:
-				{
-					__m256i yys0 = _mm256_set1_epi8((char)0);
-					__m256i yys1 = _mm256_set1_epi8((char)10);
-					__m256i yys2 = _mm256_set1_epi8((char)34);
-					__m256i yys3 = _mm256_set1_epi8((char)92);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_cmpeq_epi8(yysimd0, yys0), _mm256_cmpeq_epi8(yysimd0, yys1)), _mm256_cmpeq_epi8(yysimd0, yys2)), _mm256_cmpeq_epi8(yysimd0, yys3)));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 32;
-						if ((YYLIMIT - YYCURSOR) < 33) break;
+		case 'z':
+			if (!((YYLIMIT - YYCURSOR) < 33)) {
+				const __m256i yyb0 = _mm256_set1_epi8((char)-128);
+				const __m256i yyu0 = _mm256_set1_epi8((char)-80);
+				const __m256i yyb1 = _mm256_set1_epi8((char)-70);
+				const __m256i yyu1 = _mm256_set1_epi8((char)-121);
+				const __m256i yyb2 = _mm256_set1_epi8((char)-37);
+				const __m256i yyu2 = _mm256_set1_epi8((char)-124);
+				const __m256i yys3 = _mm256_set1_epi8((char)96);
+				const __m256i yyb4 = _mm256_set1_epi8((char)-5);
+				const __m256i yyu4 = _mm256_set1_epi8((char)5);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+					__m256i yysimd1 = _mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1)));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu2, _mm256_sub_epi8(yysimd0, yyb2)));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys3));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu4, _mm256_sub_epi8(yysimd0, yyb4)));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
 					}
-					yych = *YYCURSOR;
+					YYCURSOR += 32;
+					if ((YYLIMIT - YYCURSOR) < 33) break;
 				}
-				break;
-		}
+				yych = *YYCURSOR;
+				goto yy101;
+			}
+			goto yy100;
+		default: goto yy102;
 	}
-yy95:
-	switch (yych) {
-		case 0x00:
-		case '\n': goto yy96;
-		case '"': goto yy97;
-		case '\\': goto yy98;
-		default: goto yy94;
-	}
-yy96:
-	YYCURSOR = YYMARKER;
-	goto yy84;
-yy97:
-	++YYCURSOR;
-	{ TOKEN(1); }
-yy98:
-	++YYCURSOR;
-	if (YYLIMIT <= YYCURSOR) return -2;
-	yych = *YYCURSOR;
-	switch (yych) {
-		case 0x00:
-		case '\n': goto yy96;
-		default: goto yy94;
-	}
-yy99:
-	++YYCURSOR;
-	if (YYLIMIT <= YYCURSOR) return -2;
-	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 33)) {
-		switch (yych) {
-			case 0x00:
-			case '\n':
-			case '\'':
-			case '\\': break;
-			default:
-				{
-					__m256i yys0 = _mm256_set1_epi8((char)0);
-					__m256i yys1 = _mm256_set1_epi8((char)10);
-					__m256i yys2 = _mm256_set1_epi8((char)39);
-					__m256i yys3 = _mm256_set1_epi8((char)92);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_cmpeq_epi8(yysimd0, yys0), _mm256_cmpeq_epi8(yysimd0, yys1)), _mm256_cmpeq_epi8(yysimd0, yys2)), _mm256_cmpeq_epi8(yysimd0, yys3)));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 32;
-						if ((YYLIMIT - YYCURSOR) < 33) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-		}
-	}
-yy100:
-	switch (yych) {
-		case 0x00:
-		case '\n': goto yy96;
-		case '\'': goto yy101;
-		case '\\': goto yy102;
-		default: goto yy99;
-	}
-yy101:
-	++YYCURSOR;
-	{ TOKEN(2); }
 yy102:
-	++YYCURSOR;
-	if (YYLIMIT <= YYCURSOR) return -2;
-	yych = *YYCURSOR;
-	switch (yych) {
-		case 0x00:
-		case '\n': goto yy96;
-		default: goto yy99;
-	}
+	{ TOKEN(6); }
 yy103:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 33)) {
-		switch (yych) {
-			case 0x00:
-			case '*': break;
-			default:
-				{
-					__m256i yys0 = _mm256_set1_epi8((char)0);
-					__m256i yys1 = _mm256_set1_epi8((char)42);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_cmpeq_epi8(yysimd0, yys0), _mm256_cmpeq_epi8(yysimd0, yys1)));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 32;
-						if ((YYLIMIT - YYCURSOR) < 33) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-		}
-	}
-	switch (yych) {
-		case 0x00: goto yy96;
-		case '*': goto yy106;
-		default: goto yy103;
-	}
 yy104:
-	++YYCURSOR;
-	if (YYLIMIT <= YYCURSOR) return -2;
-	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 33)) {
-		switch (yych) {
-			case 0x00:
-			case '\n': break;
-			default:
-				{
-					__m256i yys0 = _mm256_set1_epi8((char)0);
-					__m256i yys1 = _mm256_set1_epi8((char)10);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_cmpeq_epi8(yysimd0, yys0), _mm256_cmpeq_epi8(yysimd0, yys1)));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 32;
-						if ((YYLIMIT - YYCURSOR) < 33) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-		}
-	}
 	switch (yych) {
 		case 0x00:
 		case '\n': goto yy105;
-		default: goto yy104;
+		case '"': goto yy106;
+		case '\\': goto yy107;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 33)) {
+				const __m256i yys0 = _mm256_set1_epi8((char)0);
+				const __m256i yys1 = _mm256_set1_epi8((char)10);
+				const __m256i yys2 = _mm256_set1_epi8((char)34);
+				const __m256i yys3 = _mm256_set1_epi8((char)92);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+					__m256i yysimd1 = _mm256_cmpeq_epi8(yysimd0, yys0);
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys1));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys2));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys3));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 32;
+					if ((YYLIMIT - YYCURSOR) < 33) break;
+				}
+				yych = *YYCURSOR;
+				goto yy104;
+			}
+			goto yy103;
 	}
 yy105:
-	{ TOKEN(3); }
+	YYCURSOR = YYMARKER;
+	goto yy90;
 yy106:
+	++YYCURSOR;
+	{ TOKEN(1); }
+yy107:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 33)) {
-		switch (yych) {
-			case '*':
-				{
-					__m256i yyb0 = _mm256_set1_epi8((char)-128);
-					__m256i yyu0 = _mm256_set1_epi8((char)-86);
-					__m256i yyb1 = _mm256_set1_epi8((char)-85);
-					__m256i yyu1 = _mm256_set1_epi8((char)85);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0)), _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 32;
-						if ((YYLIMIT - YYCURSOR) < 33) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-			default: break;
-		}
-	}
 	switch (yych) {
-		case 0x00: goto yy96;
-		case '*': goto yy106;
-		case '/': goto yy107;
+		case 0x00:
+		case '\n': goto yy105;
 		default: goto yy103;
 	}
-yy107:
+yy108:
+	++YYCURSOR;
+	if (YYLIMIT <= YYCURSOR) return -2;
+	yych = *YYCURSOR;
+yy109:
+	switch (yych) {
+		case 0x00:
+		case '\n': goto yy105;
+		case '\'': goto yy110;
+		case '\\': goto yy111;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 33)) {
+				const __m256i yys0 = _mm256_set1_epi8((char)0);
+				const __m256i yys1 = _mm256_set1_epi8((char)10);
+				const __m256i yys2 = _mm256_set1_epi8((char)39);
+				const __m256i yys3 = _mm256_set1_epi8((char)92);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+					__m256i yysimd1 = _mm256_cmpeq_epi8(yysimd0, yys0);
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys1));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys2));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys3));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 32;
+					if ((YYLIMIT - YYCURSOR) < 33) break;
+				}
+				yych = *YYCURSOR;
+				goto yy109;
+			}
+			goto yy108;
+	}
+yy110:
+	++YYCURSOR;
+	{ TOKEN(2); }
+yy111:
+	++YYCURSOR;
+	if (YYLIMIT <= YYCURSOR) return -2;
+	yych = *YYCURSOR;
+	switch (yych) {
+		case 0x00:
+		case '\n': goto yy105;
+		default: goto yy108;
+	}
+yy112:
+	++YYCURSOR;
+	if (YYLIMIT <= YYCURSOR) return -2;
+	yych = *YYCURSOR;
+yy113:
+	switch (yych) {
+		case 0x00: goto yy105;
+		case '*': goto yy117;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 33)) {
+				const __m256i yys0 = _mm256_set1_epi8((char)0);
+				const __m256i yys1 = _mm256_set1_epi8((char)42);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+					__m256i yysimd1 = _mm256_cmpeq_epi8(yysimd0, yys0);
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys1));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 32;
+					if ((YYLIMIT - YYCURSOR) < 33) break;
+				}
+				yych = *YYCURSOR;
+				goto yy113;
+			}
+			goto yy112;
+	}
+yy114:
+	++YYCURSOR;
+	if (YYLIMIT <= YYCURSOR) return -2;
+	yych = *YYCURSOR;
+yy115:
+	switch (yych) {
+		case 0x00:
+		case '\n': goto yy116;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 33)) {
+				const __m256i yys0 = _mm256_set1_epi8((char)0);
+				const __m256i yys1 = _mm256_set1_epi8((char)10);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+					__m256i yysimd1 = _mm256_cmpeq_epi8(yysimd0, yys0);
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys1));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 32;
+					if ((YYLIMIT - YYCURSOR) < 33) break;
+				}
+				yych = *YYCURSOR;
+				goto yy115;
+			}
+			goto yy114;
+	}
+yy116:
+	{ TOKEN(3); }
+yy117:
+	++YYCURSOR;
+	if (YYLIMIT <= YYCURSOR) return -2;
+	yych = *YYCURSOR;
+yy118:
+	switch (yych) {
+		case 0x00: goto yy105;
+		case '*':
+			if (!((YYLIMIT - YYCURSOR) < 33)) {
+				const __m256i yyb0 = _mm256_set1_epi8((char)-128);
+				const __m256i yyu0 = _mm256_set1_epi8((char)-86);
+				const __m256i yyb1 = _mm256_set1_epi8((char)-85);
+				const __m256i yyu1 = _mm256_set1_epi8((char)85);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+					__m256i yysimd1 = _mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1)));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 32;
+					if ((YYLIMIT - YYCURSOR) < 33) break;
+				}
+				yych = *YYCURSOR;
+				goto yy118;
+			}
+			goto yy117;
+		case '/': goto yy119;
+		default: goto yy112;
+	}
+yy119:
 	++YYCURSOR;
 	{ TOKEN(4); }
 }
@@ -2304,14 +2022,14 @@ loop:
 	if ((YYLIMIT - YYCURSOR) < 2) if (fill_buffered(in, 2) != 0) return -2;
 	yych = *YYCURSOR;
 	switch (yych) {
-		case 0x00: goto yy109;
+		case 0x00: goto yy121;
 		case '\t':
 		case '\n':
 		case '\r':
-		case ' ': goto yy112;
-		case '"': goto yy114;
-		case '\'': goto yy115;
-		case '/': goto yy116;
+		case ' ': goto yy124;
+		case '"': goto yy126;
+		case '\'': goto yy127;
+		case '/': goto yy128;
 		case '0':
 		case '1':
 		case '2':
@@ -2321,7 +2039,7 @@ loop:
 		case '6':
 		case '7':
 		case '8':
-		case '9': goto yy117;
+		case '9': goto yy129;
 		case 'A':
 		case 'B':
 		case 'C':
@@ -2374,17 +2092,17 @@ loop:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy119;
-		default: goto yy110;
+		case 'z': goto yy131;
+		default: goto yy122;
 	}
-yy109:
+yy121:
 	++YYCURSOR;
 	{ return 0; }
-yy110:
+yy122:
 	++YYCURSOR;
-yy111:
+yy123:
 	{ TOKEN(8); }
-yy112:
+yy124:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
@@ -2392,33 +2110,33 @@ yy112:
 		case '\t':
 		case '\n':
 		case '\r':
-		case ' ': goto yy112;
-		default: goto yy113;
+		case ' ': goto yy124;
+		default: goto yy125;
 	}
-yy113:
+yy125:
 	{ TOKEN(5); }
-yy114:
+yy126:
 	yych = *(YYMARKER = ++YYCURSOR);
 	switch (yych) {
 		case 0x00:
-		case '\n': goto yy111;
-		default: goto yy122;
+		case '\n': goto yy123;
+		default: goto yy134;
 	}
-yy115:
+yy127:
 	yych = *(YYMARKER = ++YYCURSOR);
 	switch (yych) {
 		case 0x00:
-		case '\n': goto yy111;
-		default: goto yy127;
+		case '\n': goto yy123;
+		default: goto yy139;
 	}
-yy116:
+yy128:
 	yych = *(YYMARKER = ++YYCURSOR);
 	switch (yych) {
-		case '*': goto yy130;
-		case '/': goto yy131;
-		default: goto yy111;
+		case '*': goto yy142;
+		case '/': goto yy143;
+		default: goto yy123;
 	}
-yy117:
+yy129:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
@@ -2486,12 +2204,12 @@ yy117:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy117;
-		default: goto yy118;
+		case 'z': goto yy129;
+		default: goto yy130;
 	}
-yy118:
+yy130:
 	{ TOKEN(7); }
-yy119:
+yy131:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
@@ -2558,93 +2276,93 @@ yy119:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy119;
-		default: goto yy120;
-	}
-yy120:
-	{ TOKEN(6); }
-yy121:
-	++YYCURSOR;
-	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
-	yych = *YYCURSOR;
-yy122:
-	switch (yych) {
-		case 0x00:
-		case '\n': goto yy123;
-		case '"': goto yy124;
-		case '\\': goto yy125;
-		default: goto yy121;
-	}
-yy123:
-	YYCURSOR = YYMARKER;
-	goto yy111;
-yy124:
-	++YYCURSOR;
-	{ TOKEN(1); }
-yy125:
-	++YYCURSOR;
-	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
-	yych = *YYCURSOR;
-	switch (yych) {
-		case 0x00:
-		case '\n': goto yy123;
-		default: goto yy121;
-	}
-yy126:
-	++YYCURSOR;
-	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
-	yych = *YYCURSOR;
-yy127:
-	switch (yych) {
-		case 0x00:
-		case '\n': goto yy123;
-		case '\'': goto yy128;
-		case '\\': goto yy129;
-		default: goto yy126;
-	}
-yy128:
-	++YYCURSOR;
-	{ TOKEN(2); }
-yy129:
-	++YYCURSOR;
-	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
-	yych = *YYCURSOR;
-	switch (yych) {
-		case 0x00:
-		case '\n': goto yy123;
-		default: goto yy126;
-	}
-yy130:
-	++YYCURSOR;
-	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
-	yych = *YYCURSOR;
-	switch (yych) {
-		case 0x00: goto yy123;
-		case '*': goto yy133;
-		default: goto yy130;
-	}
-yy131:
-	++YYCURSOR;
-	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
-	yych = *YYCURSOR;
-	switch (yych) {
-		case 0x00:
-		case '\n': goto yy132;
-		default: goto yy131;
+		case 'z': goto yy131;
+		default: goto yy132;
 	}
 yy132:
-	{ TOKEN(3); }
+	{ TOKEN(6); }
 yy133:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
-	switch (yych) {
-		case 0x00: goto yy123;
-		case '*': goto yy133;
-		case '/': goto yy134;
-		default: goto yy130;
-	}
 yy134:
+	switch (yych) {
+		case 0x00:
+		case '\n': goto yy135;
+		case '"': goto yy136;
+		case '\\': goto yy137;
+		default: goto yy133;
+	}
+yy135:
+	YYCURSOR = YYMARKER;
+	goto yy123;
+yy136:
+	++YYCURSOR;
+	{ TOKEN(1); }
+yy137:
+	++YYCURSOR;
+	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
+	yych = *YYCURSOR;
+	switch (yych) {
+		case 0x00:
+		case '\n': goto yy135;
+		default: goto yy133;
+	}
+yy138:
+	++YYCURSOR;
+	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
+	yych = *YYCURSOR;
+yy139:
+	switch (yych) {
+		case 0x00:
+		case '\n': goto yy135;
+		case '\'': goto yy140;
+		case '\\': goto yy141;
+		default: goto yy138;
+	}
+yy140:
+	++YYCURSOR;
+	{ TOKEN(2); }
+yy141:
+	++YYCURSOR;
+	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
+	yych = *YYCURSOR;
+	switch (yych) {
+		case 0x00:
+		case '\n': goto yy135;
+		default: goto yy138;
+	}
+yy142:
+	++YYCURSOR;
+	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
+	yych = *YYCURSOR;
+	switch (yych) {
+		case 0x00: goto yy135;
+		case '*': goto yy145;
+		default: goto yy142;
+	}
+yy143:
+	++YYCURSOR;
+	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
+	yych = *YYCURSOR;
+	switch (yych) {
+		case 0x00:
+		case '\n': goto yy144;
+		default: goto yy143;
+	}
+yy144:
+	{ TOKEN(3); }
+yy145:
+	++YYCURSOR;
+	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
+	yych = *YYCURSOR;
+	switch (yych) {
+		case 0x00: goto yy135;
+		case '*': goto yy145;
+		case '/': goto yy146;
+		default: goto yy142;
+	}
+yy146:
 	++YYCURSOR;
 	{ TOKEN(4); }
 }
@@ -2662,14 +2380,14 @@ loop:
 	if ((YYLIMIT - YYCURSOR) < 2) if (fill_buffered(in, 2) != 0) return -2;
 	yych = *YYCURSOR;
 	switch (yych) {
-		case 0x00: goto yy136;
+		case 0x00: goto yy148;
 		case '\t':
 		case '\n':
 		case '\r':
-		case ' ': goto yy139;
-		case '"': goto yy141;
-		case '\'': goto yy142;
-		case '/': goto yy143;
+		case ' ': goto yy151;
+		case '"': goto yy154;
+		case '\'': goto yy155;
+		case '/': goto yy156;
 		case '0':
 		case '1':
 		case '2':
@@ -2679,7 +2397,7 @@ loop:
 		case '6':
 		case '7':
 		case '8':
-		case '9': goto yy144;
+		case '9': goto yy157;
 		case 'A':
 		case 'B':
 		case 'C':
@@ -2732,180 +2450,84 @@ loop:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy146;
-		default: goto yy137;
+		case 'z': goto yy160;
+		default: goto yy149;
 	}
-yy136:
+yy148:
 	++YYCURSOR;
 	{ return 0; }
-yy137:
+yy149:
 	++YYCURSOR;
-yy138:
+yy150:
 	{ TOKEN(8); }
-yy139:
+yy151:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 17)) {
-		switch (yych) {
-			case '\t':
-			case '\n':
-			case '\r':
-			case ' ':
-				{
-					__m128i yyb0 = _mm_set1_epi8((char)-128);
-					__m128i yyu0 = _mm_set1_epi8((char)-119);
-					__m128i yyb1 = _mm_set1_epi8((char)-117);
-					__m128i yyu1 = _mm_set1_epi8((char)-126);
-					__m128i yyb2 = _mm_set1_epi8((char)-114);
-					__m128i yyu2 = _mm_set1_epi8((char)-110);
-					__m128i yyb3 = _mm_set1_epi8((char)-95);
-					__m128i yyu3 = _mm_set1_epi8((char)95);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_or_si128(_mm_or_si128(_mm_or_si128(_mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0)), _mm_cmpgt_epi8(yyu1, _mm_sub_epi8(yysimd0, yyb1))), _mm_cmpgt_epi8(yyu2, _mm_sub_epi8(yysimd0, yyb2))), _mm_cmpgt_epi8(yyu3, _mm_sub_epi8(yysimd0, yyb3))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 16;
-						if ((YYLIMIT - YYCURSOR) < 17) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-			default: break;
-		}
-	}
+yy152:
 	switch (yych) {
 		case '\t':
 		case '\n':
 		case '\r':
-		case ' ': goto yy139;
-		default: goto yy140;
+		case ' ':
+			if (!((YYLIMIT - YYCURSOR) < 17)) {
+				const __m128i yyb0 = _mm_set1_epi8((char)-128);
+				const __m128i yyu0 = _mm_set1_epi8((char)-119);
+				const __m128i yyb1 = _mm_set1_epi8((char)-117);
+				const __m128i yyu1 = _mm_set1_epi8((char)-126);
+				const __m128i yyb2 = _mm_set1_epi8((char)-114);
+				const __m128i yyu2 = _mm_set1_epi8((char)-110);
+				const __m128i yyb3 = _mm_set1_epi8((char)-95);
+				const __m128i yyu3 = _mm_set1_epi8((char)95);
+				for (;;) {
+					__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
+					__m128i yysimd1 = _mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu1, _mm_sub_epi8(yysimd0, yyb1)));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu2, _mm_sub_epi8(yysimd0, yyb2)));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu3, _mm_sub_epi8(yysimd0, yyb3)));
+					unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 16;
+					if ((YYLIMIT - YYCURSOR) < 17) break;
+				}
+				yych = *YYCURSOR;
+				goto yy152;
+			}
+			goto yy151;
+		default: goto yy153;
 	}
-yy140:
+yy153:
 	{ TOKEN(5); }
-yy141:
+yy154:
 	yych = *(YYMARKER = ++YYCURSOR);
 	switch (yych) {
 		case 0x00:
-		case '\n': goto yy138;
-		default: goto yy149;
+		case '\n': goto yy150;
+		default: goto yy164;
 	}
-yy142:
+yy155:
 	yych = *(YYMARKER = ++YYCURSOR);
 	switch (yych) {
 		case 0x00:
-		case '\n': goto yy138;
-		default: goto yy154;
+		case '\n': goto yy150;
+		default: goto yy169;
 	}
-yy143:
+yy156:
 	yych = *(YYMARKER = ++YYCURSOR);
 	switch (yych) {
-		case '*': goto yy157;
-		case '/': goto yy158;
-		default: goto yy138;
+		case '*': goto yy172;
+		case '/': goto yy174;
+		default: goto yy150;
 	}
-yy144:
+yy157:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 17)) {
-		switch (yych) {
-			case '.':
-			case '0':
-			case '1':
-			case '2':
-			case '3':
-			case '4':
-			case '5':
-			case '6':
-			case '7':
-			case '8':
-			case '9':
-			case 'A':
-			case 'B':
-			case 'C':
-			case 'D':
-			case 'E':
-			case 'F':
-			case 'G':
-			case 'H':
-			case 'I':
-			case 'J':
-			case 'K':
-			case 'L':
-			case 'M':
-			case 'N':
-			case 'O':
-			case 'P':
-			case 'Q':
-			case 'R':
-			case 'S':
-			case 'T':
-			case 'U':
-			case 'V':
-			case 'W':
-			case 'X':
-			case 'Y':
-			case 'Z':
-			case '_':
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z':
-				{
-					__m128i yyb0 = _mm_set1_epi8((char)-128);
-					__m128i yyu0 = _mm_set1_epi8((char)-82);
-					__m128i yys1 = _mm_set1_epi8((char)47);
-					__m128i yyb2 = _mm_set1_epi8((char)-70);
-					__m128i yyu2 = _mm_set1_epi8((char)-121);
-					__m128i yyb3 = _mm_set1_epi8((char)-37);
-					__m128i yyu3 = _mm_set1_epi8((char)-124);
-					__m128i yys4 = _mm_set1_epi8((char)96);
-					__m128i yyb5 = _mm_set1_epi8((char)-5);
-					__m128i yyu5 = _mm_set1_epi8((char)5);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_or_si128(_mm_or_si128(_mm_or_si128(_mm_or_si128(_mm_or_si128(_mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0)), _mm_cmpeq_epi8(yysimd0, yys1)), _mm_cmpgt_epi8(yyu2, _mm_sub_epi8(yysimd0, yyb2))), _mm_cmpgt_epi8(yyu3, _mm_sub_epi8(yysimd0, yyb3))), _mm_cmpeq_epi8(yysimd0, yys4)), _mm_cmpgt_epi8(yyu5, _mm_sub_epi8(yysimd0, yyb5))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 16;
-						if ((YYLIMIT - YYCURSOR) < 17) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-			default: break;
-		}
-	}
+yy158:
 	switch (yych) {
 		case '.':
 		case '0':
@@ -2970,107 +2592,48 @@ yy144:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy144;
-		default: goto yy145;
+		case 'z':
+			if (!((YYLIMIT - YYCURSOR) < 17)) {
+				const __m128i yyb0 = _mm_set1_epi8((char)-128);
+				const __m128i yyu0 = _mm_set1_epi8((char)-82);
+				const __m128i yys1 = _mm_set1_epi8((char)47);
+				const __m128i yyb2 = _mm_set1_epi8((char)-70);
+				const __m128i yyu2 = _mm_set1_epi8((char)-121);
+				const __m128i yyb3 = _mm_set1_epi8((char)-37);
+				const __m128i yyu3 = _mm_set1_epi8((char)-124);
+				const __m128i yys4 = _mm_set1_epi8((char)96);
+				const __m128i yyb5 = _mm_set1_epi8((char)-5);
+				const __m128i yyu5 = _mm_set1_epi8((char)5);
+				for (;;) {
+					__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
+					__m128i yysimd1 = _mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys1));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu2, _mm_sub_epi8(yysimd0, yyb2)));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu3, _mm_sub_epi8(yysimd0, yyb3)));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys4));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu5, _mm_sub_epi8(yysimd0, yyb5)));
+					unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 16;
+					if ((YYLIMIT - YYCURSOR) < 17) break;
+				}
+				yych = *YYCURSOR;
+				goto yy158;
+			}
+			goto yy157;
+		default: goto yy159;
 	}
-yy145:
+yy159:
 	{ TOKEN(7); }
-yy146:
+yy160:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 17)) {
-		switch (yych) {
-			case '0':
-			case '1':
-			case '2':
-			case '3':
-			case '4':
-			case '5':
-			case '6':
-			case '7':
-			case '8':
-			case '9':
-			case 'A':
-			case 'B':
-			case 'C':
-			case 'D':
-			case 'E':
-			case 'F':
-			case 'G':
-			case 'H':
-			case 'I':
-			case 'J':
-			case 'K':
-			case 'L':
-			case 'M':
-			case 'N':
-			case 'O':
-			case 'P':
-			case 'Q':
-			case 'R':
-			case 'S':
-			case 'T':
-			case 'U':
-			case 'V':
-			case 'W':
-			case 'X':
-			case 'Y':
-			case 'Z':
-			case '_':
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z':
-				{
-					__m128i yyb0 = _mm_set1_epi8((char)-128);
-					__m128i yyu0 = _mm_set1_epi8((char)-80);
-					__m128i yyb1 = _mm_set1_epi8((char)-70);
-					__m128i yyu1 = _mm_set1_epi8((char)-121);
-					__m128i yyb2 = _mm_set1_epi8((char)-37);
-					__m128i yyu2 = _mm_set1_epi8((char)-124);
-					__m128i yys3 = _mm_set1_epi8((char)96);
-					__m128i yyb4 = _mm_set1_epi8((char)-5);
-					__m128i yyu4 = _mm_set1_epi8((char)5);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_or_si128(_mm_or_si128(_mm_or_si128(_mm_or_si128(_mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0)), _mm_cmpgt_epi8(yyu1, _mm_sub_epi8(yysimd0, yyb1))), _mm_cmpgt_epi8(yyu2, _mm_sub_epi8(yysimd0, yyb2))), _mm_cmpeq_epi8(yysimd0, yys3)), _mm_cmpgt_epi8(yyu4, _mm_sub_epi8(yysimd0, yyb4))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 16;
-						if ((YYLIMIT - YYCURSOR) < 17) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-			default: break;
-		}
-	}
+yy161:
 	switch (yych) {
 		case '0':
 		case '1':
@@ -3134,222 +2697,236 @@ yy146:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy146;
-		default: goto yy147;
+		case 'z':
+			if (!((YYLIMIT - YYCURSOR) < 17)) {
+				const __m128i yyb0 = _mm_set1_epi8((char)-128);
+				const __m128i yyu0 = _mm_set1_epi8((char)-80);
+				const __m128i yyb1 = _mm_set1_epi8((char)-70);
+				const __m128i yyu1 = _mm_set1_epi8((char)-121);
+				const __m128i yyb2 = _mm_set1_epi8((char)-37);
+				const __m128i yyu2 = _mm_set1_epi8((char)-124);
+				const __m128i yys3 = _mm_set1_epi8((char)96);
+				const __m128i yyb4 = _mm_set1_epi8((char)-5);
+				const __m128i yyu4 = _mm_set1_epi8((char)5);
+				for (;;) {
+					__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
+					__m128i yysimd1 = _mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu1, _mm_sub_epi8(yysimd0, yyb1)));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu2, _mm_sub_epi8(yysimd0, yyb2)));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys3));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu4, _mm_sub_epi8(yysimd0, yyb4)));
+					unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 16;
+					if ((YYLIMIT - YYCURSOR) < 17) break;
+				}
+				yych = *YYCURSOR;
+				goto yy161;
+			}
+			goto yy160;
+		default: goto yy162;
 	}
-yy147:
+yy162:
 	{ TOKEN(6); }
-yy148:
+yy163:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 17)) {
-		switch (yych) {
-			case 0x00:
-			case '\n':
-			case '"':
-			case '\\': break;
-			default:
-				{
-					__m128i yys0 = _mm_set1_epi8((char)0);
-					__m128i yys1 = _mm_set1_epi8((char)10);
-					__m128i yys2 = _mm_set1_epi8((char)34);
-					__m128i yys3 = _mm_set1_epi8((char)92);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_or_si128(_mm_or_si128(_mm_or_si128(_mm_cmpeq_epi8(yysimd0, yys0), _mm_cmpeq_epi8(yysimd0, yys1)), _mm_cmpeq_epi8(yysimd0, yys2)), _mm_cmpeq_epi8(yysimd0, yys3)));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 16;
-						if ((YYLIMIT - YYCURSOR) < 17) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-		}
-	}
-yy149:
+yy164:
 	switch (yych) {
 		case 0x00:
-		case '\n': goto yy150;
-		case '"': goto yy151;
-		case '\\': goto yy152;
-		default: goto yy148;
+		case '\n': goto yy165;
+		case '"': goto yy166;
+		case '\\': goto yy167;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 17)) {
+				const __m128i yys0 = _mm_set1_epi8((char)0);
+				const __m128i yys1 = _mm_set1_epi8((char)10);
+				const __m128i yys2 = _mm_set1_epi8((char)34);
+				const __m128i yys3 = _mm_set1_epi8((char)92);
+				for (;;) {
+					__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
+					__m128i yysimd1 = _mm_cmpeq_epi8(yysimd0, yys0);
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys1));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys2));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys3));
+					unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 16;
+					if ((YYLIMIT - YYCURSOR) < 17) break;
+				}
+				yych = *YYCURSOR;
+				goto yy164;
+			}
+			goto yy163;
 	}
-yy150:
+yy165:
 	YYCURSOR = YYMARKER;
-	goto yy138;
-yy151:
+	goto yy150;
+yy166:
 	++YYCURSOR;
 	{ TOKEN(1); }
-yy152:
+yy167:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
 	switch (yych) {
 		case 0x00:
-		case '\n': goto yy150;
-		default: goto yy148;
+		case '\n': goto yy165;
+		default: goto yy163;
 	}
-yy153:
+yy168:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 17)) {
-		switch (yych) {
-			case 0x00:
-			case '\n':
-			case '\'':
-			case '\\': break;
-			default:
-				{
-					__m128i yys0 = _mm_set1_epi8((char)0);
-					__m128i yys1 = _mm_set1_epi8((char)10);
-					__m128i yys2 = _mm_set1_epi8((char)39);
-					__m128i yys3 = _mm_set1_epi8((char)92);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_or_si128(_mm_or_si128(_mm_or_si128(_mm_cmpeq_epi8(yysimd0, yys0), _mm_cmpeq_epi8(yysimd0, yys1)), _mm_cmpeq_epi8(yysimd0, yys2)), _mm_cmpeq_epi8(yysimd0, yys3)));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 16;
-						if ((YYLIMIT - YYCURSOR) < 17) break;
+yy169:
+	switch (yych) {
+		case 0x00:
+		case '\n': goto yy165;
+		case '\'': goto yy170;
+		case '\\': goto yy171;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 17)) {
+				const __m128i yys0 = _mm_set1_epi8((char)0);
+				const __m128i yys1 = _mm_set1_epi8((char)10);
+				const __m128i yys2 = _mm_set1_epi8((char)39);
+				const __m128i yys3 = _mm_set1_epi8((char)92);
+				for (;;) {
+					__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
+					__m128i yysimd1 = _mm_cmpeq_epi8(yysimd0, yys0);
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys1));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys2));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys3));
+					unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
 					}
-					yych = *YYCURSOR;
+					YYCURSOR += 16;
+					if ((YYLIMIT - YYCURSOR) < 17) break;
 				}
-				break;
-		}
+				yych = *YYCURSOR;
+				goto yy169;
+			}
+			goto yy168;
 	}
-yy154:
-	switch (yych) {
-		case 0x00:
-		case '\n': goto yy150;
-		case '\'': goto yy155;
-		case '\\': goto yy156;
-		default: goto yy153;
-	}
-yy155:
+yy170:
 	++YYCURSOR;
 	{ TOKEN(2); }
-yy156:
+yy171:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
 	switch (yych) {
 		case 0x00:
-		case '\n': goto yy150;
-		default: goto yy153;
+		case '\n': goto yy165;
+		default: goto yy168;
 	}
-yy157:
+yy172:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 17)) {
-		switch (yych) {
-			case 0x00:
-			case '*': break;
-			default:
-				{
-					__m128i yys0 = _mm_set1_epi8((char)0);
-					__m128i yys1 = _mm_set1_epi8((char)42);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_or_si128(_mm_cmpeq_epi8(yysimd0, yys0), _mm_cmpeq_epi8(yysimd0, yys1)));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 16;
-						if ((YYLIMIT - YYCURSOR) < 17) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-		}
-	}
+yy173:
 	switch (yych) {
-		case 0x00: goto yy150;
-		case '*': goto yy160;
-		default: goto yy157;
+		case 0x00: goto yy165;
+		case '*': goto yy177;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 17)) {
+				const __m128i yys0 = _mm_set1_epi8((char)0);
+				const __m128i yys1 = _mm_set1_epi8((char)42);
+				for (;;) {
+					__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
+					__m128i yysimd1 = _mm_cmpeq_epi8(yysimd0, yys0);
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys1));
+					unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 16;
+					if ((YYLIMIT - YYCURSOR) < 17) break;
+				}
+				yych = *YYCURSOR;
+				goto yy173;
+			}
+			goto yy172;
 	}
-yy158:
+yy174:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 17)) {
-		switch (yych) {
-			case 0x00:
-			case '\n': break;
-			default:
-				{
-					__m128i yys0 = _mm_set1_epi8((char)0);
-					__m128i yys1 = _mm_set1_epi8((char)10);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_or_si128(_mm_cmpeq_epi8(yysimd0, yys0), _mm_cmpeq_epi8(yysimd0, yys1)));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 16;
-						if ((YYLIMIT - YYCURSOR) < 17) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-		}
-	}
+yy175:
 	switch (yych) {
 		case 0x00:
-		case '\n': goto yy159;
-		default: goto yy158;
+		case '\n': goto yy176;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 17)) {
+				const __m128i yys0 = _mm_set1_epi8((char)0);
+				const __m128i yys1 = _mm_set1_epi8((char)10);
+				for (;;) {
+					__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
+					__m128i yysimd1 = _mm_cmpeq_epi8(yysimd0, yys0);
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys1));
+					unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 16;
+					if ((YYLIMIT - YYCURSOR) < 17) break;
+				}
+				yych = *YYCURSOR;
+				goto yy175;
+			}
+			goto yy174;
 	}
-yy159:
+yy176:
 	{ TOKEN(3); }
-yy160:
+yy177:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 17)) {
-		switch (yych) {
-			case '*':
-				{
-					__m128i yyb0 = _mm_set1_epi8((char)-128);
-					__m128i yyu0 = _mm_set1_epi8((char)-86);
-					__m128i yyb1 = _mm_set1_epi8((char)-85);
-					__m128i yyu1 = _mm_set1_epi8((char)85);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_or_si128(_mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0)), _mm_cmpgt_epi8(yyu1, _mm_sub_epi8(yysimd0, yyb1))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 16;
-						if ((YYLIMIT - YYCURSOR) < 17) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-			default: break;
-		}
-	}
+yy178:
 	switch (yych) {
-		case 0x00: goto yy150;
-		case '*': goto yy160;
-		case '/': goto yy161;
-		default: goto yy157;
+		case 0x00: goto yy165;
+		case '*':
+			if (!((YYLIMIT - YYCURSOR) < 17)) {
+				const __m128i yyb0 = _mm_set1_epi8((char)-128);
+				const __m128i yyu0 = _mm_set1_epi8((char)-86);
+				const __m128i yyb1 = _mm_set1_epi8((char)-85);
+				const __m128i yyu1 = _mm_set1_epi8((char)85);
+				for (;;) {
+					__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
+					__m128i yysimd1 = _mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu1, _mm_sub_epi8(yysimd0, yyb1)));
+					unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 16;
+					if ((YYLIMIT - YYCURSOR) < 17) break;
+				}
+				yych = *YYCURSOR;
+				goto yy178;
+			}
+			goto yy177;
+		case '/': goto yy179;
+		default: goto yy172;
 	}
-yy161:
+yy179:
 	++YYCURSOR;
 	{ TOKEN(4); }
 }
@@ -3368,14 +2945,14 @@ loop:
 	if ((YYLIMIT - YYCURSOR) < 2) if (fill_buffered(in, 2) != 0) return -2;
 	yych = *YYCURSOR;
 	switch (yych) {
-		case 0x00: goto yy163;
+		case 0x00: goto yy181;
 		case '\t':
 		case '\n':
 		case '\r':
-		case ' ': goto yy166;
-		case '"': goto yy168;
-		case '\'': goto yy169;
-		case '/': goto yy170;
+		case ' ': goto yy184;
+		case '"': goto yy187;
+		case '\'': goto yy188;
+		case '/': goto yy189;
 		case '0':
 		case '1':
 		case '2':
@@ -3385,7 +2962,7 @@ loop:
 		case '6':
 		case '7':
 		case '8':
-		case '9': goto yy171;
+		case '9': goto yy190;
 		case 'A':
 		case 'B':
 		case 'C':
@@ -3438,180 +3015,84 @@ loop:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy173;
-		default: goto yy164;
+		case 'z': goto yy193;
+		default: goto yy182;
 	}
-yy163:
+yy181:
 	++YYCURSOR;
 	{ return 0; }
-yy164:
+yy182:
 	++YYCURSOR;
-yy165:
+yy183:
 	{ TOKEN(8); }
-yy166:
+yy184:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 33)) {
-		switch (yych) {
-			case '\t':
-			case '\n':
-			case '\r':
-			case ' ':
-				{
-					__m256i yyb0 = _mm256_set1_epi8((char)-128);
-					__m256i yyu0 = _mm256_set1_epi8((char)-119);
-					__m256i yyb1 = _mm256_set1_epi8((char)-117);
-					__m256i yyu1 = _mm256_set1_epi8((char)-126);
-					__m256i yyb2 = _mm256_set1_epi8((char)-114);
-					__m256i yyu2 = _mm256_set1_epi8((char)-110);
-					__m256i yyb3 = _mm256_set1_epi8((char)-95);
-					__m256i yyu3 = _mm256_set1_epi8((char)95);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0)), _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1))), _mm256_cmpgt_epi8(yyu2, _mm256_sub_epi8(yysimd0, yyb2))), _mm256_cmpgt_epi8(yyu3, _mm256_sub_epi8(yysimd0, yyb3))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 32;
-						if ((YYLIMIT - YYCURSOR) < 33) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-			default: break;
-		}
-	}
+yy185:
 	switch (yych) {
 		case '\t':
 		case '\n':
 		case '\r':
-		case ' ': goto yy166;
-		default: goto yy167;
+		case ' ':
+			if (!((YYLIMIT - YYCURSOR) < 33)) {
+				const __m256i yyb0 = _mm256_set1_epi8((char)-128);
+				const __m256i yyu0 = _mm256_set1_epi8((char)-119);
+				const __m256i yyb1 = _mm256_set1_epi8((char)-117);
+				const __m256i yyu1 = _mm256_set1_epi8((char)-126);
+				const __m256i yyb2 = _mm256_set1_epi8((char)-114);
+				const __m256i yyu2 = _mm256_set1_epi8((char)-110);
+				const __m256i yyb3 = _mm256_set1_epi8((char)-95);
+				const __m256i yyu3 = _mm256_set1_epi8((char)95);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+					__m256i yysimd1 = _mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1)));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu2, _mm256_sub_epi8(yysimd0, yyb2)));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu3, _mm256_sub_epi8(yysimd0, yyb3)));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 32;
+					if ((YYLIMIT - YYCURSOR) < 33) break;
+				}
+				yych = *YYCURSOR;
+				goto yy185;
+			}
+			goto yy184;
+		default: goto yy186;
 	}
-yy167:
+yy186:
 	{ TOKEN(5); }
-yy168:
+yy187:
 	yych = *(YYMARKER = ++YYCURSOR);
 	switch (yych) {
 		case 0x00:
-		case '\n': goto yy165;
-		default: goto yy176;
+		case '\n': goto yy183;
+		default: goto yy197;
 	}
-yy169:
+yy188:
 	yych = *(YYMARKER = ++YYCURSOR);
 	switch (yych) {
 		case 0x00:
-		case '\n': goto yy165;
-		default: goto yy181;
+		case '\n': goto yy183;
+		default: goto yy202;
 	}
-yy170:
+yy189:
 	yych = *(YYMARKER = ++YYCURSOR);
 	switch (yych) {
-		case '*': goto yy184;
-		case '/': goto yy185;
-		default: goto yy165;
+		case '*': goto yy205;
+		case '/': goto yy207;
+		default: goto yy183;
 	}
-yy171:
+yy190:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 33)) {
-		switch (yych) {
-			case '.':
-			case '0':
-			case '1':
-			case '2':
-			case '3':
-			case '4':
-			case '5':
-			case '6':
-			case '7':
-			case '8':
-			case '9':
-			case 'A':
-			case 'B':
-			case 'C':
-			case 'D':
-			case 'E':
-			case 'F':
-			case 'G':
-			case 'H':
-			case 'I':
-			case 'J':
-			case 'K':
-			case 'L':
-			case 'M':
-			case 'N':
-			case 'O':
-			case 'P':
-			case 'Q':
-			case 'R':
-			case 'S':
-			case 'T':
-			case 'U':
-			case 'V':
-			case 'W':
-			case 'X':
-			case 'Y':
-			case 'Z':
-			case '_':
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z':
-				{
-					__m256i yyb0 = _mm256_set1_epi8((char)-128);
-					__m256i yyu0 = _mm256_set1_epi8((char)-82);
-					__m256i yys1 = _mm256_set1_epi8((char)47);
-					__m256i yyb2 = _mm256_set1_epi8((char)-70);
-					__m256i yyu2 = _mm256_set1_epi8((char)-121);
-					__m256i yyb3 = _mm256_set1_epi8((char)-37);
-					__m256i yyu3 = _mm256_set1_epi8((char)-124);
-					__m256i yys4 = _mm256_set1_epi8((char)96);
-					__m256i yyb5 = _mm256_set1_epi8((char)-5);
-					__m256i yyu5 = _mm256_set1_epi8((char)5);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0)), _mm256_cmpeq_epi8(yysimd0, yys1)), _mm256_cmpgt_epi8(yyu2, _mm256_sub_epi8(yysimd0, yyb2))), _mm256_cmpgt_epi8(yyu3, _mm256_sub_epi8(yysimd0, yyb3))), _mm256_cmpeq_epi8(yysimd0, yys4)), _mm256_cmpgt_epi8(yyu5, _mm256_sub_epi8(yysimd0, yyb5))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 32;
-						if ((YYLIMIT - YYCURSOR) < 33) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-			default: break;
-		}
-	}
+yy191:
 	switch (yych) {
 		case '.':
 		case '0':
@@ -3676,107 +3157,48 @@ yy171:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy171;
-		default: goto yy172;
+		case 'z':
+			if (!((YYLIMIT - YYCURSOR) < 33)) {
+				const __m256i yyb0 = _mm256_set1_epi8((char)-128);
+				const __m256i yyu0 = _mm256_set1_epi8((char)-82);
+				const __m256i yys1 = _mm256_set1_epi8((char)47);
+				const __m256i yyb2 = _mm256_set1_epi8((char)-70);
+				const __m256i yyu2 = _mm256_set1_epi8((char)-121);
+				const __m256i yyb3 = _mm256_set1_epi8((char)-37);
+				const __m256i yyu3 = _mm256_set1_epi8((char)-124);
+				const __m256i yys4 = _mm256_set1_epi8((char)96);
+				const __m256i yyb5 = _mm256_set1_epi8((char)-5);
+				const __m256i yyu5 = _mm256_set1_epi8((char)5);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+					__m256i yysimd1 = _mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys1));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu2, _mm256_sub_epi8(yysimd0, yyb2)));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu3, _mm256_sub_epi8(yysimd0, yyb3)));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys4));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu5, _mm256_sub_epi8(yysimd0, yyb5)));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 32;
+					if ((YYLIMIT - YYCURSOR) < 33) break;
+				}
+				yych = *YYCURSOR;
+				goto yy191;
+			}
+			goto yy190;
+		default: goto yy192;
 	}
-yy172:
+yy192:
 	{ TOKEN(7); }
-yy173:
+yy193:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 33)) {
-		switch (yych) {
-			case '0':
-			case '1':
-			case '2':
-			case '3':
-			case '4':
-			case '5':
-			case '6':
-			case '7':
-			case '8':
-			case '9':
-			case 'A':
-			case 'B':
-			case 'C':
-			case 'D':
-			case 'E':
-			case 'F':
-			case 'G':
-			case 'H':
-			case 'I':
-			case 'J':
-			case 'K':
-			case 'L':
-			case 'M':
-			case 'N':
-			case 'O':
-			case 'P':
-			case 'Q':
-			case 'R':
-			case 'S':
-			case 'T':
-			case 'U':
-			case 'V':
-			case 'W':
-			case 'X':
-			case 'Y':
-			case 'Z':
-			case '_':
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z':
-				{
-					__m256i yyb0 = _mm256_set1_epi8((char)-128);
-					__m256i yyu0 = _mm256_set1_epi8((char)-80);
-					__m256i yyb1 = _mm256_set1_epi8((char)-70);
-					__m256i yyu1 = _mm256_set1_epi8((char)-121);
-					__m256i yyb2 = _mm256_set1_epi8((char)-37);
-					__m256i yyu2 = _mm256_set1_epi8((char)-124);
-					__m256i yys3 = _mm256_set1_epi8((char)96);
-					__m256i yyb4 = _mm256_set1_epi8((char)-5);
-					__m256i yyu4 = _mm256_set1_epi8((char)5);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0)), _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1))), _mm256_cmpgt_epi8(yyu2, _mm256_sub_epi8(yysimd0, yyb2))), _mm256_cmpeq_epi8(yysimd0, yys3)), _mm256_cmpgt_epi8(yyu4, _mm256_sub_epi8(yysimd0, yyb4))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 32;
-						if ((YYLIMIT - YYCURSOR) < 33) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-			default: break;
-		}
-	}
+yy194:
 	switch (yych) {
 		case '0':
 		case '1':
@@ -3840,222 +3262,236 @@ yy173:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy173;
-		default: goto yy174;
+		case 'z':
+			if (!((YYLIMIT - YYCURSOR) < 33)) {
+				const __m256i yyb0 = _mm256_set1_epi8((char)-128);
+				const __m256i yyu0 = _mm256_set1_epi8((char)-80);
+				const __m256i yyb1 = _mm256_set1_epi8((char)-70);
+				const __m256i yyu1 = _mm256_set1_epi8((char)-121);
+				const __m256i yyb2 = _mm256_set1_epi8((char)-37);
+				const __m256i yyu2 = _mm256_set1_epi8((char)-124);
+				const __m256i yys3 = _mm256_set1_epi8((char)96);
+				const __m256i yyb4 = _mm256_set1_epi8((char)-5);
+				const __m256i yyu4 = _mm256_set1_epi8((char)5);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+					__m256i yysimd1 = _mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1)));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu2, _mm256_sub_epi8(yysimd0, yyb2)));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys3));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu4, _mm256_sub_epi8(yysimd0, yyb4)));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 32;
+					if ((YYLIMIT - YYCURSOR) < 33) break;
+				}
+				yych = *YYCURSOR;
+				goto yy194;
+			}
+			goto yy193;
+		default: goto yy195;
 	}
-yy174:
+yy195:
 	{ TOKEN(6); }
-yy175:
+yy196:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 33)) {
-		switch (yych) {
-			case 0x00:
-			case '\n':
-			case '"':
-			case '\\': break;
-			default:
-				{
-					__m256i yys0 = _mm256_set1_epi8((char)0);
-					__m256i yys1 = _mm256_set1_epi8((char)10);
-					__m256i yys2 = _mm256_set1_epi8((char)34);
-					__m256i yys3 = _mm256_set1_epi8((char)92);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_cmpeq_epi8(yysimd0, yys0), _mm256_cmpeq_epi8(yysimd0, yys1)), _mm256_cmpeq_epi8(yysimd0, yys2)), _mm256_cmpeq_epi8(yysimd0, yys3)));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 32;
-						if ((YYLIMIT - YYCURSOR) < 33) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-		}
-	}
-yy176:
+yy197:
 	switch (yych) {
 		case 0x00:
-		case '\n': goto yy177;
-		case '"': goto yy178;
-		case '\\': goto yy179;
-		default: goto yy175;
+		case '\n': goto yy198;
+		case '"': goto yy199;
+		case '\\': goto yy200;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 33)) {
+				const __m256i yys0 = _mm256_set1_epi8((char)0);
+				const __m256i yys1 = _mm256_set1_epi8((char)10);
+				const __m256i yys2 = _mm256_set1_epi8((char)34);
+				const __m256i yys3 = _mm256_set1_epi8((char)92);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+					__m256i yysimd1 = _mm256_cmpeq_epi8(yysimd0, yys0);
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys1));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys2));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys3));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 32;
+					if ((YYLIMIT - YYCURSOR) < 33) break;
+				}
+				yych = *YYCURSOR;
+				goto yy197;
+			}
+			goto yy196;
 	}
-yy177:
+yy198:
 	YYCURSOR = YYMARKER;
-	goto yy165;
-yy178:
+	goto yy183;
+yy199:
 	++YYCURSOR;
 	{ TOKEN(1); }
-yy179:
+yy200:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
 	switch (yych) {
 		case 0x00:
-		case '\n': goto yy177;
-		default: goto yy175;
+		case '\n': goto yy198;
+		default: goto yy196;
 	}
-yy180:
+yy201:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 33)) {
-		switch (yych) {
-			case 0x00:
-			case '\n':
-			case '\'':
-			case '\\': break;
-			default:
-				{
-					__m256i yys0 = _mm256_set1_epi8((char)0);
-					__m256i yys1 = _mm256_set1_epi8((char)10);
-					__m256i yys2 = _mm256_set1_epi8((char)39);
-					__m256i yys3 = _mm256_set1_epi8((char)92);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_cmpeq_epi8(yysimd0, yys0), _mm256_cmpeq_epi8(yysimd0, yys1)), _mm256_cmpeq_epi8(yysimd0, yys2)), _mm256_cmpeq_epi8(yysimd0, yys3)));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 32;
-						if ((YYLIMIT - YYCURSOR) < 33) break;
+yy202:
+	switch (yych) {
+		case 0x00:
+		case '\n': goto yy198;
+		case '\'': goto yy203;
+		case '\\': goto yy204;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 33)) {
+				const __m256i yys0 = _mm256_set1_epi8((char)0);
+				const __m256i yys1 = _mm256_set1_epi8((char)10);
+				const __m256i yys2 = _mm256_set1_epi8((char)39);
+				const __m256i yys3 = _mm256_set1_epi8((char)92);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+					__m256i yysimd1 = _mm256_cmpeq_epi8(yysimd0, yys0);
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys1));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys2));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys3));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
 					}
-					yych = *YYCURSOR;
+					YYCURSOR += 32;
+					if ((YYLIMIT - YYCURSOR) < 33) break;
 				}
-				break;
-		}
+				yych = *YYCURSOR;
+				goto yy202;
+			}
+			goto yy201;
 	}
-yy181:
-	switch (yych) {
-		case 0x00:
-		case '\n': goto yy177;
-		case '\'': goto yy182;
-		case '\\': goto yy183;
-		default: goto yy180;
-	}
-yy182:
+yy203:
 	++YYCURSOR;
 	{ TOKEN(2); }
-yy183:
+yy204:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
 	switch (yych) {
 		case 0x00:
-		case '\n': goto yy177;
-		default: goto yy180;
+		case '\n': goto yy198;
+		default: goto yy201;
 	}
-yy184:
+yy205:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 33)) {
-		switch (yych) {
-			case 0x00:
-			case '*': break;
-			default:
-				{
-					__m256i yys0 = _mm256_set1_epi8((char)0);
-					__m256i yys1 = _mm256_set1_epi8((char)42);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_cmpeq_epi8(yysimd0, yys0), _mm256_cmpeq_epi8(yysimd0, yys1)));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 32;
-						if ((YYLIMIT - YYCURSOR) < 33) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-		}
-	}
+yy206:
 	switch (yych) {
-		case 0x00: goto yy177;
-		case '*': goto yy187;
-		default: goto yy184;
+		case 0x00: goto yy198;
+		case '*': goto yy210;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 33)) {
+				const __m256i yys0 = _mm256_set1_epi8((char)0);
+				const __m256i yys1 = _mm256_set1_epi8((char)42);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+					__m256i yysimd1 = _mm256_cmpeq_epi8(yysimd0, yys0);
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys1));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 32;
+					if ((YYLIMIT - YYCURSOR) < 33) break;
+				}
+				yych = *YYCURSOR;
+				goto yy206;
+			}
+			goto yy205;
 	}
-yy185:
+yy207:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 33)) {
-		switch (yych) {
-			case 0x00:
-			case '\n': break;
-			default:
-				{
-					__m256i yys0 = _mm256_set1_epi8((char)0);
-					__m256i yys1 = _mm256_set1_epi8((char)10);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_cmpeq_epi8(yysimd0, yys0), _mm256_cmpeq_epi8(yysimd0, yys1)));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 32;
-						if ((YYLIMIT - YYCURSOR) < 33) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-		}
-	}
+yy208:
 	switch (yych) {
 		case 0x00:
-		case '\n': goto yy186;
-		default: goto yy185;
+		case '\n': goto yy209;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 33)) {
+				const __m256i yys0 = _mm256_set1_epi8((char)0);
+				const __m256i yys1 = _mm256_set1_epi8((char)10);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+					__m256i yysimd1 = _mm256_cmpeq_epi8(yysimd0, yys0);
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys1));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 32;
+					if ((YYLIMIT - YYCURSOR) < 33) break;
+				}
+				yych = *YYCURSOR;
+				goto yy208;
+			}
+			goto yy207;
 	}
-yy186:
+yy209:
 	{ TOKEN(3); }
-yy187:
+yy210:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) if (fill_buffered(in, 1) != 0) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 33)) {
-		switch (yych) {
-			case '*':
-				{
-					__m256i yyb0 = _mm256_set1_epi8((char)-128);
-					__m256i yyu0 = _mm256_set1_epi8((char)-86);
-					__m256i yyb1 = _mm256_set1_epi8((char)-85);
-					__m256i yyu1 = _mm256_set1_epi8((char)85);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0)), _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 32;
-						if ((YYLIMIT - YYCURSOR) < 33) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-			default: break;
-		}
-	}
+yy211:
 	switch (yych) {
-		case 0x00: goto yy177;
-		case '*': goto yy187;
-		case '/': goto yy188;
-		default: goto yy184;
+		case 0x00: goto yy198;
+		case '*':
+			if (!((YYLIMIT - YYCURSOR) < 33)) {
+				const __m256i yyb0 = _mm256_set1_epi8((char)-128);
+				const __m256i yyu0 = _mm256_set1_epi8((char)-86);
+				const __m256i yyb1 = _mm256_set1_epi8((char)-85);
+				const __m256i yyu1 = _mm256_set1_epi8((char)85);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+					__m256i yysimd1 = _mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1)));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 32;
+					if ((YYLIMIT - YYCURSOR) < 33) break;
+				}
+				yych = *YYCURSOR;
+				goto yy211;
+			}
+			goto yy210;
+		case '/': goto yy212;
+		default: goto yy205;
 	}
-yy188:
+yy212:
 	++YYCURSOR;
 	{ TOKEN(4); }
 }
