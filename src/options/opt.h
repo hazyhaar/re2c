@@ -39,6 +39,7 @@ class Msg;
 class Warn;
 class RenderCallback;
 class Scratchbuf;
+struct loc_t;
 struct StxCode;
 using StxCodes = list_t<StxCode>;
 
@@ -81,10 +82,10 @@ using StxCodes = list_t<StxCode>;
 
 #define RE2C_CODE_TEMPLATES \
     CODE_TEMPLATE(var_local, \
-        ({StxVarId::TYPE, StxVarId::NAME, StxVarId::INIT}), ({}), ({StxLOpt::INIT}) \
+        ({StxVarId::TYPE, StxVarId::NAME, StxVarId::INIT}), ({}), ({StxLOpt::INIT, StxLOpt::CONST}) \
     ) \
     CODE_TEMPLATE(var_global, \
-        ({StxVarId::TYPE, StxVarId::NAME, StxVarId::INIT}), ({}), ({StxLOpt::INIT}) \
+        ({StxVarId::TYPE, StxVarId::NAME, StxVarId::INIT}), ({}), ({StxLOpt::INIT, StxLOpt::CONST}) \
     ) \
     CODE_TEMPLATE(const_local, \
         ({StxVarId::TYPE, StxVarId::NAME, StxVarId::INIT}), ({}), ({}) \
@@ -337,6 +338,9 @@ using StxCodes = list_t<StxCode>;
     ) \
     CODE_TEMPLATE(yytarget_filter, \
         ({StxVarId::CHAR}), ({}), ({}) \
+    ) \
+    CODE_TEMPLATE(bit_match, \
+        ({StxVarId::LHS, StxVarId::MASK}), ({}), ({}) \
     ) \
     CODE_TEMPLATE(yypeek16, \
         ({StxVarId::PEEK16, StxVarId::INPUT, StxVarId::CURSOR, StxVarId::RECORD}), ({}), ({}) \

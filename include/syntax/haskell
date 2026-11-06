@@ -436,6 +436,7 @@ code:yybm_filter = "(" yych " .&. complement 0xFF) /= 0";
 code:yybm_match = "(" yybm " ! (" offset " + fromIntegral " yych ") .&. " mask ") /= 0";
 
 code:yytarget_filter = <undefined>;
+code:bit_match = <undefined>;
 
 code:yypeek16 = <undefined>;
 code:yypeek32 = <undefined>;

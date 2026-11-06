@@ -47,9 +47,9 @@ func LexStringSIMD(yyinput []byte) int {
 	case '\r':
 		goto yy1
 	case '"':
-		goto yy4
-	case '\\':
 		goto yy5
+	case '\\':
+		goto yy6
 	default:
 		goto yy2
 	}
@@ -62,58 +62,7 @@ yy2:
 		return -1
 	}
 	yych = yyinput[yycursor]
-	if (!((yylimit - yycursor) < 33)) {
-		switch (yych) {
-		case 0x00:
-			fallthrough
-		case '\n':
-			fallthrough
-		case '\r':
-			fallthrough
-		case '"':
-			fallthrough
-		case '\\':
-			break
-		default:
-			{
-				yys0 := archsimd.BroadcastInt8x32(0)
-				yys1 := archsimd.BroadcastInt8x32(10)
-				yys2 := archsimd.BroadcastInt8x32(13)
-				yys3 := archsimd.BroadcastInt8x32(34)
-				yys4 := archsimd.BroadcastInt8x32(92)
-				for {
-					yysimd0 := archsimd.LoadUint8x32(yyinput[yycursor:yycursor + 32]).BitsToInt8()
-					yym := yysimd0.Equal(yys0).Or(yysimd0.Equal(yys1)).Or(yysimd0.Equal(yys2)).Or(yysimd0.Equal(yys3)).Or(yysimd0.Equal(yys4)).ToBits()
-					if (yym != 0) {
-						yyn := bits.TrailingZeros32(yym)
-						if ((yyn & 16) != 0) {
-							yycursor += 16
-						}
-						if ((yyn & 8) != 0) {
-							yycursor += 8
-						}
-						if ((yyn & 4) != 0) {
-							yycursor += 4
-						}
-						if ((yyn & 2) != 0) {
-							yycursor += 2
-						}
-						if ((yyn & 1) != 0) {
-							yycursor += 1
-						}
-						break
-					}
-					yycursor += 32
-					if ((yylimit - yycursor) < 33) {
-						break
-					}
-				}
-				archsimd.ClearAVXUpperBits()
-				yych = yyinput[yycursor]
-			}
-			break
-		}
-	}
+yy3:
 	switch (yych) {
 	case 0x00:
 		fallthrough
@@ -124,16 +73,58 @@ yy2:
 	case '"':
 		fallthrough
 	case '\\':
-		goto yy3
+		goto yy4
 	default:
+		if (!((yylimit - yycursor) < 33)) {
+			yys0 := archsimd.BroadcastInt8x32(0)
+			yys1 := archsimd.BroadcastInt8x32(10)
+			yys2 := archsimd.BroadcastInt8x32(13)
+			yys3 := archsimd.BroadcastInt8x32(34)
+			yys4 := archsimd.BroadcastInt8x32(92)
+			for {
+				yysimd0 := archsimd.LoadUint8x32(yyinput[yycursor:yycursor + 32]).BitsToInt8()
+				yysimd1 := yysimd0.Equal(yys0)
+				yysimd1 = yysimd1.Or(yysimd0.Equal(yys1))
+				yysimd1 = yysimd1.Or(yysimd0.Equal(yys2))
+				yysimd1 = yysimd1.Or(yysimd0.Equal(yys3))
+				yysimd1 = yysimd1.Or(yysimd0.Equal(yys4))
+				yym := yysimd1.ToBits()
+				if (yym != 0) {
+					yyn := bits.TrailingZeros32(yym)
+					if ((yyn & 16) != 0) {
+						yycursor += 16
+					}
+					if ((yyn & 8) != 0) {
+						yycursor += 8
+					}
+					if ((yyn & 4) != 0) {
+						yycursor += 4
+					}
+					if ((yyn & 2) != 0) {
+						yycursor += 2
+					}
+					if ((yyn & 1) != 0) {
+						yycursor += 1
+					}
+					break
+				}
+				yycursor += 32
+				if ((yylimit - yycursor) < 33) {
+					break
+				}
+			}
+			archsimd.ClearAVXUpperBits()
+			yych = yyinput[yycursor]
+			goto yy3
+		}
 		goto yy2
 	}
-yy3:
-	{ continue }
 yy4:
+	{ continue }
+yy5:
 	yycursor += 1
 	{ return yycursor - start - 1 }
-yy5:
+yy6:
 	yycursor += 1
 	{
 		if yycursor >= yylimit { return -1 }
@@ -174,18 +165,18 @@ func LexStringScalar(yyinput []byte) int {
 	case '\n':
 		fallthrough
 	case '\r':
-		goto yy7
-	case '"':
-		goto yy10
-	case '\\':
-		goto yy11
-	default:
 		goto yy8
+	case '"':
+		goto yy11
+	case '\\':
+		goto yy12
+	default:
+		goto yy9
 	}
-yy7:
+yy8:
 	yycursor += 1
 	{ return -1 }
-yy8:
+yy9:
 	yycursor += 1
 	if (yylimit <= yycursor) {
 		return -1
@@ -201,16 +192,16 @@ yy8:
 	case '"':
 		fallthrough
 	case '\\':
-		goto yy9
+		goto yy10
 	default:
-		goto yy8
+		goto yy9
 	}
-yy9:
-	{ continue }
 yy10:
+	{ continue }
+yy11:
 	yycursor += 1
 	{ return yycursor - start - 1 }
-yy11:
+yy12:
 	yycursor += 1
 	{
 		if yycursor >= yylimit { return -1 }

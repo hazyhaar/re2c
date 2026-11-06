@@ -82,60 +82,6 @@ yyl:
 				return -2
 			}
 			st.yych = st.yyinput[st.yycursor]
-			if (!((st.yylimit - st.yycursor) < 33)) {
-				switch (st.yych) {
-				case '0','1','2','3','4','5','6','7','8','9':
-					fallthrough
-				case 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z':
-					fallthrough
-				case '_':
-					fallthrough
-				case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
-					{
-						yyb0 := archsimd.BroadcastInt8x32(-128)
-						yyu0 := archsimd.BroadcastInt8x32(-80)
-						yyb1 := archsimd.BroadcastInt8x32(-70)
-						yyu1 := archsimd.BroadcastInt8x32(-121)
-						yyb2 := archsimd.BroadcastInt8x32(-37)
-						yyu2 := archsimd.BroadcastInt8x32(-124)
-						yys3 := archsimd.BroadcastInt8x32(96)
-						yyb4 := archsimd.BroadcastInt8x32(-5)
-						yyu4 := archsimd.BroadcastInt8x32(5)
-						for {
-							yysimd0 := archsimd.LoadUint8x32(st.yyinput[st.yycursor:st.yycursor + 32]).BitsToInt8()
-							yym := yyu0.Greater(yysimd0.Sub(yyb0)).Or(yyu1.Greater(yysimd0.Sub(yyb1))).Or(yyu2.Greater(yysimd0.Sub(yyb2))).Or(yysimd0.Equal(yys3)).Or(yyu4.Greater(yysimd0.Sub(yyb4))).ToBits()
-							if (yym != 0) {
-								yyn := bits.TrailingZeros32(yym)
-								if ((yyn & 16) != 0) {
-									st.yycursor += 16
-								}
-								if ((yyn & 8) != 0) {
-									st.yycursor += 8
-								}
-								if ((yyn & 4) != 0) {
-									st.yycursor += 4
-								}
-								if ((yyn & 2) != 0) {
-									st.yycursor += 2
-								}
-								if ((yyn & 1) != 0) {
-									st.yycursor += 1
-								}
-								break
-							}
-							st.yycursor += 32
-							if ((st.yylimit - st.yycursor) < 33) {
-								break
-							}
-						}
-						archsimd.ClearAVXUpperBits()
-						st.yych = st.yyinput[st.yycursor]
-					}
-					break
-				default:
-					break
-				}
-			}
 			switch (st.yych) {
 			case '0','1','2','3','4','5','6','7','8','9':
 				fallthrough
@@ -144,6 +90,52 @@ yyl:
 			case '_':
 				fallthrough
 			case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
+				if (!((st.yylimit - st.yycursor) < 33)) {
+					yyb0 := archsimd.BroadcastInt8x32(-128)
+					yyu0 := archsimd.BroadcastInt8x32(-80)
+					yyb1 := archsimd.BroadcastInt8x32(-70)
+					yyu1 := archsimd.BroadcastInt8x32(-121)
+					yyb2 := archsimd.BroadcastInt8x32(-37)
+					yyu2 := archsimd.BroadcastInt8x32(-124)
+					yys3 := archsimd.BroadcastInt8x32(96)
+					yyb4 := archsimd.BroadcastInt8x32(-5)
+					yyu4 := archsimd.BroadcastInt8x32(5)
+					for {
+						yysimd0 := archsimd.LoadUint8x32(st.yyinput[st.yycursor:st.yycursor + 32]).BitsToInt8()
+						yysimd1 := yyu0.Greater(yysimd0.Sub(yyb0))
+						yysimd1 = yysimd1.Or(yyu1.Greater(yysimd0.Sub(yyb1)))
+						yysimd1 = yysimd1.Or(yyu2.Greater(yysimd0.Sub(yyb2)))
+						yysimd1 = yysimd1.Or(yysimd0.Equal(yys3))
+						yysimd1 = yysimd1.Or(yyu4.Greater(yysimd0.Sub(yyb4)))
+						yym := yysimd1.ToBits()
+						if (yym != 0) {
+							yyn := bits.TrailingZeros32(yym)
+							if ((yyn & 16) != 0) {
+								st.yycursor += 16
+							}
+							if ((yyn & 8) != 0) {
+								st.yycursor += 8
+							}
+							if ((yyn & 4) != 0) {
+								st.yycursor += 4
+							}
+							if ((yyn & 2) != 0) {
+								st.yycursor += 2
+							}
+							if ((yyn & 1) != 0) {
+								st.yycursor += 1
+							}
+							break
+						}
+						st.yycursor += 32
+						if ((st.yylimit - st.yycursor) < 33) {
+							break
+						}
+					}
+					archsimd.ClearAVXUpperBits()
+					yystate = 4
+					continue yyl
+				}
 				st.yycursor += 1
 				yystate = 4
 				continue yyl
@@ -163,7 +155,7 @@ yyl:
 			st.yystate = -1
 //line "codegen/go/004_simd_models.re":29
 			{ return 1 }
-//line "codegen/go/004_simd_models.go":167
+//line "codegen/go/004_simd_models.go":159
 		case 7:
 			yystate = 0
 			continue yyl
@@ -181,7 +173,7 @@ yyl:
 
 func lexGeneric(st *State) int {
 	
-//line "codegen/go/004_simd_models.go":185
+//line "codegen/go/004_simd_models.go":177
 {
 	yystate := st.yystate
 yyl:
@@ -213,7 +205,7 @@ yyl:
 			st.yystate = -1
 //line "codegen/go/004_simd_models.re":55
 			{ return -1 }
-//line "codegen/go/004_simd_models.go":217
+//line "codegen/go/004_simd_models.go":209
 		case 3:
 			st.yymarker = st.yycursor
 			st.yych = st.yyinput[st.yycursor]
@@ -242,46 +234,6 @@ yyl:
 				return -2
 			}
 			st.yych = st.yyinput[st.yycursor]
-			if (!((st.yylimit - st.yycursor) < 33)) {
-				switch (st.yych) {
-				case '0','1','2','3','4','5','6','7','8','9':
-					fallthrough
-				case 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z':
-					fallthrough
-				case '_':
-					fallthrough
-				case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
-					{
-						yyb0 := archsimd.BroadcastInt8x32(-128)
-						yyu0 := archsimd.BroadcastInt8x32(-80)
-						yyb1 := archsimd.BroadcastInt8x32(-70)
-						yyu1 := archsimd.BroadcastInt8x32(-121)
-						yyb2 := archsimd.BroadcastInt8x32(-37)
-						yyu2 := archsimd.BroadcastInt8x32(-124)
-						yys3 := archsimd.BroadcastInt8x32(96)
-						yyb4 := archsimd.BroadcastInt8x32(-5)
-						yyu4 := archsimd.BroadcastInt8x32(5)
-						for {
-							yysimd0 := archsimd.LoadUint8x32(st.yyinput[st.yycursor : st.yycursor+32]).AsInt8x32()
-							yym := yyu0.Greater(yysimd0.Sub(yyb0)).Or(yyu1.Greater(yysimd0.Sub(yyb1))).Or(yyu2.Greater(yysimd0.Sub(yyb2))).Or(yysimd0.Equal(yys3)).Or(yyu4.Greater(yysimd0.Sub(yyb4))).ToBits()
-							if (yym != 0) {
-								yyn := bits.TrailingZeros32(yym)
-								st.yycursor += yyn
-								break
-							}
-							st.yycursor += 32
-							if ((st.yylimit - st.yycursor) < 33) {
-								break
-							}
-						}
-						archsimd.ClearAVXUpperBits()
-						st.yych = st.yyinput[st.yycursor]
-					}
-					break
-				default:
-					break
-				}
-			}
 			switch (st.yych) {
 			case '0','1','2','3','4','5','6','7','8','9':
 				fallthrough
@@ -290,6 +242,38 @@ yyl:
 			case '_':
 				fallthrough
 			case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
+				if (!((st.yylimit - st.yycursor) < 33)) {
+					yyb0 := archsimd.BroadcastInt8x32(-128)
+					yyu0 := archsimd.BroadcastInt8x32(-80)
+					yyb1 := archsimd.BroadcastInt8x32(-70)
+					yyu1 := archsimd.BroadcastInt8x32(-121)
+					yyb2 := archsimd.BroadcastInt8x32(-37)
+					yyu2 := archsimd.BroadcastInt8x32(-124)
+					yys3 := archsimd.BroadcastInt8x32(96)
+					yyb4 := archsimd.BroadcastInt8x32(-5)
+					yyu4 := archsimd.BroadcastInt8x32(5)
+					for {
+						yysimd0 := archsimd.LoadUint8x32(st.yyinput[st.yycursor : st.yycursor+32]).AsInt8x32()
+						yysimd1 := yyu0.Greater(yysimd0.Sub(yyb0))
+						yysimd1 = yysimd1.Or(yyu1.Greater(yysimd0.Sub(yyb1)))
+						yysimd1 = yysimd1.Or(yyu2.Greater(yysimd0.Sub(yyb2)))
+						yysimd1 = yysimd1.Or(yysimd0.Equal(yys3))
+						yysimd1 = yysimd1.Or(yyu4.Greater(yysimd0.Sub(yyb4)))
+						yym := yysimd1.ToBits()
+						if (yym != 0) {
+							yyn := bits.TrailingZeros32(yym)
+							st.yycursor += yyn
+							break
+						}
+						st.yycursor += 32
+						if ((st.yylimit - st.yycursor) < 33) {
+							break
+						}
+					}
+					archsimd.ClearAVXUpperBits()
+					yystate = 4
+					continue yyl
+				}
 				st.yycursor++
 				yystate = 4
 				continue yyl
@@ -309,7 +293,7 @@ yyl:
 			st.yystate = -1
 //line "codegen/go/004_simd_models.re":54
 			{ return 1 }
-//line "codegen/go/004_simd_models.go":313
+//line "codegen/go/004_simd_models.go":297
 		case 7:
 			yystate = 0
 			continue yyl

@@ -40,59 +40,55 @@ yy2:
 		return -2, yycursor
 	}
 	yych = input[yycursor]
-	if (!((yylimit - yycursor) < 33)) {
-		switch (yych) {
-		case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
-			{
-				yyb0 := archsimd.BroadcastInt8x32(-128)
-				yyu0 := archsimd.BroadcastInt8x32(-31)
-				yyb1 := archsimd.BroadcastInt8x32(-5)
-				yyu1 := archsimd.BroadcastInt8x32(5)
-				for {
-					yysimd0 := archsimd.LoadUint8x32(input[yycursor:yycursor + 32]).BitsToInt8()
-					yym := yyu0.Greater(yysimd0.Sub(yyb0)).Or(yyu1.Greater(yysimd0.Sub(yyb1))).ToBits()
-					if (yym != 0) {
-						yyn := bits.TrailingZeros32(yym)
-						if ((yyn & 16) != 0) {
-							yycursor += 16
-						}
-						if ((yyn & 8) != 0) {
-							yycursor += 8
-						}
-						if ((yyn & 4) != 0) {
-							yycursor += 4
-						}
-						if ((yyn & 2) != 0) {
-							yycursor += 2
-						}
-						if ((yyn & 1) != 0) {
-							yycursor += 1
-						}
-						break
-					}
-					yycursor += 32
-					if ((yylimit - yycursor) < 33) {
-						break
-					}
-				}
-				archsimd.ClearAVXUpperBits()
-				yych = input[yycursor]
-			}
-			break
-		default:
-			break
-		}
-	}
+yy3:
 	switch (yych) {
 	case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
+		if (!((yylimit - yycursor) < 33)) {
+			yyb0 := archsimd.BroadcastInt8x32(-128)
+			yyu0 := archsimd.BroadcastInt8x32(-31)
+			yyb1 := archsimd.BroadcastInt8x32(-5)
+			yyu1 := archsimd.BroadcastInt8x32(5)
+			for {
+				yysimd0 := archsimd.LoadUint8x32(input[yycursor:yycursor + 32]).BitsToInt8()
+				yysimd1 := yyu0.Greater(yysimd0.Sub(yyb0))
+				yysimd1 = yysimd1.Or(yyu1.Greater(yysimd0.Sub(yyb1)))
+				yym := yysimd1.ToBits()
+				if (yym != 0) {
+					yyn := bits.TrailingZeros32(yym)
+					if ((yyn & 16) != 0) {
+						yycursor += 16
+					}
+					if ((yyn & 8) != 0) {
+						yycursor += 8
+					}
+					if ((yyn & 4) != 0) {
+						yycursor += 4
+					}
+					if ((yyn & 2) != 0) {
+						yycursor += 2
+					}
+					if ((yyn & 1) != 0) {
+						yycursor += 1
+					}
+					break
+				}
+				yycursor += 32
+				if ((yylimit - yycursor) < 33) {
+					break
+				}
+			}
+			archsimd.ClearAVXUpperBits()
+			yych = input[yycursor]
+			goto yy3
+		}
 		goto yy2
 	default:
-		goto yy3
+		goto yy4
 	}
-yy3:
+yy4:
 //line "codegen/go/004_simd_string.re":23
 	{ return 1, yycursor }
-//line "codegen/go/004_simd_string.go":96
+//line "codegen/go/004_simd_string.go":92
 }
 //line "codegen/go/004_simd_string.re":25
 
@@ -102,7 +98,7 @@ func lexSimdUint(yyinput string, yycursor uint) (int, uint) {
 	input := unsafe.Slice(unsafe.StringData(yyinput), len(yyinput))
 	yylimit := uint(len(yyinput))
 	
-//line "codegen/go/004_simd_string.go":106
+//line "codegen/go/004_simd_string.go":102
 {
 	var yych byte
 	if (yylimit <= yycursor) {
@@ -111,74 +107,70 @@ func lexSimdUint(yyinput string, yycursor uint) (int, uint) {
 	yych = input[yycursor]
 	switch (yych) {
 	case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
-		goto yy6
+		goto yy7
 	default:
-		goto yy5
+		goto yy6
 	}
-yy5:
+yy6:
 	yycursor += 1
 //line "codegen/go/004_simd_string.re":39
 	{ return -1, yycursor }
-//line "codegen/go/004_simd_string.go":123
-yy6:
+//line "codegen/go/004_simd_string.go":119
+yy7:
 	yycursor += 1
 	if (yylimit <= yycursor) {
 		return -2, yycursor
 	}
 	yych = input[yycursor]
-	if (!((yylimit - yycursor) < 33)) {
-		switch (yych) {
-		case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
-			{
-				yyb0 := archsimd.BroadcastInt8x32(-128)
-				yyu0 := archsimd.BroadcastInt8x32(-31)
-				yyb1 := archsimd.BroadcastInt8x32(-5)
-				yyu1 := archsimd.BroadcastInt8x32(5)
-				for {
-					yysimd0 := archsimd.LoadUint8x32(input[yycursor:yycursor + 32]).BitsToInt8()
-					yym := yyu0.Greater(yysimd0.Sub(yyb0)).Or(yyu1.Greater(yysimd0.Sub(yyb1))).ToBits()
-					if (yym != 0) {
-						yyn := bits.TrailingZeros32(yym)
-						if ((yyn & 16) != 0) {
-							yycursor += 16
-						}
-						if ((yyn & 8) != 0) {
-							yycursor += 8
-						}
-						if ((yyn & 4) != 0) {
-							yycursor += 4
-						}
-						if ((yyn & 2) != 0) {
-							yycursor += 2
-						}
-						if ((yyn & 1) != 0) {
-							yycursor += 1
-						}
-						break
-					}
-					yycursor += 32
-					if ((yylimit - yycursor) < 33) {
-						break
-					}
-				}
-				archsimd.ClearAVXUpperBits()
-				yych = input[yycursor]
-			}
-			break
-		default:
-			break
-		}
-	}
+yy8:
 	switch (yych) {
 	case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
-		goto yy6
-	default:
+		if (!((yylimit - yycursor) < 33)) {
+			yyb0 := archsimd.BroadcastInt8x32(-128)
+			yyu0 := archsimd.BroadcastInt8x32(-31)
+			yyb1 := archsimd.BroadcastInt8x32(-5)
+			yyu1 := archsimd.BroadcastInt8x32(5)
+			for {
+				yysimd0 := archsimd.LoadUint8x32(input[yycursor:yycursor + 32]).BitsToInt8()
+				yysimd1 := yyu0.Greater(yysimd0.Sub(yyb0))
+				yysimd1 = yysimd1.Or(yyu1.Greater(yysimd0.Sub(yyb1)))
+				yym := yysimd1.ToBits()
+				if (yym != 0) {
+					yyn := bits.TrailingZeros32(yym)
+					if ((yyn & 16) != 0) {
+						yycursor += 16
+					}
+					if ((yyn & 8) != 0) {
+						yycursor += 8
+					}
+					if ((yyn & 4) != 0) {
+						yycursor += 4
+					}
+					if ((yyn & 2) != 0) {
+						yycursor += 2
+					}
+					if ((yyn & 1) != 0) {
+						yycursor += 1
+					}
+					break
+				}
+				yycursor += 32
+				if ((yylimit - yycursor) < 33) {
+					break
+				}
+			}
+			archsimd.ClearAVXUpperBits()
+			yych = input[yycursor]
+			goto yy8
+		}
 		goto yy7
+	default:
+		goto yy9
 	}
-yy7:
+yy9:
 //line "codegen/go/004_simd_string.re":38
 	{ return 1, yycursor }
-//line "codegen/go/004_simd_string.go":182
+//line "codegen/go/004_simd_string.go":174
 }
 //line "codegen/go/004_simd_string.re":40
 
@@ -187,7 +179,7 @@ yy7:
 func lexScalar(yyinput string, yycursor int) (int, int) {
 	yylimit := len(yyinput)
 	
-//line "codegen/go/004_simd_string.go":191
+//line "codegen/go/004_simd_string.go":183
 {
 	var yych byte
 	if (yylimit <= yycursor) {
@@ -196,16 +188,16 @@ func lexScalar(yyinput string, yycursor int) (int, int) {
 	yych = yyinput[yycursor]
 	switch (yych) {
 	case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
-		goto yy10
+		goto yy12
 	default:
-		goto yy9
+		goto yy11
 	}
-yy9:
+yy11:
 	yycursor += 1
 //line "codegen/go/004_simd_string.re":53
 	{ return -1, yycursor }
-//line "codegen/go/004_simd_string.go":208
-yy10:
+//line "codegen/go/004_simd_string.go":200
+yy12:
 	yycursor += 1
 	if (yylimit <= yycursor) {
 		return -2, yycursor
@@ -213,14 +205,14 @@ yy10:
 	yych = yyinput[yycursor]
 	switch (yych) {
 	case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
-		goto yy10
+		goto yy12
 	default:
-		goto yy11
+		goto yy13
 	}
-yy11:
+yy13:
 //line "codegen/go/004_simd_string.re":52
 	{ return 1, yycursor }
-//line "codegen/go/004_simd_string.go":224
+//line "codegen/go/004_simd_string.go":216
 }
 //line "codegen/go/004_simd_string.re":54
 

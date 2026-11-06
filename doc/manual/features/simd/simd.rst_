@@ -44,13 +44,14 @@ re2c:vectorize:loops = 1;``):
   advancement uses ``YYSHIFT``, bounds checks use ``YYLESSTHAN``, and reloading
   ``yych`` uses ``YYPEEK``. No ``YYCURSOR``, ``YYLIMIT`` or ``YYINPUT`` identifier
   is emitted in generic API output.
-- Control flow is emitted entirely through |re2c|'s existing IR constructs
-  (``code:if_then_else``, ``code:switch`` on ``yych`` for the scalar entry check,
-  ``code:loop``, ``code:var_local``, ``code:yyshift`` and ``code:yypeek``),
-  combined with atomic target expression templates (``code:type_vec{16,32}``,
+- The vector block is emitted on the reflexive transition of the loop state rather
+  than at state entry. Control flow is emitted entirely through |re2c|'s existing
+  IR constructs (``code:if_then_else``, ``code:loop``, ``code:var_local``,
+  ``code:assign``, ``code:yyshift`` and ``code:yypeek``), combined with atomic
+  target expression templates (``code:type_vec{16,32}``,
   ``code:type_vec{16,32}_mask``, ``code:yypeek{16,32}``, ``code:vec{16,32}_splat``,
-  ``code:vec{16,32}_{sub,cmpeq,cmpgt,or}``, ``code:vec{16,32}_{movemask,ctz}``
-  and ``code:vec{16,32}_cleanup``).
+  ``code:vec{16,32}_{sub,cmpeq,cmpgt,or}``, ``code:vec{16,32}_{movemask,ctz}``,
+  ``code:vec{16,32}_cleanup`` and ``code:bit_match``).
 - Exit ranges in the complement of the reflexive class are tested with equality
   (``cmpeq``) for singletons and signed greater-than (``cmpgt``) with a
   precomputed ``+128`` wrapping bias for byte intervals (a single ``cmpgt``

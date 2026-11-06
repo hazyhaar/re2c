@@ -274,101 +274,6 @@ yy6:
 	++in->cur;
 	if ((in->lim - in->cur) < 6) if (fill(in, 6) != 0) return 2;
 	yych = *in->cur;
-	if (!((in->lim - in->cur) < 38)) {
-		switch (yych) {
-			case '+':
-			case '-':
-			case '.':
-			case '0':
-			case '1':
-			case '2':
-			case '3':
-			case '4':
-			case '5':
-			case '6':
-			case '7':
-			case '8':
-			case '9':
-			case 'A':
-			case 'B':
-			case 'C':
-			case 'D':
-			case 'E':
-			case 'F':
-			case 'G':
-			case 'H':
-			case 'I':
-			case 'J':
-			case 'K':
-			case 'L':
-			case 'M':
-			case 'N':
-			case 'O':
-			case 'P':
-			case 'Q':
-			case 'R':
-			case 'S':
-			case 'T':
-			case 'U':
-			case 'V':
-			case 'W':
-			case 'X':
-			case 'Y':
-			case 'Z':
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z':
-				{
-					__m256i yyb0 = _mm256_set1_epi8((char)-128);
-					__m256i yyu0 = _mm256_set1_epi8((char)-85);
-					__m256i yys1 = _mm256_set1_epi8((char)44);
-					__m256i yys2 = _mm256_set1_epi8((char)47);
-					__m256i yyb3 = _mm256_set1_epi8((char)-70);
-					__m256i yyu3 = _mm256_set1_epi8((char)-121);
-					__m256i yyb4 = _mm256_set1_epi8((char)-37);
-					__m256i yyu4 = _mm256_set1_epi8((char)-122);
-					__m256i yyb5 = _mm256_set1_epi8((char)-5);
-					__m256i yyu5 = _mm256_set1_epi8((char)5);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(in->cur));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0)), _mm256_cmpeq_epi8(yysimd0, yys1)), _mm256_cmpeq_epi8(yysimd0, yys2)), _mm256_cmpgt_epi8(yyu3, _mm256_sub_epi8(yysimd0, yyb3))), _mm256_cmpgt_epi8(yyu4, _mm256_sub_epi8(yysimd0, yyb4))), _mm256_cmpgt_epi8(yyu5, _mm256_sub_epi8(yysimd0, yyb5))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							in->cur += yyn;
-							break;
-						}
-						in->cur += 32;
-						if ((in->lim - in->cur) < 38) break;
-					}
-					yych = *in->cur;
-				}
-				break;
-			default: break;
-		}
-	}
 yy7:
 	switch (yych) {
 		case '+':
@@ -435,7 +340,39 @@ yy7:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy6;
+		case 'z':
+			if (!((in->lim - in->cur) < 38)) {
+				const __m256i yyb0 = _mm256_set1_epi8((char)-128);
+				const __m256i yyu0 = _mm256_set1_epi8((char)-85);
+				const __m256i yys1 = _mm256_set1_epi8((char)44);
+				const __m256i yys2 = _mm256_set1_epi8((char)47);
+				const __m256i yyb3 = _mm256_set1_epi8((char)-70);
+				const __m256i yyu3 = _mm256_set1_epi8((char)-121);
+				const __m256i yyb4 = _mm256_set1_epi8((char)-37);
+				const __m256i yyu4 = _mm256_set1_epi8((char)-122);
+				const __m256i yyb5 = _mm256_set1_epi8((char)-5);
+				const __m256i yyu5 = _mm256_set1_epi8((char)5);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(in->cur));
+					__m256i yysimd1 = _mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys1));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys2));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu3, _mm256_sub_epi8(yysimd0, yyb3)));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu4, _mm256_sub_epi8(yysimd0, yyb4)));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu5, _mm256_sub_epi8(yysimd0, yyb5)));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						in->cur += yyn;
+						break;
+					}
+					in->cur += 32;
+					if ((in->lim - in->cur) < 38) break;
+				}
+				yych = *in->cur;
+				goto yy7;
+			}
+			goto yy6;
 		case ':':
 			in->yyt2 = in->cur;
 			goto yy9;

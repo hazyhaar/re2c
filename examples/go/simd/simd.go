@@ -36,13 +36,13 @@ func lexSimd() int {
 	case ' ':
 		goto yy3
 	case '0','1','2','3','4','5','6','7','8','9':
-		goto yy5
+		goto yy6
 	case 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z':
 		fallthrough
 	case '_':
 		fallthrough
 	case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
-		goto yy7
+		goto yy9
 	default:
 		goto yy2
 	}
@@ -58,180 +58,118 @@ yy3:
 		fill(0)
 	}
 	yych = input[cursor]
-	if (!((limit - cursor) < 33)) {
-		switch (yych) {
-		case '\t':
-			fallthrough
-		case ' ':
-			{
-				yyb0 := archsimd.BroadcastInt8x32(-128)
-				yyu0 := archsimd.BroadcastInt8x32(-119)
-				yyb1 := archsimd.BroadcastInt8x32(-118)
-				yyu1 := archsimd.BroadcastInt8x32(-106)
-				yyb2 := archsimd.BroadcastInt8x32(-95)
-				yyu2 := archsimd.BroadcastInt8x32(95)
-				for {
-					yysimd0 := archsimd.LoadUint8x32(input[cursor:cursor + 32]).BitsToInt8()
-					yym := yyu0.Greater(yysimd0.Sub(yyb0)).Or(yyu1.Greater(yysimd0.Sub(yyb1))).Or(yyu2.Greater(yysimd0.Sub(yyb2))).ToBits()
-					if (yym != 0) {
-						yyn := bits.TrailingZeros32(yym)
-						if ((yyn & 16) != 0) {
-							cursor += 16
-						}
-						if ((yyn & 8) != 0) {
-							cursor += 8
-						}
-						if ((yyn & 4) != 0) {
-							cursor += 4
-						}
-						if ((yyn & 2) != 0) {
-							cursor += 2
-						}
-						if ((yyn & 1) != 0) {
-							cursor += 1
-						}
-						break
-					}
-					cursor += 32
-					if ((limit - cursor) < 33) {
-						break
-					}
-				}
-				archsimd.ClearAVXUpperBits()
-				yych = input[cursor]
-			}
-			break
-		default:
-			break
-		}
-	}
+yy4:
 	switch (yych) {
 	case '\t':
 		fallthrough
 	case ' ':
+		if (!((limit - cursor) < 33)) {
+			yyb0 := archsimd.BroadcastInt8x32(-128)
+			yyu0 := archsimd.BroadcastInt8x32(-119)
+			yyb1 := archsimd.BroadcastInt8x32(-118)
+			yyu1 := archsimd.BroadcastInt8x32(-106)
+			yyb2 := archsimd.BroadcastInt8x32(-95)
+			yyu2 := archsimd.BroadcastInt8x32(95)
+			for {
+				yysimd0 := archsimd.LoadUint8x32(input[cursor:cursor + 32]).BitsToInt8()
+				yysimd1 := yyu0.Greater(yysimd0.Sub(yyb0))
+				yysimd1 = yysimd1.Or(yyu1.Greater(yysimd0.Sub(yyb1)))
+				yysimd1 = yysimd1.Or(yyu2.Greater(yysimd0.Sub(yyb2)))
+				yym := yysimd1.ToBits()
+				if (yym != 0) {
+					yyn := bits.TrailingZeros32(yym)
+					if ((yyn & 16) != 0) {
+						cursor += 16
+					}
+					if ((yyn & 8) != 0) {
+						cursor += 8
+					}
+					if ((yyn & 4) != 0) {
+						cursor += 4
+					}
+					if ((yyn & 2) != 0) {
+						cursor += 2
+					}
+					if ((yyn & 1) != 0) {
+						cursor += 1
+					}
+					break
+				}
+				cursor += 32
+				if ((limit - cursor) < 33) {
+					break
+				}
+			}
+			archsimd.ClearAVXUpperBits()
+			yych = input[cursor]
+			goto yy4
+		}
 		goto yy3
 	default:
-		goto yy4
+		goto yy5
 	}
-yy4:
-	{ return 3 }
 yy5:
+	{ return 3 }
+yy6:
 	cursor += 1
 	if (limit <= cursor) {
 		fill(0)
 	}
 	yych = input[cursor]
-	if (!((limit - cursor) < 33)) {
-		switch (yych) {
-		case '0','1','2','3','4','5','6','7','8','9':
-			{
-				yyb0 := archsimd.BroadcastInt8x32(-128)
-				yyu0 := archsimd.BroadcastInt8x32(-80)
-				yyb1 := archsimd.BroadcastInt8x32(-70)
-				yyu1 := archsimd.BroadcastInt8x32(70)
-				for {
-					yysimd0 := archsimd.LoadUint8x32(input[cursor:cursor + 32]).BitsToInt8()
-					yym := yyu0.Greater(yysimd0.Sub(yyb0)).Or(yyu1.Greater(yysimd0.Sub(yyb1))).ToBits()
-					if (yym != 0) {
-						yyn := bits.TrailingZeros32(yym)
-						if ((yyn & 16) != 0) {
-							cursor += 16
-						}
-						if ((yyn & 8) != 0) {
-							cursor += 8
-						}
-						if ((yyn & 4) != 0) {
-							cursor += 4
-						}
-						if ((yyn & 2) != 0) {
-							cursor += 2
-						}
-						if ((yyn & 1) != 0) {
-							cursor += 1
-						}
-						break
-					}
-					cursor += 32
-					if ((limit - cursor) < 33) {
-						break
-					}
-				}
-				archsimd.ClearAVXUpperBits()
-				yych = input[cursor]
-			}
-			break
-		default:
-			break
-		}
-	}
+yy7:
 	switch (yych) {
 	case '0','1','2','3','4','5','6','7','8','9':
-		goto yy5
-	default:
+		if (!((limit - cursor) < 33)) {
+			yyb0 := archsimd.BroadcastInt8x32(-128)
+			yyu0 := archsimd.BroadcastInt8x32(-80)
+			yyb1 := archsimd.BroadcastInt8x32(-70)
+			yyu1 := archsimd.BroadcastInt8x32(70)
+			for {
+				yysimd0 := archsimd.LoadUint8x32(input[cursor:cursor + 32]).BitsToInt8()
+				yysimd1 := yyu0.Greater(yysimd0.Sub(yyb0))
+				yysimd1 = yysimd1.Or(yyu1.Greater(yysimd0.Sub(yyb1)))
+				yym := yysimd1.ToBits()
+				if (yym != 0) {
+					yyn := bits.TrailingZeros32(yym)
+					if ((yyn & 16) != 0) {
+						cursor += 16
+					}
+					if ((yyn & 8) != 0) {
+						cursor += 8
+					}
+					if ((yyn & 4) != 0) {
+						cursor += 4
+					}
+					if ((yyn & 2) != 0) {
+						cursor += 2
+					}
+					if ((yyn & 1) != 0) {
+						cursor += 1
+					}
+					break
+				}
+				cursor += 32
+				if ((limit - cursor) < 33) {
+					break
+				}
+			}
+			archsimd.ClearAVXUpperBits()
+			yych = input[cursor]
+			goto yy7
+		}
 		goto yy6
+	default:
+		goto yy8
 	}
-yy6:
+yy8:
 	{ return 1 }
-yy7:
+yy9:
 	cursor += 1
 	if (limit <= cursor) {
 		fill(0)
 	}
 	yych = input[cursor]
-	if (!((limit - cursor) < 33)) {
-		switch (yych) {
-		case '0','1','2','3','4','5','6','7','8','9':
-			fallthrough
-		case 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z':
-			fallthrough
-		case '_':
-			fallthrough
-		case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
-			{
-				yyb0 := archsimd.BroadcastInt8x32(-128)
-				yyu0 := archsimd.BroadcastInt8x32(-80)
-				yyb1 := archsimd.BroadcastInt8x32(-70)
-				yyu1 := archsimd.BroadcastInt8x32(-121)
-				yyb2 := archsimd.BroadcastInt8x32(-37)
-				yyu2 := archsimd.BroadcastInt8x32(-124)
-				yys3 := archsimd.BroadcastInt8x32(96)
-				yyb4 := archsimd.BroadcastInt8x32(-5)
-				yyu4 := archsimd.BroadcastInt8x32(5)
-				for {
-					yysimd0 := archsimd.LoadUint8x32(input[cursor:cursor + 32]).BitsToInt8()
-					yym := yyu0.Greater(yysimd0.Sub(yyb0)).Or(yyu1.Greater(yysimd0.Sub(yyb1))).Or(yyu2.Greater(yysimd0.Sub(yyb2))).Or(yysimd0.Equal(yys3)).Or(yyu4.Greater(yysimd0.Sub(yyb4))).ToBits()
-					if (yym != 0) {
-						yyn := bits.TrailingZeros32(yym)
-						if ((yyn & 16) != 0) {
-							cursor += 16
-						}
-						if ((yyn & 8) != 0) {
-							cursor += 8
-						}
-						if ((yyn & 4) != 0) {
-							cursor += 4
-						}
-						if ((yyn & 2) != 0) {
-							cursor += 2
-						}
-						if ((yyn & 1) != 0) {
-							cursor += 1
-						}
-						break
-					}
-					cursor += 32
-					if ((limit - cursor) < 33) {
-						break
-					}
-				}
-				archsimd.ClearAVXUpperBits()
-				yych = input[cursor]
-			}
-			break
-		default:
-			break
-		}
-	}
+yy10:
 	switch (yych) {
 	case '0','1','2','3','4','5','6','7','8','9':
 		fallthrough
@@ -240,11 +178,57 @@ yy7:
 	case '_':
 		fallthrough
 	case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
-		goto yy7
+		if (!((limit - cursor) < 33)) {
+			yyb0 := archsimd.BroadcastInt8x32(-128)
+			yyu0 := archsimd.BroadcastInt8x32(-80)
+			yyb1 := archsimd.BroadcastInt8x32(-70)
+			yyu1 := archsimd.BroadcastInt8x32(-121)
+			yyb2 := archsimd.BroadcastInt8x32(-37)
+			yyu2 := archsimd.BroadcastInt8x32(-124)
+			yys3 := archsimd.BroadcastInt8x32(96)
+			yyb4 := archsimd.BroadcastInt8x32(-5)
+			yyu4 := archsimd.BroadcastInt8x32(5)
+			for {
+				yysimd0 := archsimd.LoadUint8x32(input[cursor:cursor + 32]).BitsToInt8()
+				yysimd1 := yyu0.Greater(yysimd0.Sub(yyb0))
+				yysimd1 = yysimd1.Or(yyu1.Greater(yysimd0.Sub(yyb1)))
+				yysimd1 = yysimd1.Or(yyu2.Greater(yysimd0.Sub(yyb2)))
+				yysimd1 = yysimd1.Or(yysimd0.Equal(yys3))
+				yysimd1 = yysimd1.Or(yyu4.Greater(yysimd0.Sub(yyb4)))
+				yym := yysimd1.ToBits()
+				if (yym != 0) {
+					yyn := bits.TrailingZeros32(yym)
+					if ((yyn & 16) != 0) {
+						cursor += 16
+					}
+					if ((yyn & 8) != 0) {
+						cursor += 8
+					}
+					if ((yyn & 4) != 0) {
+						cursor += 4
+					}
+					if ((yyn & 2) != 0) {
+						cursor += 2
+					}
+					if ((yyn & 1) != 0) {
+						cursor += 1
+					}
+					break
+				}
+				cursor += 32
+				if ((limit - cursor) < 33) {
+					break
+				}
+			}
+			archsimd.ClearAVXUpperBits()
+			yych = input[cursor]
+			goto yy10
+		}
+		goto yy9
 	default:
-		goto yy8
+		goto yy11
 	}
-yy8:
+yy11:
 	{ return 2 }
 }
 
@@ -260,45 +244,45 @@ func lexScalar() int {
 	yych = input[cursor]
 	switch (yych) {
 	case 0x00:
-		goto yy10
+		goto yy13
 	case '\t':
 		fallthrough
 	case ' ':
-		goto yy12
+		goto yy15
 	case '0','1','2','3','4','5','6','7','8','9':
-		goto yy14
+		goto yy17
 	case 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z':
 		fallthrough
 	case '_':
 		fallthrough
 	case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
-		goto yy16
+		goto yy19
 	default:
-		goto yy11
-	}
-yy10:
-	cursor += 1
-	{ return 0 }
-yy11:
-	cursor += 1
-	{ return -1 }
-yy12:
-	cursor += 1
-	if (limit <= cursor) {
-		fill(0)
-	}
-	yych = input[cursor]
-	switch (yych) {
-	case '\t':
-		fallthrough
-	case ' ':
-		goto yy12
-	default:
-		goto yy13
+		goto yy14
 	}
 yy13:
-	{ return 3 }
+	cursor += 1
+	{ return 0 }
 yy14:
+	cursor += 1
+	{ return -1 }
+yy15:
+	cursor += 1
+	if (limit <= cursor) {
+		fill(0)
+	}
+	yych = input[cursor]
+	switch (yych) {
+	case '\t':
+		fallthrough
+	case ' ':
+		goto yy15
+	default:
+		goto yy16
+	}
+yy16:
+	{ return 3 }
+yy17:
 	cursor += 1
 	if (limit <= cursor) {
 		fill(0)
@@ -306,13 +290,13 @@ yy14:
 	yych = input[cursor]
 	switch (yych) {
 	case '0','1','2','3','4','5','6','7','8','9':
-		goto yy14
+		goto yy17
 	default:
-		goto yy15
+		goto yy18
 	}
-yy15:
+yy18:
 	{ return 1 }
-yy16:
+yy19:
 	cursor += 1
 	if (limit <= cursor) {
 		fill(0)
@@ -326,11 +310,11 @@ yy16:
 	case '_':
 		fallthrough
 	case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
-		goto yy16
+		goto yy19
 	default:
-		goto yy17
+		goto yy20
 	}
-yy17:
+yy20:
 	{ return 2 }
 }
 

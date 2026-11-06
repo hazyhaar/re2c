@@ -415,6 +415,7 @@ code:yybm_filter = yych " land ~0xFF";
 code:yybm_match = "(" yybm ".(" offset " + Char.code " yych ") land " mask ") != 0";
 
 code:yytarget_filter = <undefined>;
+code:bit_match = <undefined>;
 
 code:yypeek16 = <undefined>;
 code:yypeek32 = <undefined>;

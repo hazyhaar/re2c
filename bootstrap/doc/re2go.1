@@ -1954,7 +1954,7 @@ Any unused code templates should be set to \fB<undefined>\fP\&.
 Declaration or definition of a local variable. Supported variables:
 \fBtype\fP (the type of the variable), \fBname\fP (its name) and \fBinit\fP
 (initial value, if any). Conditionals: \fB\&.init\fP (true if there is an
-initializer).
+initializer) and \fB\&.const\fP (true if the variable is immutable).
 .TP
 .B \fBcode:var_global\fP
 Same as \fBcode:var_local\fP, except that it\(aqs used in top\-level.
@@ -2189,6 +2189,10 @@ Supported variable: \fBlhs\fP\&.
 .B \fBcode:vec16_cleanup\fP, \fBcode:vec32_cleanup\fP
 Optional target cleanup expression emitted as a statement before leaving
 a non\-empty vector loop (empty string if none is needed).
+.TP
+.B \fBcode:bit_match\fP
+Bitmask test expression checking whether \fBlhs\fP has the bit \fBmask\fP
+set. Supported variables: \fBlhs\fP and \fBmask\fP\&.
 .TP
 .B \fBcode:yyskip\fP
 \fBYYSKIP\fP statement, possibly specialized for different APIs.
@@ -4513,13 +4517,14 @@ advancement uses \fBYYSHIFT\fP, bounds checks use \fBYYLESSTHAN\fP, and reloadin
 \fByych\fP uses \fBYYPEEK\fP\&. No \fBYYCURSOR\fP, \fBYYLIMIT\fP or \fBYYINPUT\fP identifier
 is emitted in generic API output.
 .IP \(bu 2
-Control flow is emitted entirely through re2go\(aqs existing IR constructs
-(\fBcode:if_then_else\fP, \fBcode:switch\fP on \fByych\fP for the scalar entry check,
-\fBcode:loop\fP, \fBcode:var_local\fP, \fBcode:yyshift\fP and \fBcode:yypeek\fP),
-combined with atomic target expression templates (\fBcode:type_vec{16,32}\fP,
+The vector block is emitted on the reflexive transition of the loop state rather
+than at state entry. Control flow is emitted entirely through re2go\(aqs existing
+IR constructs (\fBcode:if_then_else\fP, \fBcode:loop\fP, \fBcode:var_local\fP,
+\fBcode:assign\fP, \fBcode:yyshift\fP and \fBcode:yypeek\fP), combined with atomic
+target expression templates (\fBcode:type_vec{16,32}\fP,
 \fBcode:type_vec{16,32}_mask\fP, \fBcode:yypeek{16,32}\fP, \fBcode:vec{16,32}_splat\fP,
-\fBcode:vec{16,32}_{sub,cmpeq,cmpgt,or}\fP, \fBcode:vec{16,32}_{movemask,ctz}\fP
-and \fBcode:vec{16,32}_cleanup\fP).
+\fBcode:vec{16,32}_{sub,cmpeq,cmpgt,or}\fP, \fBcode:vec{16,32}_{movemask,ctz}\fP,
+\fBcode:vec{16,32}_cleanup\fP and \fBcode:bit_match\fP).
 .IP \(bu 2
 Exit ranges in the complement of the reflexive class are tested with equality
 (\fBcmpeq\fP) for singletons and signed greater\-than (\fBcmpgt\fP) with a

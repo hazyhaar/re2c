@@ -429,6 +429,8 @@ static constexpr const char* DEFAULT_SYNTAX_GO =
     "\n"
     "code:yytarget_filter = <undefined>;\n"
     "\n"
+    "code:bit_match = \"(\" lhs \" & \" mask \") != 0\";\n"
+    "\n"
     "// Atomic x86 vector primitives for Go `simd/archsimd` (16-byte XMM and 32-byte YMM).\n"
     "// Control flow (`if`, `switch`, `for`, cursor advance, `yypeek`) is emitted by the\n"
     "// standard IR passes. `YYINPUT` must be a byte slice when not using `--api generic`\n"

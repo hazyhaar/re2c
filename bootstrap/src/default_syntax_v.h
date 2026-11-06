@@ -430,6 +430,7 @@ static constexpr const char* DEFAULT_SYNTAX_V =
     "code:yybm_match = \"(\" yybm \"[\" offset \"+\" yych \"] & \" mask \") != 0\";\n"
     "\n"
     "code:yytarget_filter = <undefined>;\n"
+    "code:bit_match = <undefined>;\n"
     "\n"
     "code:yypeek16 = <undefined>;\n"
     "code:yypeek32 = <undefined>;\n"

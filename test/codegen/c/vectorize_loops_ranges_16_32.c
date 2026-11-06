@@ -51,42 +51,39 @@ static int lex_singleton_v16(const unsigned char *s, size_t n) {
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
 	switch (yych) {
-		case 'x': goto yy7;
+		case 'x': goto yy8;
 		default: goto yy5;
 	}
 yy5:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 17)) {
-		switch (yych) {
-			case 'x': break;
-			default:
-				{
-					__m128i yys0 = _mm_set1_epi8((char)120);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_cmpeq_epi8(yysimd0, yys0));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 16;
-						if ((YYLIMIT - YYCURSOR) < 17) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-		}
-	}
-	switch (yych) {
-		case 'x': goto yy6;
-		default: goto yy5;
-	}
 yy6:
-	{ return (int)(YYCURSOR - s); }
+	switch (yych) {
+		case 'x': goto yy7;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 17)) {
+				const __m128i yys0 = _mm_set1_epi8((char)120);
+				for (;;) {
+					__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
+					__m128i yysimd1 = _mm_cmpeq_epi8(yysimd0, yys0);
+					unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 16;
+					if ((YYLIMIT - YYCURSOR) < 17) break;
+				}
+				yych = *YYCURSOR;
+				goto yy6;
+			}
+			goto yy5;
+	}
 yy7:
+	{ return (int)(YYCURSOR - s); }
+yy8:
 	++YYCURSOR;
 	{ return -1; }
 }
@@ -100,42 +97,39 @@ static int lex_singleton_v32(const unsigned char *s, size_t n) {
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
 	switch (yych) {
-		case 'x': goto yy11;
-		default: goto yy9;
+		case 'x': goto yy13;
+		default: goto yy10;
 	}
-yy9:
+yy10:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 33)) {
-		switch (yych) {
-			case 'x': break;
-			default:
-				{
-					__m256i yys0 = _mm256_set1_epi8((char)120);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_cmpeq_epi8(yysimd0, yys0));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 32;
-						if ((YYLIMIT - YYCURSOR) < 33) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-		}
-	}
-	switch (yych) {
-		case 'x': goto yy10;
-		default: goto yy9;
-	}
-yy10:
-	{ return (int)(YYCURSOR - s); }
 yy11:
+	switch (yych) {
+		case 'x': goto yy12;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 33)) {
+				const __m256i yys0 = _mm256_set1_epi8((char)120);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+					__m256i yysimd1 = _mm256_cmpeq_epi8(yysimd0, yys0);
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 32;
+					if ((YYLIMIT - YYCURSOR) < 33) break;
+				}
+				yych = *YYCURSOR;
+				goto yy11;
+			}
+			goto yy10;
+	}
+yy12:
+	{ return (int)(YYCURSOR - s); }
+yy13:
 	++YYCURSOR;
 	{ return -1; }
 }
@@ -150,25 +144,6 @@ static int lex_0_127_sc(const unsigned char *s, size_t n) {
 	unsigned char yych;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (yych >= 0x80) goto yy13;
-	++YYCURSOR;
-	{ return -1; }
-yy13:
-	++YYCURSOR;
-	if (YYLIMIT <= YYCURSOR) return -2;
-	yych = *YYCURSOR;
-	if (yych >= 0x80) goto yy13;
-	{ return (int)(YYCURSOR - s); }
-}
-
-}
-static int lex_0_127_v16(const unsigned char *s, size_t n) {
-    const unsigned char *YYCURSOR = s, *YYLIMIT = s + n;
-    
-{
-	unsigned char yych;
-	if (YYLIMIT <= YYCURSOR) return -2;
-	yych = *YYCURSOR;
 	if (yych >= 0x80) goto yy15;
 	++YYCURSOR;
 	{ return -1; }
@@ -176,161 +151,12 @@ yy15:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 17)) {
-		switch (yych) {
-			case 0x00:
-			case 0x01:
-			case 0x02:
-			case 0x03:
-			case 0x04:
-			case 0x05:
-			case 0x06:
-			case 0x07:
-			case 0x08:
-			case '\t':
-			case '\n':
-			case '\v':
-			case '\f':
-			case '\r':
-			case 0x0E:
-			case 0x0F:
-			case 0x10:
-			case 0x11:
-			case 0x12:
-			case 0x13:
-			case 0x14:
-			case 0x15:
-			case 0x16:
-			case 0x17:
-			case 0x18:
-			case 0x19:
-			case 0x1A:
-			case 0x1B:
-			case 0x1C:
-			case 0x1D:
-			case 0x1E:
-			case 0x1F:
-			case ' ':
-			case '!':
-			case '"':
-			case '#':
-			case '$':
-			case '%':
-			case '&':
-			case '\'':
-			case '(':
-			case ')':
-			case '*':
-			case '+':
-			case ',':
-			case '-':
-			case '.':
-			case '/':
-			case '0':
-			case '1':
-			case '2':
-			case '3':
-			case '4':
-			case '5':
-			case '6':
-			case '7':
-			case '8':
-			case '9':
-			case ':':
-			case ';':
-			case '<':
-			case '=':
-			case '>':
-			case '?':
-			case '@':
-			case 'A':
-			case 'B':
-			case 'C':
-			case 'D':
-			case 'E':
-			case 'F':
-			case 'G':
-			case 'H':
-			case 'I':
-			case 'J':
-			case 'K':
-			case 'L':
-			case 'M':
-			case 'N':
-			case 'O':
-			case 'P':
-			case 'Q':
-			case 'R':
-			case 'S':
-			case 'T':
-			case 'U':
-			case 'V':
-			case 'W':
-			case 'X':
-			case 'Y':
-			case 'Z':
-			case '[':
-			case '\\':
-			case ']':
-			case '^':
-			case '_':
-			case '`':
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z':
-			case '{':
-			case '|':
-			case '}':
-			case '~':
-			case 0x7F: break;
-			default:
-				{
-					__m128i yys0 = _mm_set1_epi8((char)-1);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_cmpgt_epi8(yysimd0, yys0));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 16;
-						if ((YYLIMIT - YYCURSOR) < 17) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-		}
-	}
 	if (yych >= 0x80) goto yy15;
 	{ return (int)(YYCURSOR - s); }
 }
 
 }
-static int lex_0_127_v32(const unsigned char *s, size_t n) {
+static int lex_0_127_v16(const unsigned char *s, size_t n) {
     const unsigned char *YYCURSOR = s, *YYLIMIT = s + n;
     
 {
@@ -344,156 +170,66 @@ yy17:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 33)) {
-		switch (yych) {
-			case 0x00:
-			case 0x01:
-			case 0x02:
-			case 0x03:
-			case 0x04:
-			case 0x05:
-			case 0x06:
-			case 0x07:
-			case 0x08:
-			case '\t':
-			case '\n':
-			case '\v':
-			case '\f':
-			case '\r':
-			case 0x0E:
-			case 0x0F:
-			case 0x10:
-			case 0x11:
-			case 0x12:
-			case 0x13:
-			case 0x14:
-			case 0x15:
-			case 0x16:
-			case 0x17:
-			case 0x18:
-			case 0x19:
-			case 0x1A:
-			case 0x1B:
-			case 0x1C:
-			case 0x1D:
-			case 0x1E:
-			case 0x1F:
-			case ' ':
-			case '!':
-			case '"':
-			case '#':
-			case '$':
-			case '%':
-			case '&':
-			case '\'':
-			case '(':
-			case ')':
-			case '*':
-			case '+':
-			case ',':
-			case '-':
-			case '.':
-			case '/':
-			case '0':
-			case '1':
-			case '2':
-			case '3':
-			case '4':
-			case '5':
-			case '6':
-			case '7':
-			case '8':
-			case '9':
-			case ':':
-			case ';':
-			case '<':
-			case '=':
-			case '>':
-			case '?':
-			case '@':
-			case 'A':
-			case 'B':
-			case 'C':
-			case 'D':
-			case 'E':
-			case 'F':
-			case 'G':
-			case 'H':
-			case 'I':
-			case 'J':
-			case 'K':
-			case 'L':
-			case 'M':
-			case 'N':
-			case 'O':
-			case 'P':
-			case 'Q':
-			case 'R':
-			case 'S':
-			case 'T':
-			case 'U':
-			case 'V':
-			case 'W':
-			case 'X':
-			case 'Y':
-			case 'Z':
-			case '[':
-			case '\\':
-			case ']':
-			case '^':
-			case '_':
-			case '`':
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z':
-			case '{':
-			case '|':
-			case '}':
-			case '~':
-			case 0x7F: break;
-			default:
-				{
-					__m256i yys0 = _mm256_set1_epi8((char)-1);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_cmpgt_epi8(yysimd0, yys0));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 32;
-						if ((YYLIMIT - YYCURSOR) < 33) break;
-					}
-					yych = *YYCURSOR;
+yy18:
+	if (yych >= 0x80) {
+		if (!((YYLIMIT - YYCURSOR) < 17)) {
+			const __m128i yys0 = _mm_set1_epi8((char)-1);
+			for (;;) {
+				__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
+				__m128i yysimd1 = _mm_cmpgt_epi8(yysimd0, yys0);
+				unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+				if (yym != 0) {
+					int yyn = __builtin_ctz(yym);
+					YYCURSOR += yyn;
+					break;
 				}
-				break;
+				YYCURSOR += 16;
+				if ((YYLIMIT - YYCURSOR) < 17) break;
+			}
+			yych = *YYCURSOR;
+			goto yy18;
 		}
+		goto yy17;
 	}
-	if (yych >= 0x80) goto yy17;
+	{ return (int)(YYCURSOR - s); }
+}
+
+}
+static int lex_0_127_v32(const unsigned char *s, size_t n) {
+    const unsigned char *YYCURSOR = s, *YYLIMIT = s + n;
+    
+{
+	unsigned char yych;
+	if (YYLIMIT <= YYCURSOR) return -2;
+	yych = *YYCURSOR;
+	if (yych >= 0x80) goto yy20;
+	++YYCURSOR;
+	{ return -1; }
+yy20:
+	++YYCURSOR;
+	if (YYLIMIT <= YYCURSOR) return -2;
+	yych = *YYCURSOR;
+yy21:
+	if (yych >= 0x80) {
+		if (!((YYLIMIT - YYCURSOR) < 33)) {
+			const __m256i yys0 = _mm256_set1_epi8((char)-1);
+			for (;;) {
+				__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+				__m256i yysimd1 = _mm256_cmpgt_epi8(yysimd0, yys0);
+				unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+				if (yym != 0) {
+					int yyn = __builtin_ctz(yym);
+					YYCURSOR += yyn;
+					break;
+				}
+				YYCURSOR += 32;
+				if ((YYLIMIT - YYCURSOR) < 33) break;
+			}
+			yych = *YYCURSOR;
+			goto yy21;
+		}
+		goto yy20;
+	}
 	{ return (int)(YYCURSOR - s); }
 }
 
@@ -603,10 +339,10 @@ static int lex_lo_127_sc(const unsigned char *s, size_t n) {
 		case '|':
 		case '}':
 		case '~':
-		case 0x7F: goto yy21;
-		default: goto yy19;
+		case 0x7F: goto yy25;
+		default: goto yy23;
 	}
-yy19:
+yy23:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
@@ -706,12 +442,12 @@ yy19:
 		case '|':
 		case '}':
 		case '~':
-		case 0x7F: goto yy20;
-		default: goto yy19;
+		case 0x7F: goto yy24;
+		default: goto yy23;
 	}
-yy20:
+yy24:
 	{ return (int)(YYCURSOR - s); }
-yy21:
+yy25:
 	++YYCURSOR;
 	{ return -1; }
 }
@@ -820,130 +556,14 @@ static int lex_lo_127_v16(const unsigned char *s, size_t n) {
 		case '|':
 		case '}':
 		case '~':
-		case 0x7F: goto yy25;
-		default: goto yy23;
+		case 0x7F: goto yy30;
+		default: goto yy27;
 	}
-yy23:
+yy27:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 17)) {
-		switch (yych) {
-			case ' ':
-			case '!':
-			case '"':
-			case '#':
-			case '$':
-			case '%':
-			case '&':
-			case '\'':
-			case '(':
-			case ')':
-			case '*':
-			case '+':
-			case ',':
-			case '-':
-			case '.':
-			case '/':
-			case '0':
-			case '1':
-			case '2':
-			case '3':
-			case '4':
-			case '5':
-			case '6':
-			case '7':
-			case '8':
-			case '9':
-			case ':':
-			case ';':
-			case '<':
-			case '=':
-			case '>':
-			case '?':
-			case '@':
-			case 'A':
-			case 'B':
-			case 'C':
-			case 'D':
-			case 'E':
-			case 'F':
-			case 'G':
-			case 'H':
-			case 'I':
-			case 'J':
-			case 'K':
-			case 'L':
-			case 'M':
-			case 'N':
-			case 'O':
-			case 'P':
-			case 'Q':
-			case 'R':
-			case 'S':
-			case 'T':
-			case 'U':
-			case 'V':
-			case 'W':
-			case 'X':
-			case 'Y':
-			case 'Z':
-			case '[':
-			case '\\':
-			case ']':
-			case '^':
-			case '_':
-			case '`':
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z':
-			case '{':
-			case '|':
-			case '}':
-			case '~':
-			case 0x7F: break;
-			default:
-				{
-					__m128i yys0 = _mm_set1_epi8((char)31);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_cmpgt_epi8(yysimd0, yys0));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 16;
-						if ((YYLIMIT - YYCURSOR) < 17) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-		}
-	}
+yy28:
 	switch (yych) {
 		case ' ':
 		case '!':
@@ -1040,12 +660,30 @@ yy23:
 		case '|':
 		case '}':
 		case '~':
-		case 0x7F: goto yy24;
-		default: goto yy23;
+		case 0x7F: goto yy29;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 17)) {
+				const __m128i yys0 = _mm_set1_epi8((char)31);
+				for (;;) {
+					__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
+					__m128i yysimd1 = _mm_cmpgt_epi8(yysimd0, yys0);
+					unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 16;
+					if ((YYLIMIT - YYCURSOR) < 17) break;
+				}
+				yych = *YYCURSOR;
+				goto yy28;
+			}
+			goto yy27;
 	}
-yy24:
+yy29:
 	{ return (int)(YYCURSOR - s); }
-yy25:
+yy30:
 	++YYCURSOR;
 	{ return -1; }
 }
@@ -1154,130 +792,14 @@ static int lex_lo_127_v32(const unsigned char *s, size_t n) {
 		case '|':
 		case '}':
 		case '~':
-		case 0x7F: goto yy29;
-		default: goto yy27;
+		case 0x7F: goto yy35;
+		default: goto yy32;
 	}
-yy27:
+yy32:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 33)) {
-		switch (yych) {
-			case ' ':
-			case '!':
-			case '"':
-			case '#':
-			case '$':
-			case '%':
-			case '&':
-			case '\'':
-			case '(':
-			case ')':
-			case '*':
-			case '+':
-			case ',':
-			case '-':
-			case '.':
-			case '/':
-			case '0':
-			case '1':
-			case '2':
-			case '3':
-			case '4':
-			case '5':
-			case '6':
-			case '7':
-			case '8':
-			case '9':
-			case ':':
-			case ';':
-			case '<':
-			case '=':
-			case '>':
-			case '?':
-			case '@':
-			case 'A':
-			case 'B':
-			case 'C':
-			case 'D':
-			case 'E':
-			case 'F':
-			case 'G':
-			case 'H':
-			case 'I':
-			case 'J':
-			case 'K':
-			case 'L':
-			case 'M':
-			case 'N':
-			case 'O':
-			case 'P':
-			case 'Q':
-			case 'R':
-			case 'S':
-			case 'T':
-			case 'U':
-			case 'V':
-			case 'W':
-			case 'X':
-			case 'Y':
-			case 'Z':
-			case '[':
-			case '\\':
-			case ']':
-			case '^':
-			case '_':
-			case '`':
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z':
-			case '{':
-			case '|':
-			case '}':
-			case '~':
-			case 0x7F: break;
-			default:
-				{
-					__m256i yys0 = _mm256_set1_epi8((char)31);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_cmpgt_epi8(yysimd0, yys0));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 32;
-						if ((YYLIMIT - YYCURSOR) < 33) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-		}
-	}
+yy33:
 	switch (yych) {
 		case ' ':
 		case '!':
@@ -1374,12 +896,30 @@ yy27:
 		case '|':
 		case '}':
 		case '~':
-		case 0x7F: goto yy28;
-		default: goto yy27;
+		case 0x7F: goto yy34;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 33)) {
+				const __m256i yys0 = _mm256_set1_epi8((char)31);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+					__m256i yysimd1 = _mm256_cmpgt_epi8(yysimd0, yys0);
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 32;
+					if ((YYLIMIT - YYCURSOR) < 33) break;
+				}
+				yych = *YYCURSOR;
+				goto yy33;
+			}
+			goto yy32;
 	}
-yy28:
+yy34:
 	{ return (int)(YYCURSOR - s); }
-yy29:
+yy35:
 	++YYCURSOR;
 	{ return -1; }
 }
@@ -1394,14 +934,14 @@ static int lex_128_255_sc(const unsigned char *s, size_t n) {
 	unsigned char yych;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (yych >= 0x80) goto yy32;
-yy31:
+	if (yych >= 0x80) goto yy38;
+yy37:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (yych <= 0x7F) goto yy31;
+	if (yych <= 0x7F) goto yy37;
 	{ return (int)(YYCURSOR - s); }
-yy32:
+yy38:
 	++YYCURSOR;
 	{ return -1; }
 }
@@ -1414,163 +954,34 @@ static int lex_128_255_v16(const unsigned char *s, size_t n) {
 	unsigned char yych;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (yych >= 0x80) goto yy35;
-yy34:
+	if (yych >= 0x80) goto yy42;
+yy40:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 17)) {
-		switch (yych) {
-			case 0x00:
-			case 0x01:
-			case 0x02:
-			case 0x03:
-			case 0x04:
-			case 0x05:
-			case 0x06:
-			case 0x07:
-			case 0x08:
-			case '\t':
-			case '\n':
-			case '\v':
-			case '\f':
-			case '\r':
-			case 0x0E:
-			case 0x0F:
-			case 0x10:
-			case 0x11:
-			case 0x12:
-			case 0x13:
-			case 0x14:
-			case 0x15:
-			case 0x16:
-			case 0x17:
-			case 0x18:
-			case 0x19:
-			case 0x1A:
-			case 0x1B:
-			case 0x1C:
-			case 0x1D:
-			case 0x1E:
-			case 0x1F:
-			case ' ':
-			case '!':
-			case '"':
-			case '#':
-			case '$':
-			case '%':
-			case '&':
-			case '\'':
-			case '(':
-			case ')':
-			case '*':
-			case '+':
-			case ',':
-			case '-':
-			case '.':
-			case '/':
-			case '0':
-			case '1':
-			case '2':
-			case '3':
-			case '4':
-			case '5':
-			case '6':
-			case '7':
-			case '8':
-			case '9':
-			case ':':
-			case ';':
-			case '<':
-			case '=':
-			case '>':
-			case '?':
-			case '@':
-			case 'A':
-			case 'B':
-			case 'C':
-			case 'D':
-			case 'E':
-			case 'F':
-			case 'G':
-			case 'H':
-			case 'I':
-			case 'J':
-			case 'K':
-			case 'L':
-			case 'M':
-			case 'N':
-			case 'O':
-			case 'P':
-			case 'Q':
-			case 'R':
-			case 'S':
-			case 'T':
-			case 'U':
-			case 'V':
-			case 'W':
-			case 'X':
-			case 'Y':
-			case 'Z':
-			case '[':
-			case '\\':
-			case ']':
-			case '^':
-			case '_':
-			case '`':
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z':
-			case '{':
-			case '|':
-			case '}':
-			case '~':
-			case 0x7F:
-				{
-					__m128i yys0 = _mm_set1_epi8((char)0);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_cmpgt_epi8(yys0, yysimd0));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 16;
-						if ((YYLIMIT - YYCURSOR) < 17) break;
-					}
-					yych = *YYCURSOR;
+yy41:
+	if (yych <= 0x7F) {
+		if (!((YYLIMIT - YYCURSOR) < 17)) {
+			const __m128i yys0 = _mm_set1_epi8((char)0);
+			for (;;) {
+				__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
+				__m128i yysimd1 = _mm_cmpgt_epi8(yys0, yysimd0);
+				unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+				if (yym != 0) {
+					int yyn = __builtin_ctz(yym);
+					YYCURSOR += yyn;
+					break;
 				}
-				break;
-			default: break;
+				YYCURSOR += 16;
+				if ((YYLIMIT - YYCURSOR) < 17) break;
+			}
+			yych = *YYCURSOR;
+			goto yy41;
 		}
+		goto yy40;
 	}
-	if (yych <= 0x7F) goto yy34;
 	{ return (int)(YYCURSOR - s); }
-yy35:
+yy42:
 	++YYCURSOR;
 	{ return -1; }
 }
@@ -1583,163 +994,34 @@ static int lex_128_255_v32(const unsigned char *s, size_t n) {
 	unsigned char yych;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (yych >= 0x80) goto yy38;
-yy37:
+	if (yych >= 0x80) goto yy46;
+yy44:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 33)) {
-		switch (yych) {
-			case 0x00:
-			case 0x01:
-			case 0x02:
-			case 0x03:
-			case 0x04:
-			case 0x05:
-			case 0x06:
-			case 0x07:
-			case 0x08:
-			case '\t':
-			case '\n':
-			case '\v':
-			case '\f':
-			case '\r':
-			case 0x0E:
-			case 0x0F:
-			case 0x10:
-			case 0x11:
-			case 0x12:
-			case 0x13:
-			case 0x14:
-			case 0x15:
-			case 0x16:
-			case 0x17:
-			case 0x18:
-			case 0x19:
-			case 0x1A:
-			case 0x1B:
-			case 0x1C:
-			case 0x1D:
-			case 0x1E:
-			case 0x1F:
-			case ' ':
-			case '!':
-			case '"':
-			case '#':
-			case '$':
-			case '%':
-			case '&':
-			case '\'':
-			case '(':
-			case ')':
-			case '*':
-			case '+':
-			case ',':
-			case '-':
-			case '.':
-			case '/':
-			case '0':
-			case '1':
-			case '2':
-			case '3':
-			case '4':
-			case '5':
-			case '6':
-			case '7':
-			case '8':
-			case '9':
-			case ':':
-			case ';':
-			case '<':
-			case '=':
-			case '>':
-			case '?':
-			case '@':
-			case 'A':
-			case 'B':
-			case 'C':
-			case 'D':
-			case 'E':
-			case 'F':
-			case 'G':
-			case 'H':
-			case 'I':
-			case 'J':
-			case 'K':
-			case 'L':
-			case 'M':
-			case 'N':
-			case 'O':
-			case 'P':
-			case 'Q':
-			case 'R':
-			case 'S':
-			case 'T':
-			case 'U':
-			case 'V':
-			case 'W':
-			case 'X':
-			case 'Y':
-			case 'Z':
-			case '[':
-			case '\\':
-			case ']':
-			case '^':
-			case '_':
-			case '`':
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z':
-			case '{':
-			case '|':
-			case '}':
-			case '~':
-			case 0x7F:
-				{
-					__m256i yys0 = _mm256_set1_epi8((char)0);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_cmpgt_epi8(yys0, yysimd0));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 32;
-						if ((YYLIMIT - YYCURSOR) < 33) break;
-					}
-					yych = *YYCURSOR;
+yy45:
+	if (yych <= 0x7F) {
+		if (!((YYLIMIT - YYCURSOR) < 33)) {
+			const __m256i yys0 = _mm256_set1_epi8((char)0);
+			for (;;) {
+				__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+				__m256i yysimd1 = _mm256_cmpgt_epi8(yys0, yysimd0);
+				unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+				if (yym != 0) {
+					int yyn = __builtin_ctz(yym);
+					YYCURSOR += yyn;
+					break;
 				}
-				break;
-			default: break;
+				YYCURSOR += 32;
+				if ((YYLIMIT - YYCURSOR) < 33) break;
+			}
+			yych = *YYCURSOR;
+			goto yy45;
 		}
+		goto yy44;
 	}
-	if (yych <= 0x7F) goto yy37;
 	{ return (int)(YYCURSOR - s); }
-yy38:
+yy46:
 	++YYCURSOR;
 	{ return -1; }
 }
@@ -1818,10 +1100,10 @@ static int lex_128_hi_sc(const unsigned char *s, size_t n) {
 		case 0xBC:
 		case 0xBD:
 		case 0xBE:
-		case 0xBF: goto yy42;
-		default: goto yy40;
+		case 0xBF: goto yy50;
+		default: goto yy48;
 	}
-yy40:
+yy48:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
@@ -1889,12 +1171,12 @@ yy40:
 		case 0xBC:
 		case 0xBD:
 		case 0xBE:
-		case 0xBF: goto yy41;
-		default: goto yy40;
+		case 0xBF: goto yy49;
+		default: goto yy48;
 	}
-yy41:
+yy49:
 	{ return (int)(YYCURSOR - s); }
-yy42:
+yy50:
 	++YYCURSOR;
 	{ return -1; }
 }
@@ -1971,98 +1253,14 @@ static int lex_128_hi_v16(const unsigned char *s, size_t n) {
 		case 0xBC:
 		case 0xBD:
 		case 0xBE:
-		case 0xBF: goto yy46;
-		default: goto yy44;
+		case 0xBF: goto yy55;
+		default: goto yy52;
 	}
-yy44:
+yy52:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 17)) {
-		switch (yych) {
-			case 0x80:
-			case 0x81:
-			case 0x82:
-			case 0x83:
-			case 0x84:
-			case 0x85:
-			case 0x86:
-			case 0x87:
-			case 0x88:
-			case 0x89:
-			case 0x8A:
-			case 0x8B:
-			case 0x8C:
-			case 0x8D:
-			case 0x8E:
-			case 0x8F:
-			case 0x90:
-			case 0x91:
-			case 0x92:
-			case 0x93:
-			case 0x94:
-			case 0x95:
-			case 0x96:
-			case 0x97:
-			case 0x98:
-			case 0x99:
-			case 0x9A:
-			case 0x9B:
-			case 0x9C:
-			case 0x9D:
-			case 0x9E:
-			case 0x9F:
-			case 0xA0:
-			case 0xA1:
-			case 0xA2:
-			case 0xA3:
-			case 0xA4:
-			case 0xA5:
-			case 0xA6:
-			case 0xA7:
-			case 0xA8:
-			case 0xA9:
-			case 0xAA:
-			case 0xAB:
-			case 0xAC:
-			case 0xAD:
-			case 0xAE:
-			case 0xAF:
-			case 0xB0:
-			case 0xB1:
-			case 0xB2:
-			case 0xB3:
-			case 0xB4:
-			case 0xB5:
-			case 0xB6:
-			case 0xB7:
-			case 0xB8:
-			case 0xB9:
-			case 0xBA:
-			case 0xBB:
-			case 0xBC:
-			case 0xBD:
-			case 0xBE:
-			case 0xBF: break;
-			default:
-				{
-					__m128i yys0 = _mm_set1_epi8((char)-64);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_cmpgt_epi8(yys0, yysimd0));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 16;
-						if ((YYLIMIT - YYCURSOR) < 17) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-		}
-	}
+yy53:
 	switch (yych) {
 		case 0x80:
 		case 0x81:
@@ -2127,12 +1325,30 @@ yy44:
 		case 0xBC:
 		case 0xBD:
 		case 0xBE:
-		case 0xBF: goto yy45;
-		default: goto yy44;
+		case 0xBF: goto yy54;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 17)) {
+				const __m128i yys0 = _mm_set1_epi8((char)-64);
+				for (;;) {
+					__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
+					__m128i yysimd1 = _mm_cmpgt_epi8(yys0, yysimd0);
+					unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 16;
+					if ((YYLIMIT - YYCURSOR) < 17) break;
+				}
+				yych = *YYCURSOR;
+				goto yy53;
+			}
+			goto yy52;
 	}
-yy45:
+yy54:
 	{ return (int)(YYCURSOR - s); }
-yy46:
+yy55:
 	++YYCURSOR;
 	{ return -1; }
 }
@@ -2209,98 +1425,14 @@ static int lex_128_hi_v32(const unsigned char *s, size_t n) {
 		case 0xBC:
 		case 0xBD:
 		case 0xBE:
-		case 0xBF: goto yy50;
-		default: goto yy48;
+		case 0xBF: goto yy60;
+		default: goto yy57;
 	}
-yy48:
+yy57:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 33)) {
-		switch (yych) {
-			case 0x80:
-			case 0x81:
-			case 0x82:
-			case 0x83:
-			case 0x84:
-			case 0x85:
-			case 0x86:
-			case 0x87:
-			case 0x88:
-			case 0x89:
-			case 0x8A:
-			case 0x8B:
-			case 0x8C:
-			case 0x8D:
-			case 0x8E:
-			case 0x8F:
-			case 0x90:
-			case 0x91:
-			case 0x92:
-			case 0x93:
-			case 0x94:
-			case 0x95:
-			case 0x96:
-			case 0x97:
-			case 0x98:
-			case 0x99:
-			case 0x9A:
-			case 0x9B:
-			case 0x9C:
-			case 0x9D:
-			case 0x9E:
-			case 0x9F:
-			case 0xA0:
-			case 0xA1:
-			case 0xA2:
-			case 0xA3:
-			case 0xA4:
-			case 0xA5:
-			case 0xA6:
-			case 0xA7:
-			case 0xA8:
-			case 0xA9:
-			case 0xAA:
-			case 0xAB:
-			case 0xAC:
-			case 0xAD:
-			case 0xAE:
-			case 0xAF:
-			case 0xB0:
-			case 0xB1:
-			case 0xB2:
-			case 0xB3:
-			case 0xB4:
-			case 0xB5:
-			case 0xB6:
-			case 0xB7:
-			case 0xB8:
-			case 0xB9:
-			case 0xBA:
-			case 0xBB:
-			case 0xBC:
-			case 0xBD:
-			case 0xBE:
-			case 0xBF: break;
-			default:
-				{
-					__m256i yys0 = _mm256_set1_epi8((char)-64);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_cmpgt_epi8(yys0, yysimd0));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 32;
-						if ((YYLIMIT - YYCURSOR) < 33) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-		}
-	}
+yy58:
 	switch (yych) {
 		case 0x80:
 		case 0x81:
@@ -2365,12 +1497,30 @@ yy48:
 		case 0xBC:
 		case 0xBD:
 		case 0xBE:
-		case 0xBF: goto yy49;
-		default: goto yy48;
+		case 0xBF: goto yy59;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 33)) {
+				const __m256i yys0 = _mm256_set1_epi8((char)-64);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+					__m256i yysimd1 = _mm256_cmpgt_epi8(yys0, yysimd0);
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 32;
+					if ((YYLIMIT - YYCURSOR) < 33) break;
+				}
+				yych = *YYCURSOR;
+				goto yy58;
+			}
+			goto yy57;
 	}
-yy49:
+yy59:
 	{ return (int)(YYCURSOR - s); }
-yy50:
+yy60:
 	++YYCURSOR;
 	{ return -1; }
 }
@@ -2411,10 +1561,10 @@ static int lex_interior_sc(const unsigned char *s, size_t n) {
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy54;
-		default: goto yy52;
+		case 'z': goto yy64;
+		default: goto yy62;
 	}
-yy52:
+yy62:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
@@ -2444,12 +1594,12 @@ yy52:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy53;
-		default: goto yy52;
+		case 'z': goto yy63;
+		default: goto yy62;
 	}
-yy53:
+yy63:
 	{ return (int)(YYCURSOR - s); }
-yy54:
+yy64:
 	++YYCURSOR;
 	{ return -1; }
 }
@@ -2488,61 +1638,14 @@ static int lex_interior_v16(const unsigned char *s, size_t n) {
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy58;
-		default: goto yy56;
+		case 'z': goto yy69;
+		default: goto yy66;
 	}
-yy56:
+yy66:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 17)) {
-		switch (yych) {
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z': break;
-			default:
-				{
-					__m128i yyb0 = _mm_set1_epi8((char)-31);
-					__m128i yyu0 = _mm_set1_epi8((char)-102);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0)));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 16;
-						if ((YYLIMIT - YYCURSOR) < 17) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-		}
-	}
+yy67:
 	switch (yych) {
 		case 'a':
 		case 'b':
@@ -2569,12 +1672,31 @@ yy56:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy57;
-		default: goto yy56;
+		case 'z': goto yy68;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 17)) {
+				const __m128i yyb0 = _mm_set1_epi8((char)-31);
+				const __m128i yyu0 = _mm_set1_epi8((char)-102);
+				for (;;) {
+					__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
+					__m128i yysimd1 = _mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0));
+					unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 16;
+					if ((YYLIMIT - YYCURSOR) < 17) break;
+				}
+				yych = *YYCURSOR;
+				goto yy67;
+			}
+			goto yy66;
 	}
-yy57:
+yy68:
 	{ return (int)(YYCURSOR - s); }
-yy58:
+yy69:
 	++YYCURSOR;
 	{ return -1; }
 }
@@ -2613,61 +1735,14 @@ static int lex_interior_v32(const unsigned char *s, size_t n) {
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy62;
-		default: goto yy60;
+		case 'z': goto yy74;
+		default: goto yy71;
 	}
-yy60:
+yy71:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 33)) {
-		switch (yych) {
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z': break;
-			default:
-				{
-					__m256i yyb0 = _mm256_set1_epi8((char)-31);
-					__m256i yyu0 = _mm256_set1_epi8((char)-102);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0)));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 32;
-						if ((YYLIMIT - YYCURSOR) < 33) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-		}
-	}
+yy72:
 	switch (yych) {
 		case 'a':
 		case 'b':
@@ -2694,12 +1769,31 @@ yy60:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy61;
-		default: goto yy60;
+		case 'z': goto yy73;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 33)) {
+				const __m256i yyb0 = _mm256_set1_epi8((char)-31);
+				const __m256i yyu0 = _mm256_set1_epi8((char)-102);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+					__m256i yysimd1 = _mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 32;
+					if ((YYLIMIT - YYCURSOR) < 33) break;
+				}
+				yych = *YYCURSOR;
+				goto yy72;
+			}
+			goto yy71;
 	}
-yy61:
+yy73:
 	{ return (int)(YYCURSOR - s); }
-yy62:
+yy74:
 	++YYCURSOR;
 	{ return -1; }
 }
@@ -2778,10 +1872,10 @@ static int lex_cross80_sc(const unsigned char *s, size_t n) {
 		case 0x9C:
 		case 0x9D:
 		case 0x9E:
-		case 0x9F: goto yy66;
-		default: goto yy64;
+		case 0x9F: goto yy78;
+		default: goto yy76;
 	}
-yy64:
+yy76:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
@@ -2849,12 +1943,12 @@ yy64:
 		case 0x9C:
 		case 0x9D:
 		case 0x9E:
-		case 0x9F: goto yy65;
-		default: goto yy64;
+		case 0x9F: goto yy77;
+		default: goto yy76;
 	}
-yy65:
+yy77:
 	{ return (int)(YYCURSOR - s); }
-yy66:
+yy78:
 	++YYCURSOR;
 	{ return -1; }
 }
@@ -2931,99 +2025,14 @@ static int lex_cross80_v16(const unsigned char *s, size_t n) {
 		case 0x9C:
 		case 0x9D:
 		case 0x9E:
-		case 0x9F: goto yy70;
-		default: goto yy68;
+		case 0x9F: goto yy83;
+		default: goto yy80;
 	}
-yy68:
+yy80:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 17)) {
-		switch (yych) {
-			case '`':
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z':
-			case '{':
-			case '|':
-			case '}':
-			case '~':
-			case 0x7F:
-			case 0x80:
-			case 0x81:
-			case 0x82:
-			case 0x83:
-			case 0x84:
-			case 0x85:
-			case 0x86:
-			case 0x87:
-			case 0x88:
-			case 0x89:
-			case 0x8A:
-			case 0x8B:
-			case 0x8C:
-			case 0x8D:
-			case 0x8E:
-			case 0x8F:
-			case 0x90:
-			case 0x91:
-			case 0x92:
-			case 0x93:
-			case 0x94:
-			case 0x95:
-			case 0x96:
-			case 0x97:
-			case 0x98:
-			case 0x99:
-			case 0x9A:
-			case 0x9B:
-			case 0x9C:
-			case 0x9D:
-			case 0x9E:
-			case 0x9F: break;
-			default:
-				{
-					__m128i yyb0 = _mm_set1_epi8((char)-32);
-					__m128i yyu0 = _mm_set1_epi8((char)-64);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0)));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 16;
-						if ((YYLIMIT - YYCURSOR) < 17) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-		}
-	}
+yy81:
 	switch (yych) {
 		case '`':
 		case 'a':
@@ -3088,12 +2097,31 @@ yy68:
 		case 0x9C:
 		case 0x9D:
 		case 0x9E:
-		case 0x9F: goto yy69;
-		default: goto yy68;
+		case 0x9F: goto yy82;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 17)) {
+				const __m128i yyb0 = _mm_set1_epi8((char)-32);
+				const __m128i yyu0 = _mm_set1_epi8((char)-64);
+				for (;;) {
+					__m128i yysimd0 = _mm_loadu_si128((const __m128i*)(YYCURSOR));
+					__m128i yysimd1 = _mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0));
+					unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 16;
+					if ((YYLIMIT - YYCURSOR) < 17) break;
+				}
+				yych = *YYCURSOR;
+				goto yy81;
+			}
+			goto yy80;
 	}
-yy69:
+yy82:
 	{ return (int)(YYCURSOR - s); }
-yy70:
+yy83:
 	++YYCURSOR;
 	{ return -1; }
 }
@@ -3170,99 +2198,14 @@ static int lex_cross80_v32(const unsigned char *s, size_t n) {
 		case 0x9C:
 		case 0x9D:
 		case 0x9E:
-		case 0x9F: goto yy74;
-		default: goto yy72;
+		case 0x9F: goto yy88;
+		default: goto yy85;
 	}
-yy72:
+yy85:
 	++YYCURSOR;
 	if (YYLIMIT <= YYCURSOR) return -2;
 	yych = *YYCURSOR;
-	if (!((YYLIMIT - YYCURSOR) < 33)) {
-		switch (yych) {
-			case '`':
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z':
-			case '{':
-			case '|':
-			case '}':
-			case '~':
-			case 0x7F:
-			case 0x80:
-			case 0x81:
-			case 0x82:
-			case 0x83:
-			case 0x84:
-			case 0x85:
-			case 0x86:
-			case 0x87:
-			case 0x88:
-			case 0x89:
-			case 0x8A:
-			case 0x8B:
-			case 0x8C:
-			case 0x8D:
-			case 0x8E:
-			case 0x8F:
-			case 0x90:
-			case 0x91:
-			case 0x92:
-			case 0x93:
-			case 0x94:
-			case 0x95:
-			case 0x96:
-			case 0x97:
-			case 0x98:
-			case 0x99:
-			case 0x9A:
-			case 0x9B:
-			case 0x9C:
-			case 0x9D:
-			case 0x9E:
-			case 0x9F: break;
-			default:
-				{
-					__m256i yyb0 = _mm256_set1_epi8((char)-32);
-					__m256i yyu0 = _mm256_set1_epi8((char)-64);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0)));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYCURSOR += yyn;
-							break;
-						}
-						YYCURSOR += 32;
-						if ((YYLIMIT - YYCURSOR) < 33) break;
-					}
-					yych = *YYCURSOR;
-				}
-				break;
-		}
-	}
+yy86:
 	switch (yych) {
 		case '`':
 		case 'a':
@@ -3327,12 +2270,31 @@ yy72:
 		case 0x9C:
 		case 0x9D:
 		case 0x9E:
-		case 0x9F: goto yy73;
-		default: goto yy72;
+		case 0x9F: goto yy87;
+		default:
+			if (!((YYLIMIT - YYCURSOR) < 33)) {
+				const __m256i yyb0 = _mm256_set1_epi8((char)-32);
+				const __m256i yyu0 = _mm256_set1_epi8((char)-64);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(YYCURSOR));
+					__m256i yysimd1 = _mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYCURSOR += yyn;
+						break;
+					}
+					YYCURSOR += 32;
+					if ((YYLIMIT - YYCURSOR) < 33) break;
+				}
+				yych = *YYCURSOR;
+				goto yy86;
+			}
+			goto yy85;
 	}
-yy73:
+yy87:
 	{ return (int)(YYCURSOR - s); }
-yy74:
+yy88:
 	++YYCURSOR;
 	{ return -1; }
 }

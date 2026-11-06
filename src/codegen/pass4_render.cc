@@ -152,6 +152,7 @@ class RenderVar : public RenderCallback {
         case StxVarId::INIT:
             DCHECK(code->init != nullptr);
             rctx.os << code->init;
+            rctx.line += count_lines_text(code->init);
             break;
         case StxVarId::TYPE:
             switch (code->type) {
@@ -193,11 +194,15 @@ class RenderVar : public RenderCallback {
     }
 
     bool eval_cond(StxLOpt opt) override {
-        if (opt == StxLOpt::INIT) {
+        switch (opt) {
+        case StxLOpt::INIT:
             return !code->is_default;
+        case StxLOpt::CONST:
+            return code->is_const;
+        default:
+            UNREACHABLE();
+            return false;
         }
-        UNREACHABLE();
-        return false;
     }
 
     FORBID_COPY(RenderVar);
@@ -230,9 +235,16 @@ class RenderIfThenElse : public RenderCallback {
 
     void render_var(StxVarId var) override {
         switch (var) {
-            case StxVarId::COND: rctx.os << curr_branch->cond; break;
-            case StxVarId::STMT: render_maybe_oneline(rctx, curr_stmt, oneline); break;
-            default: render_global_var(rctx, var); break;
+        case StxVarId::COND:
+            rctx.os << curr_branch->cond;
+            rctx.line += count_lines_text(curr_branch->cond);
+            break;
+        case StxVarId::STMT:
+            render_maybe_oneline(rctx, curr_stmt, oneline);
+            break;
+        default:
+            render_global_var(rctx, var);
+            break;
         }
     }
 

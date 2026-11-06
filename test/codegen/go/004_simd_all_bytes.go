@@ -51,7 +51,6 @@ yy2:
 				break
 			}
 		}
-		yych = input[cursor]
 	}
 	goto yy2
 }
@@ -61,7 +60,7 @@ yy2:
 
 func lexScalar() int {
 	
-//line "codegen/go/004_simd_all_bytes.go":65
+//line "codegen/go/004_simd_all_bytes.go":64
 {
 	var yych byte
 	if (limit <= cursor) {
@@ -78,7 +77,7 @@ yy4:
 	cursor += 1
 //line "codegen/go/004_simd_all_bytes.re":47
 	{ return -1 }
-//line "codegen/go/004_simd_all_bytes.go":82
+//line "codegen/go/004_simd_all_bytes.go":81
 yy5:
 	cursor += 1
 	if (limit <= cursor) {

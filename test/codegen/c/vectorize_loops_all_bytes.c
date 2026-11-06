@@ -36,7 +36,6 @@ yy2:
 			cur += 32;
 			if ((lim - cur) < 33) break;
 		}
-		yych = *cur;
 	}
 	goto yy2;
 }

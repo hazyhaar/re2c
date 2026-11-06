@@ -64,7 +64,7 @@ func lexSimd(yyrecord *Input) int {
 	case ' ':
 		goto yy3
 	case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
-		goto yy5
+		goto yy6
 	default:
 		goto yy2
 	}
@@ -84,118 +84,110 @@ yy3:
 		if r := fill(yyrecord, 1); r != 0 { return r }
 	}
 	yych = yyrecord.yyinput[yyrecord.yycursor]
-	if (!((yyrecord.yylimit - yyrecord.yycursor) < 33)) {
-		switch (yych) {
-		case ' ':
-			{
-				yyb0 := archsimd.BroadcastInt8x32(-128)
-				yyu0 := archsimd.BroadcastInt8x32(-96)
-				yyb1 := archsimd.BroadcastInt8x32(-95)
-				yyu1 := archsimd.BroadcastInt8x32(95)
-				for {
-					yysimd0 := archsimd.LoadUint8x32(yyrecord.yyinput[yyrecord.yycursor:yyrecord.yycursor + 32]).BitsToInt8()
-					yym := yyu0.Greater(yysimd0.Sub(yyb0)).Or(yyu1.Greater(yysimd0.Sub(yyb1))).ToBits()
-					if (yym != 0) {
-						yyn := bits.TrailingZeros32(yym)
-						if ((yyn & 16) != 0) {
-							yyrecord.yycursor += 16
-						}
-						if ((yyn & 8) != 0) {
-							yyrecord.yycursor += 8
-						}
-						if ((yyn & 4) != 0) {
-							yyrecord.yycursor += 4
-						}
-						if ((yyn & 2) != 0) {
-							yyrecord.yycursor += 2
-						}
-						if ((yyn & 1) != 0) {
-							yyrecord.yycursor += 1
-						}
-						break
-					}
-					yyrecord.yycursor += 32
-					if ((yyrecord.yylimit - yyrecord.yycursor) < 33) {
-						break
-					}
-				}
-				archsimd.ClearAVXUpperBits()
-				yych = yyrecord.yyinput[yyrecord.yycursor]
-			}
-			break
-		default:
-			break
-		}
-	}
+yy4:
 	switch (yych) {
 	case ' ':
+		if (!((yyrecord.yylimit - yyrecord.yycursor) < 33)) {
+			yyb0 := archsimd.BroadcastInt8x32(-128)
+			yyu0 := archsimd.BroadcastInt8x32(-96)
+			yyb1 := archsimd.BroadcastInt8x32(-95)
+			yyu1 := archsimd.BroadcastInt8x32(95)
+			for {
+				yysimd0 := archsimd.LoadUint8x32(yyrecord.yyinput[yyrecord.yycursor:yyrecord.yycursor + 32]).BitsToInt8()
+				yysimd1 := yyu0.Greater(yysimd0.Sub(yyb0))
+				yysimd1 = yysimd1.Or(yyu1.Greater(yysimd0.Sub(yyb1)))
+				yym := yysimd1.ToBits()
+				if (yym != 0) {
+					yyn := bits.TrailingZeros32(yym)
+					if ((yyn & 16) != 0) {
+						yyrecord.yycursor += 16
+					}
+					if ((yyn & 8) != 0) {
+						yyrecord.yycursor += 8
+					}
+					if ((yyn & 4) != 0) {
+						yyrecord.yycursor += 4
+					}
+					if ((yyn & 2) != 0) {
+						yyrecord.yycursor += 2
+					}
+					if ((yyn & 1) != 0) {
+						yyrecord.yycursor += 1
+					}
+					break
+				}
+				yyrecord.yycursor += 32
+				if ((yyrecord.yylimit - yyrecord.yycursor) < 33) {
+					break
+				}
+			}
+			archsimd.ClearAVXUpperBits()
+			yych = yyrecord.yyinput[yyrecord.yycursor]
+			goto yy4
+		}
 		goto yy3
 	default:
-		goto yy4
+		goto yy5
 	}
-yy4:
+yy5:
 //line "codegen/go/004_simd_uint_fill.re":54
 	{ return 2 }
-//line "codegen/go/004_simd_uint_fill.go":140
-yy5:
+//line "codegen/go/004_simd_uint_fill.go":136
+yy6:
 	yyrecord.yycursor += 1
 	if (yyrecord.yylimit <= yyrecord.yycursor) {
 		if r := fill(yyrecord, 1); r != 0 { return r }
 	}
 	yych = yyrecord.yyinput[yyrecord.yycursor]
-	if (!((yyrecord.yylimit - yyrecord.yycursor) < 33)) {
-		switch (yych) {
-		case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
-			{
-				yyb0 := archsimd.BroadcastInt8x32(-128)
-				yyu0 := archsimd.BroadcastInt8x32(-31)
-				yyb1 := archsimd.BroadcastInt8x32(-5)
-				yyu1 := archsimd.BroadcastInt8x32(5)
-				for {
-					yysimd0 := archsimd.LoadUint8x32(yyrecord.yyinput[yyrecord.yycursor:yyrecord.yycursor + 32]).BitsToInt8()
-					yym := yyu0.Greater(yysimd0.Sub(yyb0)).Or(yyu1.Greater(yysimd0.Sub(yyb1))).ToBits()
-					if (yym != 0) {
-						yyn := bits.TrailingZeros32(yym)
-						if ((yyn & 16) != 0) {
-							yyrecord.yycursor += 16
-						}
-						if ((yyn & 8) != 0) {
-							yyrecord.yycursor += 8
-						}
-						if ((yyn & 4) != 0) {
-							yyrecord.yycursor += 4
-						}
-						if ((yyn & 2) != 0) {
-							yyrecord.yycursor += 2
-						}
-						if ((yyn & 1) != 0) {
-							yyrecord.yycursor += 1
-						}
-						break
-					}
-					yyrecord.yycursor += 32
-					if ((yyrecord.yylimit - yyrecord.yycursor) < 33) {
-						break
-					}
-				}
-				archsimd.ClearAVXUpperBits()
-				yych = yyrecord.yyinput[yyrecord.yycursor]
-			}
-			break
-		default:
-			break
-		}
-	}
+yy7:
 	switch (yych) {
 	case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
-		goto yy5
-	default:
+		if (!((yyrecord.yylimit - yyrecord.yycursor) < 33)) {
+			yyb0 := archsimd.BroadcastInt8x32(-128)
+			yyu0 := archsimd.BroadcastInt8x32(-31)
+			yyb1 := archsimd.BroadcastInt8x32(-5)
+			yyu1 := archsimd.BroadcastInt8x32(5)
+			for {
+				yysimd0 := archsimd.LoadUint8x32(yyrecord.yyinput[yyrecord.yycursor:yyrecord.yycursor + 32]).BitsToInt8()
+				yysimd1 := yyu0.Greater(yysimd0.Sub(yyb0))
+				yysimd1 = yysimd1.Or(yyu1.Greater(yysimd0.Sub(yyb1)))
+				yym := yysimd1.ToBits()
+				if (yym != 0) {
+					yyn := bits.TrailingZeros32(yym)
+					if ((yyn & 16) != 0) {
+						yyrecord.yycursor += 16
+					}
+					if ((yyn & 8) != 0) {
+						yyrecord.yycursor += 8
+					}
+					if ((yyn & 4) != 0) {
+						yyrecord.yycursor += 4
+					}
+					if ((yyn & 2) != 0) {
+						yyrecord.yycursor += 2
+					}
+					if ((yyn & 1) != 0) {
+						yyrecord.yycursor += 1
+					}
+					break
+				}
+				yyrecord.yycursor += 32
+				if ((yyrecord.yylimit - yyrecord.yycursor) < 33) {
+					break
+				}
+			}
+			archsimd.ClearAVXUpperBits()
+			yych = yyrecord.yyinput[yyrecord.yycursor]
+			goto yy7
+		}
 		goto yy6
+	default:
+		goto yy8
 	}
-yy6:
+yy8:
 //line "codegen/go/004_simd_uint_fill.re":53
 	{ return 1 }
-//line "codegen/go/004_simd_uint_fill.go":199
+//line "codegen/go/004_simd_uint_fill.go":191
 }
 //line "codegen/go/004_simd_uint_fill.re":57
 
@@ -203,7 +195,7 @@ yy6:
 
 func lexScalar(yyrecord *Input) int {
 	
-//line "codegen/go/004_simd_uint_fill.go":207
+//line "codegen/go/004_simd_uint_fill.go":199
 {
 	var yych byte
 	if (yyrecord.yylimit <= yyrecord.yycursor) {
@@ -212,40 +204,24 @@ func lexScalar(yyrecord *Input) int {
 	yych = yyrecord.yyinput[yyrecord.yycursor]
 	switch (yych) {
 	case 0x00:
-		goto yy8
-	case ' ':
 		goto yy10
-	case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
+	case ' ':
 		goto yy12
-	default:
-		goto yy9
-	}
-yy8:
-	yyrecord.yycursor += 1
-//line "codegen/go/004_simd_uint_fill.re":68
-	{ return 0 }
-//line "codegen/go/004_simd_uint_fill.go":228
-yy9:
-	yyrecord.yycursor += 1
-//line "codegen/go/004_simd_uint_fill.re":69
-	{ return -1 }
-//line "codegen/go/004_simd_uint_fill.go":233
-yy10:
-	yyrecord.yycursor += 1
-	if (yyrecord.yylimit <= yyrecord.yycursor) {
-		if r := fill(yyrecord, 1); r != 0 { return r }
-	}
-	yych = yyrecord.yyinput[yyrecord.yycursor]
-	switch (yych) {
-	case ' ':
-		goto yy10
+	case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
+		goto yy14
 	default:
 		goto yy11
 	}
+yy10:
+	yyrecord.yycursor += 1
+//line "codegen/go/004_simd_uint_fill.re":68
+	{ return 0 }
+//line "codegen/go/004_simd_uint_fill.go":220
 yy11:
-//line "codegen/go/004_simd_uint_fill.re":67
-	{ return 2 }
-//line "codegen/go/004_simd_uint_fill.go":249
+	yyrecord.yycursor += 1
+//line "codegen/go/004_simd_uint_fill.re":69
+	{ return -1 }
+//line "codegen/go/004_simd_uint_fill.go":225
 yy12:
 	yyrecord.yycursor += 1
 	if (yyrecord.yylimit <= yyrecord.yycursor) {
@@ -253,15 +229,31 @@ yy12:
 	}
 	yych = yyrecord.yyinput[yyrecord.yycursor]
 	switch (yych) {
-	case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
+	case ' ':
 		goto yy12
 	default:
 		goto yy13
 	}
 yy13:
+//line "codegen/go/004_simd_uint_fill.re":67
+	{ return 2 }
+//line "codegen/go/004_simd_uint_fill.go":241
+yy14:
+	yyrecord.yycursor += 1
+	if (yyrecord.yylimit <= yyrecord.yycursor) {
+		if r := fill(yyrecord, 1); r != 0 { return r }
+	}
+	yych = yyrecord.yyinput[yyrecord.yycursor]
+	switch (yych) {
+	case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
+		goto yy14
+	default:
+		goto yy15
+	}
+yy15:
 //line "codegen/go/004_simd_uint_fill.re":66
 	{ return 1 }
-//line "codegen/go/004_simd_uint_fill.go":265
+//line "codegen/go/004_simd_uint_fill.go":257
 }
 //line "codegen/go/004_simd_uint_fill.re":70
 

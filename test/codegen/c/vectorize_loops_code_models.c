@@ -177,98 +177,6 @@ static int lex_storable(LexState *st) {
 					return -2;
 				}
 				st->yych = *st->yycursor;
-				if (!((st->yylimit - st->yycursor) < 33)) {
-					switch (st->yych) {
-						case '0':
-						case '1':
-						case '2':
-						case '3':
-						case '4':
-						case '5':
-						case '6':
-						case '7':
-						case '8':
-						case '9':
-						case 'A':
-						case 'B':
-						case 'C':
-						case 'D':
-						case 'E':
-						case 'F':
-						case 'G':
-						case 'H':
-						case 'I':
-						case 'J':
-						case 'K':
-						case 'L':
-						case 'M':
-						case 'N':
-						case 'O':
-						case 'P':
-						case 'Q':
-						case 'R':
-						case 'S':
-						case 'T':
-						case 'U':
-						case 'V':
-						case 'W':
-						case 'X':
-						case 'Y':
-						case 'Z':
-						case '_':
-						case 'a':
-						case 'b':
-						case 'c':
-						case 'd':
-						case 'e':
-						case 'f':
-						case 'g':
-						case 'h':
-						case 'i':
-						case 'j':
-						case 'k':
-						case 'l':
-						case 'm':
-						case 'n':
-						case 'o':
-						case 'p':
-						case 'q':
-						case 'r':
-						case 's':
-						case 't':
-						case 'u':
-						case 'v':
-						case 'w':
-						case 'x':
-						case 'y':
-						case 'z':
-							{
-								__m256i yyb0 = _mm256_set1_epi8((char)-128);
-								__m256i yyu0 = _mm256_set1_epi8((char)-80);
-								__m256i yyb1 = _mm256_set1_epi8((char)-70);
-								__m256i yyu1 = _mm256_set1_epi8((char)-121);
-								__m256i yyb2 = _mm256_set1_epi8((char)-37);
-								__m256i yyu2 = _mm256_set1_epi8((char)-124);
-								__m256i yys3 = _mm256_set1_epi8((char)96);
-								__m256i yyb4 = _mm256_set1_epi8((char)-5);
-								__m256i yyu4 = _mm256_set1_epi8((char)5);
-								for (;;) {
-									__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(st->yycursor));
-									unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0)), _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1))), _mm256_cmpgt_epi8(yyu2, _mm256_sub_epi8(yysimd0, yyb2))), _mm256_cmpeq_epi8(yysimd0, yys3)), _mm256_cmpgt_epi8(yyu4, _mm256_sub_epi8(yysimd0, yyb4))));
-									if (yym != 0) {
-										int yyn = __builtin_ctz(yym);
-										st->yycursor += yyn;
-										break;
-									}
-									st->yycursor += 32;
-									if ((st->yylimit - st->yycursor) < 33) break;
-								}
-								st->yych = *st->yycursor;
-							}
-							break;
-						default: break;
-					}
-				}
 				switch (st->yych) {
 					case '0':
 					case '1':
@@ -333,6 +241,35 @@ static int lex_storable(LexState *st) {
 					case 'x':
 					case 'y':
 					case 'z':
+						if (!((st->yylimit - st->yycursor) < 33)) {
+							const __m256i yyb0 = _mm256_set1_epi8((char)-128);
+							const __m256i yyu0 = _mm256_set1_epi8((char)-80);
+							const __m256i yyb1 = _mm256_set1_epi8((char)-70);
+							const __m256i yyu1 = _mm256_set1_epi8((char)-121);
+							const __m256i yyb2 = _mm256_set1_epi8((char)-37);
+							const __m256i yyu2 = _mm256_set1_epi8((char)-124);
+							const __m256i yys3 = _mm256_set1_epi8((char)96);
+							const __m256i yyb4 = _mm256_set1_epi8((char)-5);
+							const __m256i yyu4 = _mm256_set1_epi8((char)5);
+							for (;;) {
+								__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(st->yycursor));
+								__m256i yysimd1 = _mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0));
+								yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1)));
+								yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu2, _mm256_sub_epi8(yysimd0, yyb2)));
+								yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys3));
+								yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu4, _mm256_sub_epi8(yysimd0, yyb4)));
+								unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+								if (yym != 0) {
+									int yyn = __builtin_ctz(yym);
+									st->yycursor += yyn;
+									break;
+								}
+								st->yycursor += 32;
+								if ((st->yylimit - st->yycursor) < 33) break;
+							}
+							yystate = 4;
+							continue;
+						}
 						++st->yycursor;
 						yystate = 4;
 						continue;

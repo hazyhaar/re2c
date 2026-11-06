@@ -163,7 +163,7 @@ re2c:cond:goto = "goto " sigil ";";
 
 // code templates --------------------------------------------------------------
 
-code:var_local = topindent type " " name (.init ? " = " init) ";" nl;
+code:var_local = topindent (.const ? "const ") type " " name (.init ? " = " init) ";" nl;
 code:var_global = code:var_local;
 
 code:const_local = topindent type " " name " = " init ";" nl;
@@ -472,6 +472,8 @@ code:yybm_filter = yych " & ~0xFF";
 code:yybm_match = yybm "[" offset "+" yych "] & " mask;
 
 code:yytarget_filter = yych " & ~0xFF";
+
+code:bit_match = "(" lhs " & " mask ") != 0";
 
 // Atomic x86 vector primitives (SSE2 for 16-byte width, AVX2 for 32-byte width).
 // Control flow (`if`, `switch`, `for`, cursor advance, `yypeek`) is emitted by the

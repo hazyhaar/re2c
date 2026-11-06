@@ -91,98 +91,7 @@ yy2:
 	YYSKIP();
 	if (YYLESSTHAN(1)) YYFILL(1);
 	yych = YYPEEK();
-	if (!(YYLESSTHAN(33))) {
-		switch (yych) {
-			case '0':
-			case '1':
-			case '2':
-			case '3':
-			case '4':
-			case '5':
-			case '6':
-			case '7':
-			case '8':
-			case '9':
-			case 'A':
-			case 'B':
-			case 'C':
-			case 'D':
-			case 'E':
-			case 'F':
-			case 'G':
-			case 'H':
-			case 'I':
-			case 'J':
-			case 'K':
-			case 'L':
-			case 'M':
-			case 'N':
-			case 'O':
-			case 'P':
-			case 'Q':
-			case 'R':
-			case 'S':
-			case 'T':
-			case 'U':
-			case 'V':
-			case 'W':
-			case 'X':
-			case 'Y':
-			case 'Z':
-			case '_':
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z':
-				{
-					__m256i yyb0 = _mm256_set1_epi8((char)-128);
-					__m256i yyu0 = _mm256_set1_epi8((char)-80);
-					__m256i yyb1 = _mm256_set1_epi8((char)-70);
-					__m256i yyu1 = _mm256_set1_epi8((char)-121);
-					__m256i yyb2 = _mm256_set1_epi8((char)-37);
-					__m256i yyu2 = _mm256_set1_epi8((char)-124);
-					__m256i yys3 = _mm256_set1_epi8((char)96);
-					__m256i yyb4 = _mm256_set1_epi8((char)-5);
-					__m256i yyu4 = _mm256_set1_epi8((char)5);
-					for (;;) {
-						__m256i yysimd0 = YYPEEK32();
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0)), _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1))), _mm256_cmpgt_epi8(yyu2, _mm256_sub_epi8(yysimd0, yyb2))), _mm256_cmpeq_epi8(yysimd0, yys3)), _mm256_cmpgt_epi8(yyu4, _mm256_sub_epi8(yysimd0, yyb4))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYSHIFT(yyn);
-							break;
-						}
-						YYSHIFT(32);
-						if (YYLESSTHAN(33)) break;
-					}
-					yych = YYPEEK();
-				}
-				break;
-			default: break;
-		}
-	}
+yy3:
 	switch (yych) {
 		case '0':
 		case '1':
@@ -246,10 +155,40 @@ yy2:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy2;
-		default: goto yy3;
+		case 'z':
+			if (!(YYLESSTHAN(33))) {
+				const __m256i yyb0 = _mm256_set1_epi8((char)-128);
+				const __m256i yyu0 = _mm256_set1_epi8((char)-80);
+				const __m256i yyb1 = _mm256_set1_epi8((char)-70);
+				const __m256i yyu1 = _mm256_set1_epi8((char)-121);
+				const __m256i yyb2 = _mm256_set1_epi8((char)-37);
+				const __m256i yyu2 = _mm256_set1_epi8((char)-124);
+				const __m256i yys3 = _mm256_set1_epi8((char)96);
+				const __m256i yyb4 = _mm256_set1_epi8((char)-5);
+				const __m256i yyu4 = _mm256_set1_epi8((char)5);
+				for (;;) {
+					__m256i yysimd0 = YYPEEK32();
+					__m256i yysimd1 = _mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1)));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu2, _mm256_sub_epi8(yysimd0, yyb2)));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys3));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu4, _mm256_sub_epi8(yysimd0, yyb4)));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYSHIFT(yyn);
+						break;
+					}
+					YYSHIFT(32);
+					if (YYLESSTHAN(33)) break;
+				}
+				yych = YYPEEK();
+				goto yy3;
+			}
+			goto yy2;
+		default: goto yy4;
 	}
-yy3:
+yy4:
 	{ return (int)(s.ptr - str); }
 }
 
@@ -334,108 +273,17 @@ static int lex_fn_16(const unsigned char *str, size_t len) {
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy6;
-		default: goto yy5;
+		case 'z': goto yy7;
+		default: goto yy6;
 	}
-yy5:
+yy6:
 	YYSKIP();
 	{ return -1; }
-yy6:
+yy7:
 	YYSKIP();
 	if (YYLESSTHAN(1)) YYFILL(1);
 	yych = YYPEEK();
-	if (!(YYLESSTHAN(17))) {
-		switch (yych) {
-			case '0':
-			case '1':
-			case '2':
-			case '3':
-			case '4':
-			case '5':
-			case '6':
-			case '7':
-			case '8':
-			case '9':
-			case 'A':
-			case 'B':
-			case 'C':
-			case 'D':
-			case 'E':
-			case 'F':
-			case 'G':
-			case 'H':
-			case 'I':
-			case 'J':
-			case 'K':
-			case 'L':
-			case 'M':
-			case 'N':
-			case 'O':
-			case 'P':
-			case 'Q':
-			case 'R':
-			case 'S':
-			case 'T':
-			case 'U':
-			case 'V':
-			case 'W':
-			case 'X':
-			case 'Y':
-			case 'Z':
-			case '_':
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z':
-				{
-					__m128i yyb0 = _mm_set1_epi8((char)-128);
-					__m128i yyu0 = _mm_set1_epi8((char)-80);
-					__m128i yyb1 = _mm_set1_epi8((char)-70);
-					__m128i yyu1 = _mm_set1_epi8((char)-121);
-					__m128i yyb2 = _mm_set1_epi8((char)-37);
-					__m128i yyu2 = _mm_set1_epi8((char)-124);
-					__m128i yys3 = _mm_set1_epi8((char)96);
-					__m128i yyb4 = _mm_set1_epi8((char)-5);
-					__m128i yyu4 = _mm_set1_epi8((char)5);
-					for (;;) {
-						__m128i yysimd0 = YYPEEK16();
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_or_si128(_mm_or_si128(_mm_or_si128(_mm_or_si128(_mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0)), _mm_cmpgt_epi8(yyu1, _mm_sub_epi8(yysimd0, yyb1))), _mm_cmpgt_epi8(yyu2, _mm_sub_epi8(yysimd0, yyb2))), _mm_cmpeq_epi8(yysimd0, yys3)), _mm_cmpgt_epi8(yyu4, _mm_sub_epi8(yysimd0, yyb4))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							YYSHIFT(yyn);
-							break;
-						}
-						YYSHIFT(16);
-						if (YYLESSTHAN(17)) break;
-					}
-					yych = YYPEEK();
-				}
-				break;
-			default: break;
-		}
-	}
+yy8:
 	switch (yych) {
 		case '0':
 		case '1':
@@ -499,10 +347,40 @@ yy6:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy6;
-		default: goto yy7;
+		case 'z':
+			if (!(YYLESSTHAN(17))) {
+				const __m128i yyb0 = _mm_set1_epi8((char)-128);
+				const __m128i yyu0 = _mm_set1_epi8((char)-80);
+				const __m128i yyb1 = _mm_set1_epi8((char)-70);
+				const __m128i yyu1 = _mm_set1_epi8((char)-121);
+				const __m128i yyb2 = _mm_set1_epi8((char)-37);
+				const __m128i yyu2 = _mm_set1_epi8((char)-124);
+				const __m128i yys3 = _mm_set1_epi8((char)96);
+				const __m128i yyb4 = _mm_set1_epi8((char)-5);
+				const __m128i yyu4 = _mm_set1_epi8((char)5);
+				for (;;) {
+					__m128i yysimd0 = YYPEEK16();
+					__m128i yysimd1 = _mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu1, _mm_sub_epi8(yysimd0, yyb1)));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu2, _mm_sub_epi8(yysimd0, yyb2)));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys3));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu4, _mm_sub_epi8(yysimd0, yyb4)));
+					unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						YYSHIFT(yyn);
+						break;
+					}
+					YYSHIFT(16);
+					if (YYLESSTHAN(17)) break;
+				}
+				yych = YYPEEK();
+				goto yy8;
+			}
+			goto yy7;
+		default: goto yy9;
 	}
-yy7:
+yy9:
 	{ return (int)(s.ptr - str); }
 }
 
@@ -578,108 +456,17 @@ static int lex_freeform_32(const unsigned char *str, size_t len) {
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy10;
-		default: goto yy9;
+		case 'z': goto yy12;
+		default: goto yy11;
 	}
-yy9:
+yy11:
 	++s.ptr;
 	{ return -1; }
-yy10:
+yy12:
 	++s.ptr;
 	if ((size_t)(s.end - s.ptr) < (size_t)(1)) return -2;
 	yych = *s.ptr;
-	if (!((size_t)(s.end - s.ptr) < (size_t)(33))) {
-		switch (yych) {
-			case '0':
-			case '1':
-			case '2':
-			case '3':
-			case '4':
-			case '5':
-			case '6':
-			case '7':
-			case '8':
-			case '9':
-			case 'A':
-			case 'B':
-			case 'C':
-			case 'D':
-			case 'E':
-			case 'F':
-			case 'G':
-			case 'H':
-			case 'I':
-			case 'J':
-			case 'K':
-			case 'L':
-			case 'M':
-			case 'N':
-			case 'O':
-			case 'P':
-			case 'Q':
-			case 'R':
-			case 'S':
-			case 'T':
-			case 'U':
-			case 'V':
-			case 'W':
-			case 'X':
-			case 'Y':
-			case 'Z':
-			case '_':
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z':
-				{
-					__m256i yyb0 = _mm256_set1_epi8((char)-128);
-					__m256i yyu0 = _mm256_set1_epi8((char)-80);
-					__m256i yyb1 = _mm256_set1_epi8((char)-70);
-					__m256i yyu1 = _mm256_set1_epi8((char)-121);
-					__m256i yyb2 = _mm256_set1_epi8((char)-37);
-					__m256i yyu2 = _mm256_set1_epi8((char)-124);
-					__m256i yys3 = _mm256_set1_epi8((char)96);
-					__m256i yyb4 = _mm256_set1_epi8((char)-5);
-					__m256i yyu4 = _mm256_set1_epi8((char)5);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i *)s.ptr);
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0)), _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1))), _mm256_cmpgt_epi8(yyu2, _mm256_sub_epi8(yysimd0, yyb2))), _mm256_cmpeq_epi8(yysimd0, yys3)), _mm256_cmpgt_epi8(yyu4, _mm256_sub_epi8(yysimd0, yyb4))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							s.ptr += yyn;
-							break;
-						}
-						s.ptr += 32;
-						if ((size_t)(s.end - s.ptr) < (size_t)(33)) break;
-					}
-					yych = *s.ptr;
-				}
-				break;
-			default: break;
-		}
-	}
+yy13:
 	switch (yych) {
 		case '0':
 		case '1':
@@ -743,10 +530,40 @@ yy10:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy10;
-		default: goto yy11;
+		case 'z':
+			if (!((size_t)(s.end - s.ptr) < (size_t)(33))) {
+				const __m256i yyb0 = _mm256_set1_epi8((char)-128);
+				const __m256i yyu0 = _mm256_set1_epi8((char)-80);
+				const __m256i yyb1 = _mm256_set1_epi8((char)-70);
+				const __m256i yyu1 = _mm256_set1_epi8((char)-121);
+				const __m256i yyb2 = _mm256_set1_epi8((char)-37);
+				const __m256i yyu2 = _mm256_set1_epi8((char)-124);
+				const __m256i yys3 = _mm256_set1_epi8((char)96);
+				const __m256i yyb4 = _mm256_set1_epi8((char)-5);
+				const __m256i yyu4 = _mm256_set1_epi8((char)5);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i *)s.ptr);
+					__m256i yysimd1 = _mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1)));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu2, _mm256_sub_epi8(yysimd0, yyb2)));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys3));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu4, _mm256_sub_epi8(yysimd0, yyb4)));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						s.ptr += yyn;
+						break;
+					}
+					s.ptr += 32;
+					if ((size_t)(s.end - s.ptr) < (size_t)(33)) break;
+				}
+				yych = *s.ptr;
+				goto yy13;
+			}
+			goto yy12;
+		default: goto yy14;
 	}
-yy11:
+yy14:
 	{ return (int)(s.ptr - str); }
 }
 
@@ -813,108 +630,17 @@ static int lex_freeform_16(const unsigned char *str, size_t len) {
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy14;
-		default: goto yy13;
+		case 'z': goto yy17;
+		default: goto yy16;
 	}
-yy13:
+yy16:
 	++s.ptr;
 	{ return -1; }
-yy14:
+yy17:
 	++s.ptr;
 	if ((size_t)(s.end - s.ptr) < (size_t)(1)) return -2;
 	yych = *s.ptr;
-	if (!((size_t)(s.end - s.ptr) < (size_t)(17))) {
-		switch (yych) {
-			case '0':
-			case '1':
-			case '2':
-			case '3':
-			case '4':
-			case '5':
-			case '6':
-			case '7':
-			case '8':
-			case '9':
-			case 'A':
-			case 'B':
-			case 'C':
-			case 'D':
-			case 'E':
-			case 'F':
-			case 'G':
-			case 'H':
-			case 'I':
-			case 'J':
-			case 'K':
-			case 'L':
-			case 'M':
-			case 'N':
-			case 'O':
-			case 'P':
-			case 'Q':
-			case 'R':
-			case 'S':
-			case 'T':
-			case 'U':
-			case 'V':
-			case 'W':
-			case 'X':
-			case 'Y':
-			case 'Z':
-			case '_':
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z':
-				{
-					__m128i yyb0 = _mm_set1_epi8((char)-128);
-					__m128i yyu0 = _mm_set1_epi8((char)-80);
-					__m128i yyb1 = _mm_set1_epi8((char)-70);
-					__m128i yyu1 = _mm_set1_epi8((char)-121);
-					__m128i yyb2 = _mm_set1_epi8((char)-37);
-					__m128i yyu2 = _mm_set1_epi8((char)-124);
-					__m128i yys3 = _mm_set1_epi8((char)96);
-					__m128i yyb4 = _mm_set1_epi8((char)-5);
-					__m128i yyu4 = _mm_set1_epi8((char)5);
-					for (;;) {
-						__m128i yysimd0 = _mm_loadu_si128((const __m128i *)s.ptr);
-						unsigned int yym = (unsigned int)_mm_movemask_epi8(_mm_or_si128(_mm_or_si128(_mm_or_si128(_mm_or_si128(_mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0)), _mm_cmpgt_epi8(yyu1, _mm_sub_epi8(yysimd0, yyb1))), _mm_cmpgt_epi8(yyu2, _mm_sub_epi8(yysimd0, yyb2))), _mm_cmpeq_epi8(yysimd0, yys3)), _mm_cmpgt_epi8(yyu4, _mm_sub_epi8(yysimd0, yyb4))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							s.ptr += yyn;
-							break;
-						}
-						s.ptr += 16;
-						if ((size_t)(s.end - s.ptr) < (size_t)(17)) break;
-					}
-					yych = *s.ptr;
-				}
-				break;
-			default: break;
-		}
-	}
+yy18:
 	switch (yych) {
 		case '0':
 		case '1':
@@ -978,10 +704,40 @@ yy14:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy14;
-		default: goto yy15;
+		case 'z':
+			if (!((size_t)(s.end - s.ptr) < (size_t)(17))) {
+				const __m128i yyb0 = _mm_set1_epi8((char)-128);
+				const __m128i yyu0 = _mm_set1_epi8((char)-80);
+				const __m128i yyb1 = _mm_set1_epi8((char)-70);
+				const __m128i yyu1 = _mm_set1_epi8((char)-121);
+				const __m128i yyb2 = _mm_set1_epi8((char)-37);
+				const __m128i yyu2 = _mm_set1_epi8((char)-124);
+				const __m128i yys3 = _mm_set1_epi8((char)96);
+				const __m128i yyb4 = _mm_set1_epi8((char)-5);
+				const __m128i yyu4 = _mm_set1_epi8((char)5);
+				for (;;) {
+					__m128i yysimd0 = _mm_loadu_si128((const __m128i *)s.ptr);
+					__m128i yysimd1 = _mm_cmpgt_epi8(yyu0, _mm_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu1, _mm_sub_epi8(yysimd0, yyb1)));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu2, _mm_sub_epi8(yysimd0, yyb2)));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpeq_epi8(yysimd0, yys3));
+					yysimd1 = _mm_or_si128(yysimd1, _mm_cmpgt_epi8(yyu4, _mm_sub_epi8(yysimd0, yyb4)));
+					unsigned int yym = (unsigned int)_mm_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						s.ptr += yyn;
+						break;
+					}
+					s.ptr += 16;
+					if ((size_t)(s.end - s.ptr) < (size_t)(17)) break;
+				}
+				yych = *s.ptr;
+				goto yy18;
+			}
+			goto yy17;
+		default: goto yy19;
 	}
-yy15:
+yy19:
 	{ return (int)(s.ptr - str); }
 }
 

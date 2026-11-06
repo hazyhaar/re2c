@@ -428,6 +428,8 @@ code:yybm_match = "(" yybm "[" offset "+" yych "] & " mask ") != 0";
 
 code:yytarget_filter = <undefined>;
 
+code:bit_match = "(" lhs " & " mask ") != 0";
+
 // Atomic x86 vector primitives for Go `simd/archsimd` (16-byte XMM and 32-byte YMM).
 // Control flow (`if`, `switch`, `for`, cursor advance, `yypeek`) is emitted by the
 // standard IR passes. `YYINPUT` must be a byte slice when not using `--api generic`

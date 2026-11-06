@@ -429,6 +429,7 @@ code:yybm_filter = yych " & ~0xFF";
 code:yybm_match = "(" yybm "[" offset "+" yych "] & " mask ") != 0";
 
 code:yytarget_filter = <undefined>;
+code:bit_match = <undefined>;
 
 code:yypeek16 = <undefined>;
 code:yypeek32 = <undefined>;

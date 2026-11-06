@@ -370,13 +370,18 @@ static bool simd_is_eligible(State* s, const opt_t* opts, State** pbody) {
 
 static void find_simd_states(State* head, const opt_t* opts) {
     for (State* s = head; s; s = s->next) {
+        s->simd = false;
+        s->simd_body = nullptr;
+        s->is_simd_body = false;
+        s->simd_head = nullptr;
+    }
+    for (State* s = head; s; s = s->next) {
         State* body = nullptr;
         if (simd_is_eligible(s, opts, &body)) {
             s->simd = true;
             s->simd_body = body;
-        } else {
-            s->simd = false;
-            s->simd_body = nullptr;
+            body->is_simd_body = true;
+            body->simd_head = s;
         }
     }
 }

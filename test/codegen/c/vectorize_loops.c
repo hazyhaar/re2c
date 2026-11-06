@@ -127,7 +127,7 @@ loop:
 		case 0x00: goto yy1;
 		case '\t':
 		case ' ': goto yy4;
-		case '"': goto yy6;
+		case '"': goto yy7;
 		case '0':
 		case '1':
 		case '2':
@@ -137,7 +137,7 @@ loop:
 		case '6':
 		case '7':
 		case '8':
-		case '9': goto yy7;
+		case '9': goto yy8;
 		case 'A':
 		case 'B':
 		case 'C':
@@ -190,7 +190,7 @@ loop:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy9;
+		case 'z': goto yy11;
 		default: goto yy2;
 	}
 yy1:
@@ -207,83 +207,48 @@ yy4:
 	++in->cur;
 	if (in->lim <= in->cur) if (fill(in, 1) != 0) return ERR_FILL;
 	yych = *in->cur;
-	if (!((in->lim - in->cur) < 33)) {
-		switch (yych) {
-			case '\t':
-			case ' ':
-				{
-					__m256i yyb0 = _mm256_set1_epi8((char)-128);
-					__m256i yyu0 = _mm256_set1_epi8((char)-119);
-					__m256i yyb1 = _mm256_set1_epi8((char)-118);
-					__m256i yyu1 = _mm256_set1_epi8((char)-106);
-					__m256i yyb2 = _mm256_set1_epi8((char)-95);
-					__m256i yyu2 = _mm256_set1_epi8((char)95);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(in->cur));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_or_si256(_mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0)), _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1))), _mm256_cmpgt_epi8(yyu2, _mm256_sub_epi8(yysimd0, yyb2))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							in->cur += yyn;
-							break;
-						}
-						in->cur += 32;
-						if ((in->lim - in->cur) < 33) break;
-					}
-					yych = *in->cur;
-				}
-				break;
-			default: break;
-		}
-	}
+yy5:
 	switch (yych) {
 		case '\t':
-		case ' ': goto yy4;
-		default: goto yy5;
+		case ' ':
+			if (!((in->lim - in->cur) < 33)) {
+				const __m256i yyb0 = _mm256_set1_epi8((char)-128);
+				const __m256i yyu0 = _mm256_set1_epi8((char)-119);
+				const __m256i yyb1 = _mm256_set1_epi8((char)-118);
+				const __m256i yyu1 = _mm256_set1_epi8((char)-106);
+				const __m256i yyb2 = _mm256_set1_epi8((char)-95);
+				const __m256i yyu2 = _mm256_set1_epi8((char)95);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(in->cur));
+					__m256i yysimd1 = _mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1)));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu2, _mm256_sub_epi8(yysimd0, yyb2)));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						in->cur += yyn;
+						break;
+					}
+					in->cur += 32;
+					if ((in->lim - in->cur) < 33) break;
+				}
+				yych = *in->cur;
+				goto yy5;
+			}
+			goto yy4;
+		default: goto yy6;
 	}
-yy5:
-	{ kind = K_WS; goto token; }
 yy6:
+	{ kind = K_WS; goto token; }
+yy7:
 	yych = *(in->mar = ++in->cur);
 	if (yych <= 0x00) goto yy3;
-	goto yy12;
-yy7:
+	goto yy15;
+yy8:
 	++in->cur;
 	if (in->lim <= in->cur) if (fill(in, 1) != 0) return ERR_FILL;
 	yych = *in->cur;
-	if (!((in->lim - in->cur) < 33)) {
-		switch (yych) {
-			case '0':
-			case '1':
-			case '2':
-			case '3':
-			case '4':
-			case '5':
-			case '6':
-			case '7':
-			case '8':
-			case '9':
-				{
-					__m256i yyb0 = _mm256_set1_epi8((char)-128);
-					__m256i yyu0 = _mm256_set1_epi8((char)-80);
-					__m256i yyb1 = _mm256_set1_epi8((char)-70);
-					__m256i yyu1 = _mm256_set1_epi8((char)70);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(in->cur));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0)), _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							in->cur += yyn;
-							break;
-						}
-						in->cur += 32;
-						if ((in->lim - in->cur) < 33) break;
-					}
-					yych = *in->cur;
-				}
-				break;
-			default: break;
-		}
-	}
+yy9:
 	switch (yych) {
 		case '0':
 		case '1':
@@ -294,107 +259,38 @@ yy7:
 		case '6':
 		case '7':
 		case '8':
-		case '9': goto yy7;
-		default: goto yy8;
+		case '9':
+			if (!((in->lim - in->cur) < 33)) {
+				const __m256i yyb0 = _mm256_set1_epi8((char)-128);
+				const __m256i yyu0 = _mm256_set1_epi8((char)-80);
+				const __m256i yyb1 = _mm256_set1_epi8((char)-70);
+				const __m256i yyu1 = _mm256_set1_epi8((char)70);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(in->cur));
+					__m256i yysimd1 = _mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1)));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						in->cur += yyn;
+						break;
+					}
+					in->cur += 32;
+					if ((in->lim - in->cur) < 33) break;
+				}
+				yych = *in->cur;
+				goto yy9;
+			}
+			goto yy8;
+		default: goto yy10;
 	}
-yy8:
+yy10:
 	{ kind = K_NUM; goto token; }
-yy9:
+yy11:
 	++in->cur;
 	if (in->lim <= in->cur) if (fill(in, 1) != 0) return ERR_FILL;
 	yych = *in->cur;
-	if (!((in->lim - in->cur) < 33)) {
-		switch (yych) {
-			case '0':
-			case '1':
-			case '2':
-			case '3':
-			case '4':
-			case '5':
-			case '6':
-			case '7':
-			case '8':
-			case '9':
-			case 'A':
-			case 'B':
-			case 'C':
-			case 'D':
-			case 'E':
-			case 'F':
-			case 'G':
-			case 'H':
-			case 'I':
-			case 'J':
-			case 'K':
-			case 'L':
-			case 'M':
-			case 'N':
-			case 'O':
-			case 'P':
-			case 'Q':
-			case 'R':
-			case 'S':
-			case 'T':
-			case 'U':
-			case 'V':
-			case 'W':
-			case 'X':
-			case 'Y':
-			case 'Z':
-			case '_':
-			case 'a':
-			case 'b':
-			case 'c':
-			case 'd':
-			case 'e':
-			case 'f':
-			case 'g':
-			case 'h':
-			case 'i':
-			case 'j':
-			case 'k':
-			case 'l':
-			case 'm':
-			case 'n':
-			case 'o':
-			case 'p':
-			case 'q':
-			case 'r':
-			case 's':
-			case 't':
-			case 'u':
-			case 'v':
-			case 'w':
-			case 'x':
-			case 'y':
-			case 'z':
-				{
-					__m256i yyb0 = _mm256_set1_epi8((char)-128);
-					__m256i yyu0 = _mm256_set1_epi8((char)-80);
-					__m256i yyb1 = _mm256_set1_epi8((char)-70);
-					__m256i yyu1 = _mm256_set1_epi8((char)-121);
-					__m256i yyb2 = _mm256_set1_epi8((char)-37);
-					__m256i yyu2 = _mm256_set1_epi8((char)-124);
-					__m256i yys3 = _mm256_set1_epi8((char)96);
-					__m256i yyb4 = _mm256_set1_epi8((char)-5);
-					__m256i yyu4 = _mm256_set1_epi8((char)5);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(in->cur));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_or_si256(_mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0)), _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1))), _mm256_cmpgt_epi8(yyu2, _mm256_sub_epi8(yysimd0, yyb2))), _mm256_cmpeq_epi8(yysimd0, yys3)), _mm256_cmpgt_epi8(yyu4, _mm256_sub_epi8(yysimd0, yyb4))));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							in->cur += yyn;
-							break;
-						}
-						in->cur += 32;
-						if ((in->lim - in->cur) < 33) break;
-					}
-					yych = *in->cur;
-				}
-				break;
-			default: break;
-		}
-	}
+yy12:
 	switch (yych) {
 		case '0':
 		case '1':
@@ -458,60 +354,86 @@ yy9:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy9;
-		default: goto yy10;
-	}
-yy10:
-	{ kind = K_ID; goto token; }
-yy11:
-	++in->cur;
-	if (in->lim <= in->cur) if (fill(in, 1) != 0) return ERR_FILL;
-	yych = *in->cur;
-	if (!((in->lim - in->cur) < 33)) {
-		switch (yych) {
-			case 0x00:
-			case '"':
-			case '\\': break;
-			default:
-				{
-					__m256i yys0 = _mm256_set1_epi8((char)0);
-					__m256i yys1 = _mm256_set1_epi8((char)34);
-					__m256i yys2 = _mm256_set1_epi8((char)92);
-					for (;;) {
-						__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(in->cur));
-						unsigned int yym = (unsigned int)_mm256_movemask_epi8(_mm256_or_si256(_mm256_or_si256(_mm256_cmpeq_epi8(yysimd0, yys0), _mm256_cmpeq_epi8(yysimd0, yys1)), _mm256_cmpeq_epi8(yysimd0, yys2)));
-						if (yym != 0) {
-							int yyn = __builtin_ctz(yym);
-							in->cur += yyn;
-							break;
-						}
-						in->cur += 32;
-						if ((in->lim - in->cur) < 33) break;
+		case 'z':
+			if (!((in->lim - in->cur) < 33)) {
+				const __m256i yyb0 = _mm256_set1_epi8((char)-128);
+				const __m256i yyu0 = _mm256_set1_epi8((char)-80);
+				const __m256i yyb1 = _mm256_set1_epi8((char)-70);
+				const __m256i yyu1 = _mm256_set1_epi8((char)-121);
+				const __m256i yyb2 = _mm256_set1_epi8((char)-37);
+				const __m256i yyu2 = _mm256_set1_epi8((char)-124);
+				const __m256i yys3 = _mm256_set1_epi8((char)96);
+				const __m256i yyb4 = _mm256_set1_epi8((char)-5);
+				const __m256i yyu4 = _mm256_set1_epi8((char)5);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(in->cur));
+					__m256i yysimd1 = _mm256_cmpgt_epi8(yyu0, _mm256_sub_epi8(yysimd0, yyb0));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu1, _mm256_sub_epi8(yysimd0, yyb1)));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu2, _mm256_sub_epi8(yysimd0, yyb2)));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys3));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpgt_epi8(yyu4, _mm256_sub_epi8(yysimd0, yyb4)));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						in->cur += yyn;
+						break;
 					}
-					yych = *in->cur;
+					in->cur += 32;
+					if ((in->lim - in->cur) < 33) break;
 				}
-				break;
-		}
-	}
-yy12:
-	switch (yych) {
-		case 0x00: goto yy13;
-		case '"': goto yy14;
-		case '\\': goto yy15;
-		default: goto yy11;
+				yych = *in->cur;
+				goto yy12;
+			}
+			goto yy11;
+		default: goto yy13;
 	}
 yy13:
-	in->cur = in->mar;
-	goto yy3;
+	{ kind = K_ID; goto token; }
 yy14:
-	++in->cur;
-	{ kind = K_STR; goto token; }
-yy15:
 	++in->cur;
 	if (in->lim <= in->cur) if (fill(in, 1) != 0) return ERR_FILL;
 	yych = *in->cur;
-	if (yych <= 0x00) goto yy13;
-	goto yy11;
+yy15:
+	switch (yych) {
+		case 0x00: goto yy16;
+		case '"': goto yy17;
+		case '\\': goto yy18;
+		default:
+			if (!((in->lim - in->cur) < 33)) {
+				const __m256i yys0 = _mm256_set1_epi8((char)0);
+				const __m256i yys1 = _mm256_set1_epi8((char)34);
+				const __m256i yys2 = _mm256_set1_epi8((char)92);
+				for (;;) {
+					__m256i yysimd0 = _mm256_loadu_si256((const __m256i*)(in->cur));
+					__m256i yysimd1 = _mm256_cmpeq_epi8(yysimd0, yys0);
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys1));
+					yysimd1 = _mm256_or_si256(yysimd1, _mm256_cmpeq_epi8(yysimd0, yys2));
+					unsigned int yym = (unsigned int)_mm256_movemask_epi8(yysimd1);
+					if (yym != 0) {
+						int yyn = __builtin_ctz(yym);
+						in->cur += yyn;
+						break;
+					}
+					in->cur += 32;
+					if ((in->lim - in->cur) < 33) break;
+				}
+				yych = *in->cur;
+				goto yy15;
+			}
+			goto yy14;
+	}
+yy16:
+	in->cur = in->mar;
+	goto yy3;
+yy17:
+	++in->cur;
+	{ kind = K_STR; goto token; }
+yy18:
+	++in->cur;
+	if (in->lim <= in->cur) if (fill(in, 1) != 0) return ERR_FILL;
+	yych = *in->cur;
+	if (yych <= 0x00) goto yy16;
+	goto yy14;
 }
 
 token:
@@ -529,10 +451,10 @@ loop:
 	if ((in->lim - in->cur) < 2) if (fill(in, 2) != 0) return ERR_FILL;
 	yych = *in->cur;
 	switch (yych) {
-		case 0x00: goto yy17;
+		case 0x00: goto yy20;
 		case '\t':
-		case ' ': goto yy20;
-		case '"': goto yy22;
+		case ' ': goto yy23;
+		case '"': goto yy25;
 		case '0':
 		case '1':
 		case '2':
@@ -542,7 +464,7 @@ loop:
 		case '6':
 		case '7':
 		case '8':
-		case '9': goto yy23;
+		case '9': goto yy26;
 		case 'A':
 		case 'B':
 		case 'C':
@@ -595,35 +517,35 @@ loop:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy25;
-		default: goto yy18;
+		case 'z': goto yy28;
+		default: goto yy21;
 	}
-yy17:
+yy20:
 	++in->cur;
 	{
         // Check that it is the sentinel, not some unexpected null.
         return in->eof && in->tok == in->lim - YYMAXFILL ? in->ntoks : ERR_NUL;
     }
-yy18:
+yy21:
 	++in->cur;
-yy19:
+yy22:
 	{ return ERR_CHAR; }
-yy20:
+yy23:
 	++in->cur;
 	if (in->lim <= in->cur) if (fill(in, 1) != 0) return ERR_FILL;
 	yych = *in->cur;
 	switch (yych) {
 		case '\t':
-		case ' ': goto yy20;
-		default: goto yy21;
+		case ' ': goto yy23;
+		default: goto yy24;
 	}
-yy21:
+yy24:
 	{ kind = K_WS; goto token; }
-yy22:
+yy25:
 	yych = *(in->mar = ++in->cur);
-	if (yych <= 0x00) goto yy19;
-	goto yy28;
-yy23:
+	if (yych <= 0x00) goto yy22;
+	goto yy31;
+yy26:
 	++in->cur;
 	if (in->lim <= in->cur) if (fill(in, 1) != 0) return ERR_FILL;
 	yych = *in->cur;
@@ -637,12 +559,12 @@ yy23:
 		case '6':
 		case '7':
 		case '8':
-		case '9': goto yy23;
-		default: goto yy24;
+		case '9': goto yy26;
+		default: goto yy27;
 	}
-yy24:
+yy27:
 	{ kind = K_NUM; goto token; }
-yy25:
+yy28:
 	++in->cur;
 	if (in->lim <= in->cur) if (fill(in, 1) != 0) return ERR_FILL;
 	yych = *in->cur;
@@ -709,34 +631,34 @@ yy25:
 		case 'w':
 		case 'x':
 		case 'y':
-		case 'z': goto yy25;
-		default: goto yy26;
-	}
-yy26:
-	{ kind = K_ID; goto token; }
-yy27:
-	++in->cur;
-	if (in->lim <= in->cur) if (fill(in, 1) != 0) return ERR_FILL;
-	yych = *in->cur;
-yy28:
-	switch (yych) {
-		case 0x00: goto yy29;
-		case '"': goto yy30;
-		case '\\': goto yy31;
-		default: goto yy27;
+		case 'z': goto yy28;
+		default: goto yy29;
 	}
 yy29:
-	in->cur = in->mar;
-	goto yy19;
+	{ kind = K_ID; goto token; }
 yy30:
-	++in->cur;
-	{ kind = K_STR; goto token; }
-yy31:
 	++in->cur;
 	if (in->lim <= in->cur) if (fill(in, 1) != 0) return ERR_FILL;
 	yych = *in->cur;
-	if (yych <= 0x00) goto yy29;
-	goto yy27;
+yy31:
+	switch (yych) {
+		case 0x00: goto yy32;
+		case '"': goto yy33;
+		case '\\': goto yy34;
+		default: goto yy30;
+	}
+yy32:
+	in->cur = in->mar;
+	goto yy22;
+yy33:
+	++in->cur;
+	{ kind = K_STR; goto token; }
+yy34:
+	++in->cur;
+	if (in->lim <= in->cur) if (fill(in, 1) != 0) return ERR_FILL;
+	yych = *in->cur;
+	if (yych <= 0x00) goto yy32;
+	goto yy30;
 }
 
 token:

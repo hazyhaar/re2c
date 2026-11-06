@@ -162,7 +162,7 @@ language configurations, inplace configurations and code templates.
       Declaration or definition of a local variable. Supported variables:
       ``type`` (the type of the variable), ``name`` (its name) and ``init``
       (initial value, if any). Conditionals: ``.init`` (true if there is an
-      initializer).
+      initializer) and ``.const`` (true if the variable is immutable).
 
   ``code:var_global``
       Same as ``code:var_local``, except that it's used in top-level.
@@ -397,6 +397,10 @@ language configurations, inplace configurations and code templates.
   ``code:vec16_cleanup``, ``code:vec32_cleanup``
       Optional target cleanup expression emitted as a statement before leaving
       a non-empty vector loop (empty string if none is needed).
+
+  ``code:bit_match``
+      Bitmask test expression checking whether ``lhs`` has the bit ``mask``
+      set. Supported variables: ``lhs`` and ``mask``.
 
   ``code:yyskip``
       ``YYSKIP`` statement, possibly specialized for different APIs.

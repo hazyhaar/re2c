@@ -688,6 +688,7 @@ start:
     "code:yybm_filter"            { RET_CODE(code_yybm_filter); }
     "code:yybm_match"             { RET_CODE(code_yybm_match); }
     "code:yytarget_filter"        { RET_CODE(code_yytarget_filter); }
+    "code:bit_match"              { RET_CODE(code_bit_match); }
     "code:yypeek16"               { RET_CODE(code_yypeek16); }
     "code:yypeek32"               { RET_CODE(code_yypeek32); }
     "code:vec16_splat"            { RET_CODE(code_vec16_splat); }

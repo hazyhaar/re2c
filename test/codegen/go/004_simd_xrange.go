@@ -49,55 +49,7 @@ yy2:
 		return -2
 	}
 	yych = input[cursor]
-	if (!((limit - cursor) < 33)) {
-		switch (yych) {
-		case 0x00:
-			fallthrough
-		case '\n':
-			fallthrough
-		case '"':
-			fallthrough
-		case '\\':
-			break
-		default:
-			{
-				yys0 := archsimd.BroadcastInt8x32(0)
-				yys1 := archsimd.BroadcastInt8x32(10)
-				yys2 := archsimd.BroadcastInt8x32(34)
-				yys3 := archsimd.BroadcastInt8x32(92)
-				for {
-					yysimd0 := archsimd.LoadUint8x32(input[cursor:cursor + 32]).BitsToInt8()
-					yym := yysimd0.Equal(yys0).Or(yysimd0.Equal(yys1)).Or(yysimd0.Equal(yys2)).Or(yysimd0.Equal(yys3)).ToBits()
-					if (yym != 0) {
-						yyn := bits.TrailingZeros32(yym)
-						if ((yyn & 16) != 0) {
-							cursor += 16
-						}
-						if ((yyn & 8) != 0) {
-							cursor += 8
-						}
-						if ((yyn & 4) != 0) {
-							cursor += 4
-						}
-						if ((yyn & 2) != 0) {
-							cursor += 2
-						}
-						if ((yyn & 1) != 0) {
-							cursor += 1
-						}
-						break
-					}
-					cursor += 32
-					if ((limit - cursor) < 33) {
-						break
-					}
-				}
-				archsimd.ClearAVXUpperBits()
-				yych = input[cursor]
-			}
-			break
-		}
-	}
+yy3:
 	switch (yych) {
 	case 0x00:
 		fallthrough
@@ -106,14 +58,54 @@ yy2:
 	case '"':
 		fallthrough
 	case '\\':
-		goto yy3
+		goto yy4
 	default:
+		if (!((limit - cursor) < 33)) {
+			yys0 := archsimd.BroadcastInt8x32(0)
+			yys1 := archsimd.BroadcastInt8x32(10)
+			yys2 := archsimd.BroadcastInt8x32(34)
+			yys3 := archsimd.BroadcastInt8x32(92)
+			for {
+				yysimd0 := archsimd.LoadUint8x32(input[cursor:cursor + 32]).BitsToInt8()
+				yysimd1 := yysimd0.Equal(yys0)
+				yysimd1 = yysimd1.Or(yysimd0.Equal(yys1))
+				yysimd1 = yysimd1.Or(yysimd0.Equal(yys2))
+				yysimd1 = yysimd1.Or(yysimd0.Equal(yys3))
+				yym := yysimd1.ToBits()
+				if (yym != 0) {
+					yyn := bits.TrailingZeros32(yym)
+					if ((yyn & 16) != 0) {
+						cursor += 16
+					}
+					if ((yyn & 8) != 0) {
+						cursor += 8
+					}
+					if ((yyn & 4) != 0) {
+						cursor += 4
+					}
+					if ((yyn & 2) != 0) {
+						cursor += 2
+					}
+					if ((yyn & 1) != 0) {
+						cursor += 1
+					}
+					break
+				}
+				cursor += 32
+				if ((limit - cursor) < 33) {
+					break
+				}
+			}
+			archsimd.ClearAVXUpperBits()
+			yych = input[cursor]
+			goto yy3
+		}
 		goto yy2
 	}
-yy3:
+yy4:
 //line "codegen/go/004_simd_xrange.re":28
 	{ return 1 }
-//line "codegen/go/004_simd_xrange.go":117
+//line "codegen/go/004_simd_xrange.go":109
 }
 //line "codegen/go/004_simd_xrange.re":30
 
@@ -122,7 +114,7 @@ yy3:
 // Identifier tail: the complement mixes ranges and a single code unit ('`').
 func lexIdent() int {
 	
-//line "codegen/go/004_simd_xrange.go":126
+//line "codegen/go/004_simd_xrange.go":118
 {
 	var yych byte
 	if (limit <= cursor) {
@@ -135,75 +127,22 @@ func lexIdent() int {
 	case '_':
 		fallthrough
 	case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
-		goto yy6
+		goto yy7
 	default:
-		goto yy5
+		goto yy6
 	}
-yy5:
+yy6:
 	cursor += 1
 //line "codegen/go/004_simd_xrange.re":45
 	{ return -1 }
-//line "codegen/go/004_simd_xrange.go":147
-yy6:
+//line "codegen/go/004_simd_xrange.go":139
+yy7:
 	cursor += 1
 	if (limit <= cursor) {
 		return -2
 	}
 	yych = input[cursor]
-	if (!((limit - cursor) < 33)) {
-		switch (yych) {
-		case '0','1','2','3','4','5','6','7','8','9':
-			fallthrough
-		case 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z':
-			fallthrough
-		case '_':
-			fallthrough
-		case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
-			{
-				yyb0 := archsimd.BroadcastInt8x32(-128)
-				yyu0 := archsimd.BroadcastInt8x32(-80)
-				yyb1 := archsimd.BroadcastInt8x32(-70)
-				yyu1 := archsimd.BroadcastInt8x32(-121)
-				yyb2 := archsimd.BroadcastInt8x32(-37)
-				yyu2 := archsimd.BroadcastInt8x32(-124)
-				yys3 := archsimd.BroadcastInt8x32(96)
-				yyb4 := archsimd.BroadcastInt8x32(-5)
-				yyu4 := archsimd.BroadcastInt8x32(5)
-				for {
-					yysimd0 := archsimd.LoadUint8x32(input[cursor:cursor + 32]).BitsToInt8()
-					yym := yyu0.Greater(yysimd0.Sub(yyb0)).Or(yyu1.Greater(yysimd0.Sub(yyb1))).Or(yyu2.Greater(yysimd0.Sub(yyb2))).Or(yysimd0.Equal(yys3)).Or(yyu4.Greater(yysimd0.Sub(yyb4))).ToBits()
-					if (yym != 0) {
-						yyn := bits.TrailingZeros32(yym)
-						if ((yyn & 16) != 0) {
-							cursor += 16
-						}
-						if ((yyn & 8) != 0) {
-							cursor += 8
-						}
-						if ((yyn & 4) != 0) {
-							cursor += 4
-						}
-						if ((yyn & 2) != 0) {
-							cursor += 2
-						}
-						if ((yyn & 1) != 0) {
-							cursor += 1
-						}
-						break
-					}
-					cursor += 32
-					if ((limit - cursor) < 33) {
-						break
-					}
-				}
-				archsimd.ClearAVXUpperBits()
-				yych = input[cursor]
-			}
-			break
-		default:
-			break
-		}
-	}
+yy8:
 	switch (yych) {
 	case '0','1','2','3','4','5','6','7','8','9':
 		fallthrough
@@ -212,14 +151,60 @@ yy6:
 	case '_':
 		fallthrough
 	case 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z':
-		goto yy6
-	default:
+		if (!((limit - cursor) < 33)) {
+			yyb0 := archsimd.BroadcastInt8x32(-128)
+			yyu0 := archsimd.BroadcastInt8x32(-80)
+			yyb1 := archsimd.BroadcastInt8x32(-70)
+			yyu1 := archsimd.BroadcastInt8x32(-121)
+			yyb2 := archsimd.BroadcastInt8x32(-37)
+			yyu2 := archsimd.BroadcastInt8x32(-124)
+			yys3 := archsimd.BroadcastInt8x32(96)
+			yyb4 := archsimd.BroadcastInt8x32(-5)
+			yyu4 := archsimd.BroadcastInt8x32(5)
+			for {
+				yysimd0 := archsimd.LoadUint8x32(input[cursor:cursor + 32]).BitsToInt8()
+				yysimd1 := yyu0.Greater(yysimd0.Sub(yyb0))
+				yysimd1 = yysimd1.Or(yyu1.Greater(yysimd0.Sub(yyb1)))
+				yysimd1 = yysimd1.Or(yyu2.Greater(yysimd0.Sub(yyb2)))
+				yysimd1 = yysimd1.Or(yysimd0.Equal(yys3))
+				yysimd1 = yysimd1.Or(yyu4.Greater(yysimd0.Sub(yyb4)))
+				yym := yysimd1.ToBits()
+				if (yym != 0) {
+					yyn := bits.TrailingZeros32(yym)
+					if ((yyn & 16) != 0) {
+						cursor += 16
+					}
+					if ((yyn & 8) != 0) {
+						cursor += 8
+					}
+					if ((yyn & 4) != 0) {
+						cursor += 4
+					}
+					if ((yyn & 2) != 0) {
+						cursor += 2
+					}
+					if ((yyn & 1) != 0) {
+						cursor += 1
+					}
+					break
+				}
+				cursor += 32
+				if ((limit - cursor) < 33) {
+					break
+				}
+			}
+			archsimd.ClearAVXUpperBits()
+			yych = input[cursor]
+			goto yy8
+		}
 		goto yy7
+	default:
+		goto yy9
 	}
-yy7:
+yy9:
 //line "codegen/go/004_simd_xrange.re":44
 	{ return 2 }
-//line "codegen/go/004_simd_xrange.go":223
+//line "codegen/go/004_simd_xrange.go":208
 }
 //line "codegen/go/004_simd_xrange.re":46
 
@@ -230,7 +215,7 @@ yy7:
 // leading "a" makes the lexer read the current code unit, so that `yych` is used.
 func lexAny() int {
 	
-//line "codegen/go/004_simd_xrange.go":234
+//line "codegen/go/004_simd_xrange.go":219
 {
 	var yych byte
 	if (limit <= cursor) {
@@ -239,16 +224,16 @@ func lexAny() int {
 	yych = input[cursor]
 	switch (yych) {
 	case 'a':
-		goto yy10
+		goto yy12
 	default:
-		goto yy9
+		goto yy11
 	}
-yy9:
+yy11:
 	cursor += 1
 //line "codegen/go/004_simd_xrange.re":63
 	{ return -1 }
-//line "codegen/go/004_simd_xrange.go":251
-yy10:
+//line "codegen/go/004_simd_xrange.go":236
+yy12:
 	cursor += 1
 	if (limit <= cursor) {
 		return -2
@@ -261,9 +246,8 @@ yy10:
 				break
 			}
 		}
-		yych = input[cursor]
 	}
-	goto yy10
+	goto yy12
 }
 //line "codegen/go/004_simd_xrange.re":64
 
